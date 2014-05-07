@@ -1,0 +1,69 @@
+#stats{
+	float:left;
+	height:170px;
+	background-color:white;
+	border:1px #000 solid;
+	position:relative;
+}
+#stats ul{
+	margin:15px;
+	float:left;
+}
+#stats ul li{
+	padding:0;
+	line-height:30px;
+	font-size:25px;
+	width:100%;
+}
+#stats ul .title{
+	text-transform: uppercase;
+	font-size:30px;
+	text-align: center;
+}
+#stats ul li .stat{
+	color:#15D400;
+}
+#login{
+	cursor:pointer;
+	padding:5px;
+	border-radius:3px 0 0 0;
+	overflow:hidden;
+	position:absolute;
+	bottom:0;
+	right:0;
+	text-align:center;
+	display:inline-block;
+	margin-left:15px;
+	opacity:0.9;
+	border-top:1px #000 solid;
+	border-left:1px #000 solid;
+	box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.6);
+}
+#login:hover{
+	opacity:1;
+}
+#profile{
+	width:200px;
+	float:left;
+}
+#image{
+	position:relative;
+	width:170px;
+	height:170px;
+	margin:0 auto;
+	background-image: url("http://31.media.tumblr.com/0a049264fba0072a818f733a6c533578/tumblr_mqvlz4t5FK1qcnibxo1_1280.png");
+	border:1px black solid;
+	background-size:cover;
+}
+#table{
+	margin:15px;
+	border:1px #000 solid;
+}
+#main{
+	margin-left:180px;
+}
+/*
+#info{
+	
+}
+*/

@@ -1,0 +1,186 @@
+*{
+	margin: 0;
+	outline: 0;
+}
+body,html{
+	background-color: white;
+	height:100%;
+}
+a{
+	color:black;
+	text-decoration: none;
+	text-transform: capitalize;
+}
+.wrapper{
+	position:relative;
+}
+#header{
+	height:40px;
+	padding:0 15px;
+	line-height:40px;
+	font-size:15px;
+	border-bottom: 1px #fff groove;
+	margin-bottom: 15px;
+}
+#header .title{
+	float:left;
+	font-size:25px;
+	text-align: center;
+}
+#header a{
+	float:right;
+	position:relative;
+	padding:0 15px;
+	border-right:1px #999 solid;
+	box-shadow:inset 1px 0px 0px 0px white;
+}
+#header a.selected,#header a:hover{
+	background-color:rgba(0,0,0,0.08);
+	box-shadow:inset 2px 0px 1px -1px white;
+}
+#header a.selected:after{
+	content: ' ';
+	position: absolute;
+	bottom:-1px;
+	left:50%;
+	margin-left:-8px;
+	border-width: 8px;
+	border-style: solid;
+	border-color:transparent transparent white transparent;
+}
+#header a.selected:before{
+	content: ' ';
+	position: absolute;
+	bottom:-1px;
+	left:50%;
+	margin-left:-9px;
+	border-width: 9px;
+	border-style: solid;
+	border-color:transparent transparent #999 transparent;
+}
+#header a:last-child{
+	border-left: 1px #999 solid;
+}
+#sidebar{
+	width:148px;
+	margin:0 15px 15px;
+	float:left;
+	border:1px #000 solid;
+}
+#sidebar li, #sidebar .title{
+	line-height: 25px;
+	height:25px;
+	font-size: 14px;
+}
+ul,ol,li{
+	padding:0;
+	list-style: none;
+	list-style-position: inside;
+}
+ul li, ol li{
+	padding: 0 10px;
+}
+#sidebar ul .title{
+	padding-left:10px;
+		/*box-shadow:inset 0px 1px 0px 0px rgba(255,255,255,0.6);*/
+	font-weight:bold;
+	background-color:#15D400;
+	color: black;
+	text-transform: uppercase;
+	border-top:1px #000 solid;
+}
+#sidebar ul .title + a li{
+	border-top:1px #666 solid;
+}
+#sidebar ul:first-child .title{
+	border-top:none;
+}
+#sidebar ul li.selected:after{
+	content:" ";
+	width:0;
+	height:0;
+	border-style:solid;
+	border-width:5px;
+	border-color: transparent transparent transparent black !important;
+	right:0;
+	top:7.5px;
+	position: absolute;
+}
+#sidebar ul li.selected{
+	background-color: #ccc;
+}
+#sidebar ul li{
+	cursor: pointer;
+	position: relative;
+	border-top: 1px #000 dotted;
+}
+#sidebar ul li:hover:after{
+	content:" ";
+	width:0;
+	height:0;
+	border-style:solid;
+	border-width:5px;
+	border-color: transparent transparent transparent black;
+	right:0;
+	top:7.5px;
+	position: absolute;
+}
+#sidebar ul li:hover{
+	background-color: #ccc;
+	border-top: 1px #666 solid;
+}
+#sidebar ul a:last-child{
+	border-bottom: 1px #000 solid;
+}
+#sidebar ul:last-child a:last-child{
+	border-bottom:none;
+}
+.silver{
+	background: rgb(239,239,239); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VmZWZlZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjY2NjY2MiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  rgba(239,239,239,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(239,239,239,1)), color-stop(100%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(239,239,239,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(239,239,239,1) 0%,rgba(204,204,204,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(239,239,239,1) 0%,rgba(204,204,204,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(239,239,239,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efefef', endColorstr='#cccccc',GradientType=0 ); /* IE6-8 */
+}
+.green{
+	background: rgb(21,212,0); /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE1ZDQwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMGExMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top,  rgba(21,212,0,1) 0%, rgba(0,161,0,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(21,212,0,1)), color-stop(100%,rgba(0,161,0,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(21,212,0,1) 0%,rgba(0,161,0,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(21,212,0,1) 0%,rgba(0,161,0,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(21,212,0,1) 0%,rgba(0,161,0,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(21,212,0,1) 0%,rgba(0,161,0,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#15d400', endColorstr='#00a100',GradientType=0 ); /* IE6-8 */
+}
+table{
+	border-color:black;
+	border-style:solid;
+}
+table tr:nth-child(odd){
+	background-color:#efefef;
+}
+table tr:first-child{
+	background-color:#15D400 !important;
+}
+table th{
+	font-size:20px;
+	text-align: center;
+	border-bottom:1px #000 solid;
+}
+table tr td, table tr th{
+	border-right:1px #000 solid;
+}
+table tr td:last-child,table tr th:last-child{
+	border-right:none;
+}
+.contain{
+	width:960px;
+	margin:0 auto;
+}

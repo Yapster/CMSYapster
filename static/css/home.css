@@ -1,0 +1,112 @@
+#announcements{
+	float:left;
+	width:300px;
+	height:457px;
+	border:1px #000 solid;
+	position: relative;
+}
+#announcements .title{
+	background-color: #15D400;
+	height:50px;
+	width:300px;
+	text-align:center;
+	color: black;
+	border-bottom:1px #000 solid;
+	line-height:50px;
+	position:absolute;
+	top:0;
+	left:0;
+}
+#stats .title{
+	text-transform: uppercase;
+	background-color: #15D400;
+	height:50px;
+	border:1px #000 solid;
+	text-align:center;
+	color: black;
+	line-height:50px;
+}
+#announcementcontent{
+	overflow-y:scroll;
+	height:407px;
+	margin-top:50px;
+}
+#announcements .header.important{
+	color: #15D400;
+}
+#announcements p, #announcements .header{
+	padding:15px 15px 0 15px;
+}
+#announcements p:last-child{
+	padding:15px;
+}
+#stats{
+	margin-left: 495px;
+	margin-right:15px;
+}
+.mainstat{
+	min-height:50px;
+	border:1px #000 solid;
+	border-top:none;
+	padding-left:15px;
+}
+.mainstat .number,.mainstat .label{
+	display:inline;
+	font-size: 20px;
+	line-height:50px;
+}
+.mainstat .number{
+	color:#15D400;
+}
+.mainstat .hashtags a{
+	color:#15D400 !important;
+	text-transform: none !important;
+}
+.mainstat .extend{
+	display:block !important;
+	background-color:#15D400;
+	color:black;
+	text-align:center;
+	border-bottom:1px #000 solid;
+	border-right:none !important;
+}
+#tabs{
+	height:50px;
+	padding:0;
+	width:100%;
+}
+#tabs a{
+	border-bottom:5px black solid;
+	opacity:0.3;
+	line-height:30px;
+	font-size:15px;
+	padding:0 !important;
+	margin-left:2.66%;
+	text-align:center;
+	float:left;
+	width:12%;
+	-webkit-transition: all 0.3s ease-out;
+         -o-transition: all 0.3s ease-out;
+       -moz-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+}
+#tabs a:first-child{
+	margin-left:0;
+}
+#tabs a:hover, #tabs a.selected{
+	opacity:0.8;
+	-webkit-transition: all 0.3s ease-in;
+         -o-transition: all 0.3s ease-in;
+       -moz-transition: all 0.3s ease-in;
+            transition: all 0.3s ease-in;
+}
+#tabs a.selected{
+	opacity:1;
+}
+#content{
+	margin-top:15px;
+	padding-bottom:15px;
+}
+#table{
+	border:1px #000 solid;
+}

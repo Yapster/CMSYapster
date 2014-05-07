@@ -1,0 +1,233 @@
+/*
+Below are dimensions and colors necessary for the main css implementation
+
+		COLORS:
+
+enhance: #15D400;<div id="table">
+		<table width="100%" cellpadding="2px" cellspacing="0px" border="0px">
+			<tr>
+			<th>Header 1</th>
+			<th>Header 2</th>
+			<th>Header 3</th>
+			<th>Header 4</th>
+			</tr>
+			<tr>
+			<td>row 1, cell 1</td>
+			<td>row 1, cell 2</td>
+			<td>row 1, cell 3</td>
+			<td>row 1, cell 4</td>
+			</tr>
+			<tr>
+			<td>row 2, cell 1</td>
+			<td>row 2, cell 2</td>
+			<td>row 2, cell 3</td>
+			<td>row 2, cell 4</td>
+			</tr>
+			<tr>
+			<td>row 3, cell 1</td>
+			<td>row 3, cell 2</td>
+			<td>row 3, cell 3</td>
+			<td>row 3, cell 4</td>
+			</tr>
+			<tr>
+			<td>row 4, cell 1</td>
+			<td>row 4, cell 2</td>
+			<td>row 4, cell 3</td>
+			<td>row 4, cell 4</td>
+			</tr>
+			<tr>
+			<td>row 5, cell 1</td>
+			<td>row 5, cell 2</td>
+			<td>row 5, cell 3</td>
+			<td>row 5, cell 4</td>
+			</tr>
+			<tr>
+			<td>row 6, cell 1</td>
+			<td>row 6, cell 2</td>
+			<td>row 6, cell 3</td>
+			<td>row 6, cell 4</td>
+			</tr>
+		</table>
+	</div>
+
+baselight: white;
+basedark: black;
+
+enhance 0% light
+	#15d400
+	 gray = #9c9c9c
+enhance 0% dark
+	#15d400
+	 gray = #9c9c9c
+enhance 0% gray
+	#15d400
+enhance 10% light
+	#2eed19
+	 gray = #b5b5b5
+enhance 10% dark
+	#00ba00
+	 gray = #858585
+enhance 10% gray
+	#22cf0f
+enhance 20% light
+	#48ff33
+	 gray = #c9c9c9
+enhance 20% dark
+	#00a100
+	 gray = #737373
+enhance 20% gray
+	#30c91f
+enhance 30% light
+	#61ff4c
+	 gray = #d0d0d0
+enhance 30% dark
+	#008700
+	 gray = #606060
+enhance 30% gray
+	#3dc42e
+enhance 40% light
+	#7bff66
+	 gray = #d7d7d7
+enhance 40% dark
+	#006e00
+	 gray = #4e4e4e
+enhance 40% gray
+	#4bbe3e
+enhance 50% light
+	#94ff7f
+	 gray = #dfdfdf
+enhance 50% dark
+	#005400
+	 gray = #3c3c3c
+enhance 50% gray
+	#58b84e
+enhance 60% light
+	#aeff99
+	 gray = #e6e6e6
+enhance 60% dark
+	#003b00
+	 gray = #2a2a2a
+enhance 60% gray
+	#66b35d
+enhance 70% light
+	#c7ffb2
+	 gray = #ededed
+enhance 70% dark
+	#002100
+	 gray = #171717
+enhance 70% gray
+	#73ad6d
+enhance 80% light
+	#e0ffcb
+	 gray = #f4f4f4
+enhance 80% dark
+	#000800
+	 gray = #050505
+enhance 80% gray
+	#80a87c
+enhance 89% light
+	#faffe5
+	 gray = #fcfcfc
+enhance 89% dark
+	#000000
+	 gray = #000000
+enhance 89% gray
+	#8ea28c
+enhance 99% light
+	#fffffe
+	 gray = #fefefe
+enhance 99% dark
+	#000000
+	 gray = #000000
+enhance 99% gray
+	#9b9d9b
+
+*/
+#main{
+	margin-left:180px;
+}
+.section{
+	background-color: white;
+	overflow:hidden;
+	border:1px #000 solid;
+	margin-right: 15px;
+	margin-bottom: 15px;
+}
+.section .header{
+	text-transform: capitalize;
+	color:black;
+	font-size: 20px;
+	line-height:25px;
+	height:25px;
+	background-color:#15D400;
+	border-bottom: 1px #000 solid;
+	padding-left:15px;
+}
+.section .header input{
+	cursor:pointer;
+	font-size:13px;
+	color:black;
+	background-color:transparent;
+	text-decoration: underline;
+	border:0;
+	padding:0;
+	outline:0;
+	float:right;
+	height:25px;
+	line-height:25px;
+	margin-right:15px;
+}
+.seperator{
+	width:1px;
+	background-color: #000;
+	float:left;
+}
+.group{
+	width:385px;
+	float:left;
+	margin-top:15px;
+}
+.line{
+	line-height: 30px;
+	font-size: 16px;
+}
+.line label{
+	display: inline-block;
+	width:165px;
+	padding-right:15px;
+}
+.line input{
+	position: relative;
+	width: 194px;
+}
+.line input[type="range"],.line input[type="submit"],.line input[type="reset"],.line select{
+	cursor:pointer;
+	display: inline-block;
+	width:200px;
+}
+.line input[type="range"]:after{
+	position: absolute;
+	left:0;
+	bottom:-10px;
+	content: attr(data-lower);
+}
+.line input[type="range"]:before{
+	position: absolute;
+	right:0;
+	bottom:-10px;
+	content: attr(data-upper);
+}
+#table table tr th{
+	background-color:#efefef !important;
+}
+#table table{
+	border: none;
+}
+#table table th{
+	border-bottom:1px #000 solid;
+	border-top:1px #000 solid;
+}
+#table .title{
+	margin-left:2px;
+	color:black;
+}
