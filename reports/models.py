@@ -3,11 +3,17 @@ from admins.models import User
 
 
 class ReportType(models.Model):
+    """
+    Type of a report
+    """
     report_type_id = models.AutoField(primary_key=True)
     report_name = models.CharField(max_length=24, unique=True)
 
 
 class Report(models.Model):
+    """
+    Report from users
+    """
     report_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(to=User, related_name="reports")
     report_type = models.ForeignKey(to=ReportType, related_name="reports")
