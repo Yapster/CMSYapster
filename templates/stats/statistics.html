@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/stats.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/clearfix.css" %}" />
+    <script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}" ></script>
+    <script type="text/javascript" src="{% static "js/test.js" %}" ></script>
+</head>
+<body>
+<div id="header" class="green">
+    <span class="title">Yapster</span>
+    <a href="/login/">log out</a>
+    <a href="#profile">Settings</a>
+    <a href="/Ryan_Saxe">Ryan Saxe</a>
+    <a href="/search/">Search</a>
+    <a href="/home/" class="selected">Home</a>
+</div>
+<div id="sidebar" class="clearfix">
+    <ul>
+        <div class="title">Home</div>
+        <a href="#" ><li>main</li></a></a>
+        <a href="/statistics/"><li class="selected">statistics</li></a>
+        <a href="#"><li>maps</li></a>
+    </ul>
+    <ul>
+        <div class="title">Statistics</div>
+        <a href="#"><li>Yaps</li></a></a>
+        <a href="#"><li>Users</li></a>
+        <a href="#"><li>Queries</li></a>
+        <a href="#"><li>Databases</li></a>
+        <a href="#"><li>Trends</li></a></a>
+        <a href="#"><li>Sharing</li></a>
+        <a href="#"><li>Server</li></a>
+    </ul>
+    <ul>
+        <div class="title">Spam</div>
+        <a href="#"><li>All</li></a>
+        <a href="#"><li>Recent</li></a>
+        <a href="#"><li>Important</li></a>
+        <a href="#"><li>Search</li></a>
+    </ul>
+    <ul>
+        <div class="title">Reports</div>
+        <a href="#"><li>All</li></a>
+        <a href="#"><li>Recent</li></a>
+        <a href="#"><li>Important</li></a>
+        <a href="#"><li>Search</li></a>
+    </ul>
+</div>
+<div id="tabs">
+    <a href="#">Live</a>
+    <a href="#">Min</a>
+    <a href="#" class="selected">Hour</a>
+    <a href="#">Day</a>
+    <a href="#">Week</a>
+    <a href="#">Month</a>
+    <a href="#">Year</a>
+</div>
+<div id="content" class="clearfix">
+    <div id="stats">
+
+        <h2 class="title">Statistics</h2>
+        <div class="leftstats">
+            <div class="mainstat">
+                <div class="label">Yaps:</div>
+                <div class="number">29128492</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Live Users:</div>
+                <div class="number">8634173</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Listens:</div>
+                <div class="number">493182</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Time Listened:</div>
+                <div class="number">12d 20h 15m 4s</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Yap length:</div>
+                <div class="number">20s</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Average Listens:</div>
+                <div class="number">56</div>
+            </div>
+            <div class="mainstat">
+                <span class="label">Trending:</span>
+                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
+            </div>
+            <div class="mainstat">
+                <div class="label">Live Users:</div>
+                <div class="number">8634173</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Listens:</div>
+                <div class="number">493182</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Time Listened:</div>
+                <div class="number">12d 20h 15m 4s</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Yap length:</div>
+                <div class="number">20s</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Average Listens:</div>
+                <div class="number">56</div>
+            </div>
+            <div class="mainstat">
+                <span class="label">Trending:</span>
+                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
+            </div>
+            <div class="mainstat">
+                <div class="label">Live Users:</div>
+                <div class="number">8634173</div>
+            </div>
+        </div>
+        <div class="rightstats">
+
+            <div class="mainstat">
+                <div class="label">Listens:</div>
+                <div class="number">493182</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Time Listened:</div>
+                <div class="number">12d 20h 15m 4s</div>
+            </div>
+
+            <div class="mainstat">
+                <div class="label">Yap length:</div>
+                <div class="number">20s</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Average Listens:</div>
+                <div class="number">56</div>
+            </div>
+            <div class="mainstat">
+                <span class="label">Trending:</span>
+                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
+            </div>
+            <div class="mainstat">
+                <div class="label">Live Users:</div>
+                <div class="number">8634173</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Listens:</div>
+                <div class="number">493182</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Time Listened:</div>
+                <div class="number">12d 20h 15m 4s</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Yap length:</div>
+                <div class="number">20s</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Average Listens:</div>
+                <div class="number">56</div>
+            </div>
+            <div class="mainstat">
+                <span class="label">Trending:</span>
+                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
+            </div>
+            <div class="mainstat">
+                <div class="label">Yap length:</div>
+                <div class="number">20s</div>
+            </div>
+            <div class="mainstat">
+                <div class="label">Average Listens:</div>
+                <div class="number">56</div>
+            </div>
+            <div class="mainstat">
+                <span class="label">Trending:</span>
+                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

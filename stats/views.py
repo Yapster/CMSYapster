@@ -11,6 +11,11 @@ def homepage(request):
                             {},
                             content_type=RequestContext(request))
 
+def stats(request):
+    return render_to_response('stats/statistics.html',
+        {},
+                              content_type=RequestContext(request))
+
 def search(request):
     """
     Display research view

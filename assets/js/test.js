@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('#form .seperator').height($("#form").height());
 	function calculate(){
-		var space = ($("#form").width() - 2 * 385)/3 - 1;
+		var space = ($("#form").width() - 2 * 500)/3 - 1;
 		if(space < 0){
 			space = 15;
 			$('#form').css("padding-bottom","15px");

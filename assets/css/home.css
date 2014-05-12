@@ -1,34 +1,39 @@
 #announcements{
 	float:left;
-	width:300px;
-	height:457px;
-	border:1px #000 solid;
+	width:21%;
+	height:100%;
+	border:1px #15D400 solid;
 	position: relative;
+    margin-left: 4%;
 }
 #announcements .title{
 	background-color: #15D400;
-	height:50px;
-	width:300px;
+    width:100%;
+	height:5%;
 	text-align:center;
-	color: black;
-	border-bottom:1px #000 solid;
-	line-height:50px;
+	color: #ffffff;
+	border-bottom:1px #15D400 solid;
+	line-height:44px;
 	position:absolute;
-	top:0;
-	left:0;
+    font-size: 21px;
 }
+
+#announcementcontent .message {
+    border-bottom: 1px #15D400 solid;
+}
+
 #stats .title{
-	text-transform: uppercase;
 	background-color: #15D400;
-	height:50px;
-	border:1px #000 solid;
+	height:9%;
+	border:1px #15D400 solid;
 	text-align:center;
-	color: black;
-	line-height:50px;
+	color: #ffffff;
+	line-height:44px;
+    font-size: 20px;
 }
 #announcementcontent{
 	overflow-y:scroll;
-	height:407px;
+	height:94%;
 	margin-top:50px;
 }
 #announcements .header.important{
@@ -41,19 +46,21 @@
 	padding:15px;
 }
 #stats{
-	margin-left: 495px;
-	margin-right:15px;
+	width:50%;
+	height:57%;
+    float: left;
+    margin-left: 3%;
+    border: 1px #15D400 solid;
 }
 .mainstat{
-	min-height:50px;
-	border:1px #000 solid;
+	min-height:60px;
 	border-top:none;
 	padding-left:15px;
 }
 .mainstat .number,.mainstat .label{
 	display:inline;
 	font-size: 20px;
-	line-height:50px;
+	line-height:60px;
 }
 .mainstat .number{
 	color:#15D400;
@@ -71,30 +78,29 @@
 	border-right:none !important;
 }
 #tabs{
-	height:50px;
+	height:45px;
 	padding:0;
 	width:100%;
+    background-color: #000000;
 }
 #tabs a{
-	border-bottom:5px black solid;
-	opacity:0.3;
-	line-height:30px;
-	font-size:15px;
+    color: #ffffff;
+	line-height:44px;
+	font-size:20px;
 	padding:0 !important;
 	margin-left:2.66%;
 	text-align:center;
 	float:left;
-	width:12%;
+	width:5%;
 	-webkit-transition: all 0.3s ease-out;
          -o-transition: all 0.3s ease-out;
        -moz-transition: all 0.3s ease-out;
             transition: all 0.3s ease-out;
 }
-#tabs a:first-child{
-	margin-left:0;
-}
+
 #tabs a:hover, #tabs a.selected{
-	opacity:0.8;
+	color: #15D400;
+    border-bottom:7px #15D400 solid;
 	-webkit-transition: all 0.3s ease-in;
          -o-transition: all 0.3s ease-in;
        -moz-transition: all 0.3s ease-in;
@@ -104,7 +110,7 @@
 	opacity:1;
 }
 #content{
-	margin-top:15px;
+	margin-top:40px;
 	padding-bottom:15px;
 }
 #table{

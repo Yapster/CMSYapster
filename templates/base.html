@@ -9,6 +9,7 @@
     <script type="text/javascript" src="{% static "js/test.js" %}" ></script>
 </head>
 <body>
+{% block header %}
 <div id="header" class="green">
     <span class="title">Yapster</span>
     <a href="/login/">log out</a>
@@ -17,11 +18,13 @@
     <a href="/search/">Search</a>
     <a href="/home/" class="selected">Home</a>
 </div>
+{% endblock %}
+{% block sidebar %}
 <div id="sidebar" class="clearfix">
     <ul>
         <div class="title">Home</div>
         <a href="#" ><li class="selected">main</li></a></a>
-        <a href="/statistics/"><li>statistics</li></a>
+        <a href="#"><li>statistics</li></a>
         <a href="#"><li>maps</li></a>
     </ul>
     <ul>
@@ -58,6 +61,8 @@
     <a href="#">Month</a>
     <a href="#">Year</a>
 </div>
+{% endblock %}
+
 <div id="content" class="clearfix">
     <div id="stats">
 

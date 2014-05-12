@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from admins.models import Profile
 
 
 def login_user(request):
@@ -19,6 +19,7 @@ def login_user(request):
         if current_user is not None:
             if current_user.is_active:
                 login(request, current_user)
+                #request.session['profile'] = Profile.objects.get(user=current_user)
                 return HttpResponseRedirect('/home/')
     return render_to_response('admins/login.html',
         {},

@@ -2,165 +2,199 @@
 <html>
 <head>
     {% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static "css/template.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
-	<link rel="stylesheet" type="text/css" href="{% static "css/clearfix.css" %}" />
-	<script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}" ></script>
-	<script type="text/javascript" src="{% static "js/test.js" %}" ></script>
+    <script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}" ></script>
 </head>
 <body>
-	<div id="header" class="silver">
-		<span class="title">Yapster Inc.</span>
-		<a id="logout" href="#logout">log out</a>
-		<a href="#profile">Settings</a>
-		<a href="#profile">Ryan Saxe</a>
-        <a href="#profile">Search</a>
-		<a href="#profile">Home</a>
-	</div>
-	<div id="sidebar" class="clearfix">
-			<ul>
-				<div class="title">Home</div>
-				<a href="#" ><li>main</li></a></a>
-				<a href="#"><li>statistics</li></a>
-				<a href="#"><li>maps</li></a>
-			</ul>
-			<ul>
-				<div class="title">Statistics</div>
-				<a href="#"><li>Yaps</li></a></a>
-				<a href="#"><li>Users</li></a>
-				<a href="#"><li>Queries</li></a>
-				<a href="#"><li>Databases</li></a>
-				<a href="#"><li>Trends</li></a></a>
-				<a href="#"><li>Sharing</li></a>
-				<a href="#"><li>Server</li></a>
-			</ul>
-			<ul>
-				<div class="title">Spam</div>
-				<a href="#"><li>All</li></a>
-				<a href="#"><li>Recent</li></a>
-				<a href="#"><li>Important</li></a>
-				<a href="#"><li class="selected">Search</li></a>
-			</ul>
-			<ul>
-				<div class="title">Reports</div>
-				<a href="#"><li>All</li></a>
-				<a href="#"><li>Recent</li></a>
-				<a href="#"><li>Important</li></a>
-				<a href="#"><li>Search</li></a>
-			</ul>
-		</div>
-	<div id="main">
-		<div class="section" id="search" class="clearfix">
-			<form>
-				<div id="filterhead" class="header">Search
-					<input type="submit" value="submit" />
-					<input type="reset" value="reset" />
-				</div>
-				<div id="form" class="clearfix">
-					<div class="group">
-						<div class="line">
-							<label>Search expression</label>
-							<input type="text" name="test"/> 
-						</div>
-						<div class="line">
-							<label>Number of results</label>
-							<input type="range" id="a" value="50" data-upper="500" data-lower="0" />
-						</div>
-						<div class="line">
-							<label>Date</label>
-							<input type="date" />
-						</div>
-						<div class="line">
-							<label>does this look good?</label>
-							<select>
-								<option selected="selected">yes</option>
-								<option>it's beautiful</option>
-								<option>I love it</option>
-								<option>no</option>
-							</select>
-						</div>
-						<div class="line">
-							<label>User birthday</label>
-							<input type="month" />
-						</div>
-					</div>
-					<div class="group">
-						<div class="line">
-							<label>Search expression</label>
-							<input type="text" name="test"/> 
-						</div>
-						<div class="line">
-							<label>Number of results</label>
-							<input type="range" id="a" value="50" data-upper="500" data-lower="0" />
-						</div>
-						<div class="line">
-							<label>Date</label>
-							<input type="date" />
-						</div>
-						<div class="line">
-							<label>does this look good?</label>
-							<select>
-								<option selected="selected">yes</option>
-								<option>it's beautiful</option>
-								<option>I love it</option>
-								<option>no</option>
-							</select>
-						</div>
-						<div class="line">
-							<label>User birthday</label>
-							<input type="month" />
-						</div>
-					</div>
-				</div>
-			</form>
-			<div id="table">
-				<h2 class="title">Results:</h2>
-				<table width="100%" cellpadding="2px" cellspacing="0px">
-					<tr>
-					<th>Header 1</th>
-					<th>Header 2</th>
-					<th>Header 3</th>
-					<th>Header 4</th>
-					</tr>
-					<tr>
-					<td>row 1, cell 1</td>
-					<td>row 1, cell 2</td>
-					<td>row 1, cell 3</td>
-					<td>row 1, cell 4</td>
-					</tr>
-					<tr>
-					<td>row 2, cell 1</td>
-					<td>row 2, cell 2</td>
-					<td>row 2, cell 3</td>
-					<td>row 2, cell 4</td>
-					</tr>
-					<tr>
-					<td>row 3, cell 1</td>
-					<td>row 3, cell 2</td>
-					<td>row 3, cell 3</td>
-					<td>row 3, cell 4</td>
-					</tr>
-					<tr>
-					<td>row 4, cell 1</td>
-					<td>row 4, cell 2</td>
-					<td>row 4, cell 3</td>
-					<td>row 4, cell 4</td>
-					</tr>
-					<tr>
-					<td>row 5, cell 1</td>
-					<td>row 5, cell 2</td>
-					<td>row 5, cell 3</td>
-					<td>row 5, cell 4</td>
-					</tr>
-					<tr>
-					<td>row 6, cell 1</td>
-					<td>row 6, cell 2</td>
-					<td>row 6, cell 3</td>
-					<td>row 6, cell 4</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
+<div id="header" class="green">
+    <span class="title">Yapster</span>
+    <a href="/login/">log out</a>
+    <a href="#profile">Settings</a>
+    <a href="/Ryan_Saxe">Ryan Saxe</a>
+    <a href="/search/">Search</a>
+    <a href="/home/" class="selected">Home</a>
+</div>
+<div id="sidebar" class="clearfix">
+    <ul>
+        <div class="title">Home</div>
+        <a href="#" ><li class="selected">main</li></a></a>
+        <a href="/statistics/"><li>statistics</li></a>
+        <a href="#"><li>maps</li></a>
+    </ul>
+    <ul>
+        <div class="title">Statistics</div>
+        <a href="#"><li>Yaps</li></a></a>
+        <a href="#"><li>Users</li></a>
+        <a href="#"><li>Queries</li></a>
+        <a href="#"><li>Databases</li></a>
+        <a href="#"><li>Trends</li></a></a>
+        <a href="#"><li>Sharing</li></a>
+        <a href="#"><li>Server</li></a>
+    </ul>
+    <ul>
+        <div class="title">Spam</div>
+        <a href="#"><li>All</li></a>
+        <a href="#"><li>Recent</li></a>
+        <a href="#"><li>Important</li></a>
+        <a href="#"><li>Search</li></a>
+    </ul>
+    <ul>
+        <div class="title">Reports</div>
+        <a href="#"><li>All</li></a>
+        <a href="#"><li>Recent</li></a>
+        <a href="#"><li>Important</li></a>
+        <a href="#"><li>Search</li></a>
+    </ul>
+</div>
+<div id="tabs">
+    <a href="#">Live</a>
+    <a href="#">Min</a>
+    <a href="#" class="selected">Hour</a>
+    <a href="#">Day</a>
+    <a href="#">Week</a>
+    <a href="#">Month</a>
+    <a href="#">Year</a>
+</div>
+<div id="content">
+    <div class="section" id="search">
+        <form>
+            <div id="filterhead" class="header">Search</div>
+            <div id="form" class="clearfix">
+                <div class="research">
+                    <label style="padding-right: 10px;">Search expression</label>
+                    <input style="padding-right: 55%" type="text" name="test"/>
+                </div>
+                <div class="group">
+                    <div class="line">
+                        <label>Post Date</label>
+                        <input type="date" />
+                    </div>
+                    <div class="line">
+                        <label>User Birthday</label>
+                        <input type="date" />
+                    </div>
+                    <div class="line">
+                        <label>Number of results</label>
+                        <input type="range" id="a" value="50" data-upper="500" data-lower="0" />
+                    </div>
+                    <div class="line">
+                        <label>Lists of things</label>
+                        <select>
+                            <option selected="selected">yes</option>
+                            <option>it's beautiful</option>
+                            <option>I love it</option>
+                            <option>no</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="line">
+                        <label>Register Date</label>
+                        <input type="date" />
+                    </div>
+
+                    <div class="line">
+                        <label>Lists of things</label>
+                        <select>
+                            <option selected="selected">yes</option>
+                            <option>it's beautiful</option>
+                            <option>I love it</option>
+                            <option>no</option>
+                        </select>
+                    </div>
+                    <div class="line">
+                        <label>City</label>
+                        <input type="text" name="city"/>
+                    </div>
+                    <div class="line">
+                        <label>State</label>
+                        <input type="text" name="state"/>
+                    </div>
+                    <div class="line">
+                        <label>Country</label>
+                        <input type="text" name="country"/>
+                    </div>
+                </div>
+                <div class="submitdiv">
+                    <input type="submit" value="submit" />
+                    <input type="reset" value="reset" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="section" id="results" class="clearfix">
+        <div id="table">
+            <div id="resultsheader" class="header">Results
+            </div>
+            <table width="100%" cellpadding="2px" cellspacing="0px">
+                <tr>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                </tr>
+                <tr>
+                    <td>row 1, cell 1</td>
+                    <td>row 1, cell 2</td>
+                    <td>row 1, cell 3</td>
+                </tr>
+                <tr>
+                    <td>row 2, cell 1</td>
+                    <td>row 2, cell 2</td>
+                    <td>row 2, cell 3</td>
+                </tr>
+                <tr>
+                    <td>row 3, cell 1</td>
+                    <td>row 3, cell 2</td>
+                    <td>row 3, cell 3</td>
+                </tr>
+                <tr>
+                    <td>row 4, cell 1</td>
+                    <td>row 4, cell 2</td>
+                    <td>row 4, cell 3</td>
+                </tr>
+                <tr>
+                    <td>row 5, cell 1</td>
+                    <td>row 5, cell 2</td>
+                    <td>row 5, cell 3</td>
+                </tr>
+                <tr>
+                    <td>row 6, cell 1</td>
+                    <td>row 6, cell 2</td>
+                    <td>row 6, cell 3</td>
+                </tr>
+                <tr>
+                    <td>row 6, cell 1</td>
+                    <td>row 6, cell 2</td>
+                    <td>row 6, cell 3</td>
+                </tr>
+                <tr>
+                    <td>row 6, cell 1</td>
+                    <td>row 6, cell 2</td>
+                    <td>row 6, cell 3</td>
+                </tr>
+                <tr>
+                    <td>row 6, cell 1</td>
+                    <td>row 6, cell 2</td>
+                    <td>row 6, cell 3</td>
+                </tr>
+                <tr>
+                    <td>row 6, cell 1</td>
+                    <td>row 6, cell 2</td>
+                    <td>row 6, cell 3</td>
+                </tr>
+                <tr>
+                    <td>row 6, cell 1</td>
+                    <td>row 6, cell 2</td>
+                    <td>row 6, cell 3</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+    <div class="footer">
+      <a href="#">Previous</a>
+      <a href="#">Next</a>
+    </div>
 </body>
 </html>
