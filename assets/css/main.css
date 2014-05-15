@@ -122,22 +122,18 @@ ul li, ol li{
 	background: linear-gradient(to bottom,  rgba(21,212,0,1) 0%,rgba(0,161,0,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#15d400', endColorstr='#00a100',GradientType=0 ); /* IE6-8 */
 }
-table{
-	border-color:black;
-	border-style:solid;
-}
+
 table tr:nth-child(odd){
 	background-color:#efefef;
 }
-table tr:first-child{
-	background-color:#15D400 !important;
-}
+
 table th{
 	font-size:20px;
 	text-align: center;
 }
 table tr td, table tr th{
 	border-right:1px #15D400 solid;
+    text-align: center;
 }
 table tr td:last-child,table tr th:last-child{
 	border-right:none;

@@ -20,11 +20,11 @@ class Profile(models.Model):
     is_active = models.BooleanField(default=True)
 
 
-class Annoucement(models.Model):
+class Announcement(models.Model):
     """
     Annoucements for homepage
     """
-    annoucement_id = models.AutoField(primary_key=True)
+    announcement_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, related_name='announces')
     title = models.CharField(blank=True, max_length=255)
     description = models.CharField(blank=True, max_length=255)
@@ -38,7 +38,7 @@ class NotificationType(models.Model):
     For different types of notifications
     """
     notification_type_id = models.AutoField(primary_key=True)
-    notification_name = models.CharField(max_length=255, unique=True)
+    notification_name = models.CharField(max_length=24, unique=True)
     is_active = models.BooleanField(default=True)
 
 
@@ -53,3 +53,7 @@ class Notification(models.Model):
     been_seen = models.BooleanField(default=True)
     date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+
+class GroupPermission(models.Model):
+    group_id = models.AutoField(primary_key=True)
+    group_name = models.CharField(max_length=24, unique=True)

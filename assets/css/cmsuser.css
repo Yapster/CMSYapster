@@ -1,64 +1,63 @@
-#announcements{
-	float:left;
-	width:300px;
-	/*
-	use Django to calculate the height of the statistics bar and set them as the same
-	*/
-	height:305px;
-	border:1px #000 solid;
-	position: relative;
+#notifs{
+	width:27%;
+    float: left;
+    margin-left: 25px;
+    border:1px #15D400 solid;
 }
-#announcements .title{
+#notifs .title{
 	background-color: #15D400;
-	height:50px;
-	width:300px;
+    width:100%;
+	height:10%;
 	text-align:center;
-	color: black;
-	border-bottom:1px #000 solid;
-	line-height:50px;
-	position:absolute;
-	top:0;
-	left:0;
+	color: #ffffff;
+	border-bottom:1px #15D400 solid;
+	line-height:44px;
+    font-size: 20px;
 }
-#announcements .title a{
+#notifs .title a{
 	font-size:12px;
 	position:absolute;
 	right:15px;
 	top:0;
 	text-decoration: underline;
 }
-#info .title{
-	text-transform: uppercase;
-	background-color: #15D400;
-	height:50px;
-	border:1px #000 solid;
-	text-align:center;
-	color: black;
-	line-height:50px;
+#notifs .header.important{
+	color: #15D400;
 }
-#announcementcontent{
+#notifs p, #announcements .header{
+	padding:15px 15px 0 15px;
+}
+#notifs p:last-child{
+	padding:15px;
+}
+
+#notifcontent{
 	overflow-y:scroll;
 	/*
 	take height previously calculated and subtract 50: {{previous|add:"-50"}}
 	*/
 	height:255px;
-	margin-top:50px;
+	margin-top:10px;
 }
-#announcements .header.important{
-	color: #15D400;
-}
-#announcements p, #announcements .header{
-	padding:15px 15px 0 15px;
-}
-#announcements p:last-child{
-	padding:15px;
-}
+
 #info{
-	margin-left:315px;
+    width:60%;
+    float: left;
+    margin-left: 3%;
+    border: 1px #15D400 solid;
+}
+#info .title{
+    background-color: #15D400;
+	height:9%;
+	border:1px #15D400 solid;
+	text-align:center;
+	color: #ffffff;
+	line-height:44px;
+    font-size: 20px;
 }
 #info ul li{
-	min-height:50px;
-	border:1px #000 solid;
+	min-height:52px;
+	border:1px #15D400 solid;
 	border-top:none;
 	padding:0 15px;
 	font-size: 20px;
@@ -79,6 +78,30 @@
 	border-bottom:1px #000 solid;
 	border-right:none !important;
 }
+
+#content{
+	margin-top:15px;
+	margin:15px 15px 15px 180px;
+}
+#history{
+    width: 85%;
+	margin-top:40px;
+    margin-left: 40px;
+	border:1px #15D400 solid;
+    float: left;
+}
+
+#history .title{
+	background-color: #15D400;
+    width:100%;
+	height:10%;
+	text-align:center;
+	color: #ffffff;
+	border-bottom:1px #15D400 solid;
+	line-height:44px;
+    font-size: 20px;
+}
+
 #tabs{
 	height:50px;
 	padding:0;
@@ -111,24 +134,4 @@
 }
 #tabs a.selected{
 	opacity:1;
-}
-#content{
-	margin-top:15px;
-	margin:15px 15px 15px 180px;
-}
-#table{
-	margin-top:15px;
-	border:1px #000 solid;
-}
-#table tr:first-child{
-	background-color: #ccc !important;
-}
-#table .title{
-	text-transform: uppercase;
-	background-color: #15D400;
-	height:50px;
-	border-bottom:1px #000 solid;
-	text-align:center;
-	color: black;
-	line-height:50px;
 }

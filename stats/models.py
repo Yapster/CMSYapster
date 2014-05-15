@@ -2,14 +2,6 @@ from django.db import models
 from admins.models import Profile, User
 
 
-class Search(models.Model):
-    """
-    Research made by a CMS User
-    """
-    search_id = models.AutoField(primary_key=True)
-    user_searching = models.ForeignKey(User, related_name="searches")
-
-
 class Yap(models.Model):
     """
     Yap stats
@@ -79,6 +71,65 @@ class Like(models.Model):
     user = models.ForeignKey(to=User, related_name="likes")
     date_created = models.DateTimeField()
     is_active = models.BooleanField(default=True)
+
+
+class Search(models.Model):
+    """
+    Research made by a CMS User
+    """
+    search_id = models.AutoField(primary_key=True)
+    user_searching = models.ForeignKey(User, related_name="searches")
+    users_count = models.BooleanField(default=False)
+    active_users_count = models.BooleanField(default=False)
+    new_users_count = models.BooleanField(default=False)
+    yaps_count = models.BooleanField(default=False)
+    new_yaps_count = models.BooleanField(default=False)
+    yaps_from = models.BooleanField(default=False)
+    new_yaps_from = models.BooleanField(default=False)
+    users_from = models.BooleanField(default=False)
+    new_users_from = models.BooleanField(default=False)
+    active_users_from = models.BooleanField(default=False)
+    total_listens_count = models.BooleanField(default=False)
+    listens_from = models.BooleanField(default=False)
+    yaps_listened_from = models.BooleanField(default=False)
+    most_listened_from = models.BooleanField(default=False)
+    likes_average = models.BooleanField(default=False)
+    listens_per_user_count = models.BooleanField(default=False)
+    listens_per_total_users_average = models.BooleanField(default=False)
+    likes_per_total_users_average = models.BooleanField(default=False)
+    yaps_per_total_users_average = models.BooleanField(default=False)
+    listens_per_total_active_users_average = models.BooleanField(default=False)
+    likes_per_total_active_users_average = models.BooleanField(default=False)
+    yaps_per_total_active_users_average = models.BooleanField(default=False)
+    yaps_time = models.BooleanField(default=False)
+    listened_time = models.BooleanField(default=False)
+    listening_to_relationships_count = models.BooleanField(default=False)
+    listeners_relationships_count = models.BooleanField(default=False)
+    relationships_count = models.BooleanField(default=False)
+    reyaps_count = models.BooleanField(default=False)
+    reyaps_per_user_average = models.BooleanField(default=False)
+    reyaps_per_total_users_average = models.BooleanField(default=False)
+    reyaps_per_active_users_average = models.BooleanField(default=False)
+    photos_yapped_count = models.BooleanField(default=False)
+    links_yapped_count = models.BooleanField(default=False)
+    facebook_connected_count = models.BooleanField(default=False)
+    twitter_connected_count = models.BooleanField(default=False)
+    age_users_average = models.BooleanField(default=False)
+    age_active_users_average = models.BooleanField(default=False)
+    age_new_users_average = models.BooleanField(default=False)
+    hashtags_average = models.BooleanField(default=False)
+    hashtags_per_user_count = models.BooleanField(default=False)
+    hashtags_per_active_users = models.BooleanField(default=False)
+    hashtags_popular = models.BooleanField(default=False)
+    users_popular = models.BooleanField(default=False)
+    reyaps_popular = models.BooleanField(default=False)
+    yaps_popular = models.BooleanField(default=False)
+    liked_yaps_popular = models.BooleanField(default=False)
+    played_yaps_popular = models.BooleanField(default=False)
+    yaps_per_user_count = models.BooleanField(default=False)
+    requests_count = models.BooleanField(default=False)
+    cost_per_user_average = models.BooleanField(default=False)
+    total_cost_count = models.BooleanField(default=False)
 
 
 class Stat(models.Model):
