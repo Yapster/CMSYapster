@@ -9,10 +9,11 @@
     <script type="text/javascript" src="{% static "js/test.js" %}" ></script>
 </head>
 <body><div id="header" class="green">
-    <span class="title">Yapster</span>
+    <span class="title">yapster</span>
     <a href="/login/">log out</a>
-    <a href="/cmsusers/">Settings</a>
-    <a href="/cmsusers/Ryan_Saxe">Ryan Saxe</a>
+    <a href="#">Settings</a>
+    <a href="/cmsusers/">Administration</a>
+    <a href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
     <a href="/search/">Search</a>
     <a href="/home/" class="selected">Home</a>
 </div>
@@ -49,9 +50,9 @@
     </ul>
 </div>
 <div id="tabs">
-    <a href="#">Live</a>
+    <a href="#" class="selected">Live</a>
     <a href="#">Min</a>
-    <a href="#" class="selected">Hour</a>
+    <a href="#" >Hour</a>
     <a href="#">Day</a>
     <a href="#">Week</a>
     <a href="#">Month</a>
@@ -94,11 +95,11 @@
     <div id="info">
         <h2 class="title">CMS User Information</h2>
         <ul>
-            <li>Name: <span class="stat">Ryan Saxe</span></li>
-            <li>User Name: <span class="stat">ryancsaxe</span></li>
-            <li>Email: <span class="stat">ryancsaxe@gmail.com</span></li>
-            <li>User Type: <span class="stat">Top Dog</span></li>
-            <li>Data Access: <span class="stat">Full</span></li>
+            <li>Name: <span class="stat">{{ user.first_name }} {{ user.last_name }}</span></li>
+            <li>User Name: <span class="stat">{{ user.username }}</span></li>
+            <li>Email: <span class="stat">{{ user.email }}</span></li>
+            <li>Group permission: <span class="stat">{{ cmsuser.group.group_name }}</span></li>
+            <li>Departement: <span class="stat">{{ cmsuser.department }}</span></li>
         </ul>
     </div>
     <div id="history">

@@ -20,4 +20,5 @@ urlpatterns = patterns('',
     url(r'^users/(?P<username>[a-zA-Z0-9_.-]+)/$', 'admins.views.profile'),
     url(r'^hashtag/(?P<tag>[a-zA-Z0-9_.-]+)/$', 'stats.views.hashtag'),
     url(r'^group/(?P<tag>[a-zA-Z0-9_.-]+)/$', 'stats.views.group_page'),
+    url(r'^$', 'stats.views.homepage'),
 )

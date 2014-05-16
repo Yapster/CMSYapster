@@ -15,6 +15,9 @@ class Yap(models.Model):
     likes_count = models.BigIntegerField(default=0)
     is_active = models.BooleanField(default=True)
 
+    def delete(self, using=None):
+        self.is_active = False
+        return
 
 class Group(models.Model):
     """
@@ -27,6 +30,9 @@ class Group(models.Model):
     date_created = models.DateTimeField()
     is_active = models.BooleanField(default=True)
 
+    def delete(self, using=None):
+        self.is_active = False
+        return
 
 class Hashtag(models.Model):
     """
@@ -37,6 +43,9 @@ class Hashtag(models.Model):
     used_count = models.BigIntegerField(default=0)
     date_created = models.DateTimeField()
 
+    def delete(self, using=None):
+        self.is_active = False
+        return
 
 class Reyap(models.Model):
     """
@@ -50,6 +59,9 @@ class Reyap(models.Model):
     date_created = models.DateTimeField()
     is_active = models.BooleanField(default=True)
 
+    def delete(self, using=None):
+        self.is_active = False
+        return
 
 class Listen(models.Model):
     """
@@ -61,6 +73,9 @@ class Listen(models.Model):
     date_created = models.DateTimeField()
     is_active = models.BooleanField(default=True)
 
+    def delete(self, using=None):
+        self.is_active = False
+        return
 
 class Like(models.Model):
     """
@@ -72,6 +87,9 @@ class Like(models.Model):
     date_created = models.DateTimeField()
     is_active = models.BooleanField(default=True)
 
+    def delete(self, using=None):
+        self.is_active = False
+        return
 
 class Search(models.Model):
     """

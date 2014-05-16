@@ -10,10 +10,11 @@
 </head>
 <body>
 <div id="header" class="green">
-    <span class="title">Yapster</span>
+    <span class="title">yapster</span>
     <a href="/login/">log out</a>
-    <a href="#profile">Settings</a>
-    <a href="/Ryan_Saxe">Ryan Saxe</a>
+    <a href="#">Settings</a>
+    <a href="/cmsusers/">Administration</a>
+    <a href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
     <a href="/search/">Search</a>
     <a href="/home/" class="selected">Home</a>
 </div>
@@ -50,9 +51,9 @@
     </ul>
 </div>
 <div id="tabs">
-    <a href="#">Live</a>
+    <a href="#" class="selected">Live</a>
     <a href="#">Min</a>
-    <a href="#" class="selected">Hour</a>
+    <a href="#" >Hour</a>
     <a href="#">Day</a>
     <a href="#">Week</a>
     <a href="#">Month</a>
@@ -66,103 +67,80 @@
                 <table width="100%" cellpadding="2px" cellspacing="0px">
                     <tr>
                         <th>Username</th>
-                        <th>Group</th>
+                        <th>Permission Group</th>
                         <th>Occupation</th>
                     </tr>
-                    <tr>
-                        <td>row 1, cell 1</td>
-                        <td>row 1, cell 2</td>
-                        <td>row 1, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 2, cell 1</td>
-                        <td>row 2, cell 2</td>
-                        <td>row 2, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 3, cell 1</td>
-                        <td>row 3, cell 2</td>
-                        <td>row 3, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 4, cell 1</td>
-                        <td>row 4, cell 2</td>
-                        <td>row 4, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 5, cell 1</td>
-                        <td>row 5, cell 2</td>
-                        <td>row 5, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
+                    {% if users %}
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.username }} </td>
+                                <td>{{ user.group.group_name }}</td>
+                                <td>{{ user.occupation }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
                 </table>
             </div>
         </div>
     </div>
     <div id="newcmsuser">
         <h2 class="title">New CMS User</h2>
-        <div id="form" class="clearfix">
+        <form method='post'>
+            {% csrf_token %}
             <div class="infos">
                 <div class="line">
-                    <label>Username</label>
-                    <input type="input" />
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username"/>
                 </div>
                 <div class="line">
-                    <label>Email</label>
-                    <input type="input" />
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname"/>
                 </div>
                 <div class="line">
-                    <label>Password</label>
-                    <input type="password" />
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname"/>
                 </div>
                 <div class="line">
-                    <label>Confirm Password</label>
-                    <input type="password" />
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email"/>
                 </div>
                 <div class="line">
-                    <label>Group</label>
-                    <select>
-                        <option selected="selected">Design</option>
-                        <option>Python</option>
-                        <option>Unix</option>
-                        <option>No group</option>
+                    <label for="email2">Confirm Email</label>
+                    <input type="text" id="email2" name="email"/>
+                </div>
+                <div class="line">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"/>
+                </div>
+                <div class="line">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" id="password2" name="password2"/>
+                </div>
+                <div class="line">
+                    <label for="department">Department</label>
+                    <input type="text" id="department" name="department"/>
+                </div>
+                <div class="line">
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation"/>
+                </div>
+                <div class="line">
+                    <label for="group">Group</label>
+                    <select id="group" name="group">
+                        {% if groups %}
+                            {% for group in groups %}
+                                <option value="{{ group.group_id }}">{{ group.group_name }}</option>
+                            {% endfor %}
+                        {% endif %}
                     </select>
                 </div>
                 <div class="submitdiv">
-                    <input type="submit" value="submit" />
-                    <input type="reset" value="reset" />
+                    <button type="submit" >Submit</button>
+                    <button type="reset" >Reset</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
+</div>
 </body>
 </html>

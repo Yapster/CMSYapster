@@ -10,10 +10,11 @@
 </head>
 <body>
 <div id="header" class="green">
-    <span class="title">Yapster</span>
+    <span class="title">yapster</span>
     <a href="/login/">log out</a>
-    <a href="#profile">Settings</a>
-    <a href="/Ryan_Saxe">Ryan Saxe</a>
+    <a href="#">Settings</a>
+    <a href="/cmsusers/">Administration</a>
+    <a href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
     <a href="/search/">Search</a>
     <a href="/home/" class="selected">Home</a>
 </div>
@@ -50,9 +51,9 @@
     </ul>
 </div>
 <div id="tabs">
-    <a href="#">Live</a>
+    <a href="#" class="selected">Live</a>
     <a href="#">Min</a>
-    <a href="#" class="selected">Hour</a>
+    <a href="#" >Hour</a>
     <a href="#">Day</a>
     <a href="#">Week</a>
     <a href="#">Month</a>
@@ -69,84 +70,40 @@
                         <th>Date</th>
                         <th>Author</th>
                     </tr>
-                    <tr>
-                        <td>row 1, cell 1</td>
-                        <td>row 1, cell 2</td>
-                        <td>row 1, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 2, cell 1</td>
-                        <td>row 2, cell 2</td>
-                        <td>row 2, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 3, cell 1</td>
-                        <td>row 3, cell 2</td>
-                        <td>row 3, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 4, cell 1</td>
-                        <td>row 4, cell 2</td>
-                        <td>row 4, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 5, cell 1</td>
-                        <td>row 5, cell 2</td>
-                        <td>row 5, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
-                    <tr>
-                        <td>row 6, cell 1</td>
-                        <td>row 6, cell 2</td>
-                        <td>row 6, cell 3</td>
-                    </tr>
+                    {% if announcements %}
+                        {% for announce in announcements %}
+                            <tr>
+                                <td>{{ announce.title }} </td>
+                                <td>{{ announce.date_last_edit }}</td>
+                                <td>{{ announce.username }}</td>
+                            </tr>
+                        {% endfor %}
+
+                    {% endif %}
                 </table>
             </div>
         </div>
     </div>
     <div id="newannounce">
         <h2 class="title">New Announcement</h2>
-        <div id="form" class="clearfix">
+        <form action="/announcements/" method="post">
+            {% csrf_token %}
             <div class="infos">
                 <div class="line">
                     <label>Title</label>
-                    <input type="input" />
+                    <input type="text" id="title" name="title" placeholder="Title of your announce"/>
                 </div>
                 <div class="line">
                     <label>Description</label>
-                    <textarea id="description">What is your announce?</textarea>
+                    <textarea id="description" name="desc" placeholder="What is your announce?"></textarea>
                 </div>
-
                 <div class="submitdiv">
-                    <input type="submit" value="submit" name="btn_announce"/>
-                    <input type="reset" value="reset" name="reset_announce"/>
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
+</div>
 </body>
 </html>

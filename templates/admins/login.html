@@ -1,22 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/login.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/clearfix.css" %}" />
+    <script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}" ></script>
+    <script type="text/javascript" src="{% static "js/test.js" %}" ></script>
+</head>
+
+<body>
 <div id="login">
+    <h2 id="title">Authentification Yapster CMS</h2>
     <form name="LoginForm" action="/login/" method="post">
         {% csrf_token %}
-        <div>
-            <label for="username">Username</label>
+        <div class="line">
+            <div class="label">Username</div>
             <div>
-                <input type="text" id="username" name="username" placeholder="Username">
+                <input type="text" class="inputlogin" id="username" name="username" placeholder="Username">
             </div>
         </div>
-        <div>
-            <label class="control-label" for="password">Password</label>
+        <div class="line">
+            <div class="label">Password</div>
             <div>
-                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" class="inputlogin" id="password" name="password"  placeholder="Password">
             </div>
         </div>
-        <div>
-            <div>
-                <button type="submit" class="btn">Login</button>
-            </div>
+        <div id="submitline">
+            <button type="submit" class="btn">Login</button>
         </div>
     </form>
 </div>
+</body>

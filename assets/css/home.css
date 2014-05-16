@@ -1,7 +1,6 @@
 #announcements{
 	float:left;
 	width:21%;
-	height:100%;
 	border:1px #15D400 solid;
 	position: relative;
     margin-left: 4%;
@@ -9,7 +8,6 @@
 #announcements a{
 	background-color: #15D400;
     width:100%;
-	height:5%;
 	text-align:center;
 	color: #ffffff;
 	border-bottom:1px #15D400 solid;

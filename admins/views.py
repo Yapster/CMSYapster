@@ -1,8 +1,12 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
-from admins.models import Profile, User
+from django.contrib.auth.decorators import login_required, user_passes_test
+from admins.models import Profile, User, CmsUser, Announcement, GroupPermission
+from admins.permissions import *
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def login_user(request):
@@ -19,46 +23,63 @@ def login_user(request):
         if current_user is not None:
             if current_user.is_active:
                 login(request, current_user)
-                #request.session['profile'] = Profile.objects.get(user=current_user)
+                #request.session['account'] = CmsUser.objects.get(user=current_user)
                 return HttpResponseRedirect('/home/')
-    return render_to_response('admins/login.html',
-        {},
-                            context_instance=RequestContext(request))
+    return render(request, 'admins/login.html', {})
 
-
+@login_required(login_url='/login/')
+@user_passes_test(is_admin, login_url='/login/')
 def cmsuser(request, username):
     """
     Display CMS user info + change permissions/name/username
     """
-    return render_to_response('admins/cmsuser.html',
-        {},
-                              content_type=RequestContext(request))
+    cmsuser = CmsUser.objects.get(pk=request.user)
+    return render(request, 'admins/cmsuser.html', {"cmsuser": cmsuser})
 
 
+@login_required(login_url='/login/')
+@user_passes_test(is_admin, login_url='/login/')
 def users_manage(request):
     """
     List of users. Create and view users
     """
-    if 'btn_newuser' in request.POST:
-        if request.POST['password'] == request.POST['repassword']:
+    users = CmsUser.objects.all()
+    groups = GroupPermission.objects.all()
+    if request.POST:
+        logger.warning(request.POST)
+        if request.POST['password'] == request.POST['password2']:
             username = request.POST['username']
+            first = request.POST['firstname']
+            last = request.POST['lastname']
             password = request.POST['password']
             email = request.POST['email']
-            User.objects._create_user(username, email, password, is_staff=False, is_superuser=False)
-    return render_to_response('admins/users_manage.html',
-        {},
-                              content_type=RequestContext(request))
+            dep = request.POST['department']
+            occ = request.POST['occupation']
+            id_group = request.POST['group']
+            group = GroupPermission.objects.get(pk=id_group)
+            CmsUser.objects.get_or_create(username=username, firstname=first, lastname=last,
+                                          email=email, password=password, department=dep, occupation=occ, group=group)
+            return HttpResponseRedirect('/cmsusers/')
+    return render(request, 'admins/users_manage.html',  {'users': users, 'groups':groups})
 
 
+@login_required(login_url='/login/')
+@user_passes_test(is_admin, login_url='/login/')
 def annoucements_manage(request):
-    return render_to_response('admins/annoucements_manage.html',
-        {},
-                              content_type=RequestContext(request))
+    announcements = Announcement.objects.all()
+    if request.POST:
+        title = request.POST['title']
+        desc = request.POST['desc']
+        Announcement.objects.get_or_create(user=request.user, title=title, description=desc)
+        return HttpResponseRedirect('/announcements/')
+    return render(request, 'admins/annoucements_manage.html', {"announcements": announcements})
 
+
+@login_required(login_url='/login/')
 def profile(request, username):
     """
     Display Yapster user profile. With info/stats
     """
-    return render_to_response('admins/profile.html',
-        {},
-                              content_type=RequestContext(request))
+    prof = Profile.objects.get(user__username=username)
+
+    return render(request, 'admins/profile.html', {'profile': prof})

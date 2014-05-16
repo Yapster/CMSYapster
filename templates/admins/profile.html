@@ -10,24 +10,25 @@
 </head>
 <body>
 <div id="header" class="green">
-    <span class="title">Yapster</span>
+    <span class="title">yapster</span>
     <a href="/login/">log out</a>
-    <a href="/cmsusers/">Settings</a>
-    <a href="/cmsusers/Ryan_Saxe">Ryan Saxe</a>
+    <a href="#">Settings</a>
+    <a href="/cmsusers/">Administration</a>
+    <a href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
     <a href="/search/">Search</a>
     <a href="/home/" class="selected">Home</a>
 </div>
 <div id="sidebar" class="clearfix">
     <ul>
         <div class="title">Home</div>
-        <a href="#" ><li class="selected">main</li></a></a>
+        <a href="#" ><li >main</li></a></a>
         <a href="/statistics/"><li>statistics</li></a>
         <a href="#"><li>maps</li></a>
     </ul>
     <ul>
         <div class="title">Statistics</div>
         <a href="#"><li>Yaps</li></a></a>
-        <a href="#"><li>Users</li></a>
+        <a href="#"><li class="selected">Users</li></a>
         <a href="#"><li>Queries</li></a>
         <a href="#"><li>Databases</li></a>
         <a href="#"><li>Trends</li></a></a>
@@ -51,29 +52,29 @@
     </ul>
 </div>
 <div id="tabs">
-    <a href="#">Live</a>
+    <a href="#" class="selected">Live</a>
     <a href="#">Min</a>
-    <a href="#" class="selected">Hour</a>
+    <a href="#" >Hour</a>
     <a href="#">Day</a>
     <a href="#">Week</a>
     <a href="#">Month</a>
     <a href="#">Year</a>
 </div>
-<div id="main">
+<div id="content">
     <div id="profile">
         <div id="image"></div>
     </div>
     <div id="stats">
         <ul>
-            <li>First Name: <span class="stat">Ryan</span></li>
-            <li>Last Name: <span class="stat">Saxe</span></li>
-            <li>Handle: <span class="stat">@ryan_saxe</span></li>
-            <li>Location: <span class="stat">New York, NY</span></li>
+            <li>First Name: <span class="stat">{{ profile.user.first_name }}</span></li>
+            <li>Last Name: <span class="stat">{{ profile.user.last_name }}</span></li>
+            <li>Handle: <span class="stat">@{{ profile.handle }}</span></li>
+            <li>Location: <span class="stat">{{ profile.location_city }}, {{ profile.location_state }}</span></li>
         </ul>
         <ul>
-            <li>Yaps: <span class="stat">734</span></li>
-            <li>Listening: <span class="stat">38</span></li>
-            <li>Listeners: <span class="stat">47297</span></li>
+            <li>Yaps: <span class="stat">{{ profile.yap_count }}</span></li>
+            <li>Listening: <span class="stat">{{ profile.listening_count }}</span></li>
+            <li>Listeners: <span class="stat">{{ profile.listener_count }}</span></li>
         </ul>
         <div id="login" class="green">Log In As User</div>
     </div>
@@ -94,7 +95,7 @@
             </p>
         </div>
     </div>
-    <div id="table">
+    <div id="userstats">
         <table width="100%" cellpadding="2px" cellspacing="0px" border="0px">
             <tr>
                 <th>Header 1</th>

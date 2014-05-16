@@ -12,7 +12,7 @@
 	float:left;
 	height:170px;
 	background-color:white;
-	border:1px #000 solid;
+	border:1px #15D400 solid;
 	position:relative;
 }
 #stats ul{
@@ -88,9 +88,12 @@
 	border:1px black solid;
 	background-size:cover;
 }
-#table{
-	margin:15px;
-	border:1px #000 solid;
+#userstats{
+	margin-top:80px;
+    margin-left: 14px;
+    width: 1070px;
+	border:1px #15D400 solid;
+    float:left;
 }
 
 /*
