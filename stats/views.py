@@ -27,9 +27,19 @@ def search(request):
     """
     Display research view
     """
-    return render_to_response('stats/index.html',
-                            {},
-                            content_type=RequestContext(request))
+
+    if request.POST:
+        searchexp = request.POST['searchexp']
+        postdate = request.POST['postdate']
+        birthday = request.POST['birthday']
+        numbers = request.POST['numbers']
+        registerdate = request.POST['registerdate']
+        city = request.POST['city']
+        state = request.POST['state']
+        country = request.POST['country']
+
+
+    return render(request, 'stats/index.html',{})
 
 
 @login_required(login_url='/login/')

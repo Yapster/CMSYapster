@@ -28,13 +28,13 @@ def login_user(request):
     return render(request, 'admins/login.html', {})
 
 @login_required(login_url='/login/')
-@user_passes_test(is_admin, login_url='/login/')
 def cmsuser(request, username):
     """
     Display CMS user info + change permissions/name/username
     """
     cmsuser = CmsUser.objects.get(pk=request.user)
-    return render(request, 'admins/cmsuser.html', {"cmsuser": cmsuser})
+    own = cmsuser.username == username
+    return render(request, 'admins/cmsuser.html', {"cmsuser": cmsuser, "own": own})
 
 
 @login_required(login_url='/login/')
@@ -83,3 +83,30 @@ def profile(request, username):
     prof = Profile.objects.get(user__username=username)
 
     return render(request, 'admins/profile.html', {'profile': prof})
+
+
+@login_required(login_url='/login/')
+def edit_cmsuser(request, username):
+    """
+    Edit Cms User infos
+    """
+
+    cmsuser = CmsUser.objects.get(pk=request.user)
+    firstname = lastname = email = password = ''
+    if 'btn_newinfos' in request.POST:
+        if request.POST['firstname']:
+            cmsuser.firstname = request.POST['firstname']
+        if request.POST['lastname']:
+            cmsuser.lastname = request.POST['lastname']
+        if request.POST['username']:
+            cmsuser.username = request.POST['username']
+        if request.POST['email'] and \
+                request.POST['email2'] and \
+                (request.POST['email'] == request.POST['email2']):
+            cmsuser.email = request.POST['email']
+        if request.POST['password'] and \
+                request.POST['password2'] and \
+                (request.POST['password'] == request.POST['password2']):
+            cmsuser.password = request.POST['password']
+        cmsuser.save()
+    return render(request, 'admins/edit_cmsuser.html', {"cmsuser": cmsuser})

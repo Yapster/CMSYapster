@@ -45,16 +45,24 @@
     float: left;
     margin-left: 3%;
     border: 1px #15D400 solid;
+    position: relative;
 }
-#info .title{
-    background-color: #15D400;
-	height:9%;
-	border:1px #15D400 solid;
+
+#title{
+	background-color: #15D400;
+    width:100%;
 	text-align:center;
 	color: #ffffff;
+	border-bottom:1px #15D400 solid;
 	line-height:44px;
-    font-size: 20px;
+	position:absolute;
+    font-size: 21px;
 }
+
+#contentinfos{
+    padding-top: 45px;
+}
+
 #info ul li{
 	min-height:52px;
 	border:1px #15D400 solid;
@@ -80,7 +88,6 @@
 }
 
 #content{
-	margin-top:15px;
 	margin:15px 15px 15px 180px;
 }
 #history{

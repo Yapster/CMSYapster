@@ -93,14 +93,18 @@
         </div>
     </div>
     <div id="info">
-        <h2 class="title">CMS User Information</h2>
-        <ul>
-            <li>Name: <span class="stat">{{ user.first_name }} {{ user.last_name }}</span></li>
-            <li>User Name: <span class="stat">{{ user.username }}</span></li>
-            <li>Email: <span class="stat">{{ user.email }}</span></li>
-            <li>Group permission: <span class="stat">{{ cmsuser.group.group_name }}</span></li>
-            <li>Departement: <span class="stat">{{ cmsuser.department }}</span></li>
-        </ul>
+        <a id="title" href="edit" >CMS User Information</a>
+        <div id="contentinfos">
+            <form>
+                <ul>
+                    <li>Name: <span class="stat">{{ user.first_name }} {{ user.last_name }}</span></li>
+                    <li>User Name: <span class="stat">{{ user.username }}</span></li>
+                    <li>Email: <span class="stat">{{ user.email }}</span></li>
+                    <li>Group permission: <span class="stat">{{ cmsuser.group.group_name }}</span></li>
+                    <li>Departement: <span class="stat">{{ cmsuser.department }}</span></li>
+                </ul>
+            </form>
+        </div>
     </div>
     <div id="history">
         <h2 class="title">History</h2>

@@ -54,9 +54,9 @@ class CmsUser (models.Model):
         super(CmsUser, self).save()
         return self
 
-    def delete(self, using=None):
-        self.is_active = False
-        return
+def delete(self, using=None):
+    self.is_active = False
+    return
 
 
 class Announcement(models.Model):

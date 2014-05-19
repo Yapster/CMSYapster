@@ -11,3 +11,7 @@ def is_dev(user):
         cmsuser = CmsUser.objects.get(user=user)
         return cmsuser.department == 'Dev'
     return False
+
+def is_own_or_admin(user):
+    if user:
+        cmsuser = CmsUser.objects.get(user=user)
