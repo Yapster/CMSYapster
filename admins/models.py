@@ -22,6 +22,7 @@ class Profile(models.Model):
 
     def delete(self, using=None):
         self.is_active = False
+        self.save()
         return
 
 class GroupPermission(models.Model):
@@ -49,14 +50,23 @@ class CmsUser (models.Model):
     is_active = models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
-        self.user = User.objects._create_user(username=self.username, email=self.email, password=self.password, is_staff=False,
+        # TODO: Probably a cleaner way to do it...
+        try:
+            self.user.username = self.username
+            self.user.email = self.email
+            self.user.password = self.password
+            self.user.first_name = self.firstname
+            self.user.last_name = self.lastname
+            self.user.save()
+        except:
+            self.user = User.objects._create_user(username=self.username, email=self.email, password=self.password, is_staff=False,
                                               is_superuser=False, first_name=self.firstname, last_name=self.lastname)
         super(CmsUser, self).save()
         return self
 
-def delete(self, using=None):
-    self.is_active = False
-    return
+    def delete(self, using=None):
+        self.is_active = False
+        return
 
 
 class Announcement(models.Model):

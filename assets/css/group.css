@@ -1,0 +1,134 @@
+#content{
+    margin:15px 15px 15px 180px;
+}
+
+#groupstats{
+    margin-left: 210px;
+    margin-right: 210px;
+    border: 3px #15D400 solid;
+    font-size: 30px;
+}
+
+#titlegroup{
+    background-color: #15D400;
+    text-align:center;
+    color: #ffffff;
+    border-bottom:1px #15D400 solid;
+    line-height:44px;
+    font-size: 21px;
+}
+
+#groupname {
+    width: 50%;
+    text-align: center;
+    float : left;
+    border-bottom: 3px #15D400 solid;
+}
+
+#groupcount {
+    width: 49%;
+    text-align: center;
+    float : left;
+    border-bottom: 3px #15D400 solid;
+    border-left: 3px #15D400 solid;
+}
+
+
+#descriptiongroup{
+    font-size: 15px;
+}
+
+#groupdate {
+    text-align: center;
+    border-top: 3px #15D400 solid;
+}
+
+#info{
+    width:40%;
+    float: left;
+    margin-left: 3%;
+    border: 1px #15D400 solid;
+    position: relative;
+    margin-top: 20px;
+}
+
+#title{
+    background-color: #15D400;
+    width:100%;
+    text-align:center;
+    color: #ffffff;
+    border-bottom:1px #15D400 solid;
+    line-height:44px;
+    position:absolute;
+    font-size: 21px;
+}
+
+#contentinfos{
+    padding-top: 45px;
+}
+
+#info ul li{
+    min-height:52px;
+    border:1px #15D400 solid;
+    border-top:none;
+    padding:0 15px;
+    font-size: 20px;
+    line-height:50px;
+}
+.stat{
+    color:#15D400 !important;
+}
+.info .hashtags a{
+    color:#15D400 !important;
+    text-transform: none !important;
+}
+.info .extend{
+    display:block !important;
+    background-color:#15D400;
+    color:black;
+    text-align:center;
+    border-bottom:1px #000 solid;
+    border-right:none !important;
+}
+
+#notifs{
+    width:27%;
+    float: left;
+    margin-left: 25px;
+    border:1px #15D400 solid;
+}
+#notifs .title{
+    background-color: #15D400;
+    width:100%;
+    height:10%;
+    text-align:center;
+    color: #ffffff;
+    border-bottom:1px #15D400 solid;
+    line-height:44px;
+    font-size: 20px;
+}
+#notifs .title a{
+    font-size:12px;
+    position:absolute;
+    right:15px;
+    top:0;
+    text-decoration: underline;
+}
+#notifs .header.important{
+    color: #15D400;
+}
+#notifs p, #announcements .header{
+    padding:15px 15px 0 15px;
+}
+#notifs p:last-child{
+    padding:15px;
+}
+
+#notifcontent{
+    overflow-y:scroll;
+    /*
+    take height previously calculated and subtract 50: {{previous|add:"-50"}}
+    */
+    height:255px;
+    margin-top:10px;
+}

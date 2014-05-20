@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from admins.models import Announcement
+from stats.models import Hashtag, Group
 
 @login_required(login_url='/login/')
 def homepage(request):
@@ -47,7 +48,8 @@ def hashtag(request, tag):
     """
     Display hashtag with count of people that used it and few yaps
     """
-    return HttpResponse("TODO")
+    current_tag = Hashtag.objects.get(name=tag)
+    return render(request, 'stats/hashtag.html', {'tag': current_tag})
 
 
 @login_required(login_url='/login/')
@@ -55,4 +57,5 @@ def group_page(request, group):
     """
     Display group page with count people in it and few yaps
     """
-    return HttpResponse("TODO")
+    current_group = Group.objects.get(pk=group)
+    return render(request, 'stats/group.html', {'group': current_group})

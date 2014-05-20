@@ -43,9 +43,25 @@ def users_manage(request):
     """
     List of users. Create and view users
     """
-    users = CmsUser.objects.all()
+    users = CmsUser.objects.filter(is_active=True)
+    inactive_users = CmsUser.objects.filter(is_active=False)
     groups = GroupPermission.objects.all()
-    if request.POST:
+
+    if 'btn_delete' in request.POST:
+        username = request.POST['username']
+        user = CmsUser.objects.get(username=username)
+        user.is_active = False
+        user.save()
+        return HttpResponseRedirect('/cmsusers/')
+
+    if 'btn_active' in request.POST:
+        username = request.POST['username']
+        user = CmsUser.objects.get(username=username)
+        user.is_active = True
+        user.save()
+        return HttpResponseRedirect('/cmsusers/')
+
+    if 'btn_new' in request.POST:
         logger.warning(request.POST)
         if request.POST['password'] == request.POST['password2']:
             username = request.POST['username']
@@ -58,9 +74,11 @@ def users_manage(request):
             id_group = request.POST['group']
             group = GroupPermission.objects.get(pk=id_group)
             CmsUser.objects.get_or_create(username=username, firstname=first, lastname=last,
-                                          email=email, password=password, department=dep, occupation=occ, group=group)
+                                          email=email, password=password, department=dep,
+                                          occupation=occ, group=group)
             return HttpResponseRedirect('/cmsusers/')
-    return render(request, 'admins/users_manage.html',  {'users': users, 'groups':groups})
+    return render(request, 'admins/users_manage.html',
+                  {'users': users, 'inactive_users': inactive_users, 'groups':groups})
 
 
 @login_required(login_url='/login/')

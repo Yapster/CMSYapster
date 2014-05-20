@@ -69,18 +69,51 @@
                         <th>Username</th>
                         <th>Permission Group</th>
                         <th>Occupation</th>
+                        <th>Delete</th>
                     </tr>
                     {% if users %}
                         {% for user in users %}
+                            <form method="post">
+                                {% csrf_token %}
+                                <tr>
+                                    <td>{{ user.username }} </td>
+                                    <td>{{ user.group.group_name }}</td>
+                                    <td>{{ user.occupation }}</td>
+                                    <input type="hidden" name="username" value="{{ user.username }}">
+                                    <td>{{ user.is_active }}</td>
+                                    <td><button type="submit" name="btn_delete">Delete</button></td>
+                                </tr>
+                            </form>
+                        {% endfor %}
+
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+        <h2 class="title">Inactive CMS Users</h2>
+        <div id="table">
+            <table width="100%" cellpadding="2px" cellspacing="0px">
+                <tr>
+                    <th>Username</th>
+                    <th>Permission Group</th>
+                    <th>Occupation</th>
+                    <th>Activate</th>
+                </tr>
+                {% if inactive_users %}
+                    {% for user in inactive_users %}
+                        <form method="post">
+                            {% csrf_token %}
                             <tr>
                                 <td>{{ user.username }} </td>
                                 <td>{{ user.group.group_name }}</td>
                                 <td>{{ user.occupation }}</td>
+                                <input type="hidden" name="username" value="{{ user.username }}">
+                                <td><button type="submit" name="btn_active">Activate</button></td>
                             </tr>
-                        {% endfor %}
-                    {% endif %}
-                </table>
-            </div>
+                        </form>
+                    {% endfor %}
+                {% endif %}
+            </table>
         </div>
     </div>
     <div id="newcmsuser">
@@ -135,8 +168,8 @@
                     </select>
                 </div>
                 <div class="submitdiv">
-                    <button type="submit" >Submit</button>
-                    <button type="reset" >Reset</button>
+                    <button type="submit" name="btn_new" >Submit</button>
+                    <button type="reset" name="btn_reset">Reset</button>
                 </div>
             </div>
         </form>

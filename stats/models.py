@@ -27,12 +27,13 @@ class Group(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.CharField(max_length=255)
     members_count = models.BigIntegerField(default=0)
-    date_created = models.DateTimeField()
+    date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
     def delete(self, using=None):
         self.is_active = False
         return
+
 
 class Hashtag(models.Model):
     """
@@ -41,7 +42,7 @@ class Hashtag(models.Model):
     hashtag_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
     used_count = models.BigIntegerField(default=0)
-    date_created = models.DateTimeField()
+    date_created = models.DateTimeField(auto_now_add=True)
 
     def delete(self, using=None):
         self.is_active = False
@@ -56,7 +57,7 @@ class Reyap(models.Model):
     user = models.ForeignKey(to=User, related_name="reyaps")
     likes_count = models.BigIntegerField(default=0)
     listen_count = models.BigIntegerField(default=0)
-    date_created = models.DateTimeField()
+    date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
     def delete(self, using=None):
@@ -70,7 +71,7 @@ class Listen(models.Model):
     listen_id = models.AutoField(primary_key=True)
     yap = models.ForeignKey(to=Yap, related_name="listens")
     user = models.ForeignKey(to=User, related_name="listens")
-    date_created = models.DateTimeField()
+    date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
     def delete(self, using=None):
@@ -84,7 +85,7 @@ class Like(models.Model):
     like_id = models.AutoField(primary_key=True)
     yap = models.ForeignKey(to=Yap, related_name="likes")
     user = models.ForeignKey(to=User, related_name="likes")
-    date_created = models.DateTimeField()
+    date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
     def delete(self, using=None):
