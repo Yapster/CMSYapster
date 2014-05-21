@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'admins',
     'stats',
-    'reports'
+    'reports',
+    'api'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -61,8 +62,20 @@ WSGI_APPLICATION = 'CMSYapster.wsgi.application'
 
 DATABASES = {
     'default': {
+        'NAME': os.path.join(BASE_DIR, 'django.sqlite3'),
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    },
+    'api_db': {
+        'NAME': os.path.join(BASE_DIR, 'api_db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -91,3 +104,5 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
+
+DATABASE_ROUTERS = ['api.router.APIRouter']
