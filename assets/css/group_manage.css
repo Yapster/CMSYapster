@@ -1,0 +1,66 @@
+#groups{
+	width:45%;
+	height:57%;
+    float: left;
+    margin-left: 3%;
+}
+
+#groups .title{
+    background-color: #15D400;
+	height:9%;
+	border:1px #15D400 solid;
+	text-align:center;
+	color: #ffffff;
+	line-height:44px;
+    font-size: 20px;
+}
+
+#newgroup{
+    width:30%;
+	height:72%;
+    float: left;
+    margin-left: 3%;
+    border: 1px #15D400 solid;
+}
+
+#newgroup .title{
+    background-color: #15D400;
+	height:9%;
+	border:1px #15D400 solid;
+	text-align:center;
+	color: #ffffff;
+	line-height:44px;
+    font-size: 20px;
+}
+
+#table table td {
+    text-align: center;
+    line-height: 40px;
+}
+
+.line{
+	line-height: 30px;
+	font-size: 16px;
+    margin-top: 15px;
+    padding-left: 70px;
+}
+
+.line label {
+    display: inline-block;
+    width: 120px;
+}
+
+.line input {
+    padding-left: 10px;
+    position: relative;
+}
+
+.submitdiv {
+    padding-top: 60px;
+    padding-left: 135px;
+}
+
+#pages {
+    padding-top: 30px;
+    padding-left: 135px;
+}

@@ -1,6 +1,6 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
-from admins.models import CmsUser, Announcement
+from admins.models import CmsUser, Announcement, GroupPermission, Page
 
 
 @receiver(post_save, sender=CmsUser)
@@ -23,3 +23,6 @@ def new_announcement(sender, instance, created, **kwargs):
         return
     return
 
+@receiver(post_save, sender=GroupPermission)
+def new_group(sender, instance, created, selected_pages=None, **kwargs):
+    return

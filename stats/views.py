@@ -11,7 +11,6 @@ def homepage(request):
     Display general stats
     """
     announcements = Announcement.objects.all()
-
     return render(request, 'stats/home.html', {"announcements": announcements, "user":request.user})
 
 

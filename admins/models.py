@@ -25,6 +25,7 @@ class Profile(models.Model):
         self.save()
         return
 
+
 class GroupPermission(models.Model):
     group_id = models.AutoField(primary_key=True)
     group_name = models.CharField(max_length=24, unique=True)
@@ -32,7 +33,17 @@ class GroupPermission(models.Model):
 
     def delete(self, using=None):
         self.is_active = False
+        self.save()
         return
+
+
+class Page(models.Model):
+    page_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=24, unique=True)
+    url = models.CharField(max_length=24, unique=True)
+    description = models.CharField(max_length=24, blank=True)
+    perms = models.ManyToManyField(to=GroupPermission, related_name='pages')
+
 
 class CmsUser (models.Model):
     """
@@ -40,32 +51,44 @@ class CmsUser (models.Model):
     """
     user = models.OneToOneField(User, primary_key=True, related_name='account')
     username = models.CharField(max_length=64)
-    firstname = models.CharField(max_length=64)
-    lastname = models.CharField(max_length=64)
+    first_name = models.CharField(max_length=64)
+    last_name = models.CharField(max_length=64)
     email = models.EmailField(max_length=64)
-    password = models.CharField(max_length=64)
     group = models.ForeignKey(to=GroupPermission, blank=True, related_name='members')
     occupation = models.CharField(max_length=64, blank=True)
     department = models.CharField(max_length=64, blank=True)
     is_active = models.BooleanField(default=True)
 
-    def save(self, *args, **kwargs):
-        # TODO: Probably a cleaner way to do it...
-        try:
-            self.user.username = self.username
-            self.user.email = self.email
-            self.user.password = self.password
-            self.user.first_name = self.firstname
-            self.user.last_name = self.lastname
-            self.user.save()
-        except:
-            self.user = User.objects._create_user(username=self.username, email=self.email, password=self.password, is_staff=False,
-                                              is_superuser=False, first_name=self.firstname, last_name=self.lastname)
-        super(CmsUser, self).save()
+    def new_user(*args, **kwargs):
+        username = kwargs["username"]
+        password = kwargs.pop('password')
+        email = kwargs["email"]
+        first_name = kwargs["first_name"]
+        last_name = kwargs["last_name"]
+        user = User.objects.create_user(username=username, email=email,
+                                        password=password, first_name=first_name,
+                                        last_name=last_name)
+        kwargs["user"] = user
+        CmsUser.objects.create(**kwargs)
+        return user
+
+    def update(self, *args, **kwargs):
+        user = User.objects.get(username=self.username)
+        if 'password' in kwargs:
+            user.set_password(kwargs['password'])
+            kwargs.pop('password')
+        for (key, value) in kwargs.items():
+            setattr(user, key, value)
+            setattr(self, key, value)
+        user.save()
+        self.save()
         return self
 
     def delete(self, using=None):
+        user = User.objects.get(pk=self.user)
+        user.is_active = False
         self.is_active = False
+        self.save()
         return
 
 
@@ -96,6 +119,7 @@ class NotificationType(models.Model):
 
     def delete(self, using=None):
         self.is_active = False
+        self.save()
         return
 
 class Notification(models.Model):
@@ -112,4 +136,5 @@ class Notification(models.Model):
 
     def delete(self, using=None):
         self.is_active = False
+        self.save()
         return

@@ -1,3 +1,6 @@
+import logging
+
+logger = logging.getLogger(__name__)
 
 class APIRouter(object):
     """
@@ -25,7 +28,7 @@ class APIRouter(object):
         """
         if obj1._meta.app_label == 'api' and obj2._meta.app_label == 'api':
             return True
-        elif 'api' not in [obj1._meta.app_label, obj2._meta.app_label]:
+        elif 'mains' not in [obj1._meta.app_label, obj2._meta.app_label]:
             return True
         return False
 
@@ -33,7 +36,6 @@ class APIRouter(object):
         """
         Syncdb used only for Default DB
         """
-        if db == 'api' or model._meta.app_label == "api":
+        if db == 'api_db' or model._meta.app_label == "api":
             return False
-        else:
-            return True
+        return True
