@@ -62,9 +62,9 @@
     <div id="info">
         <h2 class="title">CMS User Information</h2>
         <ul>
-            <li>Name: <span class="stat">{{ user.first_name }} {{ user.last_name }}</span></li>
-            <li>User Name: <span class="stat">{{ user.username }}</span></li>
-            <li>Email: <span class="stat">{{ user.email }}</span></li>
+            <li>Name: <span class="stat">{{ cmsuser.first_name }} {{ cmsuser.last_name }}</span></li>
+            <li>User Name: <span class="stat">{{ cmsuser.username }}</span></li>
+            <li>Email: <span class="stat">{{ cmsuser.email }}</span></li>
             <li>Group permission: <span class="stat">{{ cmsuser.group.group_name }}</span></li>
             <li>Departement: <span class="stat">{{ cmsuser.department }}</span></li>
         </ul>
@@ -74,11 +74,11 @@
         <form method="post">
             {% csrf_token %}
             <ul>
-                <li>New Firstname: <input name="firstname" placeholder="{{ user.first_name }}"/></li>
-                <li>New Lastname: <input name="lastname" placeholder="{{ user.last_name }}"/></li>
-                <li>New User Name: <input name="username" placeholder="{{ user.username }}"/></li>
-                <li>New Email: <input name="email" placeholder="{{ user.email }}"/></li>
-                <li>Confirm Email: <input name="email2" placeholder="{{ user.email }}"/></li>
+                <li>New Firstname: <input name="firstname" placeholder="{{ cmsuser.first_name }}"/></li>
+                <li>New Lastname: <input name="lastname" placeholder="{{ cmsuser.last_name }}"/></li>
+                <li>New User Name: <input name="username" placeholder="{{ cmsuser.username }}"/></li>
+                <li>New Email: <input name="email" placeholder="{{ cmsuser.email }}"/></li>
+                <li>Confirm Email: <input name="email2" placeholder="{{ cmsuser.email }}"/></li>
                 <li>New Password: <input name="password" type="password"/></li>
                 <li>Confirm new Password: <input name="password2" type="password"/></li>
             </ul>

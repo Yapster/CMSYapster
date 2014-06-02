@@ -18,12 +18,16 @@ def permission(permission_tester, login_url="/login/"):
     return view_decorator
 
 @permission
-def user_has_perm(request):
+def user_has_perm(request, username=None):
     """
     Check if user has perm via group permission
     """
+    if username == request.user.username:
+        return True
     path = request.path
     cmsuser = CmsUser.objects.get(pk=request.user)
+    if cmsuser.group.group_name == "Admin":
+        return True
     perms = cmsuser.group.pages.all()
     for page in perms:
         if page.url == path:

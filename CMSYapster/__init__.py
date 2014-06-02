@@ -22,4 +22,3 @@
 # p.perms.add(group2)
 # p2.perms.add(group)
 # p3.perms.add(group)
-#

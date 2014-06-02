@@ -29,11 +29,12 @@ def login_user(request):
     return render(request, 'admins/login.html', {})
 
 @active_and_login_required
+@user_has_perm
 def cmsuser(request, username):
     """
     Display CMS user info + change permissions/name/username
     """
-    cmsuser = CmsUser.objects.get(pk=request.user)
+    cmsuser = CmsUser.objects.get(username=username)
     own = cmsuser.username == username
     return render(request, 'admins/cmsuser.html',
                   {"cmsuser": cmsuser, "own": own})
@@ -64,7 +65,6 @@ def users_manage(request):
         return HttpResponseRedirect('/cmsusers/')
 
     if 'btn_new' in request.POST:
-        logger.warning(request.POST)
         if request.POST['password'] == request.POST['password2'] \
                 and request.POST['email'] == request.POST['email2']:
             username = request.POST['username']
@@ -110,12 +110,13 @@ def profile(request, username):
 
 
 @active_and_login_required
+@user_has_perm
 def edit_cmsuser(request, username):
     """
     Edit Cms User infos
     """
 
-    cmsuser = CmsUser.objects.get(pk=request.user)
+    cmsuser = CmsUser.objects.get(username=username)
     d_args = {}
     if 'btn_newinfos' in request.POST:
         if request.POST['firstname']:
