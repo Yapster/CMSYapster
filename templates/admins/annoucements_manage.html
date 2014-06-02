@@ -13,7 +13,8 @@
     <span class="title">yapster</span>
     <a href="/login/">log out</a>
     <a href="#">Settings</a>
-    <a href="/cmsusers/">Administration</a>
+    <a href="/permissionsgroups/">Groups Management</a>
+    <a href="/cmsusers/">Cms Users</a>
     <a href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
     <a href="/search/">Search</a>
     <a href="/home/" class="selected">Home</a>
@@ -75,7 +76,7 @@
                             <tr>
                                 <td>{{ announce.title }} </td>
                                 <td>{{ announce.date_last_edit }}</td>
-                                <td>{{ announce.username }}</td>
+                                <td>{{ announce.user.username }}</td>
                             </tr>
                         {% endfor %}
 

@@ -38,9 +38,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'admins',
-    'stats',
+    'announcements',
+    'api',
+    'groups',
     'reports',
-    'api'
+    'stats'
 )
 
 MIDDLEWARE_CLASSES = (

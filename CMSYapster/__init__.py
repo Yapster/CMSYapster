@@ -1,5 +1,6 @@
-# from admins.models import GroupPermission, CmsUser, Page
+# from admins.models import CmsUser
 # from stats.models import Hashtag
+# from groups.models import GroupPermission, Page
 #
 # GroupPermission.objects.create(group_name="Admin")
 # GroupPermission.objects.create(group_name="Design")

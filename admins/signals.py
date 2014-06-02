@@ -1,7 +1,8 @@
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
-from admins.models import CmsUser, Announcement, GroupPermission, Page
-
+from admins.models import CmsUser
+from announcements.models import Announcement
+from groups.models import GroupPermission, Page
 
 @receiver(post_save, sender=CmsUser)
 def mod_cmsuser(sender, instance, created, **kwargs):

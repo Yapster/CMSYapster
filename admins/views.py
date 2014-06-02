@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
-from admins.models import Profile, User, CmsUser, Announcement, GroupPermission, Page
+from admins.models import Profile, CmsUser
 from admins.decorators import user_has_perm, active_and_login_required
 from admins.signals import *
 import logging
@@ -27,17 +27,6 @@ def login_user(request):
                 #request.session['account'] = CmsUser.objects.get(user=current_user)
                 return HttpResponseRedirect('/home/')
     return render(request, 'admins/login.html', {})
-
-@active_and_login_required
-@user_has_perm
-def cmsuser(request, username):
-    """
-    Display CMS user info + change permissions/name/username
-    """
-    cmsuser = CmsUser.objects.get(username=username)
-    own = cmsuser.username == username
-    return render(request, 'admins/cmsuser.html',
-                  {"cmsuser": cmsuser, "own": own})
 
 
 @active_and_login_required
@@ -84,29 +73,16 @@ def users_manage(request):
                   {'users': users, 'inactive_users': inactive_users,
                    'groups':groups})
 
-
 @active_and_login_required
 @user_has_perm
-def annoucements_manage(request):
-    announcements = Announcement.objects.all()
-    if request.POST:
-        title = request.POST['title']
-        desc = request.POST['desc']
-        Announcement.objects.get_or_create(user=request.user, title=title,
-                                           description=desc)
-        return HttpResponseRedirect('/announcements/')
-    return render(request, 'admins/annoucements_manage.html',
-                  {"announcements": announcements})
-
-
-@active_and_login_required
-def profile(request, username):
+def cmsuser(request, username):
     """
-    Display Yapster user profile. With info/stats
+    Display CMS user info + change permissions/name/username
     """
-    prof = Profile.objects.get(user__username=username)
-
-    return render(request, 'admins/profile.html', {'profile': prof})
+    cmsuser = CmsUser.objects.get(username=username)
+    own = cmsuser.username == username
+    return render(request, 'admins/cmsuser.html',
+                  {"cmsuser": cmsuser, "own": own})
 
 
 @active_and_login_required
@@ -139,33 +115,10 @@ def edit_cmsuser(request, username):
 
 
 @active_and_login_required
-@user_has_perm
-def group_manage(request):
+def profile(request, username):
     """
-    Display permissions groups. Display members and pages for each
+    Display Yapster user profile. With info/stats
     """
-    groups = GroupPermission.objects.filter(is_active=True)
-    inactive_groups = GroupPermission.objects.filter(is_active=False)
-    pages = Page.objects.all()
-    if request.POST:
-        if 'btn_deluser' in request.POST:
-            cmsuser = CmsUser.objects.get(username=request.POST['user'])
-            cmsuser.group = GroupPermission.objects.get(group_name="No Group")
-            cmsuser.save()
-        if 'btn_new' in request.POST:
-            selected_pages = request.POST.getlist('page_selected')
-            current_group = GroupPermission.objects.create(group_name=request.POST['groupname'])
-            for id in selected_pages:
-                page = Page.objects.get(pk=id)
-                page.perms.add(current_group)
-        if 'btn_delgroup' in request.POST:
-            GroupPermission.objects.get(group_name=request.POST['group']).delete()
-        if 'btn_active' in request.POST:
-            # TODO: add Method in model : is_active + Signal Delete Group
-            group_to_act = GroupPermission.objects.get(group_name=request.POST['group'])
-            group_to_act.is_active = True
-            group_to_act.save()
-        return HttpResponseRedirect('')
-    return render(request, 'admins/group_manage.html',
-                  {"groups": groups, "inactive_groups": inactive_groups,
-                   "pages": pages})
+    prof = Profile.objects.get(user__username=username)
+
+    return render(request, 'admins/profile.html', {'profile': prof})

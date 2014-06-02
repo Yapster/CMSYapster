@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from groups.models import GroupPermission
 
 
 class Profile(models.Model):
@@ -24,26 +25,6 @@ class Profile(models.Model):
         self.is_active = False
         self.save()
         return
-
-
-class GroupPermission(models.Model):
-    group_id = models.AutoField(primary_key=True)
-    group_name = models.CharField(max_length=24, unique=True)
-    is_active = models.BooleanField(default=True)
-
-    def delete(self, using=None):
-        self.is_active = False
-        self.save()
-        return
-
-
-class Page(models.Model):
-    page_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=24, unique=True)
-    url = models.CharField(max_length=24, unique=True)
-    description = models.CharField(max_length=24, blank=True)
-    perms = models.ManyToManyField(to=GroupPermission, related_name='pages')
-
 
 class CmsUser (models.Model):
     """
@@ -89,23 +70,6 @@ class CmsUser (models.Model):
         user.is_active = False
         self.is_active = False
         self.save()
-        return
-
-
-class Announcement(models.Model):
-    """
-    Annoucements for homepage
-    """
-    announcement_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, related_name='announces')
-    title = models.CharField(blank=True, max_length=255)
-    description = models.CharField(blank=True, max_length=255)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_last_edit = models.DateTimeField(auto_now=True)
-    is_active = models.BooleanField(default=True)
-
-    def delete(self, using=None):
-        self.is_active = False
         return
 
 
