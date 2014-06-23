@@ -1,6 +1,8 @@
 # from admins.models import CmsUser
 # from stats.models import Hashtag
 # from groups.models import GroupPermission, Page
+# from contacts.models import Contact, List, Note
+# from django.contrib.auth.models import User
 #
 # GroupPermission.objects.create(group_name="Admin")
 # GroupPermission.objects.create(group_name="Design")
@@ -23,3 +25,24 @@
 # p.perms.add(group2)
 # p2.perms.add(group)
 # p3.perms.add(group)
+# cmsuser = CmsUser.objects.get(pk=1)
+# user = User.objects.get(username=cmsuser.username)
+# l = List.objects.create(name="Business Contacts",
+#                     description="Business guys who want to do business stuff",
+#                     created_by=user)
+# l.groups.add(group)
+# l1 = List.objects.create(name="Fun Contacts",
+#                     description="Fun guys who want to do fun stuff",
+#                     created_by=user)
+# l1.groups.add(group)
+# l1.groups.add(group2)
+# c = Contact.objects.create(firstname="Bill",
+#                            lastname="Gates",
+#                            email="boss@ms.com")
+# c.lists.add(l)
+# c.lists.add(l1)
+# c1 = Contact.objects.create(firstname="Nana",
+#                             lastname="Mouskouri",
+#                             phone="0102030405")
+# c1.lists.add(l)
+# c1.lists.add(l1)

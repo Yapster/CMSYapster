@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from CMSYapster import settings
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -15,6 +14,9 @@ urlpatterns = patterns('',
     url(r'^statistics/$', 'stats.views.stats'),
     url(r'^search/$', 'stats.views.search'),
     url(r'^announcements/$', 'announcements.views.annoucements_manage'),
+    url(r'^contacts/$', 'contacts.views.contacts_lists'),
+    url(r'^contacts/lists/(?P<list>[a-zA-Z0-9_.-]+)/$', 'contacts.views.contacts_lists_details'),
+    url(r'^contacts/lists/(?P<list>[a-zA-Z0-9_.-]+)/contacts/(?P<contact>[a-zA-Z0-9_.-]+)/$', 'contacts.views.contacts_details'),
     url(r'^permissionsgroups/$', 'groups.views.group_manage'),
     url(r'^cmsusers/$', 'admins.views.users_manage'),
     url(r'^cmsusers/(?P<username>[a-zA-Z0-9_.-]+)/$', 'admins.views.cmsuser'),

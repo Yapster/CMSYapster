@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'admins',
     'announcements',
     'api',
+    'chat',
+    'contacts',
     'groups',
     'reports',
     'stats'
