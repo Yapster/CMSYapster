@@ -2,6 +2,8 @@
 {% block localfiles %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/home.css" %}" />
+    <script type="text/javascript" src="{% static "js/stats/home.js" %} "></script>
+
 {% endblock %}
 {% block content %}
     <div id="content" class="clearfix">
@@ -37,8 +39,8 @@
                 <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
             </div>
         </div>
-        <div id="announcements">
-            <a id="title" href="/announcements/" >Announcements</a>
+        <div id="announcements" class="right_block">
+            <a id="announcement" class="right_title" href="/announcements/" >Announcements</a>
             <div id="announcementcontent">
                 {% if announcements %}
                     {% for announce in announcements %}
@@ -50,6 +52,46 @@
                 {% else %}
                     <h3 class="header">No Announcements</h3>
                 {% endif %}
+            </div>
+        </div>
+        <div id="messager" class="right_block">
+            <a id="messager_title" class="right_title" href="javascript:visibility('conversation')">Messager</a>
+            <div id="conversations">
+                {% for conversation in conversations %}
+                    <div id="{{ conversation.id }}" class="line">
+                        <a href="javascript:show_chat()">
+                            {% for contact in conversation.users.all %}
+                                {{ contact.username }}
+                            {% endfor %}
+                        </a>
+                    </div>
+                    <div id="{{ conversation.id }}" class="line">
+                        <a href="javascript:">
+                            {% for contact in conversation.users.all %}
+                                {{ contact.username }}
+                            {% endfor %}
+                        </a>
+                    </div>
+                {% endfor %}
+                <div id="new_conversation" class="line">
+                    <a href="#">New Chat Room</a>
+                </div>
+            </div>
+            <div id="conversation">
+                <input type="hidden" value="{{ current_conversation.conversation_id }}" name="conversation_id"/>
+                <div id="messages">
+                  {% for message in messages %}
+                      {{ message.author }}
+                      {{ message.text }}
+                  {% endfor %}
+                </div>
+                <div id="message_line">
+                    <form id="message_form" method="post">
+                        {% csrf_token %}
+                        <input id="message" type="text" placeholder="Write your message..."/>
+                        <button type="submit" id="btn_send_message">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

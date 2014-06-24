@@ -1,11 +1,13 @@
-#announcements{
+.right_block{
 	float:left;
 	width:21%;
 	border:1px #15D400 solid;
 	position: relative;
     margin-left: 4%;
+    margin-bottom: 50px;
 }
-#announcements a{
+
+.right_title{
 	background-color: #15D400;
     width:100%;
 	text-align:center;
@@ -81,42 +83,31 @@
 	border-bottom:1px #000 solid;
 	border-right:none !important;
 }
-#tabs{
-	height:45px;
-	padding:0;
-	width:100%;
-    background-color: #000000;
-}
-#tabs a{
-    color: #ffffff;
-	line-height:44px;
-	font-size:20px;
-	padding:0 !important;
-	margin-left:2.66%;
-	text-align:center;
-	float:left;
-	width:5%;
-	-webkit-transition: all 0.3s ease-out;
-         -o-transition: all 0.3s ease-out;
-       -moz-transition: all 0.3s ease-out;
-            transition: all 0.3s ease-out;
+
+#conversations {
+    padding-top: 50px;
+    border: 1px #15D400 solid;
 }
 
-#tabs a:hover, #tabs a.selected{
-	color: #15D400;
-    border-bottom:7px #15D400 solid;
-	-webkit-transition: all 0.3s ease-in;
-         -o-transition: all 0.3s ease-in;
-       -moz-transition: all 0.3s ease-in;
-            transition: all 0.3s ease-in;
+#conversation {
+    border: 1px #15D400 solid;
 }
-#tabs a.selected{
-	opacity:1;
+
+.line {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
 }
-#content{
-	margin-top:40px;
-	padding-bottom:15px;
+
+
+
+#messages {
+    height: 300px;
 }
-#table{
-	border:1px #000 solid;
+
+#message_line {
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: #efefef;
 }

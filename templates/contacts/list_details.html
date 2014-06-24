@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block localfiles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/contacts/list_details.css" %}" />
+{% endblock %}
+{% block content %}
+<div id="content" class="clearfix">
+    <div id="listname">
+        <h2 class="title">{{ list.name }}</h2>
+    </div>
+    {% for contact in list.contacts.all %}
+        <div id="contact">
+           <div id="contactname">
+                <a href="contacts/{{ contact.contact_id }}"><h2 class="title">{{ contact.firstname }} {{ contact.lastname }}</h2></a>
+            </div>
+            <ul>
+                <li class="line">Description : <span class="">{{ contact.description }}</span></li>
+                <li class="line">Email : <span class="">{{ contact.email }}</span></li>
+                <li class="line">Phone : <span class="">{{ contact.phone }}</span></li>
+            </ul>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

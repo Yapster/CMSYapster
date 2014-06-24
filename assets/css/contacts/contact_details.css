@@ -1,0 +1,51 @@
+.title {
+    background-color: #15D400;
+	height:9%;
+	border:1px #15D400 solid;
+	text-align:center;
+	color: #ffffff;
+	line-height:44px;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.subcontent {
+    width:45%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    border: 1px #15D400 solid;
+    text-align: center;
+}
+
+.line {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.note {
+    margin-bottom: 10px;
+
+}
+
+#img_note {
+    width: 40px;
+    height: 40px;
+}
+
+#input_note {
+    resize: none;
+    width: 80%;
+}
+
+.user_note {
+
+}
+
+.date_note {
+
+}
+
+.desc_note {
+
+}

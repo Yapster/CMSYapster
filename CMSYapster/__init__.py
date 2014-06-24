@@ -3,6 +3,8 @@
 # from groups.models import GroupPermission, Page
 # from contacts.models import Contact, List, Note
 # from django.contrib.auth.models import User
+# from chat.models import Conversation, Message
+# from admins.models import Profile
 #
 # GroupPermission.objects.create(group_name="Admin")
 # GroupPermission.objects.create(group_name="Design")
@@ -13,6 +15,8 @@
 # group2 = GroupPermission.objects.get(pk=2)
 # CmsUser.new_user(username="chris", first_name="chris", last_name="lerus",
 #                               email="admin@admin.com", password="fefe", group=group)
+# CmsUser.new_user(username="G", first_name="Gurkaran", last_name="Gulati",
+#                                email="g@yapsterapp.com", password="fefe", group=group)
 # Hashtag.objects.get_or_create(name="lol")
 # GroupPermission.objects.create(group_name="No Group")
 # p = Page.objects.create(name="groups permissions", url="/permissionsgroups/",
@@ -26,7 +30,9 @@
 # p2.perms.add(group)
 # p3.perms.add(group)
 # cmsuser = CmsUser.objects.get(pk=1)
+# cmsuser2 = CmsUser.objects.get(pk=2)
 # user = User.objects.get(username=cmsuser.username)
+# user2 = User.objects.get(username=cmsuser2.username)
 # l = List.objects.create(name="Business Contacts",
 #                     description="Business guys who want to do business stuff",
 #                     created_by=user)
@@ -46,3 +52,9 @@
 #                             phone="0102030405")
 # c1.lists.add(l)
 # c1.lists.add(l1)
+# conv = Conversation.objects.create()
+#
+# conv.users.add(user)
+# conv.users.add(user2)
+#
+# Profile.objects.create(user=user, description="This is a test")

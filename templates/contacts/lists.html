@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block localfiles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/group_manage.css" %}" />
+{% endblock %}
+{% block content %}
+<div id="content" class="clearfix">
+    <div id="groups">
+        <h2 class="title">Contacts lists</h2>
+        <div class="groupinfos">
+            <div id="table">
+                <table width="100%" cellpadding="2px" cellspacing="0px">
+                    <tr>
+                        <th>List Name</th>
+                        <th>Contacts</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% if lists %}
+                        {% for list in lists%}
+                            <form method="post">
+                                {% csrf_token %}
+                                <tr>
+                                    <td><a href="lists/{{ list.list_id }}">{{ list.name }}</a></td>
+                                    <td>
+                                        {% for contact in list.contacts.all %}
+                                            <li>
+                                                <a href="lists/{{ list.list_id }}/contacts/{{ contact.contact_id }}">{{ contact.firstname }} {{ contact.lastname }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </td>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="list" value="{{ list.name }}"/>
+                                        <td><button type="submit" name="btn_delgroup">Delete</button></td>
+                                    </form>
+                                </tr>
+                            </form>
+                        {% endfor %}
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    <a name="display" href="#">Display inactive contacts lists</a>
+        <h2 class="title">Inactive Contacts Lists</h2>
+        <div id="table">
+            <table width="100%" cellpadding="2px" cellspacing="0px">
+                <tr>
+                    <th>Contacts Lists</th>
+                    <th>Activate</th>
+                </tr>
+                {% if inactive_lists %}
+                    {% for list in inactive_lists %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <tr>
+                                <td>{{ list.name }} </td>
+                                <input type="hidden" name="list" value="{{ list.name }}"/>
+                                <td><button type="submit" name="btn_active">Activate</button></td>
+                            </tr>
+                        </form>
+                    {% endfor %}
+                {% endif %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

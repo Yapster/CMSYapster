@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block localfiles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/contacts/contact_details.css" %}" />
+{% endblock %}
+{% block content %}
+<div id="content" class="clearfix">
+    <div id="contact" class="subcontent">
+        <h2 class="title">{{ contact.firstname }} {{ contact.lastname }}</h2>
+        <div id="contactinfos">
+            <ul>
+                <li class="line"> Description : <span class="">{{ contact.description }} {{ cmsuser.last_name }}</span></li>
+                <li class="line"> Phone : <span class="">{{ contact.phone }}</span></li>
+                <li class="line"> Email : <span class="">{{ contact.email }}</span></li>
+                <li class="line"> Birthday : <span class="">{{ contact.birthday }}</span></li>
+                <li class="line"> City : <span class="">{{ contact.city }}</span></li>
+                <li class="line"> State : <span class="">{{ contact.state }}</span></li>
+                <li class="line"> Zipcode : <span class="">{{ contact.zipcode }}</span></li>
+                <li class="line"> Country : <span class="">{{ contact.country }}</span></li>
+                <li class="line"> Yapster Profile: <span class="">{{ contact.profile }}</span></li>
+                <li class="line"> Websites: <span class="">{{ contact.websites.all }}</span></li>
+            </ul>
+        </div>
+    </div>
+    <div id="notes" class="subcontent">
+        <h2 class="title">Notes</h2>
+        <div id="notes_content">
+            <form method="post">
+                {% csrf_token %}
+                <div class="note">
+                    <img id="img_note" src="{% static "images/samples/user.png" %}">
+                    <textarea id="input_note" name="newnote" placeholder="Write a note..."></textarea>
+                </div>
+                <div>
+                    <button type="submit" name="btn_newnote">Submit</button>
+                </div>
+            </form>
+            {% for note in contact.notes.all %}
+                <div class="note">
+                    <img id="img_note" src="{% static "images/samples/user.png" %}">
+                    <span class="user_note">{{ user.username }}</span>
+                    <span class="date_note">{{ note.date_last }}</span>
+                    <span class="desc_note">{{ note.description }} </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

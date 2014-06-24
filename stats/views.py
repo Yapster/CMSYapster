@@ -1,16 +1,42 @@
+from django.http import HttpResponse
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
+
 from django.contrib.auth.decorators import login_required
+from django.utils import simplejson
+from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 from announcements.models import Announcement
+from chat.models import Conversation, Message
 from stats.models import Hashtag, Group
+import socket
+import logging
+
+logger = logging.getLogger(__name__)
 
 @login_required(login_url='/login/')
+@csrf_exempt
 def homepage(request):
     """
     Display general stats
     """
     announcements = Announcement.objects.all()
-    return render(request, 'stats/home.html', {"announcements": announcements, "user":request.user})
+    users = User.objects.all()
+    conversations = Conversation.objects.all()
+    current_conversation = Conversation.objects.get(pk=1)
+    messages = Message.objects.filter(conversation=current_conversation)
+    if request.POST:
+        logger.warning(request.POST)
+        message = request.POST['message']
+        Message.objects.create(text=message, author=request.user, conversation=current_conversation)
+        response_dict = {}
+        response_dict.update({'messages': messages})
+        return HttpResponse(simplejson.dumps(response_dict), mimetype='application/javascript')
+    return render(request, 'stats/home.html', {"announcements": announcements,
+                                               "user": request.user,
+                                               "chaters": users,
+                                               "conversations": conversations,
+                                               "messages": messages})
 
 
 @login_required(login_url='/login/')
