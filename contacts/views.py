@@ -5,6 +5,7 @@ from admins.models import CmsUser
 def contacts_lists(request):
     lists = List.objects.filter(is_active=True)
     inactive_lists = List.objects.filter(is_active=False)
+    inactive_contacts = Contact.objects.filter(is_active=False)
     if 'btn_delgroup' in request.POST:
         l = List.objects.get(name=request.POST['list'])
         l.delete()
@@ -13,7 +14,8 @@ def contacts_lists(request):
     return render(request,
                   'contacts/lists.html',
                   {'lists': lists,
-                   'inactive_lists': inactive_lists})
+                   'inactive_lists': inactive_lists,
+                   'inactive_contacts': inactive_contacts})
 
 
 def contacts_lists_details(request, list):

@@ -1,5 +1,5 @@
 #groups{
-	width:45%;
+	width:800px;
 	height:57%;
     float: left;
     margin-left: 3%;
@@ -11,8 +11,8 @@
 	border:1px #15D400 solid;
 	text-align:center;
 	color: #ffffff;
-	line-height:44px;
-    font-size: 20px;
+	line-height:38px;
+    font-size: 14px;
 }
 
 #newgroup{
@@ -33,7 +33,15 @@
     font-size: 20px;
 }
 
-#table table td {
+.hidable{
+    margin-top: 38px;
+}
+
+.table {
+    border: 1px #15D400 solid;
+}
+
+.table table td {
     text-align: center;
     line-height: 40px;
 }
@@ -63,4 +71,8 @@
 #pages {
     padding-top: 30px;
     padding-left: 135px;
+}
+
+#title_inactives, #title_inactives_contacts {
+    width: 800px;
 }

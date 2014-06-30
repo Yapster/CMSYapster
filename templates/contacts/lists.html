@@ -2,37 +2,87 @@
 {% block localfiles %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/group_manage.css" %}" />
+    <script type="text/javascript" src="{% static "js/contacts/lists.js" %} "></script>
+
+{% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+        <span id="text_headbar">Search</span>
+    </div>
 {% endblock %}
 {% block content %}
-<div id="content" class="clearfix">
-    <div id="groups">
-        <h2 class="title">Contacts lists</h2>
-        <div class="groupinfos">
-            <div id="table">
+    <div id="content" class="clearfix">
+        <div id="groups">
+            <h2 class="title">Contacts lists</h2>
+            <div class="groupinfos">
+                <div class="table">
+                    <table width="100%" cellpadding="2px" cellspacing="0px">
+                        <tr>
+                            <th>List Name</th>
+                            <th>Contacts</th>
+                            <th>Delete</th>
+                        </tr>
+                        {% if lists %}
+                            {% for list in lists%}
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <tr>
+                                        <td><a href="lists/{{ list.list_id }}">{{ list.name }}</a></td>
+                                        <td>
+                                            {% for contact in list.contacts.all %}
+                                                <li>
+                                                    <a href="lists/{{ list.list_id }}/contacts/{{ contact.contact_id }}">{{ contact.firstname }} {{ contact.lastname }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </td>
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="list" value="{{ list.name }}"/>
+                                            <td><button type="submit" name="btn_delgroup">Delete</button></td>
+                                        </form>
+                                    </tr>
+                                </form>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+            <a id="title_inactives" class="right_title" href="javascript:display_inactive('inactive_table')">Inactive Contacts Lists</a>
+            <div id="inactive_table" class="table hidable">
                 <table width="100%" cellpadding="2px" cellspacing="0px">
                     <tr>
-                        <th>List Name</th>
-                        <th>Contacts</th>
-                        <th>Delete</th>
+                        <th>Contacts Lists</th>
+                        <th>Activate</th>
                     </tr>
-                    {% if lists %}
-                        {% for list in lists%}
+                    {% if inactive_lists %}
+                        {% for list in inactive_lists %}
                             <form method="post">
                                 {% csrf_token %}
                                 <tr>
-                                    <td><a href="lists/{{ list.list_id }}">{{ list.name }}</a></td>
-                                    <td>
-                                        {% for contact in list.contacts.all %}
-                                            <li>
-                                                <a href="lists/{{ list.list_id }}/contacts/{{ contact.contact_id }}">{{ contact.firstname }} {{ contact.lastname }}</a>
-                                            </li>
-                                        {% endfor %}
-                                    </td>
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="list" value="{{ list.name }}"/>
-                                        <td><button type="submit" name="btn_delgroup">Delete</button></td>
-                                    </form>
+                                    <td>{{ list.name }} </td>
+                                    <input type="hidden" name="list" value="{{ list.name }}"/>
+                                    <td><button type="submit" name="btn_active">Activate</button></td>
+                                </tr>
+                            </form>
+                        {% endfor %}
+                    {% endif %}
+                </table>
+            </div>
+        <a id="title_inactives_contacts" class="right_title" href="javascript:display_inactive('inactive_table_contacts')">Inactive Contacts</a>
+        <div id="inactive_table_contacts" class="table hidable">
+                <table width="100%" cellpadding="2px" cellspacing="0px">
+                    <tr>
+                        <th>Contacts</th>
+                        <th>Activate</th>
+                    </tr>
+                    {% if inactive_contacts %}
+                        {% for contact in inactive_contacts %}
+                            <form method="post">
+                                {% csrf_token %}
+                                <tr>
+                                    <td>{{ contact.firstname }} {{ contact.lastname }}</td>
+                                    <input type="hidden" name="list" value="{{ contact.contact_id }}"/>
+                                    <td><button type="submit" name="btn_active_contact">Activate</button></td>
                                 </tr>
                             </form>
                         {% endfor %}
@@ -40,28 +90,5 @@
                 </table>
             </div>
         </div>
-    <a name="display" href="#">Display inactive contacts lists</a>
-        <h2 class="title">Inactive Contacts Lists</h2>
-        <div id="table">
-            <table width="100%" cellpadding="2px" cellspacing="0px">
-                <tr>
-                    <th>Contacts Lists</th>
-                    <th>Activate</th>
-                </tr>
-                {% if inactive_lists %}
-                    {% for list in inactive_lists %}
-                        <form method="post">
-                            {% csrf_token %}
-                            <tr>
-                                <td>{{ list.name }} </td>
-                                <input type="hidden" name="list" value="{{ list.name }}"/>
-                                <td><button type="submit" name="btn_active">Activate</button></td>
-                            </tr>
-                        </form>
-                    {% endfor %}
-                {% endif %}
-            </table>
-        </div>
     </div>
-</div>
 {% endblock %}

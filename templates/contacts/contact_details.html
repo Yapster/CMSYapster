@@ -3,13 +3,18 @@
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/contacts/contact_details.css" %}" />
 {% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+        <span id="text_headbar">Search</span>
+    </div>
+{% endblock %}
 {% block content %}
 <div id="content" class="clearfix">
     <div id="contact" class="subcontent">
-        <h2 class="title">{{ contact.firstname }} {{ contact.lastname }}</h2>
+        <h2 class="title_contact">{{ contact.firstname }} {{ contact.lastname }}</h2>
         <div id="contactinfos">
             <ul>
-                <li class="line"> Description : <span class="">{{ contact.description }} {{ cmsuser.last_name }}</span></li>
+                <li class="line"> Description : <span class="fefe">{{ contact.description }} {{ cmsuser.last_name }}</span></li>
                 <li class="line"> Phone : <span class="">{{ contact.phone }}</span></li>
                 <li class="line"> Email : <span class="">{{ contact.email }}</span></li>
                 <li class="line"> Birthday : <span class="">{{ contact.birthday }}</span></li>
@@ -23,7 +28,7 @@
         </div>
     </div>
     <div id="notes" class="subcontent">
-        <h2 class="title">Notes</h2>
+        <h2 class="title_note">Notes</h2>
         <div id="notes_content">
             <form method="post">
                 {% csrf_token %}

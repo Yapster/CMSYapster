@@ -1,15 +1,11 @@
-from django.http import HttpResponse
 from django.shortcuts import render_to_response, render
-from django.template import RequestContext
-
 from django.contrib.auth.decorators import login_required
-from django.utils import simplejson
+from django.db.models import Count
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from announcements.models import Announcement
 from chat.models import Conversation, Message
 from stats.models import Hashtag, Group
-import socket
 import logging
 
 logger = logging.getLogger(__name__)
@@ -21,28 +17,41 @@ def homepage(request):
     Display general stats
     """
     announcements = Announcement.objects.all()
-    users = User.objects.all()
-    conversations = Conversation.objects.all()
-    current_conversation = Conversation.objects.get(pk=1)
-    messages = Message.objects.filter(conversation=current_conversation)
-    if request.POST:
-        logger.warning(request.POST)
-        message = request.POST['message']
-        Message.objects.create(text=message, author=request.user, conversation=current_conversation)
-        response_dict = {}
-        response_dict.update({'messages': messages})
-        return HttpResponse(simplejson.dumps(response_dict), mimetype='application/javascript')
+    users = User.objects.exclude(username=request.user.username)
+    messages = []
+    if 'chaters[]' in request.POST:
+        # Get list of the users
+        l_chaters = request.POST.getlist('chaters[]')
+        l_users = []
+        for chater in l_chaters:
+            l_users.append(User.objects.get(username=chater))
+        l_users.append(request.user)
+    # Get conversation with list of users
+        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
+        for user in l_users:
+            query_conversation = query_conversation.filter(users__pk=user.pk)
+        if not query_conversation:
+            current_conversation = Conversation.objects.create()
+            for user in l_users:
+                current_conversation.users.add(user)
+        else:
+            current_conversation = query_conversation[0]
+    # If new message add
+        if 'message' in request.POST:
+            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
+        messages = Message.objects.filter(conversation=current_conversation)
+        return render(request, 'chat/messages.html', {"messages": messages})
+    if 'refresh' in request.POST:
+        return render(request, 'chat/messages.html', {"messages": messages})
     return render(request, 'stats/home.html', {"announcements": announcements,
                                                "user": request.user,
                                                "chaters": users,
-                                               "conversations": conversations,
                                                "messages": messages})
 
 
 @login_required(login_url='/login/')
 def stats(request):
     return render(request, 'stats/statistics.html', {})
-
 
 
 @login_required(login_url='/login/')

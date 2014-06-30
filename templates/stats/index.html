@@ -3,32 +3,36 @@
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}" />
 {% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+        <span id="text_headbar">Search</span>
+    </div>
+{% endblock %}
 {% block content %}
 <div id="content">
     <div class="section" id="search">
         <form>
-            <div id="filterhead" class="header">Search</div>
-            <div id="form" class="clearfix">
+            <div id="form">
                 <div class="research">
-                    <label style="padding-right: 10px">Search expression</label>
-                    <input style="padding-right: 55%" type="text" name="searchexp"/>
+                    <label style="padding-right: 10px; font-size: 12px">Search expression</label>
+                    <input style="padding-right: 452px; margin-left : 25px" type="text" name="searchexp"/>
                 </div>
                 <div class="group">
-                    <div class="line">
+                    <div class="line_search">
                         <label>Post Date</label>
                         <input type="date" name="postdate"/>
                     </div>
-                    <div class="line">
+                    <div class="line_search">
                         <label>User Birthday</label>
                         <input type="date" name="birthday"/>
                     </div>
-                    <div class="line">
+                    <div class="line_search">
                         <label>Number of results</label>
                         <input type="range" id="a" value="50" data-upper="500" data-lower="0" name="numbers"/>
                     </div>
-                    <div class="line">
+                    <div class="line_search">
                         <label>Lists of things</label>
-                        <select>
+                        <select class="line_search">
                             <option selected="selected">yes</option>
                             <option>it's beautiful</option>
                             <option>I love it</option>
@@ -37,12 +41,12 @@
                     </div>
                 </div>
                 <div class="group">
-                    <div class="line">
+                    <div class="line_search">
                         <label>Register Date</label>
                         <input type="date" name="registerdate"/>
                     </div>
 
-                    <div class="line">
+                    <div class="line_search">
                         <label>Lists of things</label>
                         <select>
                             <option selected="selected">yes</option>
@@ -51,27 +55,27 @@
                             <option>no</option>
                         </select>
                     </div>
-                    <div class="line">
+                    <div class="line_search">
                         <label>City</label>
                         <input type="text" name="city"/>
                     </div>
-                    <div class="line">
+                    <div class="line_search">
                         <label>State</label>
                         <input type="text" name="state"/>
                     </div>
-                    <div class="line">
+                    <div class="line_search">
                         <label>Country</label>
                         <input type="text" name="country"/>
                     </div>
                 </div>
                 <div class="submitdiv">
-                    <input type="submit" value="submit" />
-                    <input type="reset" value="reset" />
+                    <input type="submit" value="Reset" class="button_form"/>
+                    <input type="reset" value="Submit" class="button_form"/>
                 </div>
             </div>
         </form>
     </div>
-    <div class="section" id="results" class="clearfix">
+    <div class="section" id="results">
         <div id="table">
             <div id="resultsheader" class="header">Results
             </div>
@@ -139,9 +143,7 @@
             </table>
         </div>
     </div>
+
 </div>
-    <div class="footer">
-      <a href="#">Previous</a>
-      <a href="#">Next</a>
-    </div>
+
 {% endblock %}

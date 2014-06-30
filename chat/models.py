@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 class Conversation(models.Model):
     """
     Chat Room
+    TODO Add who started the conv
+    seed
     """
     conversation_id = models.AutoField(primary_key=True)
     date_created = models.DateTimeField(auto_now_add=True)

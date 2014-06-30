@@ -1,61 +1,19 @@
-.right_block{
-	float:left;
-	width:21%;
-	border:1px #15D400 solid;
-	position: relative;
-    margin-left: 4%;
-    margin-bottom: 50px;
-}
-
-.right_title{
-	background-color: #15D400;
-    width:100%;
-	text-align:center;
-	color: #ffffff;
-	border-bottom:1px #15D400 solid;
-	line-height:44px;
-	position:absolute;
-    font-size: 21px;
-}
-
-#announcementcontent .message {
-    border-bottom: 1px #15D400 solid;
-}
-
-#announcementcontent{
-	overflow-y:scroll;
-	height:94%;
-	margin-top:50px;
-}
-
-#announcements .header.important{
-	color: #15D400;
-}
-
-#announcements p, #announcements .header{
-	padding:15px 15px 0 15px;
-}
-
-#announcements p:last-child{
-	padding:15px;
-}
-
-#stats{
-	width:50%;
-	height:57%;
+#stats {
     float: left;
-    margin-left: 3%;
+	width:53%;
+	height:57%;
+    margin-left: 8%;
     border: 1px #15D400 solid;
 }
 
 #stats .title{
-	background-color: #15D400;
-	height:9%;
-	border:1px #15D400 solid;
-	text-align:center;
-	color: #ffffff;
-	line-height:44px;
-    font-size: 20px;
+    height:38px;
+    line-height:40px;
+    font-size: 14px;
+    text-align:center;
+    border:1px #15D400 solid;
+    color: #ffffff;
+    background-color: #15D400;
 }
 
 .mainstat{
@@ -65,10 +23,11 @@
 }
 .mainstat .number,.mainstat .label{
 	display:inline;
-	font-size: 20px;
-	line-height:60px;
+	font-size: 14px;
+	line-height: 60px;
 }
 .mainstat .number{
+    padding-left: 10px;
 	color:#15D400;
 }
 .mainstat .hashtags a{
@@ -82,32 +41,4 @@
 	text-align:center;
 	border-bottom:1px #000 solid;
 	border-right:none !important;
-}
-
-#conversations {
-    padding-top: 50px;
-    border: 1px #15D400 solid;
-}
-
-#conversation {
-    border: 1px #15D400 solid;
-}
-
-.line {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-
-
-#messages {
-    height: 300px;
-}
-
-#message_line {
-    text-align: center;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    background-color: #efefef;
 }

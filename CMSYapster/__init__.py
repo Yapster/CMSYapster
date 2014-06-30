@@ -17,6 +17,8 @@
 #                               email="admin@admin.com", password="fefe", group=group)
 # CmsUser.new_user(username="G", first_name="Gurkaran", last_name="Gulati",
 #                                email="g@yapsterapp.com", password="fefe", group=group)
+# CmsUser.new_user(username="Abu", first_name="Abu", last_name="Ba",
+#                                email="abu@yapsterapp.com", password="fefe", group=group2)
 # Hashtag.objects.get_or_create(name="lol")
 # GroupPermission.objects.create(group_name="No Group")
 # p = Page.objects.create(name="groups permissions", url="/permissionsgroups/",

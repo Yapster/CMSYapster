@@ -3,22 +3,27 @@
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/contacts/list_details.css" %}" />
 {% endblock %}
-{% block content %}
-<div id="content" class="clearfix">
-    <div id="listname">
-        <h2 class="title">{{ list.name }}</h2>
+{% block headbar %}
+    <div id="headbar_empty">
+        <span id="text_headbar">Search</span>
     </div>
-    {% for contact in list.contacts.all %}
-        <div id="contact">
-           <div id="contactname">
-                <a href="contacts/{{ contact.contact_id }}"><h2 class="title">{{ contact.firstname }} {{ contact.lastname }}</h2></a>
-            </div>
-            <ul>
-                <li class="line">Description : <span class="">{{ contact.description }}</span></li>
-                <li class="line">Email : <span class="">{{ contact.email }}</span></li>
-                <li class="line">Phone : <span class="">{{ contact.phone }}</span></li>
-            </ul>
+{% endblock %}
+{% block content %}
+    <div id="content" class="clearfix">
+        <div id="listname">
+            <h2 class="title_contacts">{{ list.name }}</h2>
         </div>
-    {% endfor %}
-</div>
+        {% for contact in list.contacts.all %}
+            <div id="contact">
+                <div id="contactname">
+                    <a class="" href="contacts/{{ contact.contact_id }}"><h2 class="title_contacts">{{ contact.firstname }} {{ contact.lastname }}</h2></a>
+                </div>
+                <ul>
+                    <li class="line">Description : <span class="">{{ contact.description }}</span></li>
+                    <li class="line">Email : <span class="">{{ contact.email }}</span></li>
+                    <li class="line">Phone : <span class="">{{ contact.phone }}</span></li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

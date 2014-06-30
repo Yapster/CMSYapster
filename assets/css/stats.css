@@ -1,40 +1,40 @@
 
 #stats{
-	width:75%;
+	width:717px;
     float: left;
-    margin-left: 3%;
+    margin-left: 8%;
     border: 1px #15D400 solid;
 }
 
 #stats .title{
-	background-color: #15D400;
-	height:5%;
-	border:1px #15D400 solid;
-	text-align:center;
-	color: #ffffff;
-	line-height:44px;
-    font-size: 20px;
+    height:38px;
+    line-height:40px;
+    font-size: 14px;
+    text-align:center;
+    border:1px #15D400 solid;
+    color: #ffffff;
+    background-color: #15D400;
 }
 
 .leftstats {
     float: left;
-    width: 50%;
+    width: 49.5%;
 }
 .rightstats {
     float: right;
-    width: 50%;
+    width: 49.5%;
+    border-left: 1px #15D400 solid;
 }
 
 .mainstat{
-	min-height:60px;
+	min-height:48px;
 	border-top:none;
 	padding-left:15px;
-    border-left:1px #15D400 solid;
 }
 .mainstat .number,.mainstat .label{
 	display:inline;
-	font-size: 20px;
-	line-height:60px;
+	font-size: 12px;
+	line-height:50px;
 }
 .mainstat .number{
 	color:#15D400;

@@ -1,37 +1,36 @@
-#announcements{
-	width:45%;
-	height:57%;
+#content {
     float: left;
-    margin-left: 3%;
-}
-
-#announcements .title{
-	background-color: #15D400;
-    width:100%;
-	height:10%;
-	text-align:center;
-	color: #ffffff;
-	border-bottom:1px #15D400 solid;
-	line-height:44px;
-    font-size: 20px;
+    width: 870px;
 }
 
 #newannounce{
-    width:30%;
-	height:57%;
+    width:740px;
+    height:175px;
     float: left;
     margin-left: 3%;
-    border: 1px #15D400 solid;
+    margin-bottom: 38px;
 }
 
-#newannounce .title{
+#announcements_list{
+    width:742px;
+    height:57%;
+    float: left;
+    margin-left: 3%;
+}
+
+#announcements_list .title{
+    width:100%;
+    height:38px;
+    text-align:center;
+    line-height:38px;
+    font-size: 14px;
+    border-bottom:1px #15D400 solid;
     background-color: #15D400;
-	height:9%;
-	border:1px #15D400 solid;
-	text-align:center;
-	color: #ffffff;
-	line-height:44px;
-    font-size: 20px;
+    color: #ffffff;
+}
+
+##newannounce .title {
+
 }
 
 #table table td {
@@ -40,28 +39,49 @@
 }
 
 .line{
-	line-height: 30px;
-	font-size: 16px;
-    margin-top: 15px;
-    padding-left: 60px;
+    width: 535px;
+    line-height: 20px;
+    font-size: 14px;
+    margin-top: 20px;
+    float: left;
 }
 
 .line label {
-    display: inline-block;
     width: 120px;
+    text-align: left;
+    display: inline-block;
 }
 
 .line input {
-    padding-left: 10px;
+    width: 270px;
     position: relative;
 }
 
 .submitdiv {
-    padding-top: 60px;
-    padding-left: 135px;
+    width: 100px;
+    float: right;
+    margin-right: 50px;
 }
 
-.infos textarea {
-    width: 282px;
-    height: 240px;
+#up_button {
+    margin-bottom: 10px;
+}
+
+#infos {
+    border: 1px #15D400 solid;
+    height: 140px;
+    margin-top: 40px;
+}
+
+#infos textarea {
+    width: 270px;
+    height: 35px;
+}
+
+#announce_title {
+    background-color: #15D400;
+    color: #ffffff;
+    border: 1px #15D400 solid;
+    width: 738px;
+    margin-bottom: 10px;
 }

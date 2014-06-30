@@ -1,148 +1,92 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+{% block localfiles %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/profile.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/clearfix.css" %}" />
-    <script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}" ></script>
-    <script type="text/javascript" src="{% static "js/test.js" %}" ></script>
-</head>
-<body>
-<div id="header" class="green">
-    <span class="title">yapster</span>
-    <a href="/login/">log out</a>
-    <a href="#">Settings</a>
-    <a href="/permissionsgroups/">Groups Management</a>
-    <a href="/cmsusers/">Cms Users</a>
-    <a href="/cmsusers/">Administration</a>
-    <a href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
-    <a href="/search/">Search</a>
-    <a href="/home/" class="selected">Home</a>
-</div>
-<div id="sidebar" class="clearfix">
-    <ul>
-        <div class="title">Home</div>
-        <a href="#" ><li >main</li></a></a>
-        <a href="/statistics/"><li>statistics</li></a>
-        <a href="#"><li>maps</li></a>
-    </ul>
-    <ul>
-        <div class="title">Statistics</div>
-        <a href="#"><li>Yaps</li></a></a>
-        <a href="#"><li class="selected">Users</li></a>
-        <a href="#"><li>Queries</li></a>
-        <a href="#"><li>Databases</li></a>
-        <a href="#"><li>Trends</li></a></a>
-        <a href="#"><li>Sharing</li></a>
-        <a href="#"><li>Server</li></a>
-    </ul>
-    <ul>
-        <div class="title">Spam</div>
-        <a href="#"><li>All</li></a>
-        <a href="#"><li>Recent</li></a>
-        <a href="#"><li>Important</li></a>
-        <a href="#"><li>Search</li></a>
-    </ul>
-    <ul>
-        <div class="title">Reports</div>
-        <a href="#"><li>All</li></a>
-        <a href="#"><li>Recent</li></a>
-        <a href="#"><li>Important</li></a>
-        <a href="#"
-                ><li>Search</li></a>
-    </ul>
-</div>
-<div id="tabs">
-    <a href="#" class="selected">Live</a>
-    <a href="#">Min</a>
-    <a href="#" >Hour</a>
-    <a href="#">Day</a>
-    <a href="#">Week</a>
-    <a href="#">Month</a>
-    <a href="#">Year</a>
-</div>
-<div id="content">
-    <div id="profile">
-        <div id="image"></div>
+
+{% endblock %}
+{% block headbar %}
+    <div id="headbar">
     </div>
-    <div id="stats">
-        <ul>
-            <li>First Name: <span class="stat">{{ profile.user.first_name }}</span></li>
-            <li>Last Name: <span class="stat">{{ profile.user.last_name }}</span></li>
-            <li>Handle: <span class="stat">@{{ profile.handle }}</span></li>
-            <li>Location: <span class="stat">{{ profile.location_city }}, {{ profile.location_state }}</span></li>
-        </ul>
-        <ul>
-            <li>Yaps: <span class="stat">{{ profile.yap_count }}</span></li>
-            <li>Listening: <span class="stat">{{ profile.listening_count }}</span></li>
-            <li>Listeners: <span class="stat">{{ profile.listener_count }}</span></li>
-        </ul>
-        <div id="login" class="green">Log In As User</div>
-    </div>
-    <div id="yaps">
-        <a id="title" href="/yaps/" >Yaps</a>
-        <div id="yapscontent">
-            <h3 class="header">Yap title</h3>
-            <p class="message">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <h3 class="header">Yap title</h3>
-            <p class="message">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <h3 class="header">Yap title</h3>
-            <p class="message">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+{% endblock %}
+{% block content %}
+    <div id="content">
+        <div id="infos">
+            <h2 class="title">Profile</h2>
+            <div id="profile">
+                <div id="image"></div>
+            </div>
+            <div id="stats">
+                <ul>
+                    <li>
+                        <span class="label">First Name:</span>
+                       <span class="stat">{{ profile.user.first_name }}</span>
+                    </li>
+                    <li>
+                        <span class="label">Last Name:</span>
+                        <span class="stat">{{ profile.user.last_name }}</span>
+                    </li>
+                    <li>
+                        <span class="label">Handle: </span>
+                       <span class="stat">@{{ profile.handle }}</span>
+                    </li>
+                    <li>
+                        <span class="label">Location: </span>
+                        <span class="stat">{{ profile.location_city }}, {{ profile.location_state }}</span>
+                    </li>
+                </ul>
+                <ul>
+                    <li>Yaps: <span class="stat">{{ profile.yap_count }}</span></li>
+                    <li>Listening: <span class="stat">{{ profile.listening_count }}</span></li>
+                    <li>Listeners: <span class="stat">{{ profile.listener_count }}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div id="userstats">
+            <h2 class="title">Results</h2>
+            <table width="100%" cellpadding="2px" cellspacing="0px" border="0px">
+                <tr>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
+                </tr>
+                <tr>
+                    <td>row 1, cell 1</td>
+                    <td>row 1, cell 2</td>
+                    <td>row 1, cell 3</td>
+                    <td>row 1, cell 4</td>
+                </tr>
+                <tr>
+                    <td>row 2, cell 1</td>
+                    <td>row 2, cell 2</td>
+                    <td>row 2, cell 3</td>
+                    <td>row 2, cell 4</td>
+                </tr>
+                <tr>
+                    <td>row 3, cell 1</td>
+                    <td>row 3, cell 2</td>
+                    <td>row 3, cell 3</td>
+                    <td>row 3, cell 4</td>
+                </tr>
+                <tr>
+                    <td>row 4, cell 1</td>
+                    <td>row 4, cell 2</td>
+                    <td>row 4, cell 3</td>
+                    <td>row 4, cell 4</td>
+                </tr>
+                <tr>
+                    <td>row 5, cell 1</td>
+                    <td>row 5, cell 2</td>
+                    <td>row 5, cell 3</td>
+                    <td>row 5, cell 4</td>
+                </tr>
+                <tr>
+                    <td>row 6, cell 1</td>
+                    <td>row 6, cell 2</td>
+                    <td>row 6, cell 3</td>
+                    <td>row 6, cell 4</td>
+                </tr>
+            </table>
         </div>
     </div>
-    <div id="userstats">
-        <table width="100%" cellpadding="2px" cellspacing="0px" border="0px">
-            <tr>
-                <th>Header 1</th>
-                <th>Header 2</th>
-                <th>Header 3</th>
-                <th>Header 4</th>
-            </tr>
-            <tr>
-                <td>row 1, cell 1</td>
-                <td>row 1, cell 2</td>
-                <td>row 1, cell 3</td>
-                <td>row 1, cell 4</td>
-            </tr>
-            <tr>
-                <td>row 2, cell 1</td>
-                <td>row 2, cell 2</td>
-                <td>row 2, cell 3</td>
-                <td>row 2, cell 4</td>
-            </tr>
-            <tr>
-                <td>row 3, cell 1</td>
-                <td>row 3, cell 2</td>
-                <td>row 3, cell 3</td>
-                <td>row 3, cell 4</td>
-            </tr>
-            <tr>
-                <td>row 4, cell 1</td>
-                <td>row 4, cell 2</td>
-                <td>row 4, cell 3</td>
-                <td>row 4, cell 4</td>
-            </tr>
-            <tr>
-                <td>row 5, cell 1</td>
-                <td>row 5, cell 2</td>
-                <td>row 5, cell 3</td>
-                <td>row 5, cell 4</td>
-            </tr>
-            <tr>
-                <td>row 6, cell 1</td>
-                <td>row 6, cell 2</td>
-                <td>row 6, cell 3</td>
-                <td>row 6, cell 4</td>
-            </tr>
-        </table>
-    </div>
-</div>
-</body>
-</html>
+{% endblock %}
