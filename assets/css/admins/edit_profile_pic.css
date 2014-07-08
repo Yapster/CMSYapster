@@ -1,0 +1,56 @@
+#content {
+    width: 870px;
+    height: 600px;
+    float: left;
+}
+
+#profile_picture {
+    text-align: center;
+}
+
+#title_profile_picture {
+    background-color: #15D400;
+    width:200px;
+	text-align:center;
+	color: #ffffff;
+	border-bottom:1px #15D400 solid;
+	line-height:38px;
+    font-size: 14px;
+    margin-left: 335px;
+    margin-bottom: 10px;
+}
+
+#current_profile_picture {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    border: 2px #000000 solid;
+}
+
+.picture_profile {
+    width: 200px;
+    height: 200px;
+    float : left;
+    margin: 43px;
+    border: 2px #000000 solid;
+}
+
+.picture_profile:hover {
+    border: 2px #15D400 solid;
+}
+
+#input_pix {
+
+}
+
+#submit_bar {
+    float: left;
+    width: 600px;
+    margin-top: 38px;
+}
+
+.button_form {
+    width: 200px;
+    height: 22px;
+    margin-left: 335px;
+}

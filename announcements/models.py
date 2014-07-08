@@ -16,3 +16,6 @@ class Announcement(models.Model):
     def delete(self, using=None):
         self.is_active = False
         return
+
+    class Meta:
+        ordering = ['-date_created']

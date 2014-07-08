@@ -11,9 +11,15 @@
 	text-align:center;
 	color: #ffffff;
 	border-bottom:1px #15D400 solid;
-	line-height:44px;
-    font-size: 20px;
+	line-height:38px;
+    font-size: 14px;
 }
+
+div .header {
+    font-weight: bold;
+    font-size: 12px;
+}
+
 #notifs .title a{
 	font-size:12px;
 	position:absolute;
@@ -24,8 +30,10 @@
 #notifs .header.important{
 	color: #15D400;
 }
-#notifs p, #announcements .header{
-	padding:15px 15px 0 15px;
+#notifs p{
+	padding:8px 15px 0 15px;
+    font-size: 11px;
+    margin-bottom: 30px;
 }
 #notifs p:last-child{
 	padding:15px;
@@ -33,11 +41,9 @@
 
 #notifcontent{
 	overflow-y:scroll;
-	/*
-	take height previously calculated and subtract 50: {{previous|add:"-50"}}
-	*/
 	height:255px;
 	margin-top:10px;
+    margin-left: 15px;
 }
 
 #info{
@@ -45,6 +51,7 @@
     float: left;
     margin-left: 3%;
     border: 1px #15D400 solid;
+    border-bottom: none;
     position: relative;
 }
 
@@ -54,9 +61,9 @@
 	text-align:center;
 	color: #ffffff;
 	border-bottom:1px #15D400 solid;
-	line-height:44px;
+	line-height:38px;
 	position:absolute;
-    font-size: 21px;
+    font-size: 14px;
 }
 
 #contentinfos{
@@ -65,10 +72,9 @@
 
 #info ul li{
 	min-height:52px;
-	border:1px #15D400 solid;
-	border-top:none;
+	border-bottom:1px #15D400 solid;
 	padding:0 15px;
-	font-size: 20px;
+	font-size: 14px;
 	line-height:50px;
 }
 .stat{
@@ -87,13 +93,10 @@
 	border-right:none !important;
 }
 
-#content{
-	margin:15px 15px 15px 180px;
-}
 #history{
-    width: 85%;
+    width: 785px;
 	margin-top:40px;
-    margin-left: 40px;
+    margin-left: 25px;
 	border:1px #15D400 solid;
     float: left;
 }
@@ -105,8 +108,8 @@
 	text-align:center;
 	color: #ffffff;
 	border-bottom:1px #15D400 solid;
-	line-height:44px;
-    font-size: 20px;
+	line-height:38px;
+    font-size: 14px;
 }
 
 #tabs{
@@ -141,4 +144,8 @@
 }
 #tabs a.selected{
 	opacity:1;
+}
+
+.form_label {
+
 }

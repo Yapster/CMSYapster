@@ -1,8 +1,8 @@
 #stats {
     float: left;
-	width:53%;
+	width:715px;
 	height:57%;
-    margin-left: 8%;
+    margin-left: 40px;
     border: 1px #15D400 solid;
 }
 
@@ -41,4 +41,8 @@
 	text-align:center;
 	border-bottom:1px #000 solid;
 	border-right:none !important;
+}
+
+#tabs {
+    margin-bottom: 6px;
 }

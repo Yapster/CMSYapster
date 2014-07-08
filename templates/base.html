@@ -100,20 +100,20 @@
 {% block  messager%}
     <div id="messager" class="right_block">
         <a id="messager_title" class="right_title" href="javascript:activate_messenger()">Messager</a>
-        <div id="conversations">
+        <div id="conversations" style="display:none">
             {% for chater in chaters %}
                 <div id="" class="line">
                     <p id="link_chat" class="chater">{{ chater.username}}</p>
                 </div>
             {% endfor %}
         </div>
-        <div id="conversation">
+        <div id="conversation" style="display:none">
             <input type="hidden" value="{{ current_conversation.conversation_id }}" name="conversation_id"/>
             <div id="messages">
                 {% include "chat/messages.html" %}
             </div>
         </div>
-        <div id="message_line">
+        <div id="message_line" style="display:none">
             <form id="message_form" method="post">
                 {% csrf_token %}
                 <input id="message" type="text" placeholder="Write your message..."/>

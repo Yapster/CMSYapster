@@ -1,9 +1,14 @@
+from django.contrib.comments.views.comments import post_comment
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from admins.models import Profile, CmsUser
 from admins.decorators import user_has_perm, active_and_login_required
 from admins.signals import *
+from django.db.models import Count
+from django.contrib.auth.models import User
+from chat.models import Conversation, Message
+from files_manager.models import FileManager, FileForm, ProfilePicture
 import logging
 
 logger = logging.getLogger(__name__)
@@ -35,7 +40,35 @@ def users_manage(request):
     """
     List of users. Create and view users
     """
-    users = CmsUser.objects.filter(is_active=True)
+    announcements = Announcement.objects.all()
+    users = User.objects.exclude(username=request.user.username)
+    messages = []
+    if 'chaters[]' in request.POST:
+        # Get list of the users
+        l_chaters = request.POST.getlist('chaters[]')
+        l_users = []
+        for chater in l_chaters:
+            l_users.append(User.objects.get(username=chater))
+        l_users.append(request.user)
+        # Get conversation with list of users
+        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
+        for user in l_users:
+            query_conversation = query_conversation.filter(users__pk=user.pk)
+        if not query_conversation:
+            current_conversation = Conversation.objects.create()
+            for user in l_users:
+                current_conversation.users.add(user)
+        else:
+            current_conversation = query_conversation[0]
+            # If new message add
+        if 'message' in request.POST:
+            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
+        messages = Message.objects.filter(conversation=current_conversation)
+        return render(request, 'chat/messages.html', {"messages": messages})
+    if 'refresh' in request.POST:
+        return render(request, 'chat/messages.html', {"messages": messages})
+
+    users_managed = CmsUser.objects.filter(is_active=True)
     inactive_users = CmsUser.objects.filter(is_active=False)
     groups = GroupPermission.objects.all()
 
@@ -70,8 +103,12 @@ def users_manage(request):
                              occupation=occ, group=group)
             return HttpResponseRedirect('/cmsusers/')
     return render(request, 'admins/users_manage.html',
-                  {'users': users, 'inactive_users': inactive_users,
-                   'groups':groups})
+                  {'users': users_managed, 'inactive_users': inactive_users,
+                   'groups':groups,
+                   "announcements": announcements,
+                   "user": request.user,
+                   "chaters": users,
+                   "messages": messages})
 
 @active_and_login_required
 @user_has_perm
@@ -79,10 +116,41 @@ def cmsuser(request, username):
     """
     Display CMS user info + change permissions/name/username
     """
+    announcements = Announcement.objects.all()
+    users = User.objects.exclude(username=request.user.username)
+    messages = []
+    if 'chaters[]' in request.POST:
+        # Get list of the users
+        l_chaters = request.POST.getlist('chaters[]')
+        l_users = []
+        for chater in l_chaters:
+            l_users.append(User.objects.get(username=chater))
+        l_users.append(request.user)
+        # Get conversation with list of users
+        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
+        for user in l_users:
+            query_conversation = query_conversation.filter(users__pk=user.pk)
+        if not query_conversation:
+            current_conversation = Conversation.objects.create()
+            for user in l_users:
+                current_conversation.users.add(user)
+        else:
+            current_conversation = query_conversation[0]
+            # If new message add
+        if 'message' in request.POST:
+            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
+        messages = Message.objects.filter(conversation=current_conversation)
+        return render(request, 'chat/messages.html', {"messages": messages})
+    if 'refresh' in request.POST:
+        return render(request, 'chat/messages.html', {"messages": messages})
     cmsuser = CmsUser.objects.get(username=username)
     own = cmsuser.username == username
     return render(request, 'admins/cmsuser.html',
-                  {"cmsuser": cmsuser, "own": own})
+                  {"cmsuser": cmsuser, "own": own,
+                   "announcements": announcements,
+                   "user": request.user,
+                   "chaters": users,
+                   "messages": messages})
 
 
 @active_and_login_required
@@ -91,6 +159,33 @@ def edit_cmsuser(request, username):
     """
     Edit Cms User infos
     """
+    announcements = Announcement.objects.all()
+    users = User.objects.exclude(username=request.user.username)
+    messages = []
+    if 'chaters[]' in request.POST:
+        # Get list of the users
+        l_chaters = request.POST.getlist('chaters[]')
+        l_users = []
+        for chater in l_chaters:
+            l_users.append(User.objects.get(username=chater))
+        l_users.append(request.user)
+        # Get conversation with list of users
+        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
+        for user in l_users:
+            query_conversation = query_conversation.filter(users__pk=user.pk)
+        if not query_conversation:
+            current_conversation = Conversation.objects.create()
+            for user in l_users:
+                current_conversation.users.add(user)
+        else:
+            current_conversation = query_conversation[0]
+            # If new message add
+        if 'message' in request.POST:
+            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
+        messages = Message.objects.filter(conversation=current_conversation)
+        return render(request, 'chat/messages.html', {"messages": messages})
+    if 'refresh' in request.POST:
+        return render(request, 'chat/messages.html', {"messages": messages})
 
     cmsuser = CmsUser.objects.get(username=username)
     d_args = {}
@@ -111,7 +206,11 @@ def edit_cmsuser(request, username):
             d_args['password'] = request.POST['password']
         cmsuser.update(**d_args)
         return HttpResponseRedirect('')
-    return render(request, 'admins/edit_cmsuser.html', {"cmsuser": cmsuser})
+    return render(request, 'admins/edit_cmsuser.html', {"cmsuser": cmsuser,
+                                                        "announcements": announcements,
+                                                        "user": request.user,
+                                                        "chaters": users,
+                                                        "messages": messages})
 
 
 @active_and_login_required
@@ -119,6 +218,93 @@ def profile(request, username):
     """
     Display Yapster user profile. With info/stats
     """
-    prof = Profile.objects.get(user__username=username)
+    announcements = Announcement.objects.all()
+    users = User.objects.exclude(username=request.user.username)
+    messages = []
+    if 'chaters[]' in request.POST:
+        # Get list of the users
+        l_chaters = request.POST.getlist('chaters[]')
+        l_users = []
+        for chater in l_chaters:
+            l_users.append(User.objects.get(username=chater))
+        l_users.append(request.user)
+        # Get conversation with list of users
+        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
+        for user in l_users:
+            query_conversation = query_conversation.filter(users__pk=user.pk)
+        if not query_conversation:
+            current_conversation = Conversation.objects.create()
+            for user in l_users:
+                current_conversation.users.add(user)
+        else:
+            current_conversation = query_conversation[0]
+            # If new message add
+        if 'message' in request.POST:
+            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
+        messages = Message.objects.filter(conversation=current_conversation)
+        return render(request, 'chat/messages.html', {"messages": messages})
+    if 'refresh' in request.POST:
+        return render(request, 'chat/messages.html', {"messages": messages})
 
-    return render(request, 'admins/profile.html', {'profile': prof})
+    prof = Profile.objects.get(user__username=username)
+    current_url = FileManager.get_profile_picture(request.user)
+
+    return render(request, 'admins/profile.html', {'profile': prof,
+                                                   'url': current_url,
+                                                   "announcements": announcements,
+                                                   "user": request.user,
+                                                   "chaters": users,
+                                                   "messages": messages})
+
+@active_and_login_required
+@user_has_perm
+def edit_profile_pic(request, username):
+    # Get all pictures from user
+    announcements = Announcement.objects.all()
+    users = User.objects.exclude(username=request.user.username)
+    messages = []
+    if 'chaters[]' in request.POST:
+        # Get list of the users
+        l_chaters = request.POST.getlist('chaters[]')
+        l_users = []
+        for chater in l_chaters:
+            l_users.append(User.objects.get(username=chater))
+        l_users.append(request.user)
+        # Get conversation with list of users
+        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
+        for user in l_users:
+            query_conversation = query_conversation.filter(users__pk=user.pk)
+        if not query_conversation:
+            current_conversation = Conversation.objects.create()
+            for user in l_users:
+                current_conversation.users.add(user)
+        else:
+            current_conversation = query_conversation[0]
+            # If new message add
+        if 'message' in request.POST:
+            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
+        messages = Message.objects.filter(conversation=current_conversation)
+        return render(request, 'chat/messages.html', {"messages": messages})
+    if 'refresh' in request.POST:
+        return render(request, 'chat/messages.html', {"messages": messages})
+
+    pictures = ProfilePicture.objects.filter(user_id=request.user)
+    urls = FileManager.get_all_profile_pictures(pictures)
+    current_url = FileManager.get_profile_picture(request.user)
+    if 'button_new_pic' in request.POST:
+        # Pix getting upload
+        # TODO: Check if valid image
+        form = FileForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES['new_pic']
+            path_bucket = "yapstercmsusers/uid/" + str(CmsUser.objects.get(username=username).user_id) + "/profile_pictures/" + file.name
+            FileManager.store(path_bucket, file.read(), file.name, "profile", request.user)
+    return render(request,
+                  'admins/edit_profile_pic.html',
+                  {"urls": urls,
+                   "current_url": current_url,
+                   "pictures": pictures,
+                   "announcements": announcements,
+                   "user": request.user,
+                   "chaters": users,
+                   "messages": messages})

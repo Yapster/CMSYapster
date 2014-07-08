@@ -1,8 +1,11 @@
+#tabs {
+    margin-bottom: 6px;
+}
 
 #stats{
 	width:717px;
     float: left;
-    margin-left: 8%;
+    margin-left: 38px;
     border: 1px #15D400 solid;
 }
 

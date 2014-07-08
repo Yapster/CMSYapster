@@ -11,6 +11,7 @@ def mod_cmsuser(sender, instance, created, **kwargs):
     """
     if created:
         # TODO: New Profile => Notif all users?
+        # TODO: S3 => Create new folder for pix
         return
     else:
         # TODO: Modification profile => Notif Admins?

@@ -8,10 +8,10 @@ class APIRouter(object):
     """
     def db_for_read(self, model, **hints):
         """
-        API models to api_db
+        API models to yte_1_cl_test_db_1
         """
         if model._meta.app_label == 'api':
-            return 'api_db'
+            return 'yte_1_cl_test_db_1'
         return 'default'
 
     def db_for_write(self, model, **hints):
@@ -19,7 +19,7 @@ class APIRouter(object):
         API models to api_db
         """
         if model._meta.app_label == 'api':
-            return 'api_db'
+            return 'yte_1_cl_test_db_1'
         return 'default'
 
     def allow_relation(self, obj1, obj2, **hints):
@@ -36,6 +36,8 @@ class APIRouter(object):
         """
         Syncdb used only for Default DB
         """
-        if db == 'api_db' or model._meta.app_label == "api":
+        if db == 'yte_1_cl_test_db_1':
+            return model._meta.app_label == 'api'
+        elif model._meta.app_label == 'api':
             return False
-        return True
+        return None

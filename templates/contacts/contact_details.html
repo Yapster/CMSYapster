@@ -14,16 +14,16 @@
         <h2 class="title_contact">{{ contact.firstname }} {{ contact.lastname }}</h2>
         <div id="contactinfos">
             <ul>
-                <li class="line"> Description : <span class="fefe">{{ contact.description }} {{ cmsuser.last_name }}</span></li>
-                <li class="line"> Phone : <span class="">{{ contact.phone }}</span></li>
-                <li class="line"> Email : <span class="">{{ contact.email }}</span></li>
-                <li class="line"> Birthday : <span class="">{{ contact.birthday }}</span></li>
-                <li class="line"> City : <span class="">{{ contact.city }}</span></li>
-                <li class="line"> State : <span class="">{{ contact.state }}</span></li>
-                <li class="line"> Zipcode : <span class="">{{ contact.zipcode }}</span></li>
-                <li class="line"> Country : <span class="">{{ contact.country }}</span></li>
-                <li class="line"> Yapster Profile: <span class="">{{ contact.profile }}</span></li>
-                <li class="line"> Websites: <span class="">{{ contact.websites.all }}</span></li>
+                <li class="line_contact"> Description : <span class="fefe">{{ contact.description }} {{ cmsuser.last_name }}</span></li>
+                <li class="line_contact"> Phone : <span class="">{{ contact.phone }}</span></li>
+                <li class="line_contact"> Email : <span class="">{{ contact.email }}</span></li>
+                <li class="line_contact"> Birthday : <span class="">{{ contact.birthday }}</span></li>
+                <li class="line_contact"> City : <span class="">{{ contact.city }}</span></li>
+                <li class="line_contact"> State : <span class="">{{ contact.state }}</span></li>
+                <li class="line_contact"> Zipcode : <span class="">{{ contact.zipcode }}</span></li>
+                <li class="line_contact"> Country : <span class="">{{ contact.country }}</span></li>
+                <li class="line_contact"> Yapster Profile: <span class="">{{ contact.profile }}</span></li>
+                <li class="line_contact"> Websites: <span class="">{{ contact.websites.all }}</span></li>
             </ul>
         </div>
     </div>
@@ -33,7 +33,7 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="note">
-                    <img id="img_note" src="{% static "images/samples/user.png" %}">
+                    <img id="img_note" src="{{ url_profile_picture }}">
                     <textarea id="input_note" name="newnote" placeholder="Write a note..."></textarea>
                 </div>
                 <div>
@@ -42,7 +42,7 @@
             </form>
             {% for note in contact.notes.all %}
                 <div class="note">
-                    <img id="img_note" src="{% static "images/samples/user.png" %}">
+                    <img id="img_note" src="{{ url_profile_picture }}">
                     <span class="user_note">{{ user.username }}</span>
                     <span class="date_note">{{ note.date_last }}</span>
                     <span class="desc_note">{{ note.description }} </span>

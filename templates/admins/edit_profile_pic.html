@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block localfiles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/admins/edit_profile_pic.css" %}" />
+{% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="content">
+        <div id="profile_picture">
+            <div id="title_profile_picture"> Current Profile Image</div>
+            <img id="current_profile_picture" src="{{ current_url }}"/>
+        </div>
+        <div id="other_profile_pictures">
+            {% for url in urls %}
+                <div>
+                        <img class="picture_profile" src="{{ url }}"/>
+                </div>
+            {% endfor %}
+        </div>
+        <div id="submit_bar">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input id="input_pix" type="file" name="new_pic" class="button_form"/>
+                <input type="submit" name="button_new_pic" value="Upload the Pic ;)" class="button_form"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

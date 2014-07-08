@@ -1,67 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+{% block localfiles %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/edit_cms.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/clearfix.css" %}" />
-    <script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}" ></script>
-    <script type="text/javascript" src="{% static "js/test.js" %}" ></script>
-</head>
-<body><div id="header" class="green">
-    <span class="title">yapster</span>
-    <a href="/login/">log out</a>
-    <a href="#">Settings</a>
-    <a href="/permissionsgroups/">Groups Management</a>
-    <a href="/cmsusers/">Cms Users</a>
-    <a href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
-    <a href="/search/">Search</a>
-    <a href="/home/" class="selected">Home</a>
+{% endblock %}
+{% block headbar %}
+<div id="headbar_empty">
+
 </div>
-<div id="sidebar" class="clearfix">
-    <ul>
-        <div class="title">Home</div>
-        <a href="#" ><li class="selected">main</li></a></a>
-        <a href="/statistics/"><li>statistics</li></a>
-        <a href="#"><li>maps</li></a>
-    </ul>
-    <ul>
-        <div class="title">Statistics</div>
-        <a href="#"><li>Yaps</li></a></a>
-        <a href="#"><li>Users</li></a>
-        <a href="#"><li>Queries</li></a>
-        <a href="#"><li>Databases</li></a>
-        <a href="#"><li>Trends</li></a></a>
-        <a href="#"><li>Sharing</li></a>
-        <a href="#"><li>Server</li></a>
-    </ul>
-    <ul>
-        <div class="title">Spam</div>
-        <a href="#"><li>All</li></a>
-        <a href="#"><li>Recent</li></a>
-        <a href="#"><li>Important</li></a>
-        <a href="#"><li>Search</li></a>
-    </ul>
-    <ul>
-        <div class="title">Reports</div>
-        <a href="#"><li>All</li></a>
-        <a href="#"><li>Recent</li></a>
-        <a href="#"><li>Important</li></a>
-        <a href="#"><li>Search</li></a>
-    </ul>
-</div>
-<div id="tabs">
-    <a href="#" class="selected">Live</a>
-    <a href="#">Min</a>
-    <a href="#" >Hour</a>
-    <a href="#">Day</a>
-    <a href="#">Week</a>
-    <a href="#">Month</a>
-    <a href="#">Year</a>
-</div>
+{% endblock %}
+{% block content %}
 <div id="content" class="clearfix">
     <div id="info">
-        <h2 class="title">CMS User Information</h2>
+        <h2 class="title_content">CMS User Information</h2>
         <ul>
             <li>Name: <span class="stat">{{ cmsuser.first_name }} {{ cmsuser.last_name }}</span></li>
             <li>User Name: <span class="stat">{{ cmsuser.username }}</span></li>
@@ -71,7 +21,7 @@
         </ul>
     </div>
     <div id="new_infos">
-        <h2 class="title">New Infos</h2>
+        <h2 class="title_content">New Infos</h2>
         <form method="post">
             {% csrf_token %}
             <ul>
@@ -83,9 +33,8 @@
                 <li>New Password: <input name="password" type="password"/></li>
                 <li>Confirm new Password: <input name="password2" type="password"/></li>
             </ul>
-            <button type="submit" name="btn_newinfos">Submit</button>
+            <button id="submit_button" type="submit" name="btn_newinfos" class="button_form">Submit</button>
         </form>
     </div>
 </div>
-</body>
-</html>
+{% endblock %}

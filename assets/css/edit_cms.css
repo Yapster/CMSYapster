@@ -1,25 +1,24 @@
 #info{
-    width:460px;
+    width:40%;
     float: left;
     margin-left: 3%;
     border: 1px #15D400 solid;
 }
-.title{
+.title_content{
     background-color: #15D400;
 	height:9%;
 	border:1px #15D400 solid;
 	text-align:center;
 	color: #ffffff;
-	line-height:44px;
-    font-size: 20px;
+	line-height:38px;
+    font-size: 14px;
 }
 #info ul li{
 	min-height:52px;
-	border:1px #15D400 solid;
-	border-top:none;
+	border-top:1px #15D400 solid;
 	padding:0 15px;
-	font-size: 20px;
-	line-height:50px;
+	font-size: 12px;
+	line-height:52px;
 }
 .stat{
 	color:#15D400 !important;
@@ -38,13 +37,17 @@
 
 #new_infos ul li{
 	min-height:52px;
-	border:1px #15D400 solid;
-	border-top:none;
+	border-bottom:1px #15D400 solid;
 	padding:0 15px;
-	font-size: 20px;
-	line-height:50px;
+	font-size: 12px;
+	line-height:52px;
 }
 
 button {
     margin-left: 200px;
+}
+
+#submit_button {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

@@ -13,13 +13,19 @@
         <div id="infos">
             <h2 class="title">Profile</h2>
             <div id="profile">
-                <div id="image"></div>
+                <a href="photos">
+                    <div id="image">
+                        <div>
+                            <img id="picture_profile" src="{{ url }}"/>
+                        </div>
+                    </div>
+                </a>
             </div>
             <div id="stats">
                 <ul>
                     <li>
                         <span class="label">First Name:</span>
-                       <span class="stat">{{ profile.user.first_name }}</span>
+                        <span class="stat">{{ profile.user.first_name }}</span>
                     </li>
                     <li>
                         <span class="label">Last Name:</span>
@@ -27,7 +33,7 @@
                     </li>
                     <li>
                         <span class="label">Handle: </span>
-                       <span class="stat">@{{ profile.handle }}</span>
+                        <span class="stat">@{{ profile.handle }}</span>
                     </li>
                     <li>
                         <span class="label">Location: </span>

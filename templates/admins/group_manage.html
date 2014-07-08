@@ -1,69 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends "base.html" %}
+{% block localfiles %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/group_manage.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/clearfix.css" %}" />
-    <script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}" ></script>
-    <script type="text/javascript" src="{% static "js/test.js" %}" ></script>
-</head>
-<body>
-<div id="header" class="green">
-    <span class="title">yapster</span>
-    <a href="/login/">log out</a>
-    <a href="#">Settings</a>
-        <a href="/contacts/">Contacts</a>
-    <a href="/permissionsgroups/">Groups Management</a>
-    <a href="/cmsusers/">Cms Users</a>
-    <a href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
-    <a href="/search/">Search</a>
-    <a href="/home/" class="selected">Home</a>
+{% endblock %}
+{% block headbar %}
+<div id="headbar_empty">
+
 </div>
-<div id="sidebar" class="clearfix">
-    <ul>
-        <div class="title">Home</div>
-        <a href="#" ><li class="selected">main</li></a></a>
-        <a href="/statistics/"><li>statistics</li></a>
-        <a href="#"><li>maps</li></a>
-    </ul>
-    <ul>
-        <div class="title">Statistics</div>
-        <a href="#"><li>Yaps</li></a></a>
-        <a href="#"><li>Users</li></a>
-        <a href="#"><li>Queries</li></a>
-        <a href="#"><li>Databases</li></a>
-        <a href="#"><li>Trends</li></a></a>
-        <a href="#"><li>Sharing</li></a>
-        <a href="#"><li>Server</li></a>
-    </ul>
-    <ul>
-        <div class="title">Spam</div>
-        <a href="#"><li>All</li></a>
-        <a href="#"><li>Recent</li></a>
-        <a href="#"><li>Important</li></a>
-        <a href="#"><li>Search</li></a>
-    </ul>
-    <ul>
-        <div class="title">Reports</div>
-        <a href="#"><li>All</li></a>
-        <a href="#"><li>Recent</li></a>
-        <a href="#"><li>Important</li></a>
-        <a href="#"><li>Search</li></a>
-    </ul>
-</div>
-<div id="tabs">
-    <a href="#" class="selected">Live</a>
-    <a href="#">Min</a>
-    <a href="#" >Hour</a>
-    <a href="#">Day</a>
-    <a href="#">Week</a>
-    <a href="#">Month</a>
-    <a href="#">Year</a>
-</div>
+{% endblock %}
+{% block content %}
 <div id="content" class="clearfix">
+<div id="newgroup">
+        <h2 class="title_content">New Group Permission</h2>
+        <form method='post'>
+            {% csrf_token %}
+            <div class="infos">
+                <div class="line">
+                    <label for="groupname">Group Name</label>
+                    <input type="text" id="groupname" name="groupname"/>
+                </div>
+                <div id="pages">
+                        {% for page in pages %}
+                        <li>
+                            <input type="checkbox" name="page_selected" value="{{ page.page_id }}"/> {{ page.name }}
+                        </li>
+                        {% endfor %}
+                </div>
+                <div class="submitdiv">
+                    <button type="submit" name="btn_new" class="button_form">Submit</button>
+                    <button type="reset" name="btn_reset" class="button_form">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
     <div id="groups">
-        <h2 class="title">Permissions Groups</h2>
+        <h2 class="title_content">Permissions Groups</h2>
         <div class="groupinfos">
             <div id="table">
                 <table width="100%" cellpadding="2px" cellspacing="0px">
@@ -98,7 +69,7 @@
                                     <form method="post">
                                         {% csrf_token %}
                                         <input type="hidden" name="group" value="{{ group.group_name }}"/>
-                                        <td><button type="submit" name="btn_delgroup">Delete</button></td>
+                                        <td><button type="submit" name="btn_delgroup" class="button_form">Delete</button></td>
                                     </form>
                                 </tr>
                             </form>
@@ -107,7 +78,7 @@
                 </table>
             </div>
         </div>
-        <h2 class="title">Inactive Permissions Groups</h2>
+        <h2 class="title_content">Inactive Permissions Groups</h2>
         <div id="table">
             <table width="100%" cellpadding="2px" cellspacing="0px">
                 <tr>
@@ -121,7 +92,7 @@
                             <tr>
                                 <td>{{ group.group_name }} </td>
                                 <input type="hidden" name="group" value="{{ group.group_name }}"/>
-                                <td><button type="submit" name="btn_active">Activate</button></td>
+                                <td><button type="submit" name="btn_active" class="button_form">Activate</button></td>
                             </tr>
                         </form>
                     {% endfor %}
@@ -129,29 +100,6 @@
             </table>
         </div>
     </div>
-    <div id="newgroup">
-        <h2 class="title">New Group Permission</h2>
-        <form method='post'>
-            {% csrf_token %}
-            <div class="infos">
-                <div class="line">
-                    <label for="groupname">Group Name</label>
-                    <input type="text" id="groupname" name="groupname"/>
-                </div>
-                <div id="pages">
-                        {% for page in pages %}
-                        <li>
-                            <input type="checkbox" name="page_selected" value="{{ page.page_id }}"/> {{ page.name }}
-                        </li>
-                        {% endfor %}
-                </div>
-                <div class="submitdiv">
-                    <button type="submit" name="btn_new" >Submit</button>
-                    <button type="reset" name="btn_reset">Reset</button>
-                </div>
-            </div>
-        </form>
-    </div>
+
 </div>
-</body>
-</html>
+{% endblock %}

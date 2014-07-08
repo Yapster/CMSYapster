@@ -26,6 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+BUCKET_NAME = 'yapstercms'
 
 # Application definition
 
@@ -37,12 +38,16 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'boto',
+    'storages',
     'admins',
     'announcements',
     'api',
     'chat',
     'contacts',
+    'files_manager',
     'groups',
+    'notifications',
     'reports',
     'stats'
 )
@@ -73,13 +78,13 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
     },
-    'api_db': {
-        'NAME': os.path.join(BASE_DIR, 'api_db.sqlite3'),
-        'ENGINE': 'django.db.backends.sqlite3',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+    'yte_1_cl_test_db_1': {
+        'NAME': 'yte_1_cl_test_db_1',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': 'chris',
+        'PASSWORD': 'ABCD1234',
+        'HOST': 'yte-1-cl-test-db-1.cagmlb1zwzjw.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 

@@ -3,21 +3,117 @@
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/users_manage.css" %}" />
 {% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+
+    </div>
+{% endblock %}
 {% block content %}
-<div id="content" class="clearfix">
-    <div id="cmsusers">
-        <h2 class="title">CMS Users</h2>
-        <div class="cmsuser">
-            <div id="table">
+    <div id="content" class="clearfix">
+        <div id="newcmsuser">
+            <div id="title_new_user">
+                <a class="toggle_title" href="javascript:display_inactive('infos')">New CMS User</a>
+            </div>
+            <form method='post'>
+                {% csrf_token %}
+                <div id="infos" class="infos">
+                    <div class="line_form">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username"/>
+                    </div>
+                    <div class="line_form">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" name="firstname"/>
+                    </div>
+                    <div class="line_form">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" name="lastname"/>
+                    </div>
+                    <div class="line_form">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email"/>
+                    </div>
+                    <div class="line_form">
+                        <label for="email2">Confirm Email</label>
+                        <input type="text" id="email2" name="email2"/>
+                    </div>
+                    <div class="line_form">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password"/>
+                    </div>
+                    <div class="line_form">
+                        <label for="password2">Confirm Password</label>
+                        <input type="password" id="password2" name="password2"/>
+                    </div>
+                    <div class="line_form">
+                        <label for="department">Department</label>
+                        <input type="text" id="department" name="department"/>
+                    </div>
+                    <div class="line_form">
+                        <label for="occupation">Occupation</label>
+                        <input type="text" id="occupation" name="occupation"/>
+                    </div>
+                    <div class="line_form">
+                        <label for="group">Group</label>
+                        <select id="group" name="group">
+                            {% if groups %}
+                                {% for group in groups %}
+                                    <option value="{{ group.group_id }}">{{ group.group_name }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="submitdiv">
+                        <button type="submit" name="btn_new" class="button_form" >Submit</button>
+                        <button type="reset" name="btn_reset" class="button_form">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="cmsusers">
+            <div id="title_new_user">
+                <a class="toggle_title" href="javascript:display_inactive('cmsuser_content')">CMS Users</a>
+            </div>
+            <div id="cmsuser_content" class="cmsuser">
+                <div id="table">
+                    <table width="100%" cellpadding="2px" cellspacing="0px">
+                        <tr>
+                            <th>Username</th>
+                            <th>Permission Group</th>
+                            <th>Occupation</th>
+                            <th>Delete</th>
+                        </tr>
+                        {% if users %}
+                            {% for user in users %}
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <tr>
+                                        <td>{{ user.username }} </td>
+                                        <td>{{ user.group.group_name }}</td>
+                                        <td>{{ user.occupation }}</td>
+                                        <input type="hidden" name="username" value="{{ user.username }}">
+                                        <td><button type="submit" name="btn_delete" class="button_form">Delete</button></td>
+                                    </tr>
+                                </form>
+                            {% endfor %}
+
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+           <div id="title_new_user">
+                <a class="toggle_title" href="javascript:display_inactive('table_inactive')">Inactive CMS Users</a>
+            </div>
+            <div id="table_inactive">
                 <table width="100%" cellpadding="2px" cellspacing="0px">
                     <tr>
                         <th>Username</th>
                         <th>Permission Group</th>
                         <th>Occupation</th>
-                        <th>Delete</th>
+                        <th>Activate</th>
                     </tr>
-                    {% if users %}
-                        {% for user in users %}
+                    {% if inactive_users %}
+                        {% for user in inactive_users %}
                             <form method="post">
                                 {% csrf_token %}
                                 <tr>
@@ -25,98 +121,14 @@
                                     <td>{{ user.group.group_name }}</td>
                                     <td>{{ user.occupation }}</td>
                                     <input type="hidden" name="username" value="{{ user.username }}">
-                                    <td><button type="submit" name="btn_delete">Delete</button></td>
+                                    <td><button type="submit" name="btn_active" class="button_form">Activate</button></td>
                                 </tr>
                             </form>
                         {% endfor %}
-
                     {% endif %}
                 </table>
             </div>
         </div>
-        <h2 class="title">Inactive CMS Users</h2>
-        <div id="table">
-            <table width="100%" cellpadding="2px" cellspacing="0px">
-                <tr>
-                    <th>Username</th>
-                    <th>Permission Group</th>
-                    <th>Occupation</th>
-                    <th>Activate</th>
-                </tr>
-                {% if inactive_users %}
-                    {% for user in inactive_users %}
-                        <form method="post">
-                            {% csrf_token %}
-                            <tr>
-                                <td>{{ user.username }} </td>
-                                <td>{{ user.group.group_name }}</td>
-                                <td>{{ user.occupation }}</td>
-                                <input type="hidden" name="username" value="{{ user.username }}">
-                                <td><button type="submit" name="btn_active">Activate</button></td>
-                            </tr>
-                        </form>
-                    {% endfor %}
-                {% endif %}
-            </table>
-        </div>
+
     </div>
-    <div id="newcmsuser">
-        <h2 class="title">New CMS User</h2>
-        <form method='post'>
-            {% csrf_token %}
-            <div class="infos">
-                <div class="line">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username"/>
-                </div>
-                <div class="line">
-                    <label for="firstname">First Name</label>
-                    <input type="text" id="firstname" name="firstname"/>
-                </div>
-                <div class="line">
-                    <label for="lastname">Last Name</label>
-                    <input type="text" id="lastname" name="lastname"/>
-                </div>
-                <div class="line">
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email"/>
-                </div>
-                <div class="line">
-                    <label for="email2">Confirm Email</label>
-                    <input type="text" id="email2" name="email2"/>
-                </div>
-                <div class="line">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password"/>
-                </div>
-                <div class="line">
-                    <label for="password2">Confirm Password</label>
-                    <input type="password" id="password2" name="password2"/>
-                </div>
-                <div class="line">
-                    <label for="department">Department</label>
-                    <input type="text" id="department" name="department"/>
-                </div>
-                <div class="line">
-                    <label for="occupation">Occupation</label>
-                    <input type="text" id="occupation" name="occupation"/>
-                </div>
-                <div class="line">
-                    <label for="group">Group</label>
-                    <select id="group" name="group">
-                        {% if groups %}
-                            {% for group in groups %}
-                                <option value="{{ group.group_id }}">{{ group.group_name }}</option>
-                            {% endfor %}
-                        {% endif %}
-                    </select>
-                </div>
-                <div class="submitdiv">
-                    <button type="submit" name="btn_new" >Submit</button>
-                    <button type="reset" name="btn_reset">Reset</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 {% endblock %}

@@ -10,8 +10,7 @@ function activate_messenger()
 }
 
 function display_inactive(thingId) {
-    alert('#' + thingId);
-    $('#' + thingId).slideDown("slow");
+    $('#' + thingId).slideToggle("slow");
 }
 
 $(document).ready(function() {

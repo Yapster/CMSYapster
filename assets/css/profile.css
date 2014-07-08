@@ -115,7 +115,6 @@
     position:relative;
     width:150px;
     height:150px;
-    background-image: url("http://31.media.tumblr.com/0a049264fba0072a818f733a6c533578/tumblr_mqvlz4t5FK1qcnibxo1_1280.png");
     border:1px black solid;
     background-size:cover;
 }
@@ -130,4 +129,9 @@
 #headbar {
     height:38px;
     background-color: #000000;
+}
+
+#picture_profile {
+    width: 150px;
+    height: 150px;
 }

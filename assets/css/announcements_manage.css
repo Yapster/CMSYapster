@@ -16,6 +16,7 @@
     height:57%;
     float: left;
     margin-left: 3%;
+    border: 1px #15D400 solid;
 }
 
 #announcements_list .title{
@@ -38,7 +39,7 @@
     line-height: 40px;
 }
 
-.line{
+.line_form{
     width: 535px;
     line-height: 20px;
     font-size: 14px;
@@ -46,13 +47,13 @@
     float: left;
 }
 
-.line label {
+.line_form label {
     width: 120px;
     text-align: left;
     display: inline-block;
 }
 
-.line input {
+.line_form input {
     width: 270px;
     position: relative;
 }

@@ -163,7 +163,6 @@ table tr td:last-child,table tr th:last-child{
 #tabs{
     height:38px;
     width:100%;
-    padding-left: 210px;
     background-color: #000000;
 }
 #tabs a{
@@ -197,9 +196,7 @@ table tr td:last-child,table tr th:last-child{
     width: 870px;
     float: left;
 }
-#table{
-    border:1px #15D400 solid;
-}
+
 
 #announcements{
 	float:right;
@@ -231,6 +228,7 @@ table tr td:last-child,table tr th:last-child{
     position: relative;
     margin-left: 4%;
     margin-bottom: 1px;
+    margin-top: 0px;
 }
 
 .right_title{
@@ -339,5 +337,5 @@ table tr td:last-child,table tr th:last-child{
 .title {
     background-color: #15D400;
     color: #ffffff;
-
 }
+
