@@ -41,7 +41,7 @@ class CmsUser (models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     email = models.EmailField(max_length=64)
-    group = models.ForeignKey(to=GroupPermission, blank=True, related_name='members')
+    group = models.ManyToManyField(to=GroupPermission, blank=True, related_name='members')
     occupation = models.CharField(max_length=64, blank=True)
     department = models.CharField(max_length=64, blank=True)
     is_active = models.BooleanField(default=True)

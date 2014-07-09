@@ -14,13 +14,13 @@
     <h2 id="title">Authentification Yapster CMS</h2>
     <form name="LoginForm" action="/login/" method="post">
         {% csrf_token %}
-        <div class="line">
+        <div class="line_form">
             <div class="label">Username</div>
             <div>
                 <input type="text" class="inputlogin" id="username" name="username" placeholder="Username">
             </div>
         </div>
-        <div class="line">
+        <div class="line_form">
             <div class="label">Password</div>
             <div>
                 <input type="password" class="inputlogin" id="password" name="password"  placeholder="Password">

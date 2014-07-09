@@ -14,19 +14,21 @@
 	text-align:center;
 	color: #ffffff;
 	border-bottom:1px #15D400 solid;
-	line-height:44px;
-    font-size: 20px;
+	line-height:38px;
+    font-size: 14px;
 }
 
-.line {
+.line_form {
     line-height: 22px;
-	font-size: 18px;
+	font-size: 12px;
     margin-top: 15px;
     padding-left: 20px;
 }
 
 .inputlogin {
     width: 90%;
+    height: 22px;
+    border: 1px #000000 solid;
 }
 
 #submitline {

@@ -3,6 +3,7 @@
 	height:57%;
     float: left;
     margin-left: 3%;
+    border: 1px #15D400 solid;
 }
 
 #groups .title_content{
@@ -79,4 +80,8 @@ li {
 
 #title_inactives, #title_inactives_contacts {
     width: 870px;
+}
+
+td a:hover, li a:hover {
+    color:#15D400;
 }

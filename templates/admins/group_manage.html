@@ -4,73 +4,91 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/group_manage.css" %}" />
 {% endblock %}
 {% block headbar %}
-<div id="headbar_empty">
+    <div id="headbar_empty">
 
-</div>
+    </div>
 {% endblock %}
 {% block content %}
-<div id="content" class="clearfix">
-<div id="newgroup">
-        <h2 class="title_content">New Group Permission</h2>
-        <form method='post'>
-            {% csrf_token %}
-            <div class="infos">
-                <div class="line">
-                    <label for="groupname">Group Name</label>
-                    <input type="text" id="groupname" name="groupname"/>
-                </div>
-                <div id="pages">
+    <div id="content" class="clearfix">
+        <div id="newgroup">
+            <h2 class="title_content">New Group Permission</h2>
+            <form method='post'>
+                {% csrf_token %}
+                <div class="infos">
+                    <div class="line">
+                        <label for="groupname">Group Name</label>
+                        <input type="text" id="groupname" name="groupname"/>
+                    </div>
+                    <div id="pages">
                         {% for page in pages %}
-                        <li>
-                            <input type="checkbox" name="page_selected" value="{{ page.page_id }}"/> {{ page.name }}
-                        </li>
+                            <li>
+                                <input type="checkbox" name="page_selected" value="{{ page.page_id }}"/> {{ page.name }}
+                            </li>
                         {% endfor %}
+                    </div>
+                    <div class="submitdiv">
+                        <button type="submit" name="btn_new" class="button_form">Submit</button>
+                        <button type="reset" name="btn_reset" class="button_form">Reset</button>
+                    </div>
                 </div>
-                <div class="submitdiv">
-                    <button type="submit" name="btn_new" class="button_form">Submit</button>
-                    <button type="reset" name="btn_reset" class="button_form">Reset</button>
+            </form>
+        </div>
+        <div id="groups">
+            <h2 class="title_content">Permissions Groups</h2>
+            <div class="groupinfos">
+                <div id="table">
+                    <table width="100%" cellpadding="2px" cellspacing="0px">
+                        <tr>
+                            <th>Group name</th>
+                            <th>Members</th>
+                            <th>Pages</th>
+                            <th>Delete</th>
+                        </tr>
+                        {% if groups %}
+                            {% for group in groups%}
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <tr>
+                                        <td><a href="{{ group.group_name }}"/>{{ group.group_name }} </td>
+                                        <td>
+                                            {% for member in group.members.all %}
+                                                <li>
+                                                    <a href="/cmsusers/{{ member.username }}">{{ member.username }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for page in group.pages.all %}
+                                                <li>{{ page.name }}</li>
+                                            {% endfor %}
+                                        </td>
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="group" value="{{ group.group_name }}"/>
+                                            <td><button type="submit" name="btn_delgroup" class="button_form">Delete</button></td>
+                                        </form>
+                                    </tr>
+                                </form>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
                 </div>
             </div>
-        </form>
-    </div>
-    <div id="groups">
-        <h2 class="title_content">Permissions Groups</h2>
-        <div class="groupinfos">
+            <h2 class="title_content">Inactive Permissions Groups</h2>
             <div id="table">
                 <table width="100%" cellpadding="2px" cellspacing="0px">
                     <tr>
                         <th>Group name</th>
-                        <th>Members</th>
-                        <th>Pages</th>
-                        <th>Delete</th>
+                        <th>Activate</th>
                     </tr>
-                    {% if groups %}
-                        {% for group in groups%}
+                    {% if inactive_groups %}
+                        {% for group in inactive_groups %}
                             <form method="post">
                                 {% csrf_token %}
                                 <tr>
                                     <td>{{ group.group_name }} </td>
-                                    <td>
-                                        {% for member in group.members.all %}
-                                            <li>{{ member.username }}
-{#                                            <form method="post">#}
-{#                                                {% csrf_token %}#}
-{#                                                <input type="hidden" name="user" value="{{ member.username }}"/>#}
-{#                                                <button type="submit" name="btn_deluser">Remove</button>#}
-{#                                            </form>#}
-                                            </li>
-                                        {% endfor %}
-                                    </td>
-                                    <td>
-                                        {% for page in group.pages.all %}
-                                            <li>{{ page.name }}</li>
-                                        {% endfor %}
-                                    </td>
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="group" value="{{ group.group_name }}"/>
-                                        <td><button type="submit" name="btn_delgroup" class="button_form">Delete</button></td>
-                                    </form>
+                                    <input type="hidden" name="group" value="{{ group.group_name }}"/>
+                                    <td><button type="submit" name="btn_active" class="button_form">Activate</button></td>
                                 </tr>
                             </form>
                         {% endfor %}
@@ -78,28 +96,6 @@
                 </table>
             </div>
         </div>
-        <h2 class="title_content">Inactive Permissions Groups</h2>
-        <div id="table">
-            <table width="100%" cellpadding="2px" cellspacing="0px">
-                <tr>
-                    <th>Group name</th>
-                    <th>Activate</th>
-                </tr>
-                {% if inactive_groups %}
-                    {% for group in inactive_groups %}
-                        <form method="post">
-                            {% csrf_token %}
-                            <tr>
-                                <td>{{ group.group_name }} </td>
-                                <input type="hidden" name="group" value="{{ group.group_name }}"/>
-                                <td><button type="submit" name="btn_active" class="button_form">Activate</button></td>
-                            </tr>
-                        </form>
-                    {% endfor %}
-                {% endif %}
-            </table>
-        </div>
-    </div>
 
-</div>
+    </div>
 {% endblock %}

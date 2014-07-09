@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import user_passes_test, login_required
 from django.http import HttpRequest, HttpResponseRedirect
 from functools import wraps
 from admins.models import CmsUser
-
+from groups.models import GroupPermission
 
 def permission(permission_tester, login_url="/login/"):
     @wraps(permission_tester)
@@ -26,9 +26,12 @@ def user_has_perm(request, username=None):
         return True
     path = request.path
     cmsuser = CmsUser.objects.get(pk=request.user)
-    if cmsuser.group.group_name == "Admin":
+    l_users = GroupPermission.objects.get(group_name="Admin").members.all()
+    if cmsuser in l_users:
         return True
-    perms = cmsuser.group.pages.all()
+    perms = []
+    for group in cmsuser.group.all():
+        perms += group.pages.all()
     for page in perms:
         if page.url == path:
             return True

@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'api',
     'chat',
     'contacts',
+    'db_recover',
     'files_manager',
     'groups',
     'notifications',

@@ -2,7 +2,7 @@ from django.contrib.admindocs.views import model_detail
 from django.contrib.auth.models import User
 from django.db import models
 from admins.models import Profile
-from groups.models import GroupPermission
+from groups.models import GroupPermission, Page
 
 
 class List(models.Model):
@@ -15,6 +15,12 @@ class List(models.Model):
     created_by = models.ForeignKey(to=User, related_name='contact_lists')
     groups = models.ManyToManyField(to=GroupPermission, related_name='groups_perms')
     is_active = models.BooleanField(default=True)
+
+    def create(self):
+        """
+        Create a list and Create a page associated
+        """
+
 
     def delete(self, using=None):
         self.is_active = False
