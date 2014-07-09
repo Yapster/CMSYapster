@@ -1,7 +1,7 @@
 from django.contrib.admindocs.views import model_detail
 from django.contrib.auth.models import User
 from django.db import models
-from admins.models import Profile
+from api.models import Profile
 from groups.models import GroupPermission, Page
 
 

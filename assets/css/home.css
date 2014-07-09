@@ -1,6 +1,6 @@
 #stats {
     float: left;
-	width:715px;
+	width:717px;
 	height:57%;
     margin-left: 40px;
     border: 1px #15D400 solid;
@@ -45,4 +45,6 @@
 
 #tabs {
     margin-bottom: 6px;
+    width: 1169px;
+    margin-left: 180px;
 }

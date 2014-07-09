@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'boto',
     'storages',
+    'rest_framework',
     'admins',
     'announcements',
     'api',
@@ -48,7 +49,7 @@ INSTALLED_APPS = (
     'db_recover',
     'files_manager',
     'groups',
-    'notifications',
+    'cms_notifications',
     'reports',
     'stats'
 )

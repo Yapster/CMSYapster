@@ -2,7 +2,7 @@ from django.contrib.comments.views.comments import post_comment
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
-from admins.models import Profile, CmsUser
+from admins.models import CmsUser
 from admins.decorators import user_has_perm, active_and_login_required
 from admins.signals import *
 from django.db.models import Count

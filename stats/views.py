@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from announcements.models import Announcement
 from chat.models import Conversation, Message
-from stats.models import Hashtag, Group
 import logging
 
 logger = logging.getLogger(__name__)
@@ -132,20 +131,20 @@ def search(request):
                                                      "messages": messages})
 
 
-@login_required(login_url='/login/')
-def hashtag(request, tag):
-    """
-    Display hashtag with count of people that used it and few yaps
-    """
-
-    current_tag = Hashtag.objects.get(name=tag)
-    return render(request, 'stats/hashtag.html', {'tag': current_tag})
-
-
-@login_required(login_url='/login/')
-def group_page(request, group):
-    """
-    Display group page with count people in it and few yaps
-    """
-    current_group = Group.objects.get(pk=group)
-    return render(request, 'stats/group.html', {'group': current_group})
+# @login_required(login_url='/login/')
+# def hashtag(request, tag):
+#     """
+#     Display hashtag with count of people that used it and few yaps
+#     """
+#
+#     current_tag = Hashtag.objects.get(name=tag)
+#     return render(request, 'stats/hashtag.html', {'tag': current_tag})
+#
+#
+# @login_required(login_url='/login/')
+# def group_page(request, group):
+#     """
+#     Display group page with count people in it and few yaps
+#     """
+#     current_group = Group.objects.get(pk=group)
+#     return render(request, 'stats/group.html', {'group': current_group})

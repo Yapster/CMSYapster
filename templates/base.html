@@ -15,22 +15,22 @@
 {% block header %}
     <div id="header" class="green">
         <span class="title">yapster</span>
-        <a href="/login/">log out</a>
-        <img class="icone" src="{% static "images/icones/icon_logOut.png"%}"/>
-        <a href="#">Settings</a>
-        <img class="icone" src="{% static "images/icones/icon_setting.png"%}"/>
-        <a href="/contacts/">Contacts</a>
-        <img class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
-        <a href="/permissionsgroups/">Groups Management</a>
-        <img class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
-        <a href="/cmsusers/">Cms Users</a>
-        <img class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
-        <a href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
-        <img class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
-        <a href="/search/">Search</a>
-        <img class="icone" src="{% static "images/icones/icon_search.png"%}"/>
-        <a href="/home/" class="selected">Home</a>
-        <img class="icone" src="{% static "images/icones/icon_home.png"%}"/>
+        <a class="text_icone" href="/login/">log out</a>
+        <img id="logout_icone" class="icone" src="{% static "images/icones/icon_logOut.png"%}"/>
+        <a class="text_icone" href="#">Settings</a>
+        <img id="settings_icone" class="icone" src="{% static "images/icones/icon_setting.png"%}"/>
+        <a class="text_icone" href="/contacts/">Contacts</a>
+        <img id="contacts_icone" class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
+        <a class="text_icone" href="/permissionsgroups/">Groups Management</a>
+        <img id="perms_icone" class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
+        <a class="text_icone" href="/cmsusers/">Cms Users</a>
+        <img id="cmsusers_icone" class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
+        <a class="text_icone" href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
+        <img id="cmsuser_icone" class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
+        <a class="text_icone" href="/search/">Search</a>
+        <img id="search_icone" class="icone" src="{% static "images/icones/icon_search.png"%}"/>
+        <a class="text_icone" href="/home/" class="selected">Home</a>
+        <img id="home_icone" class="icone" src="{% static "images/icones/icon_home.png"%}"/>
     </div>
 {% endblock %}
 {% block sidebar %}
@@ -67,6 +67,9 @@
         </ul>
     </div>
     {% block headbar %}
+        <div id="fix_left_side">
+
+        </div>
         <div id="tabs">
             <a id="live" href="javascript:select_tabs()" class="tab_option selected">Live</a>
             <a id="Min" href="javascript:select_tabs()" class="tab_option">Min</a>

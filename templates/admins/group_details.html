@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block localfiles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/groups/group_details.css" %}" />
+{% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="content" class="clearfix">
+        <div id="groups">
+            <h2 class="title_content">{{ group.group_name }}</h2>
+            <div class="groupinfos">
+                <div id="table">
+                    <table width="100%" cellpadding="2px" cellspacing="0px">
+                        <tr>
+                            <th>Members</th>
+                            <th>Pages</th>
+                        </tr>
+                        <form method="post">
+                            {% csrf_token %}
+                            <tr>
+                                <td>
+                                    {% for member in group.members.all %}
+                                        <li>
+                                            <a href="/cmsusers/{{ member.username }}">{{ member.username }}</a>
+
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="group" value="{{ group.group_name }}"/>
+                                                <button type="submit" name="btn_delgroup" class="button_form">Delete</button>
+                                            </form>
+                                        </li>
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for page in group.pages.all %}
+                                        <li>
+                                            {{ page.name }}
+                                        <form method="post">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="group" value="{{ group.group_name }}"/>
+                                                <button type="submit" name="btn_delgroup" class="button_form">Delete</button>
+                                            </form>
+                                        </li>
+                                    {% endfor %}
+                                </td>
+
+                            </tr>
+                        </form>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

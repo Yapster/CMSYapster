@@ -2,36 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from groups.models import GroupPermission
 
-
-class Profile(models.Model):
-    """
-    Profile of a Yapster user
-    """
-    GENDER_CHOICE = {
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('O', 'Other')
-    }
-
-    user = models.OneToOneField(User, primary_key=True, related_name='profile')
-    handle = models.CharField(max_length=64, unique=True)
-    yap_count = models.BigIntegerField(default=0)
-    listener_count = models.BigIntegerField(default=0)
-    listening_count = models.BigIntegerField(default=0)
-    like_count = models.BigIntegerField(default=0)
-    listen_count = models.BigIntegerField(default=0)
-    reyap_count = models.BigIntegerField(default=0)
-    description = models.CharField(blank=True, max_length=255)
-    profile_picture_path = models.CharField(blank=True, max_length=255)
-    location_city = models.CharField(blank=True, max_length=255)
-    location_state = models.CharField(blank=True, max_length=2)
-    is_active = models.BooleanField(default=True)
-
-    def delete(self, using=None):
-        self.is_active = False
-        self.save()
-        return
-
 class CmsUser (models.Model):
     """
     CMS User account
@@ -77,5 +47,3 @@ class CmsUser (models.Model):
         self.is_active = False
         self.save()
         return
-
-#TODO: Write Userfunction model to call different functions

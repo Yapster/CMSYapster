@@ -13,6 +13,21 @@ function display_inactive(thingId) {
     $('#' + thingId).slideToggle("slow");
 }
 
+function navigation_bar()
+{
+    var path = window.location.pathname;
+    path = decodeURIComponent(path);
+    $(".text_icone").each(function () {
+        var href = $(this).attr('href');
+        if (path.substring(0, href.length) === href) {
+            $(this).addClass('selected_icone');
+        }
+    });
+    $("#sidebar li").each(function (){
+
+    });
+}
+
 $(document).ready(function() {
     $("#message").keypress(function(e) {
         if (e.which == 13) {
@@ -44,6 +59,7 @@ $(document).ready(function() {
         $(this).addClass("selected");
         event.preventDefault(e);
     });
+    navigation_bar();
     setInterval(function() {
         if ($("#conversations").is(":visible"))
         {
