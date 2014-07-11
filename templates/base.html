@@ -5,7 +5,7 @@
         {% load staticfiles %}
         <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
         <link rel="stylesheet" type="text/css" href="{% static "css/clearfix.css" %}" />
-        <script type="text/javascript" src="{% static "js/jquery-1.10.2.min.js" %}" ></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js" ></script>
         <script type="text/javascript" src="{% static "js/base.js" %} "></script>
     {% endblock %}
     {% block localfiles %}
@@ -16,54 +16,55 @@
     <div id="header" class="green">
         <span class="title">yapster</span>
         <a class="text_icone" href="/login/">log out</a>
-        <img id="logout_icone" class="icone" src="{% static "images/icones/icon_logOut.png"%}"/>
+        <span id="logout_icone" class="icone"></span>
         <a class="text_icone" href="#">Settings</a>
-        <img id="settings_icone" class="icone" src="{% static "images/icones/icon_setting.png"%}"/>
+        <span id="settings_icone" class="icone"></span>
         <a class="text_icone" href="/contacts/">Contacts</a>
-        <img id="contacts_icone" class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
+        <span id="contacts_icone" class="icone"></span>
         <a class="text_icone" href="/permissionsgroups/">Groups Management</a>
-        <img id="perms_icone" class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
+        <span id="perms_icone" class="icone"></span>
         <a class="text_icone" href="/cmsusers/">Cms Users</a>
-        <img id="cmsusers_icone" class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
+        <span id="cmsusers_icone" class="icone"></span>
         <a class="text_icone" href="/cmsusers/{{ user.username }}">{{ user.username }}</a>
-        <img id="cmsuser_icone" class="icone" src="{% static "images/icones/icon_profile.png"%}"/>
+        <span id="cmsuser_icone" class="icone"></span>
         <a class="text_icone" href="/search/">Search</a>
-        <img id="search_icone" class="icone" src="{% static "images/icones/icon_search.png"%}"/>
-        <a class="text_icone" href="/home/" class="selected">Home</a>
-        <img id="home_icone" class="icone" src="{% static "images/icones/icon_home.png"%}"/>
+        <span id="search_icone" class="icone"></span>
+        <a class="text_icone" href="/home/">Home</a>
+        <span id="home_icone" class="icone"></span>
+
     </div>
 {% endblock %}
 {% block sidebar %}
     <div id="sidebar" class="clearfix">
         <ul>
             <div class="title">Home</div>
-            <a href="/home/" ><li>main</li></a></a>
-            <a href="/statistics/"><li>statistics</li></a>
-            <a href="#"><li>maps</li></a>
+            <a class="left_tab" href="/home/" ><li>main</li></a></a>
+            <a class="left_tab" href="/statistics/"><li>statistics</li></a>
+            <a class="left_tab" href="#"><li class="left_tab">maps</li></a>
         </ul>
         <ul>
             <div class="title">Statistics</div>
-            <a href="#"><li>Yaps</li></a></a>
-            <a href="#"><li>Users</li></a>
-            <a href="#"><li>Queries</li></a>
-            <a href="#"><li>Databases</li></a>
-            <a href="#"><li>Trends</li></a></a>
-            <a href="#"><li>Sharing</li></a>
-            <a href="#"><li>Server</li></a>
+            <a  class="left_tab" href="#"><li>Yaps</li></a></a>
+            <a class="left_tab" href="#"><li>Users</li></a>
+            <a class="left_tab" href="#"><li>Queries</li></a>
+            <a class="left_tab" href="#"><li>Databases</li></a>
+            <a class="left_tab" href="#"><li>Trends</li></a></a>
+            <a class="left_tab" href="#"><li>Sharing</li></a>
+            <a class="left_tab" href="#"><li>Server</li></a>
         </ul>
         <ul>
             <div class="title">Spam</div>
-            <a href="#"><li>All</li></a>
-            <a href="#"><li>Recent</li></a>
-            <a href="#"><li>Important</li></a>
-            <a href="#"><li>Search</li></a>
+            <a class="left_tab" href="#"><li>All</li></a>
+            <a class="left_tab" href="#"><li>Recent</li></a>
+            <a class="left_tab" href="#"><li>Important</li></a>
+            <a class="left_tab" href="#"><li>Search</li></a>
         </ul>
         <ul>
             <div class="title">Reports</div>
-            <a href="#"><li>All</li></a>
-            <a href="#"><li>Recent</li></a>
-            <a href="#"><li>Important</li></a>
-            <a href="#"><li>Search</li></a>
+            <a class="left_tab" href="#"><li class="left_tab">All</li></a>
+            <a class="left_tab" href="#"><li class="left_tab">Recent</li></a>
+            <a class="left_tab" href="#"><li class="left_tab">Important</li></a>
+            <a class="left_tab" href="#"><li class="left_tab">Search</li></a>
         </ul>
     </div>
     {% block headbar %}
@@ -101,17 +102,36 @@
     </div>
 {% endblock %}
 {% block  messager%}
+    <div id="new_conversation" style="display: none">
+        {% for chater in chaters %}
+        <div class="chat_user">{{ chater.username }}</div>
+        {% endfor %}
+        <div id= "new_chat" class="chat_user">New Chat</div>
+    </div>
     <div id="messager" class="right_block">
-        <a id="messager_title" class="right_title" href="javascript:activate_messenger()">Messager</a>
+        <div id="head_messager">
+            <a id="messager_title" class="right_title" href="javascript:activate_messenger()">Messager</a>
+            <a href="javascript:display_inactive('new_conversation')"><span id="new_conversation_icone" class="icone"></span></a>
+        </div>
         <div id="conversations" style="display:none">
-            {% for chater in chaters %}
+            {% for conversation in conversations %}
                 <div id="" class="line">
-                    <p id="link_chat" class="chater">{{ chater.username}}</p>
+                    <a href="#" class="link_chat">
+                        <span id="link_chat" class="chater">
+                        <input id="conversation_id" name="conversation_id" type="hidden" value="{{ conversation.conversation_id }}"/>
+                            {% for user in conversation.users.all %}
+                                {{ user.username }},
+                            {% endfor %}
+                    </span>
+                    </a>
+                    <a href="#">
+                        <span class="icone delete_conversation_icone">
+                        </span>
+                    </a>
                 </div>
             {% endfor %}
         </div>
         <div id="conversation" style="display:none">
-            <input type="hidden" value="{{ current_conversation.conversation_id }}" name="conversation_id"/>
             <div id="messages">
                 {% include "chat/messages.html" %}
             </div>
@@ -119,7 +139,7 @@
         <div id="message_line" style="display:none">
             <form id="message_form" method="post">
                 {% csrf_token %}
-                <input id="message" type="text" placeholder="Write your message..."/>
+                <input id="message" type="text" placeholder="Write your message..." autocomplete="off" />
             </form>
         </div>
     </div>

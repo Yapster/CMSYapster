@@ -21,25 +21,33 @@ function navigation_bar()
         var href = $(this).attr('href');
         if (path.substring(0, href.length) === href) {
             $(this).addClass('selected_icone');
+            $(this).next().addClass('selected_icone');
         }
     });
-    $("#sidebar li").each(function (){
-
+    $(".left_tab").each(function () {
+        var href = $(this).attr('href');
+        if (path.substring(0, href.length) === href) {
+            $(this).addClass('selected_tab');
+        }
     });
+    return false;
+}
+
+function scroll_down()
+{
+    $('#conversation').animate({scrollTop: $("#conversation").prop("scrollHeight")}, 0);
+    return false;
 }
 
 $(document).ready(function() {
     $("#message").keypress(function(e) {
         if (e.which == 13) {
             var input_string = $("#message").val();
-            var data = [];
-            $(".on").each(function(){
-                data.push($(this).text());
-            });
+            var data = $(".chater.on #conversation_id").val();
             $.ajax({
                 data : {
                     message : input_string,
-                    chaters : data
+                    conversation : data
                 },
                 url : "/home/",
                 type : "POST",
@@ -51,35 +59,45 @@ $(document).ready(function() {
             return false;
         }
     });
-    $("p.chater").click(function() {
+    $("span.chater").click(function() {
+        $('.on').toggleClass("on");
         $(this).toggleClass("on");
     });
-    $("a.tab_option").click(function(e){
-        $("a.selected").toggleClass("selected");
-        $(this).addClass("selected");
+    $("div.chat_user").click(function(e){
+        $(this).toggleClass("selected");
         event.preventDefault(e);
     });
-    navigation_bar();
+    $("#new_chat").click(function(e) {
+        var data = [];
+        $(".chat_user.selected").each(function () {
+            data.push($(this).text());
+        });
+    });
     setInterval(function() {
         if ($("#conversations").is(":visible"))
         {
-            var data = [];
-            $(".on").each(function(){
-                data.push($(this).text());
-            });
-            $.ajax({
-                data : {
-                    refresh : true,
-                    chaters : data
-                },
-                url : "/home/",
-                type : "POST",
-                success : function(newData){
-                    $('#messages').html(newData);
-                }
-            });
+            var data = $(".chater.on #conversation_id").val();
+            if (typeof data != 'undefined')
+            {
+                $.ajax(
+                    {
+                        data :
+                        {
+                            refresh : true,
+                            conversation : data
+                        },
+                        url : "/home/",
+                        type : "POST",
+                        success : function(newData)
+                        {
+                            $('#messages').html(newData);
+                        }
+                    });
+            }
             return false;
         }
         return false;
-    }, 1000);
+    }, 2000);
+    navigation_bar();
+    scroll_down();
 });

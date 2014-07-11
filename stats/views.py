@@ -15,27 +15,13 @@ def homepage(request):
     """
     Display general stats
     """
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
     announcements = Announcement.objects.all()
     users = User.objects.exclude(username=request.user.username)
     messages = []
-    if 'chaters[]' in request.POST:
+    if 'conversation' in request.POST:
         # Get list of the users
-        l_chaters = request.POST.getlist('chaters[]')
-        l_users = []
-        for chater in l_chaters:
-            l_users.append(User.objects.get(username=chater))
-        l_users.append(request.user)
-        # Get conversation with list of users
-        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
-        for user in l_users:
-            query_conversation = query_conversation.filter(users__pk=user.pk)
-        if not query_conversation:
-            current_conversation = Conversation.objects.create()
-            for user in l_users:
-                current_conversation.users.add(user)
-        else:
-            current_conversation = query_conversation[0]
-            # If new message add
+        current_conversation = Conversation.objects.get(pk=request.POST['conversation'])
         if 'message' in request.POST:
             Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
         messages = Message.objects.filter(conversation=current_conversation)
@@ -45,32 +31,19 @@ def homepage(request):
     return render(request, 'stats/home.html', {"announcements": announcements,
                                                "user": request.user,
                                                "chaters": users,
-                                               "messages": messages})
+                                               "messages": messages,
+                                               "conversations": conversations})
 
 
 @login_required(login_url='/login/')
 def stats(request):
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
     announcements = Announcement.objects.all()
     users = User.objects.exclude(username=request.user.username)
     messages = []
-    if 'chaters[]' in request.POST:
+    if 'conversation' in request.POST:
         # Get list of the users
-        l_chaters = request.POST.getlist('chaters[]')
-        l_users = []
-        for chater in l_chaters:
-            l_users.append(User.objects.get(username=chater))
-        l_users.append(request.user)
-        # Get conversation with list of users
-        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
-        for user in l_users:
-            query_conversation = query_conversation.filter(users__pk=user.pk)
-        if not query_conversation:
-            current_conversation = Conversation.objects.create()
-            for user in l_users:
-                current_conversation.users.add(user)
-        else:
-            current_conversation = query_conversation[0]
-            # If new message add
+        current_conversation = Conversation.objects.get(pk=request.POST['conversation'])
         if 'message' in request.POST:
             Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
         messages = Message.objects.filter(conversation=current_conversation)
@@ -80,7 +53,8 @@ def stats(request):
     return render(request, 'stats/statistics.html', {"announcements": announcements,
                                                      "user": request.user,
                                                      "chaters": users,
-                                                     "messages": messages})
+                                                     "messages": messages,
+                                                     "conversations": conversations})
 
 
 @login_required(login_url='/login/')
@@ -98,27 +72,13 @@ def search(request):
         state = request.POST['state']
         country = request.POST['country']
 
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
     announcements = Announcement.objects.all()
     users = User.objects.exclude(username=request.user.username)
     messages = []
-    if 'chaters[]' in request.POST:
+    if 'conversation' in request.POST:
         # Get list of the users
-        l_chaters = request.POST.getlist('chaters[]')
-        l_users = []
-        for chater in l_chaters:
-            l_users.append(User.objects.get(username=chater))
-        l_users.append(request.user)
-        # Get conversation with list of users
-        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
-        for user in l_users:
-            query_conversation = query_conversation.filter(users__pk=user.pk)
-        if not query_conversation:
-            current_conversation = Conversation.objects.create()
-            for user in l_users:
-                current_conversation.users.add(user)
-        else:
-            current_conversation = query_conversation[0]
-            # If new message add
+        current_conversation = Conversation.objects.get(pk=request.POST['conversation'])
         if 'message' in request.POST:
             Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
         messages = Message.objects.filter(conversation=current_conversation)
@@ -126,25 +86,26 @@ def search(request):
     if 'refresh' in request.POST:
         return render(request, 'chat/messages.html', {"messages": messages})
     return render(request, 'stats/index.html',{"announcements": announcements,
-                                                     "user": request.user,
-                                                     "chaters": users,
-                                                     "messages": messages})
+                                               "user": request.user,
+                                               "chaters": users,
+                                               "messages": messages,
+                                               "conversations": conversations})
 
 
-# @login_required(login_url='/login/')
-# def hashtag(request, tag):
-#     """
-#     Display hashtag with count of people that used it and few yaps
-#     """
-#
-#     current_tag = Hashtag.objects.get(name=tag)
-#     return render(request, 'stats/hashtag.html', {'tag': current_tag})
-#
-#
-# @login_required(login_url='/login/')
-# def group_page(request, group):
-#     """
-#     Display group page with count people in it and few yaps
-#     """
-#     current_group = Group.objects.get(pk=group)
-#     return render(request, 'stats/group.html', {'group': current_group})
+    # @login_required(login_url='/login/')
+    # def hashtag(request, tag):
+    #     """
+    #     Display hashtag with count of people that used it and few yaps
+    #     """
+    #
+    #     current_tag = Hashtag.objects.get(name=tag)
+    #     return render(request, 'stats/hashtag.html', {'tag': current_tag})
+    #
+    #
+    # @login_required(login_url='/login/')
+    # def group_page(request, group):
+    #     """
+    #     Display group page with count people in it and few yaps
+    #     """
+    #     current_group = Group.objects.get(pk=group)
+    #     return render(request, 'stats/group.html', {'group': current_group})

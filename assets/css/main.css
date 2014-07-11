@@ -39,9 +39,10 @@ a{
 #header a {
     float:right;
     position:relative;
-    padding:0 15px;
     color: #ffffff;
     font-weight: bold;
+    padding-left: 5px;
+    padding-right: 20px;
 }
 
 #header a:hover {
@@ -50,8 +51,10 @@ a{
 
 #header .icone {
     float: right;
-    padding-top: 32px;
+    margin-top: 26px;
     padding-left: 10px;
+    width: 18px;
+    height: 21px;
 }
 
 #sidebar{
@@ -132,6 +135,11 @@ ul li, ol li{
 #sidebar ul:last-child a:last-child{
     border-bottom:none;
 }
+
+.selected_tab li {
+    background-color: #ccc;
+}
+
 .silver{
     background: rgb(239,239,239); /* Old browsers */
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -218,6 +226,8 @@ table tr td:last-child,table tr th:last-child{
 
 .chater {
     cursor: pointer;
+    width: 230px;
+    float: left;
 }
 
 .chater:hover {
@@ -232,15 +242,19 @@ table tr td:last-child,table tr th:last-child{
     float:right;
     width:280px;
     border:1px #15D400 solid;
-    position: relative;
     margin-left: 4%;
-    margin-bottom: 1px;
-    margin-top: 0px;
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+    z-index: 1;
+    background-color: white;
 }
+
+
 
 .right_title{
     background-color: #15D400;
-    width:100%;
+    width:85%;
 	text-align:center;
 	color: #ffffff;
 	border-bottom:1px #15D400 solid;
@@ -280,26 +294,28 @@ table tr td:last-child,table tr th:last-child{
 }
 
 #conversations {
-    height: 30%;
-    padding-top: 50px;
-    border-bottom: 1px #15D400 solid;
 }
 
 #conversation {
-    height: 60%;
+    height: 200px;
     overflow-y: scroll;
     margin-bottom: 10px;
 }
 
 .line {
     font-size: 12px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border-bottom: 1px #15D400 solid;
+    height: 15px;
 }
 
+
+
+
 #messages {
-    height: 300px;
+    height: 200px;
     margin-top: 10px;
     font-size: 11px;
 }
@@ -349,4 +365,87 @@ table tr td:last-child,table tr th:last-child{
 
 .selected_icone {
     color: black !important;
+}
+
+.icone {
+    display: inline-block;
+    background: url("../images/icones/icones.png") no-repeat;
+}
+
+#home_icone {background-position: 0% 8%}
+#search_icone {background-position: 14% 8%}
+#cmsuser_icone {background-position: 28% 8%}
+#cmsusers_icone {background-position: 83% 8%}
+#perms_icone {background-position: 69% 8%}
+#contacts_icone {background-position: 96% 8%}
+#settings_icone {background-position: 41% 8%}
+#logout_icone {background-position: 55% 8%}
+
+#home_icone.selected_icone {background-position: 0% 52%}
+#search_icone.selected_icone {background-position: 14% 52%}
+#cmsuser_icone.selected_icone {background-position: 28% 52%}
+#cmsusers_icone.selected_icone {background-position: 83% 52%}
+#perms_icone.selected_icone {background-position: 69% 52%}
+#contacts_icone.selected_icone {background-position: 96% 52%}
+#settings_icone.selected_icone {background-position: 41% 52%}
+#logout_icone.selected_icone {background-position: 55% 52%}
+
+.delete_conversation_icone{
+    background-position: 44% 89%;
+    width: 20px;
+    height: 20px;
+}
+
+.delete_conversation_icone:hover {
+    background-position: 56% 89%;
+}
+
+#new_conversation_icone {
+    background-position: 0% 95%;
+    width: 29px;
+    height: 35px;
+    margin-left: 230px;
+}
+
+#new_conversation_icone:hover {
+    opacity: 0.6;
+}
+
+#head_messager {
+    background-color: #15D400;
+}
+
+.link_chat {
+    display: block;
+}
+
+#new_conversation {
+    position:fixed;
+    width:128px;
+    z-index:9999;
+    background-color: #8b8b8d;
+    top: 330px;
+    right: 16px;
+}
+
+.chat_user {
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.chat_user:hover, .chat_user.selected {
+    color: #15D400;
+}
+
+.chat_user#new_chat {
+    background-color: #b2b2b3;
+    color: white;
+}
+
+.chat_user#new_chat:hover {
+    color: #000000;
 }
