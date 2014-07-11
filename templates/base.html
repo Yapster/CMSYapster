@@ -31,7 +31,6 @@
         <span id="search_icone" class="icone"></span>
         <a class="text_icone" href="/home/">Home</a>
         <span id="home_icone" class="icone"></span>
-
     </div>
 {% endblock %}
 {% block sidebar %}
@@ -40,31 +39,31 @@
             <div class="title">Home</div>
             <a class="left_tab" href="/home/" ><li>main</li></a></a>
             <a class="left_tab" href="/statistics/"><li>statistics</li></a>
-            <a class="left_tab" href="#"><li class="left_tab">maps</li></a>
+            <a class="left_tab" href="/test/"><li>maps</li></a>
         </ul>
         <ul>
             <div class="title">Statistics</div>
-            <a  class="left_tab" href="#"><li>Yaps</li></a></a>
-            <a class="left_tab" href="#"><li>Users</li></a>
-            <a class="left_tab" href="#"><li>Queries</li></a>
-            <a class="left_tab" href="#"><li>Databases</li></a>
-            <a class="left_tab" href="#"><li>Trends</li></a></a>
-            <a class="left_tab" href="#"><li>Sharing</li></a>
-            <a class="left_tab" href="#"><li>Server</li></a>
+            <a  class="left_tab" href="/test/"><li>Yaps</li></a></a>
+            <a class="left_tab" href="/test/"><li>Users</li></a>
+            <a class="left_tab" href="/test/"><li>Queries</li></a>
+            <a class="left_tab" href="/test/"><li>Databases</li></a>
+            <a class="left_tab" href="/test/"><li>Trends</li></a></a>
+            <a class="left_tab" href="/test/"><li>Sharing</li></a>
+            <a class="left_tab" href="/test/"><li>Server</li></a>
         </ul>
         <ul>
             <div class="title">Spam</div>
-            <a class="left_tab" href="#"><li>All</li></a>
-            <a class="left_tab" href="#"><li>Recent</li></a>
-            <a class="left_tab" href="#"><li>Important</li></a>
-            <a class="left_tab" href="#"><li>Search</li></a>
+            <a class="left_tab" href="/test/"><li>All</li></a>
+            <a class="left_tab" href="/test/"><li>Recent</li></a>
+            <a class="left_tab" href="/test/"><li>Important</li></a>
+            <a class="left_tab" href="/test/"><li>Search</li></a>
         </ul>
         <ul>
             <div class="title">Reports</div>
-            <a class="left_tab" href="#"><li class="left_tab">All</li></a>
-            <a class="left_tab" href="#"><li class="left_tab">Recent</li></a>
-            <a class="left_tab" href="#"><li class="left_tab">Important</li></a>
-            <a class="left_tab" href="#"><li class="left_tab">Search</li></a>
+            <a class="left_tab" href="/test/"><li>All</li></a>
+            <a class="left_tab" href="/test/"><li>Recent</li></a>
+            <a class="left_tab" href="/test/"><li>Important</li></a>
+            <a class="left_tab" href="/test/"><li>Search</li></a>
         </ul>
     </div>
     {% block headbar %}
@@ -106,35 +105,15 @@
         {% for chater in chaters %}
         <div class="chat_user">{{ chater.username }}</div>
         {% endfor %}
-        <div id= "new_chat" class="chat_user">New Chat</div>
+        <div id= "new_chat">New Chat</div>
     </div>
     <div id="messager" class="right_block">
         <div id="head_messager">
             <a id="messager_title" class="right_title" href="javascript:activate_messenger()">Messager</a>
             <a href="javascript:display_inactive('new_conversation')"><span id="new_conversation_icone" class="icone"></span></a>
         </div>
-        <div id="conversations" style="display:none">
-            {% for conversation in conversations %}
-                <div id="" class="line">
-                    <a href="#" class="link_chat">
-                        <span id="link_chat" class="chater">
-                        <input id="conversation_id" name="conversation_id" type="hidden" value="{{ conversation.conversation_id }}"/>
-                            {% for user in conversation.users.all %}
-                                {{ user.username }},
-                            {% endfor %}
-                    </span>
-                    </a>
-                    <a href="#">
-                        <span class="icone delete_conversation_icone">
-                        </span>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-        <div id="conversation" style="display:none">
-            <div id="messages">
-                {% include "chat/messages.html" %}
-            </div>
+        <div id="update_messager" style="display: none">
+          {% include "chat/messager.html" %}
         </div>
         <div id="message_line" style="display:none">
             <form id="message_form" method="post">

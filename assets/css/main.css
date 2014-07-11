@@ -441,11 +441,36 @@ table tr td:last-child,table tr th:last-child{
     color: #15D400;
 }
 
-.chat_user#new_chat {
+#new_chat {
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
     background-color: #b2b2b3;
     color: white;
 }
 
-.chat_user#new_chat:hover {
+#new_chat:hover {
     color: #000000;
+}
+
+#more_conversations {
+    float:left;
+    width: 50px;
+    height: 20px;
+    margin-left: 112px;
+    text-align: center;
+    background-position: 20% 91%;
+    color: white;
+    cursor: pointer;
+}
+
+#more_conversations:hover {
+    color: #000000;
+}
+
+.hide_conversation {
+    float: left;
 }

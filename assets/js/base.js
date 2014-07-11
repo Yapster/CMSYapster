@@ -4,8 +4,7 @@
 
 function activate_messenger()
 {
-    $("#conversations").slideToggle("slow");
-    $("#conversation").slideToggle("slow");
+    $("#update_messager").slideToggle("slow");
     $("#message_line").slideToggle("slow");
 }
 
@@ -24,6 +23,12 @@ function navigation_bar()
             $(this).next().addClass('selected_icone');
         }
     });
+    return false;
+}
+
+function side_bar()
+{
+    var path = window.location.pathname;
     $(".left_tab").each(function () {
         var href = $(this).attr('href');
         if (path.substring(0, href.length) === href) {
@@ -52,29 +57,39 @@ $(document).ready(function() {
                 url : "/home/",
                 type : "POST",
                 success: function(newData){
-                    $('#messages').html(newData);
+                    $('#update_messager').html(newData);
                 }
             });
             $('#message').val('');
             return false;
         }
     });
-    $("span.chater").click(function() {
-        $('.on').toggleClass("on");
-        $(this).toggleClass("on");
-    });
-    $("div.chat_user").click(function(e){
-        $(this).toggleClass("selected");
-        event.preventDefault(e);
-    });
     $("#new_chat").click(function(e) {
         var data = [];
+        var conversation = $(".chater.on #conversation_id").val();
         $(".chat_user.selected").each(function () {
             data.push($(this).text());
         });
+        if (data != "")
+        {
+            $.ajax({
+                data : {
+                    chaters : data,
+                    conversation : conversation
+                },
+                url : "/home/",
+                type : "POST",
+                success: function(newData){
+                    $('#update_messager').html(newData);
+                }
+            });
+            $('#message').val('');
+            display_inactive('new_conversation');
+        }
+        return false;
     });
     setInterval(function() {
-        if ($("#conversations").is(":visible"))
+        if ($("#update_messager").is(":visible"))
         {
             var data = $(".chater.on #conversation_id").val();
             if (typeof data != 'undefined')
@@ -90,7 +105,7 @@ $(document).ready(function() {
                         type : "POST",
                         success : function(newData)
                         {
-                            $('#messages').html(newData);
+                            $('#update_messager').html(newData);
                         }
                     });
             }
@@ -98,6 +113,28 @@ $(document).ready(function() {
         }
         return false;
     }, 2000);
+    $("span.chater").click(function(e) {
+        $('.on').toggleClass("on");
+        $(this).toggleClass("on");
+        event.preventDefault(e);
+        return false;
+    });
+    $("div.chat_user").click(function(e){
+        alert("lil");
+        $(this).toggleClass("selected");
+        event.preventDefault(e);
+        return false;
+    });
+
+    $("#more_conversations").click(function(e){
+        $(".hide_conversation").slideToggle("slow");
+    });
+    $(".line").hover(function(e)
+    {
+        $("#more_conversations").slideToggle("slow");
+        return false;
+    });
     navigation_bar();
     scroll_down();
+    side_bar();
 });
