@@ -1,13 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 class Country(models.Model):
     country_id = models.AutoField(primary_key=True)
     country_name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     date_activated = models.DateTimeField(auto_now_add=True)
     date_deactivated = models.DateTimeField(blank=True,null=True)
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Countries cannot be deleted.')
 
 class USState(models.Model):
     us_states_id = models.AutoField(primary_key=True)
@@ -17,6 +20,10 @@ class USState(models.Model):
     date_activated = models.DateTimeField(auto_now_add=True)
     date_deactivated = models.DateTimeField(blank=True,null=True)
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('USStates cannot be deleted.')
+
 
 class USZIPCode(models.Model):
     us_zip_code_id = models.AutoField(primary_key=True)
@@ -24,6 +31,10 @@ class USZIPCode(models.Model):
     is_active = models.BooleanField(default=True)
     date_activated = models.DateTimeField(auto_now_add=True)
     date_deactivated = models.DateTimeField(blank=True,null=True)
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('USZIPCodes cannot be deleted.')
 
 
 class City(models.Model):
@@ -35,6 +46,10 @@ class City(models.Model):
     is_active = models.BooleanField(default=True)
     date_activated = models.DateTimeField(auto_now_add=True)
     date_deactivated = models.DateTimeField(blank=True,null=True)
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Cities cannot be deleted.')
 
 
 class GeographicTarget(models.Model):
@@ -51,6 +66,10 @@ class GeographicTarget(models.Model):
     date_deactivated = models.DateTimeField(blank=True,null=True)
     is_active = models.BooleanField(default=True)
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('GeographicTargets cannot be deleted.')
+
 
 class Hashtag(models.Model):
     '''hashtag table'''
@@ -59,8 +78,14 @@ class Hashtag(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     is_blocked = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+
     def __unicode__(self):
         return self.hashtag_name
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Hashtags cannot be deleted.')
+
 
 class Channel(models.Model):
     '''table of organizational groups'''
@@ -80,6 +105,10 @@ class Channel(models.Model):
 
     def __unicode__(self):
         return self.channel_name
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Channels cannot be deleted.')
 
 
 class Yap(models.Model):
@@ -123,6 +152,10 @@ class Yap(models.Model):
     class Meta:
         ordering = ['-date_created']
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Yaps cannot be deleted.')
+
 class Reyap(models.Model):
     '''Reyap table'''
     reyap_id = models.AutoField(primary_key=True)
@@ -154,6 +187,10 @@ class Reyap(models.Model):
     class Meta:
         ordering = ['-date_created']
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Reyaps cannot be deleted.')
+
 class Like(models.Model):
     like_id = models.AutoField(primary_key=True)
     user_like_id = models.BigIntegerField(default=1)
@@ -177,6 +214,10 @@ class Like(models.Model):
     def name(self):
         return "like"
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Likes cannot be deleted.')
+
 class Listen(models.Model):
     '''table for a yap or reyap listen'''
     listen_id = models.AutoField(primary_key=True)
@@ -195,6 +236,10 @@ class Listen(models.Model):
 
     class Meta:
         ordering = ['-date_created']
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Listens cannot be deleted.')
 
 class ListenClick(models.Model):
     listen_click_id = models.AutoField(primary_key=True)
@@ -224,6 +269,10 @@ class ListenClick(models.Model):
     class Meta:
         ordering = ['-date_created']
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('ListenClicks cannot be deleted.')
+
 class FollowerRequest(models.Model):
     follower_request_id = models.AutoField(primary_key=True)
     user_follower_request_id = models.BigIntegerField(default=1)
@@ -246,6 +295,10 @@ class FollowerRequest(models.Model):
     class Meta:
         ordering = ['-date_created']
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('FollowerRequest cannot be deleted.')
+
 class NotificationType(models.Model):
     notification_type_id = models.AutoField(primary_key=True)
     notification_name = models.CharField(max_length=100,unique=True)
@@ -253,6 +306,10 @@ class NotificationType(models.Model):
     notification_message = models.CharField(max_length=255,blank=True)
     is_yapster_notification = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('NotificationTypes cannot be deleted.')
 
 
 class Notification(models.Model):
@@ -290,6 +347,10 @@ class Notification(models.Model):
     class Meta:
         ordering = ['-date_created']
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Notifications cannot be deleted.')
+
 
 class Report(models.Model):
     report_id = models.AutoField(primary_key=True)
@@ -311,6 +372,10 @@ class Report(models.Model):
     longitude = models.FloatField(null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Reports cannot be deleted.')
 
 
 class Search(models.Model):
@@ -345,6 +410,10 @@ class Search(models.Model):
     class Meta:
         ordering = ['-date_searched']
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Searches cannot be deleted.')
+
 class Stream(models.Model):
     '''table containing each post for each user that goes to their stream'''
     post_id = models.AutoField(primary_key=True)
@@ -360,7 +429,10 @@ class Stream(models.Model):
 
     class Meta:
         ordering = ['-date_created']
-        #Changed user_posting to user_posted
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Stream objects cannot be deleted.')
 
 class DeactivateUserLog(models.Model):
     deactivate_user_log_id = models.AutoField(primary_key=True)
@@ -373,6 +445,10 @@ class DeactivateUserLog(models.Model):
     class Meta:
         ordering = ['-date_created']
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Deactivation log objects cannot be deleted.')
+
 
 class BlackList(models.Model):
     blacklist_id = models.AutoField(primary_key=True)
@@ -381,6 +457,10 @@ class BlackList(models.Model):
     account_created_date = models.DateTimeField(blank=True,null=True)
     blacklisted_date = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('BlackList cannot be deleted.')
 
 
 class Profile(models.Model):
@@ -416,6 +496,10 @@ class Profile(models.Model):
     posts_are_private = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Profile cannot be deleted.')
 
 
 class UserInfo(models.Model):
@@ -469,6 +553,10 @@ class UserInfo(models.Model):
     is_user_deleted = models.BooleanField(default=False)
     user_deleted_date = models.DateField(blank=True,null=True)
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('UserInfo cannot be deleted.')
+
 
 class Settings(models.Model):
     user = models.OneToOneField(User, primary_key=True,related_name="settings")
@@ -493,6 +581,10 @@ class Settings(models.Model):
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Settings cannot be deleted.')
+
 
 class Recommended(models.Model):
     recommendation_id = models.AutoField(primary_key=True)
@@ -503,6 +595,10 @@ class Recommended(models.Model):
     date_deactivated = models.DateTimeField(null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Recommended cannot be deleted.')
 
 
 class ForgotPasswordRequest(models.Model):
@@ -522,10 +618,19 @@ class ForgotPasswordRequest(models.Model):
         ordering = ['-date_created']
 
 
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('ForgotPasswordRequest cannot be deleted.')
+
+
 class UserFunctions(models.Model):
     user = models.OneToOneField(User, primary_key=True,related_name="functions")
     is_user_deleted = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('UserFunctions object cannot be deleted.')
 
 
 class SessionVerification(models.Model):
@@ -533,6 +638,10 @@ class SessionVerification(models.Model):
     session_id = models.BigIntegerField(null=True,blank=True)
     session_udid = models.CharField(max_length=255,blank=True,null=True)
     date_created = models.DateTimeField(auto_now_add=True)
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('SessionVerification cannot be deleted.')
 
 
 class ManualOverride(models.Model):
@@ -590,4 +699,8 @@ class ManualOverride(models.Model):
 
     class Meta:
         ordering = ['-date_created']
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('ManualOverride objects cannot be deleted.')
 
