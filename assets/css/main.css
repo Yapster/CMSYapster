@@ -27,7 +27,7 @@ a{
     line-height:74px;
     font-size:11px;
     background-color: #15D400;
-    width: 1319px;
+    width: 100%;
 }
 #header .title{
     float:left;
@@ -175,50 +175,20 @@ table tr td:last-child,table tr th:last-child{
     margin:0 auto;
 }
 
-#tabs{
-    height:38px;
-    width:100%;
-    background-color: #000000;
-}
-#tabs a{
-    color: #ffffff;
-    line-height:37px;
-    font-size:14px;
-    padding:0 !important;
-    margin-right:38px;
-    text-align:center;
-    float:left;
-    width:6%;
-    -webkit-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-
-#tabs a:hover, #tabs a.selected{
-    color: #15D400;
-    border-bottom:7px #15D400 solid;
-    -webkit-transition: all 0.3s ease-in;
-    -o-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-    transition: all 0.3s ease-in;
-}
-#tabs a.selected{
-    opacity:1;
-}
 #content{
-    margin-top:38px;
-    width: 870px;
+    width: 60%;
+    margin-left: 3%;
+    margin-top: 38px;
     float: left;
 }
 
 
 #announcements{
-	float:right;
-	width:280px;
+    float:right;
+    width:280px;
     height: 320px;
-	border:1px #15D400 solid;
-	position: relative;
+    border:1px #15D400 solid;
+    position: relative;
     margin-left: 4%;
     margin-bottom: 5px;
     margin-top: 38px;
@@ -255,11 +225,11 @@ table tr td:last-child,table tr th:last-child{
 .right_title{
     background-color: #15D400;
     width:85%;
-	text-align:center;
-	color: #ffffff;
-	border-bottom:1px #15D400 solid;
-	line-height:38px;
-	position:absolute;
+    text-align:center;
+    color: #ffffff;
+    border-bottom:1px #15D400 solid;
+    line-height:38px;
+    position:absolute;
     font-size: 14px;
     font-weight: bold;
 }
@@ -274,22 +244,21 @@ table tr td:last-child,table tr th:last-child{
 }
 
 #announcementcontent{
-	overflow-y:scroll;
-	height:85%;
-	margin-top:38px;
+    overflow-y:scroll;
+    height:85%;
 }
 
 #announcements .header.important{
-	color: #15D400;
+    color: #15D400;
 }
 
 #announcements p, #announcements .header{
     font-size: 13px;
-	padding:15px 15px 0 15px;
+    padding:15px 15px 0 15px;
 }
 
 #announcements p:last-child{
-	padding:15px;
+    padding:15px;
     border-bottom: none;
 }
 
@@ -348,6 +317,8 @@ table tr td:last-child,table tr th:last-child{
     background-image: url("../images/buttons/bttnBG_submit.png");
     color : white;
     font-family: Arial,Helvetica,sans-serif;
+    border: none;
+    cursor: pointer;
 }
 
 #headbar_empty {
@@ -372,23 +343,24 @@ table tr td:last-child,table tr th:last-child{
     background: url("../images/icones/icones.png") no-repeat;
 }
 
-#home_icone {background-position: 0% 8%}
-#search_icone {background-position: 14% 8%}
-#cmsuser_icone {background-position: 28% 8%}
-#cmsusers_icone {background-position: 83% 8%}
-#perms_icone {background-position: 69% 8%}
-#contacts_icone {background-position: 96% 8%}
-#settings_icone {background-position: 41% 8%}
-#logout_icone {background-position: 55% 8%}
+#home_icone {background-position: 0% 3%}
+#search_icone {background-position: 14% 3%}
+#cmsuser_icone {background-position: 28% 3%}
+#cmsusers_icone {background-position: 83% 3%}
+#perms_icone {background-position: 69% 3%}
+#contacts_icone {background-position: 96% 3%}
+#settings_icone {background-position: 41% 3%}
+#logout_icone {background-position: 55% 3%}
 
-#home_icone.selected_icone {background-position: 0% 52%}
-#search_icone.selected_icone {background-position: 14% 52%}
-#cmsuser_icone.selected_icone {background-position: 28% 52%}
-#cmsusers_icone.selected_icone {background-position: 83% 52%}
-#perms_icone.selected_icone {background-position: 69% 52%}
-#contacts_icone.selected_icone {background-position: 96% 52%}
-#settings_icone.selected_icone {background-position: 41% 52%}
-#logout_icone.selected_icone {background-position: 55% 52%}
+
+#home_icone.selected_icone {background-position: 0% 17%}
+#search_icone.selected_icone {background-position: 14% 17%}
+#cmsuser_icone.selected_icone {background-position: 28% 17%}
+#cmsusers_icone.selected_icone {background-position: 83% 17%}
+#perms_icone.selected_icone {background-position: 69% 17%}
+#contacts_icone.selected_icone {background-position: 96% 17%}
+#settings_icone.selected_icone {background-position: 41% 17%}
+#logout_icone.selected_icone {background-position: 55% 17%}
 
 .delete_conversation_icone{
     background-position: 44% 89%;
@@ -401,17 +373,24 @@ table tr td:last-child,table tr th:last-child{
 }
 
 #new_conversation_icone {
-    background-position: 0% 95%;
+    background-position: 1% 28%;
     width: 29px;
     height: 35px;
     margin-left: 230px;
 }
 
-#new_conversation_icone:hover {
+#new_conversation_icone:hover, #new_announcement_icone:hover {
     opacity: 0.6;
 }
 
-#head_messager {
+#new_announcement_icone{
+    background-position: 70% 28%;
+    width: 29px;
+    height: 35px;
+    margin-left: 230px;
+}
+
+#head_announcement, #head_messager {
     background-color: #15D400;
 }
 
@@ -473,4 +452,12 @@ table tr td:last-child,table tr th:last-child{
 
 .hide_conversation {
     float: left;
+}
+
+.hashtag {
+    color: #15D400;
+}
+
+.hashtag:hover {
+    color : black
 }

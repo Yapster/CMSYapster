@@ -1,5 +1,5 @@
 from django.db import models
-from admins.models import User, CmsUser
+from admins.models import CmsUser
 from announcements.models import Announcement
 from chat.models import Conversation, Message
 from groups.models import GroupPermission, Page

@@ -39,19 +39,28 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'boto',
+    'south',
     'storages',
     'rest_framework',
     'admins',
     'announcements',
-    'api',
     'chat',
     'contacts',
     'db_recover',
     'files_manager',
     'groups',
+    'cms_search_log',
+    'cms_location',
     'cms_notifications',
-    'reports',
-    'stats'
+    'stats',
+    'location',
+    'manual_override',
+    'notification',
+    'report',
+    'search',
+    'stream',
+    'users',
+    'yap'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,12 +89,12 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
     },
-    'yte_1_cl_test_db_1': {
-        'NAME': 'yte_1_cl_test_db_1',
+    'yte_1_db': {
+        'NAME': 'yte_1_db',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'USER': 'chris',
-        'PASSWORD': 'ABCD1234',
-        'HOST': 'yte-1-cl-test-db-1.cagmlb1zwzjw.us-east-1.rds.amazonaws.com',
+        'USER': 'yapster',
+        'PASSWORD': 'Yapster1000000000',
+        'HOST': '54.90.4.212',
         'PORT': '5432',
     }
 }
@@ -116,4 +125,4 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 
-DATABASE_ROUTERS = ['api.router.APIRouter']
+DATABASE_ROUTERS = ['yap.router.APIRouter']

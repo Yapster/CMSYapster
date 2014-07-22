@@ -1,0 +1,74 @@
+<div class="research">
+    <label id="label_search_expression" >Search expression</label>
+    <input id="input_search_expression" type="text" name="searchexp"/>
+</div>
+<div class="group">
+    <div class="line_search">
+        <label>User ID</label>
+        <input type="number" name="user_id"/>
+    </div>
+    <div class="line_search">
+        <label>Username</label>
+        <input type="text" name="postdate"/>
+    </div>
+    <div class="line_search">
+        <label>First Name</label>
+        <input type="text" name="birthday"/>
+    </div>
+    <div class="line_search">
+        <label>Last Name</label>
+        <input type="text" name="birthday"/>
+    </div>
+    <div class="line_search">
+        <label>Email</label>
+        <input type="text" name="birthday"/>
+    </div>
+    <div class="line_search">
+        <label>Phone Number</label>
+        <input type="tel" name="birthday"/>
+    </div>
+</div>
+<div class="group">
+    <div class="line_search">
+        <label for="gender">Gender</label>
+        <select id="gender" class="select_search">
+            <option value="n">No Gender</option>
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+            <option value="o">Other</option>
+        </select>
+    </div>
+    <div class="line_search">
+        <label>Country</label>
+        <select id="country" class="select_search">
+            <option value="0">No Countries</option>
+            {% for country in countries %}
+                <option value="{{ country.country_id}}">{{ country.country_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="line_search">
+        <label>US State</label>
+        <select id="us_state" class="select_search">
+            <option value="0">No US State</option>
+            {% for state in states%}
+                <option value="{{ state.us_state_id }}">{{ state.us_state_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="line_search">
+        <label>City</label>
+        <select id="city" class="select_location">
+            <option value="0">No City</option>
+            {% for city in cities %}
+                <option value="{{ city.city_id}}">{{ city.city_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="line_search">
+        <label>Is Active</label>
+        <input type="checkbox"/>
+    </div>
+</div>
+<div id="more_fields">
+</div>

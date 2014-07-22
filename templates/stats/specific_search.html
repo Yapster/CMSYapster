@@ -1,0 +1,76 @@
+{% if  new_data %}
+
+    <div id="tabs">
+                <span id="live" class="tab_option">
+                <span id="live_icone" class="icone selected">
+                    Live
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                    Min
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                    Hour
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                    Day
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                   Week
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                    Month
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                    Year
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                    Total
+                </span>
+                </span>
+    </div>
+    <table class="specific_search_table" width="100%" cellpadding="2px" cellspacing="0px" border="0px">
+        <tbody>
+        {% for key, value in new_data %}
+            <tr>
+                <th class="first_column">
+                    <span class="label_table">{{ key }}</span>
+                </th>
+                <th>
+                    {% if key == 'Hashtags' %}
+                        {% for hashtag in value %}
+                            <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
+                        {% endfor %}
+                    {% elif key == 'yaps'%}
+                        {% for yap in value %}
+                            <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="results_table">{{ value }}</div>
+                    {% endif %}
+                </th>
+                {% if more_data %}
+                    {% for key, value in more_data %}
+                        <th>{{ key }} {{ value }}</th>
+                    {% endfor %}
+                {% else %}
+                    <th class="hide"></th>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

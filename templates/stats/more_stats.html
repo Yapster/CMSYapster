@@ -1,0 +1,97 @@
+{% load dictionary_extras %}
+<tbody>
+{% for key, value in datas %}
+    <tr>
+        <th class="first_column">
+            <span class="label_table">{{ key }}</span>
+        </th>
+        <th>
+            {% if key == 'Hashtags' %}
+                {% for hashtag in value %}
+                    <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
+                {% endfor %}
+            {% elif key == 'yaps'%}
+                {% for yap in value %}
+                    <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                {% endfor %}
+            {% else %}
+                <div class="results_table">{{ value }}</div>
+            {% endif %}
+        </th>
+
+
+        {% if more_data %}
+            <th>
+                {% if key == 'Hashtags' %}
+                    {% for hashtag in datas_month|access:key %}
+                        <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
+                    {% endfor %}
+                {% elif key == 'yaps'%}
+                    {% for yap in datas_month|access:key %}
+                        <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                    {% endfor %}
+                {% else %}
+                    <div class="results_table">{{ datas_month|access:key }}</div>
+                {% endif %}
+            </th>
+
+            <th>
+                {% if key == 'Hashtags' %}
+                    {% for hashtag in datas_week|access:key %}
+                        <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
+                    {% endfor %}
+                {% elif key == 'yaps'%}
+                    {% for yap in datas_week|access:key %}
+                        <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                    {% endfor %}
+                {% else %}
+                    <div class="results_table">{{ datas_week|access:key }}</div>
+                {% endif %}
+            </th>
+
+            <th>
+                {% if key == 'Hashtags' %}
+                    {% for hashtag in datas_day|access:key %}
+                        <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
+                    {% endfor %}
+                {% elif key == 'yaps'%}
+                    {% for yap in datas_day|access:key %}
+                        <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                    {% endfor %}
+                {% else %}
+                    <div class="results_table">{{ datas_day|access:key }}</div>
+                {% endif %}
+            </th>
+            <th>
+                {% if key == 'Hashtags' %}
+                    {% for hashtag in datas_hour|access:key %}
+                        <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
+                    {% endfor %}
+                {% elif key == 'yaps'%}
+                    {% for yap in datas_hour|access:key %}
+                        <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                    {% endfor %}
+                {% else %}
+                    <div class="results_table">{{ datas_hour|access:key }}</div>
+                {% endif %}
+            </th>
+            <th>
+                {% if key == 'Hashtags' %}
+                    {% for hashtag in datas_min|access:key %}
+                        <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
+                    {% endfor %}
+                {% elif key == 'yaps'%}
+                    {% for yap in datas_min|access:key %}
+                        <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                    {% endfor %}
+                {% else %}
+                    <div class="results_table">{{ datas_min|access:key }}</div>
+                {% endif %}
+            </th>
+
+        {% else %}
+            <th class="hide"></th>
+        {% endif %}
+    </tr>
+{% endfor %}
+</tbody>

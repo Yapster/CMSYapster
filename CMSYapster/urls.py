@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from yap.views import *
 
 admin.autodiscover()
 
@@ -11,8 +12,16 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/', 'admins.views.login_user'),
     url(r'^home/', 'stats.views.homepage'),
-    url(r'^statistics/$', 'stats.views.stats'),
+    url(r'^statistics/usership/$', 'stats.views.stats_usership'),
+    url(r'^statistics/yaps/$', 'stats.views.stats_yaps'),
+    url(r'^get/home_stats/$', 'stats.views.home_stats'),
+    url(r'^get/location_option/$', 'stats.views.location_option'),
+    url(r'^post/specific_search/$', 'stats.views.specific_search'),
+    url(r'^post/more_data/$', 'stats.views.more_data'),
+    url(r'^post/messenger/$', 'chat.views.chat'),
+    url(r'^post/search/$', 'cms_search_log.views.form_fields'),
     url(r'^search/$', 'stats.views.search'),
+    url(r'^api/$', HomePageStatistics.as_view()),
     url(r'^announcements/$', 'announcements.views.annoucements_manage'),
     url(r'^contacts/$', 'contacts.views.contacts_lists'),
     url(r'^contacts/lists/(?P<list>[a-zA-Z0-9_.-]+)/$', 'contacts.views.contacts_lists_details'),

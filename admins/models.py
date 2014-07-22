@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from groups.models import GroupPermission
 
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 class CmsUser (models.Model):
     """
     CMS User account
@@ -26,6 +31,7 @@ class CmsUser (models.Model):
                                         password=password, first_name=first_name,
                                         last_name=last_name)
         kwargs["user"] = user
+        logger.warning(user)
         CmsUser.objects.create(**kwargs)
         return user
 

@@ -1,7 +1,7 @@
 from django.contrib.admindocs.views import model_detail
-from django.contrib.auth.models import User
+from users.models import User
 from django.db import models
-from api.models import Profile
+from users.models import Profile
 from groups.models import GroupPermission, Page
 
 
@@ -47,7 +47,6 @@ class Contact(models.Model):
     state = models.CharField(max_length=2, blank=True)
     zipcode = models.CharField(max_length=10, blank=True)
     country = models.CharField(max_length=64, blank=True)
-    profile = models.OneToOneField(to=Profile, null=True)
     lists = models.ManyToManyField(to=List, related_name='contacts')
     is_active = models.BooleanField(default=True)
 

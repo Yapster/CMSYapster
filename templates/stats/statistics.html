@@ -2,130 +2,110 @@
 {% block localfiles %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/stats.css" %}" />
+    <script type="text/javascript" src="{% static "js/stats/stats.js" %} "></script>
+{% endblock %}
+{% block headbar %}
+    <div id="stats_headbar">
+        <span class="tab_headbar">Usership</span>
+        <span class="tab_headbar">Yaps</span>
+        <span class="tab_headbar">Trends</span>
+        <span class="tab_headbar">Sharing</span>
+        <span class="tab_headbar">Server</span>
+        <span class="tab_headbar">Database</span>
+
+    </div>
 {% endblock %}
 {% block content %}
-<div id="content" class="clearfix">
-    <div id="stats">
-
-        <h2 class="title">Statistics</h2>
-        <div class="leftstats">
-            <div class="mainstat">
-                <div class="label">Yaps:</div>
-                <div class="number">29128492</div>
+    <div id="content" class="clearfix">
+        <div id="stats_title">
+        Usership Statistics
+        </div>
+        <div id="stats_description">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+        <div id="location_selection">
+            <div class="location_option">
+                <label class="label_location_option" for="country">Country</label>
+                <select id="country" class="select_location">
+                    <option value="0">No Countries</option>
+                    {% for country in countries %}
+                        <option value="{{ country.country_id}}">{{ country.country_name }}</option>
+                    {% endfor %}
+                </select>
             </div>
-            <div class="mainstat">
-                <div class="label">Live Users:</div>
-                <div class="number">8634173</div>
+            <div id="state_option" class="location_option" style="display: none">
             </div>
-            <div class="mainstat">
-                <div class="label">Listens:</div>
-                <div class="number">493182</div>
+            <div id="city_option" class="location_option" style="display: none">
             </div>
-            <div class="mainstat">
-                <div class="label">Time Listened:</div>
-                <div class="number">12d 20h 15m 4s</div>
+            <div class="location_option">
+                <label class="label_location_option" for="gender">Gender</label>
+                <select id="gender" class="select_location">
+                    <option value="n">No Gender</option>
+                    <option value="m">Male</option>
+                    <option value="f">Female</option>
+                    <option value="o">Other</option>
+                </select>
             </div>
-            <div class="mainstat">
-                <div class="label">Yap length:</div>
-                <div class="number">20s</div>
+            <div class="location_option">
+                <label class="label_location_option" for="age">Age Range</label>
+                <input id="from_age" type="number" name="from_age" min="13" max="99" value="13"> To*
+                <input id="to_age" type="number" name="to_age" min="13" max="99" value="99">
             </div>
-            <div class="mainstat">
-                <div class="label">Average Listens:</div>
-                <div class="number">56</div>
-            </div>
-            <div class="mainstat">
-                <span class="label">Trending:</span>
-                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
-            </div>
-            <div class="mainstat">
-                <div class="label">Live Users:</div>
-                <div class="number">8634173</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Listens:</div>
-                <div class="number">493182</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Time Listened:</div>
-                <div class="number">12d 20h 15m 4s</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Yap length:</div>
-                <div class="number">20s</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Average Listens:</div>
-                <div class="number">56</div>
-            </div>
-            <div class="mainstat">
-                <span class="label">Trending:</span>
-                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
-            </div>
-            <div class="mainstat">
-                <div class="label">Live Users:</div>
-                <div class="number">8634173</div>
+            <div id="location_submit">
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" id="location_button" class="button_form">Submit</button>
+                </form>
             </div>
         </div>
-        <div class="rightstats">
-
-            <div class="mainstat">
-                <div class="label">Listens:</div>
-                <div class="number">493182</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Time Listened:</div>
-                <div class="number">12d 20h 15m 4s</div>
-            </div>
-
-            <div class="mainstat">
-                <div class="label">Yap length:</div>
-                <div class="number">20s</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Average Listens:</div>
-                <div class="number">56</div>
-            </div>
-            <div class="mainstat">
-                <span class="label">Trending:</span>
-                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
-            </div>
-            <div class="mainstat">
-                <div class="label">Live Users:</div>
-                <div class="number">8634173</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Listens:</div>
-                <div class="number">493182</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Time Listened:</div>
-                <div class="number">12d 20h 15m 4s</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Yap length:</div>
-                <div class="number">20s</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Average Listens:</div>
-                <div class="number">56</div>
-            </div>
-            <div class="mainstat">
-                <span class="label">Trending:</span>
-                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
-            </div>
-            <div class="mainstat">
-                <div class="label">Yap length:</div>
-                <div class="number">20s</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Average Listens:</div>
-                <div class="number">56</div>
-            </div>
-            <div class="mainstat">
-                <span class="label">Trending:</span>
-                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
+        <div id="stats">
+            <div id="all_stats">
+                <div id="specific_search" style="display: none">
+                </div>
+                <div id="tabs">
+                <span id="live" class="tab_option">
+                <span id="live_icone" class="icone selected">
+                    Live
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                   Year
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                    Month
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                    Week
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                   Day
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                    Hour
+                </span>
+                </span>
+                <span class="tab_option">
+                <span class="tab_green icone">
+                    Min
+                </span>
+                </span>
+                </div>
+                <div id="table_stats">
+                    <table id="general_stats_table" width="100%" cellpadding="2px" cellspacing="0px" border="0px">
+                        {% include "stats/more_stats.html" %}
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}

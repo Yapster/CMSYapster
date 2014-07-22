@@ -10,6 +10,7 @@ function activate_messenger()
 
 function display_inactive(thingId) {
     $('#' + thingId).slideToggle("slow");
+
 }
 
 function navigation_bar()
@@ -45,6 +46,7 @@ function scroll_down()
 }
 
 $(document).ready(function() {
+
     $("#message").keypress(function(e) {
         if (e.which == 13) {
             var input_string = $("#message").val();
@@ -54,7 +56,7 @@ $(document).ready(function() {
                     message : input_string,
                     conversation : data
                 },
-                url : "/home/",
+                url : "/post/messenger/",
                 type : "POST",
                 success: function(newData){
                     $('#update_messager').html(newData);
@@ -77,7 +79,7 @@ $(document).ready(function() {
                     chaters : data,
                     conversation : conversation
                 },
-                url : "/home/",
+                url : "/post/messenger/",
                 type : "POST",
                 success: function(newData){
                     $('#update_messager').html(newData);
@@ -101,7 +103,7 @@ $(document).ready(function() {
                             refresh : true,
                             conversation : data
                         },
-                        url : "/home/",
+                        url : "/post/messenger/",
                         type : "POST",
                         success : function(newData)
                         {
@@ -120,18 +122,22 @@ $(document).ready(function() {
         return false;
     });
     $("div.chat_user").click(function(e){
-        alert("lil");
         $(this).toggleClass("selected");
         event.preventDefault(e);
         return false;
     });
-
     $("#more_conversations").click(function(e){
         $(".hide_conversation").slideToggle("slow");
     });
-    $(".line").hover(function(e)
+    $("#conversations").hover(function(e)
     {
         $("#more_conversations").slideToggle("slow");
+        return false;
+    });
+    $(".tab_option").click(function(e){
+        $('.selected.tab_green').toggleClass("selected");
+        $(this).children("span").toggleClass("selected");
+        event.preventDefault(e);
         return false;
     });
     navigation_bar();

@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    $("span.chater").click(function(e) {
+        $('.on').toggleClass("on");
+        $(this).toggleClass("on");
+        event.preventDefault(e);
+        return false;
+    });
+
+</script>
+
+<div id="conversations">
+    {% for conversation in conversations %}
+        {% if forloop.counter < 5 %}
+            <div id="" class="line">
+        {% else %}
+            <div id="" class="line hide_conversation" style="display: none">
+        {% endif %}
+    {% if conversation.conversation_id == current_conversation.conversation_id %}
+        <span id="link_chat" class="chater on">
+    {% else %}
+        <span id="link_chat" class="chater">
+    {% endif %}
+    <input id="conversation_id" name="conversation_id" type="hidden" value="{{ conversation.conversation_id }}"/>
+    {% for user in conversation.users.all %}
+        {{ user.username }}
+    {% endfor %}
+    </span>
+    <a href="#">
+                        <span class="icone delete_conversation_icone">
+                        </span>
+    </a>
+    </div>
+    {% endfor %}
+            <span id="more_conversations" class="icone" style="display: none" >more</span>
+    </div>
+
+    <div id="conversation">
+        <div id="messages">
+            {% for message in messages %}
+                <div class="author">{{ message.author.first_name }} {{ message.author.last_name }}</div>
+                <div class="text">{{ message.text }}</div>
+            {% endfor %}
+        </div>
+    </div>

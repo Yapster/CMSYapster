@@ -2,39 +2,14 @@
 {% block localfiles %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/home.css" %}" />
-
+    <script type="text/javascript" src="{% static "js/stats/home.js" %} "></script>
 {% endblock %}
 {% block content %}
     <div id="content" class="clearfix">
         <div id="stats">
             <h2 class="title">Statistics</h2>
-            <div class="mainstat">
-                <div class="label">Yaps:</div>
-                <div class="number">29128492</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Live Users:</div>
-                <div class="number">8634173</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Listens:</div>
-                <div class="number">493182</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Time Listened:</div>
-                <div class="number">12d 20h 15m 4s</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Yap length:</div>
-                <div class="number">20s</div>
-            </div>
-            <div class="mainstat">
-                <div class="label">Average Listens:</div>
-                <div class="number">56</div>
-            </div>
-            <div class="mainstat">
-                <span class="label">Trending:</span>
-                <span class="number hashtags"><a href="#">#yapster</a> <a href="#">#ryansaxerocks</a> <a href="#">#whatdoyouthink</a></span>
+            <div id="stats_home" style="display: none">
+            {% include "sub_templates/home_stats.html" %}
             </div>
         </div>
     </div>

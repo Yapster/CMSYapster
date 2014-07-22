@@ -5,7 +5,8 @@
         {% load staticfiles %}
         <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
         <link rel="stylesheet" type="text/css" href="{% static "css/clearfix.css" %}" />
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js" ></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
         <script type="text/javascript" src="{% static "js/base.js" %} "></script>
     {% endblock %}
     {% block localfiles %}
@@ -38,7 +39,7 @@
         <ul>
             <div class="title">Home</div>
             <a class="left_tab" href="/home/" ><li>main</li></a></a>
-            <a class="left_tab" href="/statistics/"><li>statistics</li></a>
+            <a class="left_tab" href="/statistics/usership/"><li>statistics</li></a>
             <a class="left_tab" href="/test/"><li>maps</li></a>
         </ul>
         <ul>
@@ -67,17 +68,7 @@
         </ul>
     </div>
     {% block headbar %}
-        <div id="fix_left_side">
-
-        </div>
-        <div id="tabs">
-            <a id="live" href="javascript:select_tabs()" class="tab_option selected">Live</a>
-            <a id="Min" href="javascript:select_tabs()" class="tab_option">Min</a>
-            <a href="javascript:select_tabs()" class="tab_option">Hour</a>
-            <a href="javascript:select_tabs()" class="tab_option">Day</a>
-            <a href="javascript:select_tabs()" class="tab_option">Week</a>
-            <a href="javascript:select_tabs()" class="tab_option">Month</a>
-            <a href="javascript:select_tabs()" class="tab_option">Year</a>
+        <div id="headbar_empty">
         </div>
     {% endblock %}
 {% endblock %}
@@ -85,7 +76,11 @@
 {% endblock %}
 {% block announcements %}
     <div id="announcements" class="right_block">
+    <div id="head_announcement">
         <a id="announcement" class="right_title" href="/announcements/" >Announcements</a>
+        <a href="/announcements/"><span id="new_announcement_icone" class="icone"></span></a>
+    </div>
+
         <div id="announcementcontent">
             {% if announcements %}
                 {% for announce in announcements %}

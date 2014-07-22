@@ -1,1 +1,0 @@
-# TODO: Add a inspectdb to create the models.py

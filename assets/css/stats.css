@@ -1,56 +1,185 @@
-#tabs {
-    margin-bottom: 6px;
+#stats_headbar {
+    height: 38px;
+    background-color: #000000;
+}
+
+#content {
+    margin-top: 0px;
+    margin-left: 40px;
+    width: 60%;
+}
+
+#stats_title{
+    height: 38px;
+    line-height: 38px;
+    font-weight: bold;
+}
+
+#stats_description {
+    height: 38px;
+    font-size: 11px;
+    line-height: 15px;
+}
+
+#location_selection {
+    border: 1px #15D400 solid;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: table;
+}
+
+.location_option {
+    display: table-cell;
+    width: 240px;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 12px;
+}
+
+.label_location_option {
+    width:10px;
+    font-size: 12px;
+}
+
+.select_location {
+    display: inline-block;
+    float: right;
+    margin-right: 30px;
+    width: 110px;
+    font-size: 12px;
 }
 
 #stats{
-	width:717px;
-    float: left;
-    margin-left: 38px;
-    border: 1px #15D400 solid;
+    height: 100%;
 }
 
-#stats .title{
-    height:38px;
-    line-height:40px;
-    font-size: 14px;
-    text-align:center;
-    border:1px #15D400 solid;
-    color: #ffffff;
-    background-color: #15D400;
+.tab_headbar {
+    color: white;
+    line-height: 38px;
+    margin-left: 60px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
 }
 
-.leftstats {
-    float: left;
-    width: 49.5%;
+.tab_headbar:hover, .tab_headbar.selected {
+    color: #15D400;
 }
-.rightstats {
+
+#tabs{
+    width:100%;
+    display: table;
+}
+
+#tabs a.selected{
+    opacity:1;
+}
+
+.tab_option {
+    display: table-cell;
+    width: 10%;
+    text-align: center;
+    height: 20px;
+    line-height: 45px;
+    font-size: 12px;
+}
+
+.tab_option.selected, .tab_option:hover {
+}
+
+.tab_green, #live_icone {
+    cursor: pointer;
+}
+
+.tab_green.selected, .tab_green:hover {
+    background-position: 72% 73%;
+    width: 65px;
+    color: white;
+}
+
+#live, .first_column {
+    width: 15%;
+}
+
+#live_icone.selected, #live_icone:hover {
+    background-position: 9% 73%;
+    width: 65px;
+    color: white;
+}
+
+#all_stats {
+    margin-top: -11px;
+}
+
+table tr th {
+    width: 10%;
+    font-size: 11px;
+    border-right: 1px #cccccc solid;
+}
+
+tr:hover {
+    font-weight: bold;
+}
+
+table tr td {
+    font-size: 11px;
+    border-right: 1px #cccccc solid;
+}
+
+.label_table {
+    font-weight: bold;
+}
+
+.results_table {
+    font-weight: lighter;
+}
+
+#location_submit {
     float: right;
-    width: 49.5%;
-    border-left: 1px #15D400 solid;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.mainstat{
-	min-height:48px;
-	border-top:none;
-	padding-left:15px;
+#specific_search {
+    margin-bottom: 20px;
+    margin-top: -11px;
 }
-.mainstat .number,.mainstat .label{
-	display:inline;
-	font-size: 12px;
-	line-height:50px;
+
+#general_stats_table {
+    border: 1px #15D400 solid;
+    float:left;
+
 }
-.mainstat .number{
-	color:#15D400;
+
+.specific_search_table{
+    border: 1px #15D400 solid;
+    margin-top: -11px;
 }
-.mainstat .hashtags a{
-	color:#15D400 !important;
-	text-transform: none !important;
+
+.hide {
+    background-color: white;
+    opacity: 1.0;
+    cursor: pointer;
+    border: none;
 }
-.mainstat .extend{
-	display:block !important;
-	background-color:#15D400;
-	color:black;
-	text-align:center;
-	border-bottom:1px #000 solid;
-	border-right:none !important;
+
+.hide:hover {
+    cursor: pointer;
+}
+
+#table_stats {
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin-top: -11px;
+}
+
+#from_age, #to_age {
+    width: 47px;
+    margin-left: 10px;
+    margin-right: 10px;
 }

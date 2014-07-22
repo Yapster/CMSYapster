@@ -1,0 +1,37 @@
+{% if states %}
+    <script>
+        $("#state").change(function() {
+            var state = $("#state option:selected").val();
+            if (state != 0) {
+                $.ajax({
+                    data : {
+                        state: state
+                    },
+                    url : "/get/location_option/",
+                    type : "POST",
+                    success: function(newData){
+                        alert(newData);
+                        $('#city_option').html(newData).show("slow");
+                    }
+                });
+
+            }
+        }).trigger( "change" );
+    </script>
+    <label class="label_location_option" for="state">State</label>
+    <select id="state" class="select_location">
+        <option value="0">No State</option>
+        {% for state in states %}
+            <option value="{{ state.us_states_id }}">{{ state.us_state_name }}</option>
+        {% endfor %}
+    </select>
+{% endif %}
+{% if cities %}
+    <label class="label_location_option" for="city">City</label>
+    <select id="city" class="select_location">
+        <option value="0">No City</option>
+        {% for city in cities %}
+            <option value="{{ city.city_id }}">{{ city.city_name }}</option>
+        {% endfor %}
+    </select>
+{% endif %}

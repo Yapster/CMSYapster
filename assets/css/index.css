@@ -1,7 +1,7 @@
 
 
 #main{
-	margin-left:180px;
+    margin-left:180px;
 }
 
 #text_headbar {
@@ -24,44 +24,44 @@
 
 .section{
     width: 100%;
-	background-color: white;
-	overflow:hidden;
-	border:1px #15D400 solid;
+    background-color: white;
+    overflow:hidden;
+    border:1px #15D400 solid;
     border-top: 0px;
-	margin-right: 20px;
-	margin-bottom: 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
     margin-left: 50px;
     float: left;
 }
 .section .header{
-	text-transform: capitalize;
-	color:#ffffff;
+    text-transform: capitalize;
+    color:#ffffff;
     text-align:center;
-	font-size: 18px;
-	line-height:38px;
-	height:38px;
-	background-color:#15D400;
-	border-bottom: 1px #15D400 solid;
-	padding-left:15px;
+    font-size: 18px;
+    line-height:38px;
+    height:38px;
+    background-color:#15D400;
+    border-bottom: 1px #15D400 solid;
+    padding-left:15px;
 }
 .section .header input{
-	cursor:pointer;
-	font-size:13px;
-	color:black;
-	background-color:transparent;
-	text-decoration: underline;
-	border:0;
-	padding:0;
-	outline:0;
-	float:right;
-	height:25px;
-	line-height:25px;
-	margin-right:15px;
+    cursor:pointer;
+    font-size:13px;
+    color:black;
+    background-color:transparent;
+    text-decoration: underline;
+    border:0;
+    padding:0;
+    outline:0;
+    float:right;
+    height:25px;
+    line-height:25px;
+    margin-right:15px;
 }
 .seperator{
-	width:1px;
-	background-color: #000;
-	float:left;
+    width:1px;
+    background-color: #000;
+    float:left;
 }
 
 .research{
@@ -85,55 +85,55 @@
 }
 
 .group{
-	width:400px;
-	float:left;
-	margin-top:6px;
+    width:400px;
+    float:left;
+    margin-top:6px;
 }
 .line_search{
-	line-height: 38px;
-	font-size: 12px;
+    line-height: 38px;
+    font-size: 12px;
     margin-left: 25px;
 }
 .line_search label{
-	display: inline-block;
-	width:121px;
+    display: inline-block;
+    width:121px;
 }
 .line_search select{
     margin-left: 20px;
 }
 .line_search input{
-	position: relative;
-	width: 200px;
+    position: relative;
+    width: 200px;
     margin-left: 19px;
 }
 .line_search input[type="range"],.line input[type="submit"],.line input[type="reset"],.line select{
-	cursor:pointer;
-	display: inline-block;
-	width:200px;
+    cursor:pointer;
+    display: inline-block;
+    width:200px;
 }
 .line_search input[type="range"]:after{
-	position: absolute;
-	left:0;
-	bottom:-10px;
-	content: attr(data-lower);
+    position: absolute;
+    left:0;
+    bottom:-10px;
+    content: attr(data-lower);
 }
 .line_search input[type="range"]:before{
-	position: absolute;
-	right:0;
-	bottom:-10px;
-	content: attr(data-upper);
+    position: absolute;
+    right:0;
+    bottom:-10px;
+    content: attr(data-upper);
 }
 #table table tr th{
-	background-color:#efefef !important;
+    background-color:#efefef !important;
     line-height: 28px;
 }
 #table table{
-	border: none;
+    border: none;
 }
 
 #table .title{
-	margin-left:2px;
-	color:black;
+    margin-left:2px;
+    color:black;
 }
 
 #table table td {
@@ -151,3 +151,14 @@
     margin-left: 10px;
     font-size: 25px;
 }
+
+#label_search_expression {
+    padding-right: 10px;
+    font-size: 12px;
+}
+
+#input_search_expression {
+    padding-right: 452px;
+    margin-left : 25px;
+}
+

@@ -29,8 +29,9 @@ def login_user(request):
         if current_cms_user is not None:
             if current_cms_user.is_active:
                 login(request, current_user)
+                response = HttpResponseRedirect('/home/')
                 #request.session['account'] = CmsUser.objects.get(user=current_user)
-                return HttpResponseRedirect('/home/')
+                return response
     return render(request, 'admins/login.html', {})
 
 
