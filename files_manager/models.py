@@ -63,7 +63,7 @@ class FileManager(models.Model):
                 k.set_contents_from_string(content)
                 if  file_type == "profile":
                     try:
-                        old_pix = ProfilePicture.objects.get(is_current=True)
+                        old_pix = ProfilePicture.objects.get(is_current=True, user_id=user)
                         old_pix.is_current = False
                         old_pix.save()
                     except:
@@ -79,9 +79,12 @@ class FileManager(models.Model):
         c = boto.connect_s3()
         b = c.get_bucket(settings.BUCKET_NAME)
         if b:
-            p = ProfilePicture.objects.get(is_current=True, user_id=user)
-            s3_file_path = b.get_key(p.path)
-            return s3_file_path.generate_url(expires_in=600)
+            try:
+                p = ProfilePicture.objects.get(is_current=True, user_id=user)
+                s3_file_path = b.get_key(p.path)
+                return s3_file_path.generate_url(expires_in=600)
+            except:
+                return ""
         return ""
 
 
@@ -93,12 +96,12 @@ class FileManager(models.Model):
         c = boto.connect_s3()
         b = c.get_bucket(settings.BUCKET_NAME)
         if b:
-            urls = []
+            urls = {}
             for picture in pictures:
                 s3_file_path = b.get_key(picture.path)
-                urls.append(s3_file_path.generate_url(expires_in=600))
+                urls[picture.file_id] = (s3_file_path.generate_url(expires_in=600))
             return urls
-        return []
+        return {}
 
 
 class FileForm(forms.Form):

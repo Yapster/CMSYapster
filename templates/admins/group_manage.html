@@ -11,11 +11,13 @@
 {% block content %}
     <div id="content" class="clearfix">
         <div id="newgroup">
-            <h2 class="title_content">New Group Permission</h2>
+            <div class="title_groups">
+                <a class="toggle_title" href="javascript:display_inactive('new_group')">New Group Permission</a>
+            </div>
             <form method='post'>
                 {% csrf_token %}
-                <div class="infos">
-                    <div class="line">
+                <div id="new_group" class="infos" style="display: none">
+                    <div id="groupname_div">
                         <label for="groupname">Group Name</label>
                         <input type="text" id="groupname" name="groupname"/>
                     </div>
@@ -34,8 +36,10 @@
             </form>
         </div>
         <div id="groups">
-            <h2 class="title_content">Permissions Groups</h2>
-            <div class="groupinfos">
+            <div class="title_groups">
+                <a class="toggle_title" href="javascript:display_inactive('active_groups')">Permissions Groups</a>
+            </div>
+            <div id="active_groups" class="groupinfos">
                 <div id="table">
                     <table width="100%" cellpadding="2px" cellspacing="0px">
                         <tr>
@@ -74,8 +78,10 @@
                     </table>
                 </div>
             </div>
-            <h2 class="title_content">Inactive Permissions Groups</h2>
-            <div id="table">
+        <div class="title_groups">
+                <a class="toggle_title" href="javascript:display_inactive('inactive_groups')">Inactive Permissions Groups</a>
+            </div>
+            <div id="inactive_groups" style="display: none">
                 <table width="100%" cellpadding="2px" cellspacing="0px">
                     <tr>
                         <th>Group name</th>

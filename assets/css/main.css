@@ -321,6 +321,10 @@ table tr td:last-child,table tr th:last-child{
     cursor: pointer;
 }
 
+.button_form:hover {
+    color: #000000;
+}
+
 #headbar_empty {
     height:38px;
     font-size: 14px;
@@ -460,4 +464,27 @@ table tr td:last-child,table tr th:last-child{
 
 .hashtag:hover {
     color : black
+}
+
+.error {
+    color: red;
+}
+
+.line_form{
+    line-height: 15px;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding-left: 30px;
+    float: left;
+}
+
+.line_form label {
+    display: inline-block;
+    width: 120px;
+}
+
+.line_form input {
+    padding-left: 10px;
+    position: relative;
 }

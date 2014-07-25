@@ -17,4 +17,18 @@ $(document).ready(function() {
             });
         }
     }).trigger( "change" );
+
+    $("#submit_button").click(function(){
+        event.preventDefault(e);
+        $.ajax({
+            data: {
+                form: $("#form_search").serialize()
+            },
+            url : "/post/search/results/",
+            type : "POST",
+            success: function(newData){
+
+            }
+        })
+    });
 });

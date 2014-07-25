@@ -2,10 +2,15 @@
 {% block localfiles %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/profile.css" %}" />
-
+    <script type="text/javascript" src="{% static "js/admins/profile.js" %} "></script>
 {% endblock %}
 {% block headbar %}
     <div id="headbar">
+        {% if error %}
+            {% for e in error %}
+                <div class="error">{{ e }}</div>
+            {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}
 {% block content %}
@@ -16,7 +21,11 @@
                 <a href="photos">
                     <div id="image">
                         <div>
-                            <img id="picture_profile" src="{{ url }}"/>
+                            {% if url %}
+                                <img id="picture_profile" src="{{ url }}"/>
+                            {% else %}
+                                <div id="default_pix">Choose a pix</div>
+                            {% endif %}
                         </div>
                     </div>
                 </a>
@@ -25,26 +34,49 @@
                 <ul>
                     <li>
                         <span class="label">First Name:</span>
-                        <span class="stat">{{ profile.user.first_name }}</span>
+                        <span class="stat">{{ cmsuser.first_name}}</span>
                     </li>
                     <li>
                         <span class="label">Last Name:</span>
-                        <span class="stat">{{ profile.user.last_name }}</span>
+                        <span class="stat">{{ cmsuser.last_name }}</span>
                     </li>
                     <li>
                         <span class="label">Handle: </span>
-                        <span class="stat">@{{ profile.handle }}</span>
+                        {% if yapster_account %}
+                            <span class="stat">@{{ yapster_account.username }}</span>
+                        {% else %}
+                            <span class="stat">Unknown</span>
+                        {% endif %}
                     </li>
                     <li>
                         <span class="label">Location: </span>
-                        <span class="stat">{{ profile.location_city }}, {{ profile.location_state }}</span>
+                        {% if userinfo %}
+                            <span class="stat">{{ userinfo.user_city.city_name }}, {{ userinfo.user_country.country_name }}</span>
+                        {% else %}
+                            <span class="stat">Unknown</span>
+                        {% endif %}
                     </li>
                 </ul>
-                <ul>
-                    <li>Yaps: <span class="stat">{{ profile.yap_count }}</span></li>
-                    <li>Listening: <span class="stat">{{ profile.listening_count }}</span></li>
-                    <li>Listeners: <span class="stat">{{ profile.listener_count }}</span></li>
-                </ul>
+                {% if profile %}
+                    <ul>
+                        <li>Yaps: <span class="stat">{{ profile.yap_count }}</span></li>
+                        <li>Followers: <span class="stat">{{ profile.follower_count }}</span></li>
+                        <li>Followings: <span class="stat">{{ profile.following_count }}</span></li>
+                    </ul>
+                {% else %}
+                    <div id="yapster_connect">
+                        <button id="go_connect" type="button" class="button_form">Connect to Yapster Account</button>
+                        <div id="input_connect" style="display: none">
+                            <form method="post">
+                                {% csrf_token %}
+                                <label for="username">Username</label>
+                                <input type="text" name="username"/>
+                                <button type="submit" name="connect_button" class="button_form">Connect</button>
+                            </form>
+                        </div>
+                    </div>
+
+                {% endif %}
             </div>
         </div>
         <div id="userstats">

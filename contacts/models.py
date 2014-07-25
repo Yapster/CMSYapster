@@ -3,7 +3,7 @@ from users.models import User
 from django.db import models
 from users.models import Profile
 from groups.models import GroupPermission, Page
-
+from cms_location.models import *
 
 class List(models.Model):
     """
@@ -43,10 +43,10 @@ class Contact(models.Model):
     email = models.EmailField(max_length=64, blank=True, default="No Email")
     description = models.CharField(max_length=100, blank=True, default="No Description")
     birthday = models.DateField(blank=True, null=True)
-    city = models.CharField(max_length=64, blank=True)
-    state = models.CharField(max_length=2, blank=True)
-    zipcode = models.CharField(max_length=10, blank=True)
-    country = models.CharField(max_length=64, blank=True)
+    city = models.ForeignKey(CmsCity, blank=True, null=True)
+    state = models.ForeignKey(CmsUSState, blank=True, null=True)
+    zipcode = models.ForeignKey(CmsUSZIPCode, blank=True, null=True)
+    country = models.ForeignKey(CmsCountry, blank=True, null=True)
     lists = models.ManyToManyField(to=List, related_name='contacts')
     is_active = models.BooleanField(default=True)
 

@@ -27,3 +27,18 @@ def form_fields(request):
         if request.POST['type_search'] == "8":
             return render(request, "search/form_reports.html", {})
     return
+
+@csrf_exempt
+def results(request):
+    if 'form' in request.POST:
+        def get_params(s_params):
+            l = s_params.split("&")
+            dict = {}
+            for x in l:
+                sub_l = x.split("=")
+                if sub_l[1]:
+                    dict[sub_l[0]] = sub_l[1]
+            return dict
+        kwargs = get_params(request.POST['form'])
+        print(kwargs)
+    return

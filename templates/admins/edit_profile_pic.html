@@ -2,6 +2,7 @@
 {% block localfiles %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/admins/edit_profile_pic.css" %}" />
+    <script type="text/javascript" src="{% static "js/edit_photos.js" %} "></script>
 {% endblock %}
 {% block headbar %}
     <div id="headbar_empty">
@@ -14,9 +15,9 @@
             <img id="current_profile_picture" src="{{ current_url }}"/>
         </div>
         <div id="other_profile_pictures">
-            {% for url in urls %}
+            {% for file_id, url in urls %}
                 <div>
-                        <img class="picture_profile" src="{{ url }}"/>
+                    <img id="{{ file_id }}" class="picture_profile" src="{{ url }}"/>
                 </div>
             {% endfor %}
         </div>

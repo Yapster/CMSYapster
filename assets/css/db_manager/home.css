@@ -1,0 +1,48 @@
+.title_instances {
+    background-color: #15D400;
+    height: 9%;
+    border: 1px #15D400 solid;
+    text-align: center;
+    color: #ffffff;
+    line-height: 38px;
+    font-size: 14px;
+}
+
+#ec2instances {
+    margin-top: 38px;
+}
+
+.toggle_title {
+    color: white;
+    font-weight: bold;
+}
+
+.toggle_title:hover {
+    color:black;
+}
+
+table {
+    width: 100%;
+    border: 1px #15D400 solid;
+}
+
+th {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+td {
+    font-size: 11px;
+}
+
+.db_raw {
+    cursor: pointer;
+}
+
+.db_raw:hover {
+    color: #15D400;
+}
+
+.available, .running {
+    color: #15D400;
+}

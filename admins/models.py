@@ -12,6 +12,7 @@ class CmsUser (models.Model):
     CMS User account
     """
     user = models.OneToOneField(User, primary_key=True, related_name='account')
+    yapster_user_id = models.BigIntegerField(blank=True, null=True)
     username = models.CharField(max_length=64)
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)

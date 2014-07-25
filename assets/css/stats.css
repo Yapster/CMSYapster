@@ -54,6 +54,7 @@
 
 #stats{
     height: 100%;
+    display: inline-block;
 }
 
 .tab_headbar {

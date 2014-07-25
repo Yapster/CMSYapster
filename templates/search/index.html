@@ -12,27 +12,29 @@
 {% block content %}
     <div id="content">
         <div class="section" id="search">
-            <div id="select_type_search" class="line_search">
-                <label for="type_search">Type of Search</label>
-                <select id="type_search">
-                    <option value="1">Users</option>
-                    <option value="2">Yaps</option>
-                    <option value="3">Reyaps</option>
-                    <option value="4">Likes</option>
-                    <option value="5">Listens</option>
-                    <option value="6">Channels</option>
-                    <option value="7">Hashtags</option>
-                    <option value="8">Reports</option>
-                    <option value="9">All</option>
-                </select>
-            </div>
-            <div id="form_fields">
-            </div>
+            <form id="form_search" method="post">
+                <div id="select_type_search" class="line_search">
+                    <label for="type_search">Type of Search</label>
+                    <select id="type_search">
+                        <option value="1">Users</option>
+                        <option value="2">Yaps</option>
+                        <option value="3">Reyaps</option>
+                        <option value="4">Likes</option>
+                        <option value="5">Listens</option>
+                        <option value="6">Channels</option>
+                        <option value="7">Hashtags</option>
+                        <option value="8">Reports</option>
+                        <option value="9">All</option>
+                    </select>
+                </div>
+                <div id="form_fields">
+                </div>
 
-            <div class="submitdiv">
-                <input type="submit" value="Reset" class="button_form"/>
-                <input type="reset" value="Submit" class="button_form"/>
-            </div>
+                <div class="submitdiv">
+                    <div class="button_form">Reset</div>
+                    <div id="submit_button" class="button_form">Submit</div>
+                </div>
+            </form>
         </div>
         <div class="section" id="results">
             <div id="table">

@@ -1,36 +1,37 @@
 #groups{
-	width:870px;
-	height:57%;
+    width:100%;
+    height:57%;
     float: left;
     margin-left: 3%;
-    border: 1px #15D400 solid;
+    margin-bottom:38px;
 }
 
 #groups .title_content{
     background-color: #15D400;
-	height:9%;
-	border:1px #15D400 solid;
-	text-align:center;
-	color: #ffffff;
-	line-height:38px;
+    height:9%;
+    border:1px #15D400 solid;
+    text-align:center;
+    color: #ffffff;
+    line-height:38px;
     font-size: 14px;
 }
 
 #newgroup{
     width:100%;
-	height:72%;
+    height:72%;
     float: left;
     margin-left: 3%;
     border: 1px #15D400 solid;
+    margin-bottom: 38px;
 }
 
 #newgroup .title_content{
     background-color: #15D400;
-	height:9%;
-	border:1px #15D400 solid;
-	text-align:center;
-	color: #ffffff;
-	line-height:38px;
+    height:9%;
+    border:1px #15D400 solid;
+    text-align:center;
+    color: #ffffff;
+    line-height:38px;
     font-size: 14px;
 }
 
@@ -38,7 +39,7 @@
     margin-top: 38px;
 }
 
-.table {
+table {
     border: 1px #15D400 solid;
 }
 
@@ -68,9 +69,9 @@ li {
 }
 
 .submitdiv {
-    margin-top: 70px;
+    margin-top: 90px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #pages {
@@ -84,4 +85,37 @@ li {
 
 td a:hover, li a:hover {
     color:#15D400;
+}
+
+#groupname_div {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.title_content:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.groupinfos {
+    margin-bottom: 38px;
+}
+
+.title_groups {
+    background-color: #15D400;
+    height: 9%;
+    border: 1px #15D400 solid;
+    text-align: center;
+    color: #ffffff;
+    line-height: 38px;
+    font-size: 14px;
+}
+
+.toggle_title {
+    color: white;
+    font-weight: bold;
+}
+
+.toggle_title:hover {
+    color: black;
 }

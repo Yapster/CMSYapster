@@ -1,6 +1,7 @@
 #groups{
     width: 100%;
     margin-bottom: 38px;
+    float: left;
 }
 
 #groups .title_content{
@@ -11,6 +12,11 @@
     color: #ffffff;
     line-height:38px;
     font-size: 14px;
+}
+
+#newcontact {
+    border: 1px #15D400 solid;
+    float: left;
 }
 
 #newgroup{
@@ -64,6 +70,8 @@ li {
     margin-top: 70px;
     text-align: center;
     margin-bottom: 20px;
+    float: left;
+    margin-left: 30px;
 }
 
 #pages {
@@ -87,6 +95,7 @@ td a:hover, li a:hover {
     width: 100%;
     font-weight: bold;
     color: white;
+    float: left;
 }
 
 .link_title {
@@ -96,3 +105,29 @@ td a:hover, li a:hover {
 .link_title:hover {
     color: black;
 }
+
+#title_new_contact {
+    background-color: #15D400;
+    height: 9%;
+    border: 1px #15D400 solid;
+    text-align: center;
+    color: #ffffff;
+    line-height: 38px;
+    font-size: 14px;
+}
+
+#title_new_contact:hover {
+    color: black;
+}
+
+.toggle_title {
+    color: white;
+    font-weight: bold;
+}
+
+#contacts {
+    float: left;
+    width: 100%;
+}
+
+

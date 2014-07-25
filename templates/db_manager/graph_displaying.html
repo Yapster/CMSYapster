@@ -1,0 +1,22 @@
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    $(document).ready(function() {
+        var data = google.visualization.arrayToDataTable([
+            ['x', '{{ type_search }}'],
+            {% for key, value in dic %}
+                ['{{ key }}', {{ value }}],
+            {% endfor %}
+        ]);
+        // Create and draw the visualization.
+        new google.visualization.LineChart(document.getElementById('visualization')).
+                draw(data, {
+                    width: 800, height: 800,
+                    vAxis: {minValue: 0},
+                    hAxis: {gridlines: {count: 10}},
+                title: "{{ type_search }} ({{ unit }})"}
+        );
+    });
+</script>
+
+<div id="visualization">
+</div>

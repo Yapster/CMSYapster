@@ -135,3 +135,27 @@
     width: 150px;
     height: 150px;
 }
+
+#default_pix {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 65px;
+}
+
+#default_pix:hover {
+    color: #15D400;
+}
+
+#yapster_connect{
+    float: left;
+    width: 50%;
+    margin-top: 22px;
+}
+
+#input_connect {
+    height: 50%;
+}
+
+#go_connect {
+    width: 100%;
+}
