@@ -1,4 +1,3 @@
-from tkinter.simpledialog import _QueryDialog
 from django.shortcuts import render_to_response, render
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
@@ -20,16 +19,15 @@ def homepage(request):
     """
     Display general stats
     """
-    messages = []
+
     announcements = Announcement.objects.all()
     users = User.objects.exclude(username=request.user.username)
     conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
 
     return render(request, 'stats/home.html', {"announcements": announcements,
+                                               "conversations": conversations,
                                                "user": request.user,
-                                               "chaters": users,
-                                               "messages": messages,
-                                               "conversations": conversations})
+                                               "chaters": users})
 
 
 def stats_yaps(request):
@@ -41,48 +39,67 @@ def stats_yaps(request):
 def stats_usership(request):
     conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
     announcements = Announcement.objects.all()
-    users = User.objects.exclude(username=request.user.username)
-    messages = []
-    if 'conversation' in request.POST:
-        # Get list of the users
-        current_conversation = Conversation.objects.get(pk=request.POST['conversation'])
-        if 'message' in request.POST:
-            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
-        messages = Message.objects.filter(conversation=current_conversation)
-        return render(request, 'chat/messages.html', {"messages": messages})
-    if 'refresh' in request.POST:
-        return render(request, 'chat/messages.html', {"messages": messages})
 
     # Statistiques handling
     countries = CmsCountry.objects.all()
-    datas = HomePageStatistics.get(request).data.items()
-
-
+    datas = HomePageStatistics.get_users_stats(request).data.items()
 
     return render(request, 'stats/statistics.html', {"announcements": announcements,
                                                      "user": request.user,
-                                                     "chaters": users,
-                                                     "messages": messages,
+                                                     "conversations": conversations,
+                                                     "countries": countries,
+                                                     "datas": datas})
+
+
+@login_required(login_url='/login')
+@csrf_exempt
+def stats_yaps(request):
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
+    announcements = Announcement.objects.all()
+
+# Statistiques handling
+    countries = CmsCountry.objects.all()
+    datas = HomePageStatistics.get_yaps_stats(request).data.items()
+
+    return render(request, 'stats/statistics.html', {"announcements": announcements,
+                                                     "user": request.user,
                                                      "conversations": conversations,
                                                      "countries": countries,
                                                      "datas": datas})
 
 @csrf_exempt
-def more_data(request):
-    datas = HomePageStatistics.get(request).data.items()
-    datas_month = HomePageStatistics.get(request, _time=43829.0639).data
-    datas_week = HomePageStatistics.get(request, _time=10080).data
-    datas_day = HomePageStatistics.get(request, _time=1440).data
-    datas_hour = HomePageStatistics.get(request, _time=60).data
-    datas_min = HomePageStatistics.get(request, _time=1).data
+def more_data_usership(request):
+    datas = HomePageStatistics.get_users_stats(request).data.items()
+    datas_month = HomePageStatistics.get_users_stats(request, _time=43829.0639).data
+    datas_week = HomePageStatistics.get_users_stats(request, _time=10080).data
+    datas_day = HomePageStatistics.get_users_stats(request, _time=1440).data
+    datas_hour = HomePageStatistics.get_users_stats(request, _time=60).data
+    datas_min = HomePageStatistics.get_users_stats(request, _time=1).data
     more_data = True
     return render(request, 'stats/more_stats.html', {"datas": datas,
-                                                         "more_data": more_data,
-                                                         "datas_month": datas_month,
-                                                         "datas_week": datas_week,
-                                                         "datas_day": datas_day,
-                                                         "datas_hour": datas_hour,
-                                                         "datas_min": datas_min})
+                                                     "more_data": more_data,
+                                                     "datas_month": datas_month,
+                                                     "datas_week": datas_week,
+                                                     "datas_day": datas_day,
+                                                     "datas_hour": datas_hour,
+                                                     "datas_min": datas_min})
+
+@csrf_exempt
+def more_data_yaps(request):
+    datas = HomePageStatistics.get_yaps_stats(request).data.items()
+    datas_month = HomePageStatistics.get_yaps_stats(request, _time=43829.0639).data
+    datas_week = HomePageStatistics.get_yaps_stats(request, _time=10080).data
+    datas_day = HomePageStatistics.get_yaps_stats(request, _time=1440).data
+    datas_hour = HomePageStatistics.get_yaps_stats(request, _time=60).data
+    datas_min = HomePageStatistics.get_yaps_stats(request, _time=1).data
+    more_data = True
+    return render(request, 'stats/more_stats.html', {"datas": datas,
+                                                     "more_data": more_data,
+                                                     "datas_month": datas_month,
+                                                     "datas_week": datas_week,
+                                                     "datas_day": datas_day,
+                                                     "datas_hour": datas_hour,
+                                                     "datas_min": datas_min})
 
 @login_required(login_url='/login/')
 def search(request):
@@ -101,22 +118,10 @@ def search(request):
 
     conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
     announcements = Announcement.objects.all()
-    users = User.objects.exclude(username=request.user.username)
-    messages = []
-    if 'conversation' in request.POST:
-        # Get list of the users
-        current_conversation = Conversation.objects.get(pk=request.POST['conversation'])
-        if 'message' in request.POST:
-            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
-        messages = Message.objects.filter(conversation=current_conversation)
-        return render(request, 'chat/messages.html', {"messages": messages})
-    if 'refresh' in request.POST:
-        return render(request, 'chat/messages.html', {"messages": messages})
+
     return render(request, 'search/index.html',{"announcements": announcements,
-                                               "user": request.user,
-                                               "chaters": users,
-                                               "messages": messages,
-                                               "conversations": conversations})
+                                                "user": request.user,
+                                                "conversations": conversations})
 
 
 def home_stats(request):
@@ -163,20 +168,20 @@ def specific_search(request):
         ).data.items()
         return render(request, 'stats/specific_search.html', {"new_data": new_data})
 
-# @login_required(login_url='/login/')
-# def hashtag(request, tag):
-#     """
-#     Display hashtag with count of people that used it and few yaps
-#     """
-#
-#     current_tag = Hashtag.objects.get(name=tag)
-#     return render(request, 'stats/hashtag.html', {'tag': current_tag})
-#
-#
-# @login_required(login_url='/login/')
-# def group_page(request, group):
-#     """
-#     Display group page with count people in it and few yaps
-#     """
-#     current_group = Group.objects.get(pk=group)
-#     return render(request, 'stats/group.html', {'group': current_group})
+        # @login_required(login_url='/login/')
+        # def hashtag(request, tag):
+        #     """
+        #     Display hashtag with count of people that used it and few yaps
+        #     """
+        #
+        #     current_tag = Hashtag.objects.get(name=tag)
+        #     return render(request, 'stats/hashtag.html', {'tag': current_tag})
+        #
+        #
+        # @login_required(login_url='/login/')
+        # def group_page(request, group):
+        #     """
+        #     Display group page with count people in it and few yaps
+        #     """
+        #     current_group = Group.objects.get(pk=group)
+        #     return render(request, 'stats/group.html', {'group': current_group})

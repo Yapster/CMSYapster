@@ -1,23 +1,37 @@
 from django.db import models
 from location.models import *
-from django.contrib.auth.models import AbstractUser
+from yap.models import *
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.core.exceptions import ObjectDoesNotExist,ValidationError
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import get_template
+from django.template import Context
+from django.utils import timezone
+from itertools import chain
+from operator import attrgetter
+from django.conf import settings
+from django.contrib.gis.db import models
+import string
+import random
+import ast
+import datetime
 
-class DeactivateUserLog(models.Model):
-    deactivate_user_log_id = models.AutoField(primary_key=True)
-    user_deactivate_user_log_id = models.BigIntegerField(default=1)
+class DeactivatedUserLog(models.Model):
+    deactivated_user_log_id = models.AutoField(primary_key=True)
+    user_deactivated_user_log_id = models.BigIntegerField(default=1)
     user = models.ForeignKey(User,related_name="deactivate_user_logs")
     latitude = models.FloatField(null=True,blank=True)
     longitude = models.FloatField(null=True,blank=True)
+    point = models.PointField(srid=4326,null=True,blank=True)
+    is_active = models.BooleanField(default=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-date_created']
 
     def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('Deactivation log objects cannot be deleted.')
-
+        raise NotImplementedError('ManualOverride objects cannot be deleted.')
 
 class BlackList(models.Model):
     blacklist_id = models.AutoField(primary_key=True)
@@ -27,17 +41,17 @@ class BlackList(models.Model):
     blacklisted_date = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
+
     def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('BlackList cannot be deleted.')
+        raise NotImplementedError('BlackList objects cannot be deleted.')
 
 
 class Profile(models.Model):
 
     GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('O', 'Other'),
+    ('M', 'Male'),
+    ('F', 'Female'),
+    ('O', 'Other'),
     )
 
     user = models.OneToOneField(User,primary_key=True,related_name="profile")
@@ -66,17 +80,13 @@ class Profile(models.Model):
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
 
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('Profile cannot be deleted.')
-
 
 class UserInfo(models.Model):
 
     GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('O', 'Other'),
+    ('M', 'Male'),
+    ('F', 'Female'),
+    ('O', 'Other'),
     )
 
     user_id = models.BigIntegerField(primary_key=True)
@@ -118,13 +128,13 @@ class UserInfo(models.Model):
     notify_for_likes = models.BooleanField(default=True)
     notify_for_new_followers = models.BooleanField(default=True)
     notify_for_yapster = models.BooleanField(default=True)
+    user_created_latitude = models.FloatField(null=True,blank=True)
+    user_created_longitude = models.FloatField(null=True,blank=True)
+    user_created_point = models.PointField(srid=4326,null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
     user_deleted_date = models.DateField(blank=True,null=True)
-
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('UserInfo cannot be deleted.')
+    objects = models.GeoManager()
 
 
 class Settings(models.Model):
@@ -150,10 +160,6 @@ class Settings(models.Model):
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
 
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('Settings cannot be deleted.')
-
 
 class Recommended(models.Model):
     recommendation_id = models.AutoField(primary_key=True)
@@ -162,12 +168,9 @@ class Recommended(models.Model):
     date_recommended = models.DateTimeField(auto_now_add=True)
     date_will_be_deactivated = models.DateTimeField(null=True,blank=True)
     date_deactivated = models.DateTimeField(null=True,blank=True)
+    geographic_target = models.ForeignKey(GeographicTarget,null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
-
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('Recommended cannot be deleted.')
 
 
 class ForgotPasswordRequest(models.Model):
@@ -180,15 +183,15 @@ class ForgotPasswordRequest(models.Model):
     date_used = models.DateTimeField(blank=True,null=True)
     user_signed_in_after_without_using_flag = models.BooleanField(default=False)
     date_signed_in_without_using = models.DateTimeField(blank=True,null=True)
+    forgot_password_request_latitude = models.FloatField(null=True,blank=True)
+    forgot_password_request_longitude = models.FloatField(null=True,blank=True)
+    forgot_password_request_point = models.PointField(srid=4326,null=True,blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+    objects = models.GeoManager()
 
     class Meta:
         ordering = ['-date_created']
-
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('ForgotPasswordRequest cannot be deleted.')
 
 
 class UserFunctions(models.Model):
@@ -196,9 +199,6 @@ class UserFunctions(models.Model):
     is_user_deleted = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('UserFunctions object cannot be deleted.')
 
 class SessionVerification(models.Model):
     session_id = models.AutoField(primary_key=True)
@@ -208,9 +208,9 @@ class SessionVerification(models.Model):
     session_manually_closed_flag = models.BooleanField(default=False)
     session_logged_out_flag = models.BooleanField(default=False)
     session_timed_out_flag = models.BooleanField(default=False)
+    session_created_latitude = models.FloatField(null=True,blank=True)
+    sesssion_created_longitude = models.FloatField(null=True,blank=True)
+    session_created_point = models.PointField(srid=4326,null=True,blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
-
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('SessionVerification cannot be deleted.')
+    objects = models.GeoManager()

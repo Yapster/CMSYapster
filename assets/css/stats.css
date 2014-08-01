@@ -55,6 +55,7 @@
 #stats{
     height: 100%;
     display: inline-block;
+    width: 100%;
 }
 
 .tab_headbar {
@@ -183,4 +184,8 @@ table tr td {
     width: 47px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#loading_image {
+
 }

@@ -34,7 +34,8 @@ def chat(request):
         conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
 
         return render(request, 'chat/messager.html', {"conversations": conversations,
-                                                      "messages": messages})
+                                                      "messages": messages,
+                                                      "active": True})
 
     conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
 
@@ -47,8 +48,10 @@ def chat(request):
         messages = Message.objects.filter(conversation=current_conversation)
         return render(request, 'chat/messager.html', {"messages": messages,
                                                       "conversations": conversations,
-                                                      "current_conversation": current_conversation})
+                                                      "current_conversation": current_conversation,
+                                                      "active": True})
     if 'refresh' in request.POST:
         return render(request, 'chat/messager.html', {"messages": messages,
                                                       "conversations": conversations,
-                                                      "current_conversation": current_conversation})
+                                                      "current_conversation": current_conversation,
+                                                      "active": True})

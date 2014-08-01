@@ -14,6 +14,16 @@
                 {% for yap in value %}
                     <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
                 {% endfor %}
+            {% elif key == 'Top Countries Users' %}
+                {% if value %}
+                    {% for country in value %}
+                        <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
+                    {% endfor %}
+                {% endif %}
+            {% elif value|get_type_list == 'User'%}
+                {% for u in value %}
+                    <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
+                {% endfor %}
             {% else %}
                 <div class="results_table">{{ value }}</div>
             {% endif %}
@@ -30,6 +40,16 @@
                     {% for yap in datas_month|access:key %}
                         <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
                     {% endfor %}
+                {% elif key == 'Top Countries Users' %}
+                    {% if value %}
+                        {% for country in value %}
+                            <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
+                        {% endfor %}
+                    {% endif %}
+                {% elif value|get_type_list == 'User'%}
+                    {% for u in value %}
+                        <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
+                    {% endfor %}
                 {% else %}
                     <div class="results_table">{{ datas_month|access:key }}</div>
                 {% endif %}
@@ -43,6 +63,16 @@
                 {% elif key == 'yaps'%}
                     {% for yap in datas_week|access:key %}
                         <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                    {% endfor %}
+                {% elif key == 'Top Countries Users' %}
+                    {% if value %}
+                        {% for country in value %}
+                            <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
+                        {% endfor %}
+                    {% endif %}
+                {% elif value|get_type_list == 'User'%}
+                    {% for u in value %}
+                        <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
                     {% endfor %}
                 {% else %}
                     <div class="results_table">{{ datas_week|access:key }}</div>
@@ -58,6 +88,16 @@
                     {% for yap in datas_day|access:key %}
                         <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
                     {% endfor %}
+                {% elif key == 'Top Countries Users' %}
+                    {% if value %}
+                        {% for country in value %}
+                            <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
+                        {% endfor %}
+                    {% endif %}
+                {% elif value|get_type_list == 'User'%}
+                    {% for u in value %}
+                        <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
+                    {% endfor %}
                 {% else %}
                     <div class="results_table">{{ datas_day|access:key }}</div>
                 {% endif %}
@@ -71,6 +111,16 @@
                     {% for yap in datas_hour|access:key %}
                         <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
                     {% endfor %}
+                {% elif key == 'Top Countries Users' %}
+                    {% if value %}
+                        {% for country in value %}
+                            <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
+                        {% endfor %}
+                    {% endif %}
+                {% elif value|get_type_list == 'User'%}
+                    {% for u in value %}
+                        <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
+                    {% endfor %}
                 {% else %}
                     <div class="results_table">{{ datas_hour|access:key }}</div>
                 {% endif %}
@@ -83,6 +133,16 @@
                 {% elif key == 'yaps'%}
                     {% for yap in datas_min|access:key %}
                         <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                    {% endfor %}
+                {% elif key == 'Top Countries Users' %}
+                    {% if value %}
+                        {% for country in value %}
+                            <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
+                        {% endfor %}
+                    {% endif %}
+                {% elif value|get_type_list == 'User'%}
+                    {% for u in value %}
+                        <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
                     {% endfor %}
                 {% else %}
                     <div class="results_table">{{ datas_min|access:key }}</div>

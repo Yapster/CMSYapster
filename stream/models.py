@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import User
 from yap.models import Yap, Reyap
+from django.contrib.gis.db import models
 
 class Stream(models.Model):
     '''table containing each post for each user that goes to their stream'''
@@ -11,12 +12,16 @@ class Stream(models.Model):
     yap = models.ForeignKey(Yap,related_name="stream")
     reyap_flag = models.BooleanField(default=False)
     reyap = models.ForeignKey(Reyap, null=True, blank=True,related_name="stream")
+    latitude = models.FloatField(null=True,blank=True)
+    longitude = models.FloatField(null=True,blank=True)
+    point = models.PointField(srid=4326,null=True,blank=True)
     date_created = models.DateTimeField(null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-date_created']
+
 
     def delete(self):
         '''disabling delete'''

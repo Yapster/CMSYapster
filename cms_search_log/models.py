@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from yap.models import Hashtag, Channel
 
 class CmsSearchLog(models.Model):
     search_id = models.AutoField(primary_key=True)
@@ -21,6 +20,10 @@ class CmsSearchLog(models.Model):
     latitude = models.FloatField(null=True,blank=True)
     date_searched = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+
+    @staticmethod
+    def create(**kwargs):
+        return
 
     class Meta:
         ordering = ['-date_searched']

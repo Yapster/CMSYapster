@@ -1,7 +1,6 @@
 from django.contrib.admindocs.views import model_detail
-from users.models import User
+from django.contrib.auth.admin import User
 from django.db import models
-from users.models import Profile
 from groups.models import GroupPermission, Page
 from cms_location.models import *
 
@@ -13,14 +12,17 @@ class List(models.Model):
     name = models.CharField(max_length=64, unique=True)
     description = models.CharField(max_length=128, blank=True)
     created_by = models.ForeignKey(to=User, related_name='contact_lists')
-    groups = models.ManyToManyField(to=GroupPermission, related_name='groups_perms')
     is_active = models.BooleanField(default=True)
 
-    def create(self):
-        """
-        Create a list and Create a page associated
-        """
-
+    def create(**kwargs):
+        groups = kwargs.pop('groups')
+        List.objects.create(kwargs)
+        url = "contacts/lists/" + kwargs['name']
+        name = "Contacts List: " + kwargs['name']
+        description = kwargs['desc']
+        new_p = Page.objects.create(name=name, url=url, description=description)
+        for g in groups:
+            new_p.perms.add(GroupPermission.objects.get(pk=g))
 
     def delete(self, using=None):
         self.is_active = False
@@ -49,6 +51,26 @@ class Contact(models.Model):
     country = models.ForeignKey(CmsCountry, blank=True, null=True)
     lists = models.ManyToManyField(to=List, related_name='contacts')
     is_active = models.BooleanField(default=True)
+
+    @staticmethod
+    def new_contact(*args, **kwargs):
+        country = CmsCountry.objects.get(kwargs['country'])
+        state = CmsCountry.objects.get(kwargs['state'])
+        zipcode = CmsCountry.objects.get(kwargs['zipcode'])
+        city = CmsCity.objects.get(kwargs['city'])
+        l = List.objects.get(pk=kwargs['list'])
+        c = Contact.objects.create(
+            firstname=kwargs['firstname'],
+            lastname=kwargs['lastname'],
+            birthday=kwargs['birthday'],
+            country=country,
+            state=state,
+            zipcode=zipcode,
+            city=city
+        )
+        l.contacts.add(c)
+
+
 
     def delete(self, using=None):
         self.is_active = False

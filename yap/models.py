@@ -1,6 +1,11 @@
+from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
 from django.db import models
-from users.models import User
-from location.models import GeographicTarget
+from location.models import *
+from django.dispatch import receiver
+from operator import attrgetter
+from django.contrib.gis.db import models
+import re
 
 class Hashtag(models.Model):
     '''hashtag table'''
@@ -9,14 +14,12 @@ class Hashtag(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     is_blocked = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-
     def __unicode__(self):
         return self.hashtag_name
 
     def delete(self):
         '''disabling delete'''
-        raise NotImplementedError('Hashtags cannot be deleted.')
-
+        raise NotImplementedError('Tags cannot be deleted.')
 
 class Channel(models.Model):
     '''table of organizational groups'''
@@ -62,6 +65,7 @@ class Yap(models.Model):
     web_link = models.URLField(max_length=255,null=True,blank=True)
     latitude = models.FloatField(null=True,blank=True)
     longitude = models.FloatField(null=True,blank=True)
+    point = models.PointField(srid=4326,null=True,blank=True)
     audio_path = models.CharField(unique=True, max_length=255) #location of the audio file
     picture_flag = models.BooleanField(default=False)
     picture_path = models.CharField(unique=True, max_length=255,blank=True,null=True)
@@ -76,16 +80,21 @@ class Yap(models.Model):
     linkedin_shared_flag = models.BooleanField(default=False)
     linkedin_account_id = models.BigIntegerField(blank=True,null=True)
     deleted_date = models.DateTimeField(blank=True,null=True)
+    deleted_latitude = models.FloatField(null=True,blank=True)
+    deleted_longitude = models.FloatField(null=True,blank=True)
+    deleted_point = models.PointField(srid=4326,null=True,blank=True)
     is_private = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
+    objects = models.GeoManager()
 
     class Meta:
         ordering = ['-date_created']
 
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('Yaps cannot be deleted.')
+    @classmethod
+    def name(self):
+        return "yap"
+
 
 class Reyap(models.Model):
     '''Reyap table'''
@@ -106,22 +115,30 @@ class Reyap(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     latitude = models.FloatField(null=True,blank=True)
     longitude = models.FloatField(null=True,blank=True)
+    point = models.PointField(srid=4326,null=True,blank=True)
     reyap_count = models.BigIntegerField(default=0)
     like_count = models.BigIntegerField(default=0)
     listen_count = models.BigIntegerField(default=0)
     is_unreyapped = models.BooleanField(default=False)
     unreyapped_date = models.DateTimeField(blank=True,null=True)
+    unreyapped_latitude = models.FloatField(null=True,blank=True)
+    unreyapped_longitude = models.FloatField(null=True,blank=True)
+    unreyapped_point = models.PointField(srid=4326,null=True,blank=True)
     deleted_date = models.DateTimeField(blank=True,null=True)
+    deleted_latitude = models.FloatField(null=True,blank=True)
+    deleted_longitude = models.FloatField(null=True,blank=True)
+    deleted_point = models.PointField(srid=4326,null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
+    objects = models.GeoManager()
 
     class Meta:
         ordering = ['-date_created']
-        app_label = 'yap'
 
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('Reyaps cannot be deleted.')
+    @classmethod
+    def name(self):
+        return "reyap"
+
 
 class Like(models.Model):
     like_id = models.AutoField(primary_key=True)
@@ -130,14 +147,18 @@ class Like(models.Model):
     user = models.ForeignKey(User,related_name='likes')
     reyap_flag = models.BooleanField(default=False)
     reyap = models.ForeignKey(Reyap,blank=True, null=True,related_name='likes')
-    is_active = models.BooleanField(default=True)
     date_created = models.DateTimeField(auto_now_add=True)
     latitude = models.FloatField(null=True,blank=True)
     longitude = models.FloatField(null=True,blank=True)
+    point = models.PointField(srid=4326,null=True,blank=True)
     is_unliked = models.BooleanField(default=False)
     unliked_date = models.DateTimeField(null=True,blank=True)
+    unliked_latitude = models.FloatField(null=True,blank=True)
+    unliked_longitude = models.FloatField(null=True,blank=True)
+    unliked_point = models.PointField(srid=4326,null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
+    objects = models.GeoManager()
 
     class Meta:
         ordering = ['-date_created']
@@ -146,10 +167,8 @@ class Like(models.Model):
     def name(self):
         return "like"
 
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('Likes cannot be deleted.')
 
+#complete
 class Listen(models.Model):
     '''table for a yap or reyap listen'''
     listen_id = models.AutoField(primary_key=True)
@@ -163,15 +182,18 @@ class Listen(models.Model):
     time_listened = models.BigIntegerField(blank=True,null=True) #amount of time listened. defaults to 0 seconds and the `set_time` function can be used to edit
     latitude = models.FloatField(null=True,blank=True)
     longitude = models.FloatField(null=True,blank=True)
+    point = models.PointField(srid=4326,null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
+    objects = models.GeoManager()
 
     class Meta:
         ordering = ['-date_created']
 
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('Listens cannot be deleted.')
+    @classmethod
+    def name(self):
+        return "listen"
+
 
 class ListenClick(models.Model):
     listen_click_id = models.AutoField(primary_key=True)
@@ -194,15 +216,17 @@ class ListenClick(models.Model):
     unreyapped_flag = models.BooleanField(default=False)
     reyapped_reyap = models.ForeignKey(Reyap,related_name='listens_reyapped',blank=True,null=True)
     time_clicked = models.BigIntegerField()
+    latitude = models.FloatField(null=True,blank=True)
+    longitude = models.FloatField(null=True,blank=True)
+    point = models.PointField(srid=4326,null=True,blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
+    objects = models.GeoManager()
 
     class Meta:
         ordering = ['-date_created']
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('ListenClicks cannot be deleted.')
+
 
 class FollowerRequest(models.Model):
     follower_request_id = models.AutoField(primary_key=True)
@@ -212,20 +236,36 @@ class FollowerRequest(models.Model):
     #user_requested is the person being asked to be listen to
     user_requested = models.ForeignKey(User, related_name='requested')
     date_created = models.DateTimeField(auto_now_add=True)
+    created_latitude = models.FloatField(null=True,blank=True)
+    created_longitude = models.FloatField(null=True,blank=True)
+    created_point = models.PointField(srid=4326,null=True,blank=True)
     is_unrequested = models.BooleanField(default=False)
     date_unrequested = models.DateTimeField(blank=True,null=True)
+    unrequested_latitude = models.FloatField(null=True,blank=True)
+    unrequested_longitude = models.FloatField(null=True,blank=True)
+    unrequested_point = models.PointField(srid=4326,null=True,blank=True)
     is_accepted = models.BooleanField(default=False)
     date_accepted = models.DateTimeField(null=True,blank=True)
+    accepted_latitude = models.FloatField(null=True,blank=True)
+    accepted_longitude = models.FloatField(null=True,blank=True)
+    accepted_point = models.PointField(srid=4326,null=True,blank=True)
     is_denied = models.BooleanField(default=False)
     date_denied = models.DateTimeField(null=True,blank=True)
+    denied_latitude = models.FloatField(null=True,blank=True)
+    denied_longitude = models.FloatField(null=True,blank=True)
+    denied_point = models.PointField(srid=4326,null=True,blank=True)
     is_unfollowed = models.BooleanField(default=False)
+    unfollowed_latitude = models.FloatField(null=True,blank=True)
+    unfollwed_longitude = models.FloatField(null=True,blank=True)
+    unfollwed_point = models.PointField(srid=4326,null=True,blank=True)
     date_unfollowed = models.DateTimeField(null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
+    objects = models.GeoManager()
 
     class Meta:
         ordering = ['-date_created']
 
-    def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('FollowerRequest cannot be deleted.')
+    @classmethod
+    def name(self):
+        return "request"

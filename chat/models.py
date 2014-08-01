@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import User
+from django.contrib.auth.admin import User
 
 
 class Conversation(models.Model):

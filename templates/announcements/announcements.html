@@ -1,0 +1,19 @@
+<div id="announcements" class="right_block">
+    <div id="head_announcement">
+        <a id="announcement" class="right_title" href="/announcements/" >Announcements</a>
+        <a href="/announcements/"><span id="new_announcement_icone" class="icone"></span></a>
+    </div>
+
+    <div id="announcementcontent">
+        {% if announcements %}
+            {% for announce in announcements %}
+                <h3 class="header">{{ announce.title }}</h3>
+                <p class="message">
+                    {{ announce.description }}
+                </p>
+            {% endfor %}
+        {% else %}
+            <h3 class="header">No Announcements</h3>
+        {% endif %}
+    </div>
+</div>

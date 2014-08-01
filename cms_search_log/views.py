@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from cms_location.models import *
+from cms_search_log.models import *
 
 @csrf_exempt
 def form_fields(request):
@@ -22,6 +23,7 @@ def form_fields(request):
             return render(request, "search/form_listens.html", {})
         if request.POST['type_search'] == "6":
             return render(request, "search/form_channels.html", {})
+
         if request.POST['type_search'] == "7":
             return render(request, "search/form_hashtags.html", {})
         if request.POST['type_search'] == "8":
@@ -31,6 +33,7 @@ def form_fields(request):
 @csrf_exempt
 def results(request):
     if 'form' in request.POST:
+        print(request.POST['form'])
         def get_params(s_params):
             l = s_params.split("&")
             dict = {}
@@ -40,5 +43,5 @@ def results(request):
                     dict[sub_l[0]] = sub_l[1]
             return dict
         kwargs = get_params(request.POST['form'])
-        print(kwargs)
+        CmsSearchLog.create(kwargs)
     return

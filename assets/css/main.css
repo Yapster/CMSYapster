@@ -209,15 +209,7 @@ table tr td:last-child,table tr th:last-child{
 }
 
 #messager {
-    float:right;
-    width:280px;
-    border:1px #15D400 solid;
-    margin-left: 4%;
-    position: fixed;
-    bottom: 0px;
-    right: 0;
-    z-index: 1;
-    background-color: white;
+
 }
 
 
@@ -462,9 +454,19 @@ table tr td:last-child,table tr th:last-child{
     color: #15D400;
 }
 
-.hashtag:hover {
+
+.country {
+    color: #d40e00;
+}
+
+.user {
+    color: #000ad4;
+}
+
+.hashtag:hover, .country:hover {
     color : black
 }
+
 
 .error {
     color: red;
@@ -487,4 +489,16 @@ table tr td:last-child,table tr th:last-child{
 .line_form input {
     padding-left: 10px;
     position: relative;
+}
+
+#messenger_div {
+    float: right;
+    width: 280px;
+    border: 1px #15D400 solid;
+    margin-left: 4%;
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+    z-index: 1;
+    background-color: white;
 }

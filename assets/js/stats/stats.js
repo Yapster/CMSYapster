@@ -46,7 +46,7 @@ $(document).ready(function() {
             data : {
                 more_data: true
             },
-            url : "/post/more_data/",
+            url : "more_data/",
             type : "POST",
             success: function(newData){
                 $('#general_stats_table').html(newData);

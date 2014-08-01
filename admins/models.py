@@ -1,3 +1,4 @@
+from collections import defaultdict
 from django.db import models
 from django.contrib.auth.models import User
 from groups.models import GroupPermission
@@ -12,7 +13,7 @@ class CmsUser (models.Model):
     CMS User account
     """
     user = models.OneToOneField(User, primary_key=True, related_name='account')
-    yapster_user_id = models.BigIntegerField(blank=True, null=True)
+    yapster_user_id = models.CharField(max_length=10, default="")
     username = models.CharField(max_length=64)
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
@@ -22,6 +23,7 @@ class CmsUser (models.Model):
     department = models.CharField(max_length=64, blank=True)
     is_active = models.BooleanField(default=True)
 
+    @staticmethod
     def new_user(*args, **kwargs):
         username = kwargs["username"]
         password = kwargs.pop('password')

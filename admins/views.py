@@ -32,7 +32,7 @@ def login_user(request):
             if current_cms_user.is_active:
                 login(request, current_user)
                 response = HttpResponseRedirect('/home/')
-                #request.session['account'] = CmsUser.objects.get(user=current_user)
+                response.set_cookie('chat', 0, path='/')
                 return response
     return render(request, 'admins/login.html', {})
 
@@ -43,7 +43,8 @@ def users_manage(request):
     """
     List of users. Create and view users
     """
-
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
+    announcements = Announcement.objects.all()
     users_managed = CmsUser.objects.filter(is_active=True)
     inactive_users = CmsUser.objects.filter(is_active=False)
     groups = GroupPermission.objects.all()
@@ -90,41 +91,15 @@ def cmsuser(request, username):
     """
     Display CMS user info + change permissions/name/username
     """
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
     announcements = Announcement.objects.all()
-    users = User.objects.exclude(username=request.user.username)
-    messages = []
-    if 'chaters[]' in request.POST:
-        # Get list of the users
-        l_chaters = request.POST.getlist('chaters[]')
-        l_users = []
-        for chater in l_chaters:
-            l_users.append(User.objects.get(username=chater))
-        l_users.append(request.user)
-        # Get conversation with list of users
-        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
-        for user in l_users:
-            query_conversation = query_conversation.filter(users__pk=user.pk)
-        if not query_conversation:
-            current_conversation = Conversation.objects.create()
-            for user in l_users:
-                current_conversation.users.add(user)
-        else:
-            current_conversation = query_conversation[0]
-            # If new message add
-        if 'message' in request.POST:
-            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
-        messages = Message.objects.filter(conversation=current_conversation)
-        return render(request, 'chat/messages.html', {"messages": messages})
-    if 'refresh' in request.POST:
-        return render(request, 'chat/messages.html', {"messages": messages})
     cmsuser = CmsUser.objects.get(username=username)
     own = cmsuser.username == username
     return render(request, 'admins/cmsuser.html',
                   {"cmsuser": cmsuser, "own": own,
                    "announcements": announcements,
-                   "user": request.user,
-                   "chaters": users,
-                   "messages": messages})
+                   "conversations": conversations,
+                   "user": request.user})
 
 
 @active_and_login_required
@@ -133,33 +108,8 @@ def edit_cmsuser(request, username):
     """
     Edit Cms User infos
     """
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
     announcements = Announcement.objects.all()
-    users = User.objects.exclude(username=request.user.username)
-    messages = []
-    if 'chaters[]' in request.POST:
-        # Get list of the users
-        l_chaters = request.POST.getlist('chaters[]')
-        l_users = []
-        for chater in l_chaters:
-            l_users.append(User.objects.get(username=chater))
-        l_users.append(request.user)
-        # Get conversation with list of users
-        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
-        for user in l_users:
-            query_conversation = query_conversation.filter(users__pk=user.pk)
-        if not query_conversation:
-            current_conversation = Conversation.objects.create()
-            for user in l_users:
-                current_conversation.users.add(user)
-        else:
-            current_conversation = query_conversation[0]
-            # If new message add
-        if 'message' in request.POST:
-            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
-        messages = Message.objects.filter(conversation=current_conversation)
-        return render(request, 'chat/messages.html', {"messages": messages})
-    if 'refresh' in request.POST:
-        return render(request, 'chat/messages.html', {"messages": messages})
 
     cmsuser = CmsUser.objects.get(username=username)
     d_args = {}
@@ -182,9 +132,8 @@ def edit_cmsuser(request, username):
         return HttpResponseRedirect('')
     return render(request, 'admins/edit_cmsuser.html', {"cmsuser": cmsuser,
                                                         "announcements": announcements,
-                                                        "user": request.user,
-                                                        "chaters": users,
-                                                        "messages": messages})
+                                                        "conversations": conversations,
+                                                        "user": request.user})
 
 
 @active_and_login_required
@@ -193,10 +142,12 @@ def profile(request, username):
     Display Yapster user profile. With info/stats
     """
     error = []
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
+    announcements = Announcement.objects.all()
     cmsuser = CmsUser.objects.get(user__username=username)
     if 'username' in request.POST:
         try:
-            u = User.objects.using('yte_1_db').get(username=request.POST['username'])
+            u = User.objects.using('ye_1_db_1').get(username=request.POST['username'])
             cmsuser.yapster_user_id = u.id
             cmsuser.save()
         except:
@@ -209,20 +160,24 @@ def profile(request, username):
     if cmsuser.yapster_user_id:
         profile = Profile.objects.get(user=cmsuser.yapster_user_id)
         userinfo = UserInfo.objects.get(user_id=cmsuser.yapster_user_id)
-        yapster_account = User.objects.using('yte_1_db').get(pk=cmsuser.yapster_user_id)
+        yapster_account = User.objects.using('ye_1_db_1').get(pk=cmsuser.yapster_user_id)
 
     return render(request, 'admins/profile.html', {'cmsuser': cmsuser,
                                                    "profile": profile,
                                                    "userinfo": userinfo,
                                                    'url': current_url,
                                                    'yapster_account': yapster_account,
-                                                   'error': error})
+                                                   'error': error,
+                                                   "announcements": announcements,
+                                                   "conversations": conversations})
 
 @active_and_login_required
 @user_has_perm
 @csrf_exempt
 def edit_profile_pic(request, username):
 
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
+    announcements = Announcement.objects.all()
     # Choose existing photo
     if 'new_photo' in request.POST:
         ex_pix = ProfilePicture.objects.get(is_current=True, user_id=request.user)
@@ -251,4 +206,6 @@ def edit_profile_pic(request, username):
                   {"urls": urls.items(),
                    "current_url": current_url,
                    "pictures": pictures,
-                   "user": request.user})
+                   "user": request.user,
+                   "announcements": announcements,
+                   "conversations": conversations,})

@@ -18,7 +18,7 @@ class APIRouter(object):
                 (model._meta.app_label == 'stream') or
                 (model._meta.app_label == 'users') or
                 (model._meta.app_label == 'yap')):
-            return 'yte_1_db'
+            return 'ye_1_db_1'
         return 'default'
 
     def db_for_write(self, model, **hints):
@@ -26,7 +26,7 @@ class APIRouter(object):
         API models to api_db
         """
         if model._meta.app_label == 'yap':
-            return 'yte_1_db'
+            return 'ye_1_db_1'
         return 'default'
 
     def allow_relation(self, obj1, obj2, **hints):
@@ -57,7 +57,7 @@ class APIRouter(object):
         """
         Syncdb used only for Default DB
         """
-        if db == 'yte_1_db':
+        if db == 'ye_1_db_1':
             return False
         elif ((model._meta.app_label == 'location') or
                   (model._meta.app_label == 'manual_override') or

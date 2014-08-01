@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <script type="text/javascript">
     $("span.chater").click(function(e) {
         $('.on').toggleClass("on");
@@ -5,40 +7,59 @@
         event.preventDefault(e);
         return false;
     });
-
 </script>
 
-<div id="conversations">
-    {% for conversation in conversations %}
-        {% if forloop.counter < 5 %}
-            <div id="" class="line">
-        {% else %}
-            <div id="" class="line hide_conversation" style="display: none">
-        {% endif %}
-    {% if conversation.conversation_id == current_conversation.conversation_id %}
-        <span id="link_chat" class="chater on">
-    {% else %}
-        <span id="link_chat" class="chater">
-    {% endif %}
-    <input id="conversation_id" name="conversation_id" type="hidden" value="{{ conversation.conversation_id }}"/>
-    {% for user in conversation.users.all %}
-        {{ user.username }}
+
+<div id="new_conversation" style="display: none">
+    {% for chater in chaters %}
+        <div class="chat_user">{{ chater.username }}</div>
     {% endfor %}
-    </span>
-    <a href="#">
+    <div id= "new_chat">New Chat</div>
+</div>
+<div id="messager" class="right_block">
+    <div id="head_messager">
+        <a id="messager_title" class="right_title" href="javascript:activate_messenger()">Messager</a>
+        <a href="javascript:display_inactive('new_conversation')"><span id="new_conversation_icone" class="icone"></span></a>
+    </div>
+    {% if active %}
+        <div id="update_messager">
+    {% else %}
+        <div id="update_messager" style="display: none">
+    {% endif %}
+    <div id="conversations">
+        {% for conversation in conversations %}
+            {% if forloop.counter < 5 %}
+                <div id="" class="line">
+            {% else %}
+                <div id="" class="line hide_conversation" style="display: none">
+            {% endif %}
+        {% if conversation.conversation_id == current_conversation.conversation_id %}
+            <span id="link_chat" class="chater on">
+        {% else %}
+            <span id="link_chat" class="chater">
+        {% endif %}
+        <input id="conversation_id" name="conversation_id" type="hidden" value="{{ conversation.conversation_id }}"/>
+        {% for user in conversation.users.all %}
+            {{ user.username }}
+        {% endfor %}
+        </span>
+        <a href="#">
                         <span class="icone delete_conversation_icone">
                         </span>
-    </a>
-    </div>
-    {% endfor %}
-            <span id="more_conversations" class="icone" style="display: none" >more</span>
-    </div>
-
-    <div id="conversation">
-        <div id="messages">
-            {% for message in messages %}
-                <div class="author">{{ message.author.first_name }} {{ message.author.last_name }}</div>
-                <div class="text">{{ message.text }}</div>
-            {% endfor %}
+        </a>
         </div>
+        {% endfor %}
+        <span id="more_conversations" class="icone" style="display: none" >more</span>
+        </div>
+
+
+        <div id="conversation">
+            <div id="messages">
+                {% for message in messages %}
+                    <div class="author">{{ message.author.first_name }} {{ message.author.last_name }}</div>
+                    <div class="text">{{ message.text }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     </div>

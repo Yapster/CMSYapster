@@ -115,15 +115,6 @@ class Recover(models.Model):
                             description="Only seen by the admin",
                             created_by=user)
 
-        l.groups.add(group2)
-        l.groups.add(group3)
-
-        l1.groups.add(group2)
-        l1.groups.add(group3)
-        l1.groups.add(group4)
-        l1.groups.add(group5)
-
-        l2.groups.add(group1)
 
         p = Page.objects.create(name="groups permissions", url="/permissionsgroups/",
                             description="Manage permissions for groups")

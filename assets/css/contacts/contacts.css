@@ -125,9 +125,12 @@ td a:hover, li a:hover {
     font-weight: bold;
 }
 
+.toggle_title:hover {
+    color:black;
+}
+
 #contacts {
     float: left;
     width: 100%;
 }
-
 

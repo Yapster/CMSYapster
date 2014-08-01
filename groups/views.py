@@ -15,32 +15,6 @@ def group_manage(request):
     Display permissions groups. Display members and pages for each
     """
     announcements = Announcement.objects.all()
-    users = User.objects.exclude(username=request.user.username)
-    messages = []
-    if 'chaters[]' in request.POST:
-        # Get list of the users
-        l_chaters = request.POST.getlist('chaters[]')
-        l_users = []
-        for chater in l_chaters:
-            l_users.append(User.objects.get(username=chater))
-        l_users.append(request.user)
-        # Get conversation with list of users
-        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
-        for user in l_users:
-            query_conversation = query_conversation.filter(users__pk=user.pk)
-        if not query_conversation:
-            current_conversation = Conversation.objects.create()
-            for user in l_users:
-                current_conversation.users.add(user)
-        else:
-            current_conversation = query_conversation[0]
-            # If new message add
-        if 'message' in request.POST:
-            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
-        messages = Message.objects.filter(conversation=current_conversation)
-        return render(request, 'chat/messages.html', {"messages": messages})
-    if 'refresh' in request.POST:
-        return render(request, 'chat/messages.html', {"messages": messages})
 
     groups = GroupPermission.objects.filter(is_active=True)
     inactive_groups = GroupPermission.objects.filter(is_active=False)
@@ -68,45 +42,14 @@ def group_manage(request):
                   {"groups": groups, "inactive_groups": inactive_groups,
                    "pages": pages,
                    "announcements": announcements,
-                   "user": request.user,
-                   "chaters": users,
-                   "messages": messages})
+                   "user": request.user})
 
 def group_details(request, group):
     announcements = Announcement.objects.all()
-    users = User.objects.exclude(username=request.user.username)
-    messages = []
-    if 'chaters[]' in request.POST:
-        # Get list of the users
-        l_chaters = request.POST.getlist('chaters[]')
-        l_users = []
-        for chater in l_chaters:
-            l_users.append(User.objects.get(username=chater))
-        l_users.append(request.user)
-        # Get conversation with list of users
-        query_conversation = Conversation.objects.annotate(count=Count('users')).filter(count=len(l_users))
-        for user in l_users:
-            query_conversation = query_conversation.filter(users__pk=user.pk)
-        if not query_conversation:
-            current_conversation = Conversation.objects.create()
-            for user in l_users:
-                current_conversation.users.add(user)
-        else:
-            current_conversation = query_conversation[0]
-            # If new message add
-        if 'message' in request.POST:
-            Message.objects.create(text=request.POST['message'], author=request.user, conversation=current_conversation)
-        messages = Message.objects.filter(conversation=current_conversation)
-        return render(request, 'chat/messages.html', {"messages": messages})
-    if 'refresh' in request.POST:
-        return render(request, 'chat/messages.html', {"messages": messages})
-
 
     g = GroupPermission.objects.get(group_name=group)
 
     return render(request, 'admins/group_details.html',
                   {"group": g,
                    "announcements": announcements,
-                   "user": request.user,
-                   "chaters": users,
-                   "messages": messages})
+                   "user": request.user})

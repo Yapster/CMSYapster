@@ -18,7 +18,7 @@ $(document).ready(function() {
         }
     }).trigger( "change" );
 
-    $("#submit_button").click(function(){
+    $("#submit_button").click(function(e){
         event.preventDefault(e);
         $.ajax({
             data: {

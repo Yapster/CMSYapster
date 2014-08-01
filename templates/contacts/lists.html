@@ -15,7 +15,7 @@
         <div id="groups">
             <div id="newcontact">
                 <div id="title_new_contact">
-                    <a class="toggle_title" href="javascript:display_inactive('infos')">New CMS User</a>
+                    <a class="toggle_title" href="javascript:display_inactive('infos')">New Contact</a>
                 </div>
                 <form method='post'>
                     {% csrf_token %}
@@ -26,7 +26,7 @@
                         </div>
                         <div class="line_form">
                             <label for="lastname">Last Name</label>
-                            <input type="text" id="lastname" name="lastname"/>
+                            <input type="text" id="lastname" name="firstname"/>
                         </div>
                         <div class="line_form">
                             <label for="email">Email</label>
@@ -63,16 +63,59 @@
                             </select>
                         </div>
                         <div class="line_form">
+                            <label>Zip Code</label>
+                            <select id="city" class="select_location" name="zipcode">
+                                <option value="0">No Zip Code</option>
+                                {% for zipcode in zipcodes %}
+                                    <option value="{{ zipcode.us_zip_code_id }}">{{ zipcode.us_zip_code }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="line_form">
                             <label>City</label>
                             <select id="city" class="select_location" name="city">
                                 <option value="0">No City</option>
                                 {% for city in cities %}
-                                    <option value="{{ city.city_id}}">{{ city.city_name }}</option>
+                                    <option value="{{ city.city_id }}">{{ city.city_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="line_form">
+                            <label>Contact List</label>
+                            <select id="list" class="select_location" name="list">
+                                <option value="0">No List</option>
+                                {% for l in lists %}
+                                    <option value="{{ l.list_id}}">{{ l.name }}</option>
                                 {% endfor %}
                             </select>
                         </div>
                         <div class="submitdiv">
-                            <button type="submit" name="btn_new" class="button_form" >Submit</button>
+                            <button type="submit" name="btn_new_contact" class="button_form" >Submit</button>
+                            <button type="reset" name="btn_reset" class="button_form">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="newcontact">
+                <div id="title_new_contact">
+                    <a class="toggle_title" href="javascript:display_inactive('infos_new_list')">New List</a>
+                </div>
+                <form method='post'>
+                    {% csrf_token %}
+                    <div id="infos_new_list" class="infos" style="display: none">
+                        <div class="line_form">
+                            <label for="firstname">Name</label>
+                            <input type="text" id="name_list" name="name_list"/>
+                        </div>
+                        <div class="line_form">
+                            <label for="lastname">Description</label>
+                            <input type="text" id="desc_list" name="desc_list"/>
+                        </div>
+                        <div>
+
+                        </div>
+                        <div class="submitdiv">
+                            <button type="submit" name="btn_new_list" class="button_form" >Submit</button>
                             <button type="reset" name="btn_reset" class="button_form">Reset</button>
                         </div>
                     </div>
@@ -92,24 +135,28 @@
                             </tr>
                             {% if lists %}
                                 {% for list in lists%}
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <tr>
-                                            <td><a href="lists/{{ list.list_id }}">{{ list.name }}</a></td>
-                                            <td>
-                                                {% for contact in list.contacts.all %}
-                                                    <li>
-                                                        <a href="lists/{{ list.list_id }}/contacts/{{ contact.contact_id }}">{{ contact.firstname }} {{ contact.lastname }}</a>
-                                                    </li>
-                                                {% endfor %}
-                                            </td>
-                                            <form method="post">
-                                                {% csrf_token %}
-                                                <input type="hidden" name="list" value="{{ list.name }}"/>
-                                                <td><button type="submit" name="btn_delgroup" class="button_form">Delete</button></td>
-                                            </form>
-                                        </tr>
-                                    </form>
+                                    {% if list.is_active %}
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <tr>
+                                                <td><a href="lists/{{ list.list_id }}">{{ list.name }}</a></td>
+                                                <td>
+                                                    {% for contact in list.contacts.all %}
+                                                        {% if contact.is_active %}
+                                                            <li>
+                                                                <a href="lists/{{ list.list_id }}/contacts/{{ contact.contact_id }}">{{ contact.firstname }} {{ contact.lastname }}</a>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </td>
+                                                <form method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="list" value="{{ list.name }}"/>
+                                                    <td><button type="submit" name="btn_delgroup" class="button_form">Delete</button></td>
+                                                </form>
+                                            </tr>
+                                        </form>
+                                    {% endif %}
                                 {% endfor %}
                             {% endif %}
                         </table>
@@ -132,7 +179,7 @@
                                 <tr>
                                     <td>{{ list.name }} </td>
                                     <input type="hidden" name="list" value="{{ list.name }}"/>
-                                    <td><button type="submit" name="btn_active">Activate</button></td>
+                                    <td><button type="submit" name="btn_active" class="button_form">Activate</button></td>
                                 </tr>
                             </form>
                         {% endfor %}
@@ -154,8 +201,8 @@
                                 {% csrf_token %}
                                 <tr>
                                     <td>{{ contact.firstname }} {{ contact.lastname }}</td>
-                                    <input type="hidden" name="list" value="{{ contact.contact_id }}"/>
-                                    <td><button type="submit" name="btn_active_contact">Activate</button></td>
+                                    <input type="hidden" name="inactive_contact" value="{{ contact.contact_id }}"/>
+                                    <td><button type="submit" name="btn_active_contact" class="button_form">Activate</button></td>
                                 </tr>
                             </form>
                         {% endfor %}

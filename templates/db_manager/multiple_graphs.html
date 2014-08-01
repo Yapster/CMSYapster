@@ -2,7 +2,7 @@
     google.load("visualization", "1", {packages:["corechart"]});
     $(document).ready(function() {
         var data = google.visualization.arrayToDataTable([
-            ['x', '{{ type_search }}'],
+            ['x'{% for instance in l_instances %},'{{ instance }}'{% endfor %}],
             {% for key, value in dic %}
                 ['{{ key }}', {{ value }}],
             {% endfor %}
@@ -13,7 +13,7 @@
                     width: 800, height: 800,
                     vAxis: {minValue: 0},
                     hAxis: {gridlines: {count: 10}},
-                title: "{{ instance_id }}: {{ type_search }} ({{ unit }})"}
+                    title: "{{ type_search }} ({{ unit }})"}
         );
     });
 </script>

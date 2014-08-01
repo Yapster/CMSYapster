@@ -14,6 +14,7 @@
             <h2 class="title_contacts">{{ list.name }}</h2>
         </div>
         {% for contact in list.contacts.all %}
+            {% if contact.is_active %}
             <div id="contact">
                 <div id="contactname">
                     <a class="" href="contacts/{{ contact.contact_id }}"><h2 class="title_contacts">{{ contact.firstname }} {{ contact.lastname }}</h2></a>
@@ -23,7 +24,13 @@
                     <li class="line">Email : <span class="">{{ contact.email }}</span></li>
                     <li class="line">Phone : <span class="">{{ contact.phone }}</span></li>
                 </ul>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="contact" value="{{ contact.contact_id }}"/>
+                    <td><button type="submit" name="btn_delcontact" class="button_form">Delete</button></td>
+                </form>
             </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

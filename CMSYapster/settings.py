@@ -28,6 +28,8 @@ ALLOWED_HOSTS = []
 
 BUCKET_NAME = 'yapstercms'
 
+DB_YAPSTER = 'ye_1_db_1'
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -38,21 +40,25 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django.contrib.gis',
+    'south',
     'boto',
-    'storages',
     'rest_framework',
+    'schedule',
     'admins',
     'announcements',
+    'calendars',
     'chat',
+    'cms_search_log',
+    'cms_location',
+    'cms_notifications',
     'contacts',
     'db_manager',
     'db_recover',
     'files_manager',
     'groups',
-    'cms_search_log',
-    'cms_location',
-    'cms_notifications',
     'stats',
+
     'location',
     'manual_override',
     'notification',
@@ -88,15 +94,15 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': '',
         'PORT': '',
-    },
-    'yte_1_db': {
-        'NAME': 'yte_1_db',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        },
+    'ye_1_db_1': {
+        'NAME': 'ye_1_db_1',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'USER': 'yapster',
         'PASSWORD': 'Yapster1000000000',
-        'HOST': '54.90.4.212',
+        'HOST': 'ye-1-db-1.cagmlb1zwzjw.us-east-1.rds.amazonaws.com',
         'PORT': '5432',
-    }
+        }
 }
 
 # Internationalization
@@ -126,3 +132,5 @@ TEMPLATE_DIRS = (
 )
 
 DATABASE_ROUTERS = ['yap.router.APIRouter']
+
+GEOS_LIBRARY_PATH = 'C:/OSGeo4W/bin/geos_c.dll'

@@ -1,6 +1,6 @@
 import boto
 from django.db import models
-from users.models import User
+from django.contrib.auth.admin import User
 from django import forms
 from django.conf import settings
 from admins.models import CmsUser
@@ -77,7 +77,7 @@ class FileManager(models.Model):
         Get a file from S3
         """
         c = boto.connect_s3()
-        b = c.get_bucket(settings.BUCKET_NAME)
+        b = c.get_bucket('yapstercms')
         if b:
             try:
                 p = ProfilePicture.objects.get(is_current=True, user_id=user)

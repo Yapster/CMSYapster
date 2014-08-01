@@ -1,4 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.contrib.gis.db import models
+from django.utils import timezone
+from itertools import chain
+import ast
+import datetime
 
 class Country(models.Model):
     country_id = models.AutoField(primary_key=True)
@@ -8,8 +14,9 @@ class Country(models.Model):
     date_deactivated = models.DateTimeField(blank=True,null=True)
 
     def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('Countries cannot be deleted.')
+        self.is_active = False
+        self.date_deactivated = timezone.now()
+        self.save(update_fields=['is_active','date_deactivated'])
 
 class USState(models.Model):
     us_states_id = models.AutoField(primary_key=True)
@@ -20,9 +27,14 @@ class USState(models.Model):
     date_deactivated = models.DateTimeField(blank=True,null=True)
 
     def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('USStates cannot be deleted.')
+        self.is_active = False
+        self.date_deactivated = timezone.now()
+        self.save(update_fields=['is_active','date_deactivated'])
 
+    def load_all_usstates(self,country):
+        if country.country == 'United States':
+            us_states_list = USState.objects.filter(is_active=True)
+            return us_states_list
 
 class USZIPCode(models.Model):
     us_zip_code_id = models.AutoField(primary_key=True)
@@ -32,9 +44,15 @@ class USZIPCode(models.Model):
     date_deactivated = models.DateTimeField(blank=True,null=True)
 
     def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('USZIPCodes cannot be deleted.')
+        self.is_active = False
+        self.date_deactivated = timezone.now()
+        self.save(update_fields=['is_active','date_deactivated'])
 
+    def check_if_zip_code_exists(self,zipcode):
+        if zipcode == USZIPCode.objects.filter(us_zip_code=zipcode):
+            return True
+        else:
+            return False
 
 class City(models.Model):
     city_id = models.AutoField(primary_key=True)
@@ -47,9 +65,9 @@ class City(models.Model):
     date_deactivated = models.DateTimeField(blank=True,null=True)
 
     def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('Cities cannot be deleted.')
-
+        self.is_active = False
+        self.date_deactivated = timezone.now()
+        self.save(update_fields=['is_active','date_deactivated'])
 
 class GeographicTarget(models.Model):
     geographic_target_id = models.AutoField(primary_key=True)
@@ -66,5 +84,6 @@ class GeographicTarget(models.Model):
     is_active = models.BooleanField(default=True)
 
     def delete(self):
-        '''disabling delete'''
-        raise NotImplementedError('GeographicTargets cannot be deleted.')
+        self.is_active = False
+        self.date_deactivated = timezone.now()
+        self.save(update_fields=['is_active','date_deactivated'])

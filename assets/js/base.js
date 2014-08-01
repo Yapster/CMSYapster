@@ -59,7 +59,7 @@ $(document).ready(function() {
                 url : "/post/messenger/",
                 type : "POST",
                 success: function(newData){
-                    $('#update_messager').html(newData);
+                    $('#messenger_to_up').html(newData);
                 }
             });
             $('#message').val('');
@@ -82,7 +82,7 @@ $(document).ready(function() {
                 url : "/post/messenger/",
                 type : "POST",
                 success: function(newData){
-                    $('#update_messager').html(newData);
+                    $('#messenger_to_up').html(newData);
                 }
             });
             $('#message').val('');
@@ -107,7 +107,7 @@ $(document).ready(function() {
                         type : "POST",
                         success : function(newData)
                         {
-                            $('#update_messager').html(newData);
+                            $('#messenger_to_up').html(newData);
                         }
                     });
             }
