@@ -2,6 +2,7 @@ from collections import defaultdict
 from django.db import models
 from django.contrib.auth.models import User
 from groups.models import GroupPermission
+from calendars.models import MyCalendar
 
 import logging
 
@@ -36,6 +37,8 @@ class CmsUser (models.Model):
         kwargs["user"] = user
         logger.warning(user)
         CmsUser.objects.create(**kwargs)
+        cal_name = first_name + " " + last_name
+        MyCalendar.objects.create_calendar(user=user, name=cal_name)
         return user
 
     def update(self, *args, **kwargs):

@@ -1,0 +1,42 @@
+<script>
+    hide_events();
+</script>
+
+<div id="header_calendar">
+    <button onclick="change_display(prev_day)" class="button_form">&lt;&lt;</button>
+    <input type="hidden" id="prev_day" name="day" class="change_link button_form" value="{{ today.year }} {{ today.month }} {{ today.day|add:"-1" }}"/>
+    <button onclick="change_display(next_day)" class="button_form">&gt;&gt;</button>
+    <input type="hidden" id="next_day" name="day" class="change_link button_form" value="{{ today.year }} {{ today.month }} {{ today.day|add:"1" }}"/>
+</div>
+
+<h4>{{ mname }} {{ year }}</h4>
+
+<div id="week">
+    <div id="hour_container">
+        {% for hour in hours %}
+            <div class="hour">{{ hour }}</div>
+        {% endfor %}
+    </div>
+
+
+    <table id="table_day">
+        <tr>
+            <th class="empty">{{ today.month }}/{{ today.day }}</th>
+        </tr>
+        {% for hour in hours %}
+            <tr>
+                <td>
+                    {% for event in events %}
+                        {% if event.start.hour|add:"-8" == forloop.parentloop.counter %}
+                            <div class="event_in_day" style="background-color: #{{ event.mycalendar.color }}">
+                             <a class="event_link" href="javascript:display_event('{{ event.id }}')">{{ event.title }}</a>
+                                </div>
+                        {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div class="clear"></div>
+</div>

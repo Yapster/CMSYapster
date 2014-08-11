@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from schedule.periods import Year, Month, Week, Day
+import calendars.urls
 from yap.views import *
 
 admin.autodiscover()
@@ -8,8 +10,9 @@ urlpatterns = patterns('',
                        # Examples:
                        # url(r'^$', 'CMSYapster.views.home', name='home'),
                        # url(r'^blog/', include('blog.urls')),
-                       (r'^', include('calendars.urls')),
+
                        url(r'^admin/', include(admin.site.urls)),
+                       url(r'^calendar/', include(calendars.urls)),
                        url(r'^login/', 'admins.views.login_user'),
                        url(r'^home/', 'stats.views.homepage'),
                        url(r'^statistics/usership/$', 'stats.views.stats_usership'),
@@ -19,7 +22,6 @@ urlpatterns = patterns('',
                        url(r'^get/home_stats/$', 'stats.views.home_stats'),
                        url(r'^get/location_option/$', 'stats.views.location_option'),
                        url(r'^post/specific_search/$', 'stats.views.specific_search'),
-                       url(r'^post/more_data/$', 'stats.views.more_data'),
                        url(r'^post/messenger/$', 'chat.views.chat'),
                        url(r'^post/search/$', 'cms_search_log.views.form_fields'),
                        url(r'^post/search/results/$', 'cms_search_log.views.results'),

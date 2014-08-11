@@ -1,11 +1,67 @@
 {% extends "base.html" %}
 {% block localfiles %}
     {% load staticfiles %}
+    <script type="text/javascript" src="{% static "js/calendars/main.js" %} "></script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/calendars/main.css" %}" />
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+
 {% endblock %}
 {% block headbar %}
     <div id="headbar_empty">
+        <span id="text_headbar">Search</span>
     </div>
 {% endblock %}
 {% block content %}
+    <div id="content">
+        <div id="nav_left">
+            <div id="new_event">
+                <button class="button_form"><a href="event/">Create</a></button>
+            </div>
+            <div id="datepicker">
+            </div>
+            <div id="my_calendars">
+                <a href="javascript:display_inactive('calendar_container')"><div class="mini_title">My Calendars</div></a>
+                <div id="calendar_container">
+                    {% for c in calendars %}
+                        <a href="javascript:toggle_calendar('{{ c.id }}')">
+                            <div class="calendar" id="calendar_{{ c.id }}">
+                                <span class="square_color" id="color_{{ c.id }}" style="background-color: #{{ c.color }}"></span>
+                                <span>{{ c.name }}</span>
+                            </div>
+                        </a>
+                    {% endfor %}
+                    <div class="calendar" id="new_calendar">
+                        <span class="square_color" id="new_color"></span>
+                        <span> <a href="javascript:new_calendar()">New Calendar</a></span>
+                    </div>
+                    <div id="form_new_calendar" style="display: none">
+                        <div class="line_form_calendar">
+                            <label for="name_new_calendar">Name</label>
+                            <input type="text" name="name" id="name_new_calendar"/>
+                        </div>
+                        <div class="line_form_calendar">
+                            <label for="is_public_new_calendar">Is Public</label>
+                            <input type="checkbox" name="public" id="is_public_new_calendar"/>
+                        </div>
+                        <div class="line_form_calendar">
+                            <button type="button" onclick="add_calendar()" class="button_form">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content_calendar">
+            <div id="select_type_calendar" class="line_search">
+                <button type="button" class="button_form" name="year" id="button_year" onclick="change_display_button('year')">By Year</button>
+                <button type="button" class="button_form" name="month" id="button_month" onclick="change_display_button('month')">By Month</button>
+                <button type="button" class="button_form" name="week" id="button_week" onclick="change_display_button('week')">By Week</button>
+                <button type="button" class="button_form" name="day" id="button_day" onclick="change_display_button('day')">By Day</button>
+            </div>
+            <div id="details_event" style="display: none">
+            </div>
+            <div id="calendar">
+            </div>
+        </div>
 
+    </div>
 {% endblock %}

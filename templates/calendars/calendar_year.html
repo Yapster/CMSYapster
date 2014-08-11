@@ -1,0 +1,33 @@
+<div id="header_calendar">
+    <button onclick="change_display(prev_year)" class="button_form">&lt;&lt;</button>
+    <input type="hidden" id="prev_year" name="year" class="year" value="{{ current_year|add:"-1" }}"/>
+    <button onclick="change_display(next_year)" class="button_form">&gt;&gt;</button>
+    <input type="hidden" id="next_year" name="year" class="year" value="{{ current_year|add:"1" }}"/>
+</div>
+
+
+{% for year, months in years %}
+
+    <h4 id="title_year">{{ current_year }}</h4>
+    <div id="month_container_in_year">
+        {% for month in months %}
+            {% if month.current %}
+                <div class="current_month_in_year">
+                    <a href="javascript:see_details('{{ current_year }} {{ month.n }}', 'month')">{{ month.name }}</a>
+                    {% if month.entry != 0 %}
+                        <span class="events_notification">{{ month.entry }}</span>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="month_in_year">
+                    <a href="javascript:see_details('{{ current_year }} {{ month.n }}', 'month')">{{ month.name }}</a>
+                    {% if month.entry != 0 %}
+                        <span class="events_notification">{{ month.entry }}</span>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+    </div>
+
+{% endfor %}

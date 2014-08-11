@@ -5,5 +5,11 @@ from calendars.models import *
 
 urlpatterns = patterns(
     '',
-    url(r'^calendar/(?P<username>[a-zA-Z0-9_.-]+)/', 'calendars.views.calendar'),
+    url(r'details_event/$', 'calendars.views.details_event'),
+    url(r'event/', 'calendars.views.event'),
+    url(r'year/$', 'calendars.views.by_years'),
+    url(r'month/$', 'calendars.views.by_month'),
+    url(r'week/$', 'calendars.views.by_week'),
+    url(r'day/$', 'calendars.views.by_day'),
+    url(r'', 'calendars.views.calendar'),
     )

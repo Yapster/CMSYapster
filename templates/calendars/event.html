@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block localfiles %}
+    {% load staticfiles %}
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+{% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="content">
+        <form method="post">
+        {% csrf_token %}
+            <div id="header_new_event">
+                <a href="/calendar/"><span id="back_button" class="button_form">Back</span></a>
+                <button type="submit" id="add_event" class="button_form">Save Event</button>
+                <span id="cancel_event" class="button_form">Cancel</span>
+            </div>
+            <div id="title_new_event">
+                <input id="title" name="title" type="text" placeholder="Event Title"/>
+            </div>
+            <div id="date_new_event">
+            <span id="start_container">
+                <input id=start" name="start" type="date"/>
+            </span>
+            <span id="from_hour_container">
+                <input id="from_time" name="from_time" type="time"/>
+            </span>
+                To
+            <span id="to_date_container">
+                <input id="end" name="end" type="date"/>
+            </span>
+            <span id="to_hour_container">
+                <input id="to_time" name="to_time" type="time"/>
+            </span>
+            </div>
+            <div id="recurrence">
+        <span>
+            <label for="is_repeat">Is Repeat</label>
+            <input id="is_repeat" name="is_repeat" type="checkbox"/>
+        </span>
+        <span>
+            <label for="is_all_day" >Is All Day</label>
+            <input id="is_all_day" name="is_all_day" type="checkbox"/>
+        </span>
+            </div>
+            <div id="description_event_container">
+                <label for="description">Description</label>
+                <input id="description" name="description" type="text" />
+            </div>
+            <div id="choose_calendar_container" class="line_search">
+                <label for="choose_calendar">Agenda</label>
+                <select id="choose_calendar" name="choose_calendar">
+                    {% for calendar in calendars %}
+                        <option value="{{ calendar.id }}">{{ calendar.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+    </div>
+{% endblock %}

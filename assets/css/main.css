@@ -176,10 +176,9 @@ table tr td:last-child,table tr th:last-child{
 }
 
 #content{
-    width: 60%;
     margin-left: 3%;
     margin-top: 38px;
-    float: left;
+    overflow: hidden;
 }
 
 
@@ -189,7 +188,7 @@ table tr td:last-child,table tr th:last-child{
     height: 320px;
     border:1px #15D400 solid;
     position: relative;
-    margin-left: 4%;
+    margin-left: 5px;
     margin-bottom: 5px;
     margin-top: 38px;
 }

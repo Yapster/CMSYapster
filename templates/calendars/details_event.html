@@ -1,0 +1,23 @@
+
+
+<div>
+    <span id="header_event" style="color: #{{ event.mycalendar.color }}">{{ event.title }}</span>
+</div>
+<div id="content_event">
+    <div id="date_event" class="info_event">
+        <span class="label_event">Date</span>
+        <span id="value_date_event">{{ event.start }} - {{ event.end }}</span>
+    </div>
+    <div id="place_event" class="info_event">
+        <span class="label_event">Place</span>
+        <span id="value_place_event"></span>
+    </div>
+    <div id="desc_event" class="info_event">
+        <span class="label_event">Description</span>
+        <span id="value_desc_event">{{ event.description }}</span>
+    </div>
+    <div id="calendar_event" class="info_event">
+        <span class="label_event">Calendar</span>
+        <span id="value_calendar_event">{{ event.mycalendar }}</span>
+    </div>
+</div>
