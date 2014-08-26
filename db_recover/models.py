@@ -4,6 +4,8 @@ from announcements.models import Announcement
 from chat.models import Conversation, Message
 from groups.models import GroupPermission, Page
 from contacts.models import Contact, List
+from tasks.models import *
+from datetime import datetime
 
 class Recover(models.Model):
     """
@@ -159,5 +161,29 @@ class Recover(models.Model):
         c1.lists.add(l)
 
         c2.lists.add(l2)
+
+        c1 = Category.objects.create(name="Bug")
+        c2 = Category.objects.create(name="Feature")
+        c3 = Category.objects.create(name="Design")
+        c4 = Category.objects.create(name="Brainstorming")
+
+        t1 = Task.objects.new_task(name="Bug IOS", description="Lorem ipsum dolor sit amet", category=c1, deadline=datetime(2014, 9, 3), priority=1, status='TO')
+        t2 = Task.objects.new_task(name="New Tab Bar", description="Lorem ipsum dolor sit amet, ", category=c2, deadline=datetime(2014, 9, 2), priority=2, status='IP')
+        t3 = Task.objects.new_task(name="Design Android", description="Lorem ipsum dolor sit amet, ", category=c3, deadline=datetime(2014, 9, 1), priority=3, status='DO')
+        t4 = Task.objects.new_task(name="Think about Website", description="Lorem ipsum dolor sit amet, ", category=c4, deadline=datetime(2014, 8, 20), priority=4, status='TO')
+        t5 = Task.objects.new_task(name="Bug CMS", description="Lorem ipsum dolor sit amet, ", category=c1, deadline=datetime(2014, 8, 22), priority=5, status='IP')
+        t6 = Task.objects.new_task(name="Google Drive in CMS", description="Lorem ipsum dolor sit amet, ", category=c2, deadline=datetime(2014, 8, 24), priority=6, status='DO')
+
+        t1.workers.add(user)
+        t2.workers.add(user1)
+        t3.workers.add(user2)
+        t4.workers.add(user3)
+        t5.workers.add(user1)
+        t6.workers.add(user)
+        t1.workers.add(user2)
+        t1.workers.add(user3)
+        t2.workers.add(user2)
+
+
 
         return

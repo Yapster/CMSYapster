@@ -1,6 +1,7 @@
 <div class="research">
     <label id="label_search_expression" >Search expression</label>
     <input id="input_search_expression" type="text" name="searchexp"/>
+    <input type="hidden" value="4" name="type_search" id="type_search"/>
 </div>
 <div class="group">
     <div class="line_search">
@@ -38,20 +39,13 @@
         <input type="date" name="date_unliked"/>
     </div>
     <div class="line_search">
-        <label>Is Unreyapped</label>
-        <input type="checkbox" name="user_is_active"/>
+        <label>Is Inactive</label>
+        <input type="checkbox" name="is_inactive"/>
+    </div>
     </div>
     <div class="line_search">
-        <label>Is Active</label>
-        <input type="checkbox" name="is_active"/>
-    </div>
-    <div class="line_search">
-        <label>Date Deleted</label>
-        <input type="date" name="date_deleted"/>
-    </div>
-    <div class="line_search">
-        <label>User Is Active</label>
-        <input type="checkbox" name="user_is_active"/>
+        <label>User Is Inactive</label>
+        <input type="checkbox" name="user_is_inactive"/>
     </div>
 </div>
 <div id="more_fields">

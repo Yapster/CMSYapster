@@ -1,0 +1,104 @@
+/*main css*/
+
+#content {
+    margin-left: 200px;
+    margin-right: 10px;
+    height: 100%;
+}
+#cols {
+    height: 100%;
+}
+
+.main_col {
+    width: 30%;
+    float: left;
+    text-align: center;
+    height: 100%;
+
+}
+
+#inprogress {
+    border-right: 1px #8b8b8d solid;
+    border-left: 1px #8b8b8d solid;
+}
+
+.header_tasks {
+    margin-bottom: 38px;
+    padding-bottom: 5px;
+    border-bottom: 1px #8b8b8d solid;
+
+}
+
+.title_header {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/*task css*/
+
+.task {
+    font-size: 11px;
+    margin: 8px;
+    padding: 10px;
+    border: 1px black solid;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.task:hover {
+    opacity: 0.8;
+}
+
+.header_task {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.header_task:hover {
+    text-decoration: underline;
+}
+
+.details_task {
+    margin-top: 10px;
+}
+
+
+.priority_task {
+    float: left;
+}
+
+.title_task {
+    text-align: center;
+}
+
+.label_detail_task {
+    float: left;
+    font-weight: bold;
+}
+
+.detail_task {
+
+}
+
+
+.test {
+    background-color: black;
+    float: left;
+    cursor: pointer;
+}
+
+.Bug {
+    color: blue;
+}
+
+.Feature {
+    color: red;
+}
+
+.Design {
+    color: fuchsia;
+}
+
+.Brainstorming {
+    color: darkslategray;
+}

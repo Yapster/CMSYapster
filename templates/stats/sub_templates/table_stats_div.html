@@ -1,0 +1,79 @@
+<div class="table_stats">
+    <div class="col_stats" id="title_col">
+        <div class="tab_icone">
+                Stats
+        </div>
+        <div class="stats_container">
+            {% if type == "usership" %}
+                <div class="cell">Total Number of Active Users</div>
+                <div class="cell">Total New Users</div>
+                <div class="cell">Top Countries Users</div>
+                <div class="cell">Birthdays this Month</div>
+                <div class="cell">Birthdays Today</div>
+                <div class="cell">Users to pushnotify</div>
+            {% else %}
+                <div class="cell">Hashtags</div>
+                <div class="cell">Total Number of Listens</div>
+                <div class="cell">Total Number of Active Listens</div>
+                <div class="cell">Total Time Listened</div>
+                <div class="cell">Total Active Time Listened</div>
+                <div class="cell">Average Time Listened</div>
+                <div class="cell">Average Active Time Listened</div>
+                <div class="cell">Average Number of Listens per User</div>
+                <div class="cell">Average Number of Active Listens per User</div>
+                <div class="cell">Average Time Listened per User</div>
+                <div class="cell">Average Active Time Listened per Active User</div>
+                <div class="cell">Total Number of Yaps</div>
+                <div class="cell">Total Number of Active Yaps</div>
+                <div class="cell">Total Number of Time Yapped</div>
+                <div class="cell">Total Number of Active Time Yapped</div>
+                <div class="cell">Average Number of Yaps per Users</div>
+                <div class="cell">Average Number of Active Yaps per Active Users</div>
+                <div class="cell">Average Number of Time Yapped per Users</div>
+                <div class="cell">Average Number of Active Time Yapped per Users</div>
+                <div class="cell">Total Number of Likes</div>
+                <div class="cell">Total Number of Active Likes</div>
+                <div class="cell">Average Number of Likes per User</div>
+                <div class="cell">Average Number of Active Likes per Active User</div>
+                <div class="cell">Total Number of Reyaps</div>
+                <div class="cell">Total Number of Active Reyaps</div>
+                <div class="cell">Average Number of Reyaps per User</div>
+                <div class="cell">Average Number of active Reyaps per active User</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col_stats" id="total_col">
+        <div class="tab_icone">
+                Total
+        </div>
+        <div class="stats_container" id="total"></div>
+    </div>
+    <div class="col_stats" id="min_col">
+        <div class="tab_icone" id="total">
+                Min
+        </div>
+        <div class="stats_container" id="min"></div>
+
+    </div>
+    <div class="col_stats" id="hour_col">
+        <div class="tab_icone">
+                Hour
+        </div>
+        <div class="stats_container" id="hour"></div>
+
+    </div>
+    <div class="col_stats" id="day_col">
+        <div class="tab_icone">
+                Day
+        </div>
+        <div class="stats_container" id="day"></div>
+
+    </div>
+    <div class="col_stats" id="more_col">
+        <div class="tab_icone" id="more_tab">
+                More
+        </div>
+        <div class="stats_container" id="more"></div>
+    </div>
+
+</div>

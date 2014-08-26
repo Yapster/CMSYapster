@@ -1,0 +1,20 @@
+<div class="task draggable {{ task.category.name }}" id="{{ task.task_id }}">
+    <div class="header_task">
+        <span class="priority_task">{{ task.priority }}</span>
+        <span class="title_task">{{ task.name }}</span>
+    </div>
+    <div class="details_task" style="display: none">
+        <div class="line_detail_task">
+            <label class="label_detail_task">Description</label>
+            <span class="detail_task">{{ task.description }}</span>
+        </div>
+        <div class="line_detail_task">
+            <label class="label_detail_task">Workers</label>
+            <span class="detail_task">{% for u in task.workers.all %}{{ u }} {% endfor %}</span>
+        </div>
+        <div class="line_detail_task">
+            <label class="label_detail_task">Deadline</label>
+            <span class="detail_task">{{ task.deadline }}</span>
+        </div>
+    </div>
+</div>

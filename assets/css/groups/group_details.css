@@ -1,6 +1,10 @@
+#content {
+    overflow: visible;
+}
+
 #groups{
-	width:870px;
-	height:57%;
+    width:870px;
+    height:57%;
     float: left;
     margin-left: 3%;
     margin-bottom: 250px;
@@ -8,17 +12,17 @@
 
 #groups .title_content{
     background-color: #15D400;
-	height:9%;
-	border:1px #15D400 solid;
-	text-align:center;
-	color: #ffffff;
-	line-height:38px;
+    height:9%;
+    border:1px #15D400 solid;
+    text-align:center;
+    color: #ffffff;
+    line-height:38px;
     font-size: 14px;
 }
 
 #newgroup{
     width:100%;
-	height:72%;
+    height:72%;
     float: left;
     margin-left: 3%;
     border: 1px #15D400 solid;
@@ -26,11 +30,11 @@
 
 #newgroup .title_content{
     background-color: #15D400;
-	height:9%;
-	border:1px #15D400 solid;
-	text-align:center;
-	color: #ffffff;
-	line-height:38px;
+    height:9%;
+    border:1px #15D400 solid;
+    text-align:center;
+    color: #ffffff;
+    line-height:38px;
     font-size: 14px;
 }
 

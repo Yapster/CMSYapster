@@ -27,7 +27,14 @@ $(document).ready(function() {
             url : "/post/search/results/",
             type : "POST",
             success: function(newData){
-
+                 if ($('#results').is(':visible'))
+                {
+                    $('#results').html(newData);
+                }
+                else
+                {
+                    $('#results').html(newData).show("slow");
+                }
             }
         })
     });

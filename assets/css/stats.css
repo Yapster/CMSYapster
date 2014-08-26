@@ -6,7 +6,6 @@
 #content {
     margin-top: 0px;
     margin-left: 40px;
-    width: 60%;
 }
 
 #stats_title{
@@ -25,7 +24,6 @@
     border: 1px #15D400 solid;
     margin-top: 10px;
     margin-bottom: 20px;
-    width: 100%;
     display: table;
 }
 
@@ -53,63 +51,6 @@
 }
 
 #stats{
-    height: 100%;
-    display: inline-block;
-    width: 100%;
-}
-
-.tab_headbar {
-    color: white;
-    line-height: 38px;
-    margin-left: 60px;
-    font-weight: bold;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.tab_headbar:hover, .tab_headbar.selected {
-    color: #15D400;
-}
-
-#tabs{
-    width:100%;
-    display: table;
-}
-
-#tabs a.selected{
-    opacity:1;
-}
-
-.tab_option {
-    display: table-cell;
-    width: 10%;
-    text-align: center;
-    height: 20px;
-    line-height: 45px;
-    font-size: 12px;
-}
-
-.tab_option.selected, .tab_option:hover {
-}
-
-.tab_green, #live_icone {
-    cursor: pointer;
-}
-
-.tab_green.selected, .tab_green:hover {
-    background-position: 72% 73%;
-    width: 65px;
-    color: white;
-}
-
-#live, .first_column {
-    width: 15%;
-}
-
-#live_icone.selected, #live_icone:hover {
-    background-position: 9% 73%;
-    width: 65px;
-    color: white;
 }
 
 #all_stats {
@@ -154,7 +95,6 @@ table tr td {
 #general_stats_table {
     border: 1px #15D400 solid;
     float:left;
-
 }
 
 .specific_search_table{
@@ -173,12 +113,7 @@ table tr td {
     cursor: pointer;
 }
 
-#table_stats {
-    width: 100%;
-    height: 100%;
-    float: left;
-    margin-top: -11px;
-}
+
 
 #from_age, #to_age {
     width: 47px;
@@ -188,4 +123,53 @@ table tr td {
 
 #loading_image {
 
+}
+
+/* Users details */
+
+
+/* Custom Table */
+
+.table_stats {
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin-top: -11px;
+    display: table;
+    table-layout: fixed;
+    font-size: 11px;
+}
+
+.col_stats {
+    text-align: center;
+    display: table-cell;
+}
+
+#title_col {
+    width: 20%;
+    font-weight: bold;
+}
+
+.icone_tab {
+    display: inline-block;
+    width: 100px;
+}
+
+.cell {
+    height: 30px;
+    border: 1px #8b8b8d solid;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tab_icone {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.stats_container {
 }

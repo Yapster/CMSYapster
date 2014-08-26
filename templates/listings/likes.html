@@ -1,0 +1,12 @@
+<div class="likes_listing">
+    <div id="header_yaps_listing">
+        <span>{{ title }} : {{ likes|length }}</span>
+    </div>
+    <div>
+        {% for l in likes %}
+            <div>
+                <a href="/likes/{{ l.like_id }}" class="like_link">{{ l.yap.title }} => {{ l.user }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

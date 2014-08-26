@@ -3,17 +3,8 @@ from django.contrib.auth.models import User
 
 class CmsSearchLog(models.Model):
     search_id = models.AutoField(primary_key=True)
-    user_search_id = models.BigIntegerField(default=1)
     user_searching = models.ForeignKey(User,related_name="cms_searches")
-    user_searched_flag = models.BooleanField(default=False)
-    yap_searched_flag = models.BooleanField(default=False)
-    reyap_searched_flag = models.BooleanField(default=False)
-    like_searched_flag = models.BooleanField(default=False)
-    listen_searched_flag = models.BooleanField(default=False)
-    channel_searched_flag = models.BooleanField(default=False)
-    hashtag_searched_flag = models.BooleanField(default=False)
-    report_searched_flag = models.BooleanField(default=False)
-    general_searched_flag = models.BooleanField(default=False)
+    type_search = models.CharField(max_length=64)
     text_searched = models.CharField(max_length=255)
 
     longitude = models.FloatField(null=True,blank=True)
@@ -22,7 +13,13 @@ class CmsSearchLog(models.Model):
     is_active = models.BooleanField(default=True)
 
     @staticmethod
-    def create(**kwargs):
+    def create(params, **kwargs):
+        kwargs['user_searching'] = params['current_user']
+        kwargs['type_search'] = params['type_search']
+        if 'searchexp' in params:
+            kwargs['text_searched'] = params['searchexp']
+
+        CmsSearchLog.objects.create(**kwargs)
         return
 
     class Meta:

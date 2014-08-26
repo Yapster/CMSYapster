@@ -1,0 +1,12 @@
+<div class="hashtags_listing">
+    <div id="header_hashtags_listing">
+        <span>{{ title }}: {{ hashtags|length }}</span>
+    </div>
+    <div>
+        {% for h in hashtags %}
+            <div>
+                <a href="/hashtags/{{ h }}" class="hashtag_link">{{ h }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

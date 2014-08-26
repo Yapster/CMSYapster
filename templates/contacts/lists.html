@@ -7,208 +7,216 @@
 {% endblock %}
 {% block headbar %}
     <div id="headbar_empty">
-        <span id="text_headbar">Search</span>
+        {% for error in errors %}
+            <div class="error">Error : {{ error }}</div>
+        {% endfor %}
     </div>
 {% endblock %}
 {% block content %}
     <div id="content" class="clearfix">
-        <div id="groups">
-            <div id="newcontact">
-                <div id="title_new_contact">
-                    <a class="toggle_title" href="javascript:display_inactive('infos')">New Contact</a>
+    <div id="groups">
+    <div id="newcontact">
+        <div id="title_new_contact">
+            <a class="toggle_title" href="javascript:display_inactive('infos')">New Contact</a>
+        </div>
+        <form method='post'>
+            {% csrf_token %}
+            <div id="infos" class="infos" style="display: none">
+                <div class="line_form">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname"/>
                 </div>
-                <form method='post'>
-                    {% csrf_token %}
-                    <div id="infos" class="infos" style="display: none">
-                        <div class="line_form">
-                            <label for="firstname">First Name</label>
-                            <input type="text" id="firstname" name="firstname"/>
-                        </div>
-                        <div class="line_form">
-                            <label for="lastname">Last Name</label>
-                            <input type="text" id="lastname" name="firstname"/>
-                        </div>
-                        <div class="line_form">
-                            <label for="email">Email</label>
-                            <input type="text" id="email" name="email"/>
-                        </div>
-                        <div class="line_form">
-                            <label for="email2">Confirm Email</label>
-                            <input type="text" id="email2" name="email2"/>
-                        </div>
-                        <div class="line_form">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone"/>
-                        </div>
-                        <div class="line_form">
-                            <label for="birthday">Birthday</label>
-                            <input type="date" id="birthday" name="birthday"/>
-                        </div>
-                        <div class="line_form">
-                            <label>Country</label>
-                            <select id="country" class="select_search" name="country">
-                                <option value="0">No Countries</option>
-                                {% for country in countries %}
-                                    <option value="{{ country.country_id}}">{{ country.country_name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="line_form">
-                            <label>US State</label>
-                            <select id="us_state" class="select_search" name="state">
-                                <option value="0">No US State</option>
-                                {% for state in states%}
-                                    <option value="{{ state.us_state_id }}">{{ state.us_state_name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="line_form">
-                            <label>Zip Code</label>
-                            <select id="city" class="select_location" name="zipcode">
-                                <option value="0">No Zip Code</option>
-                                {% for zipcode in zipcodes %}
-                                    <option value="{{ zipcode.us_zip_code_id }}">{{ zipcode.us_zip_code }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="line_form">
-                            <label>City</label>
-                            <select id="city" class="select_location" name="city">
-                                <option value="0">No City</option>
-                                {% for city in cities %}
-                                    <option value="{{ city.city_id }}">{{ city.city_name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="line_form">
-                            <label>Contact List</label>
-                            <select id="list" class="select_location" name="list">
-                                <option value="0">No List</option>
-                                {% for l in lists %}
-                                    <option value="{{ l.list_id}}">{{ l.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="submitdiv">
-                            <button type="submit" name="btn_new_contact" class="button_form" >Submit</button>
-                            <button type="reset" name="btn_reset" class="button_form">Reset</button>
-                        </div>
-                    </div>
-                </form>
+                <div class="line_form">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="firstname"/>
+                </div>
+                <div class="line_form">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email"/>
+                </div>
+                <div class="line_form">
+                    <label for="email2">Confirm Email</label>
+                    <input type="text" id="email2" name="email2"/>
+                </div>
+                <div class="line_form">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone"/>
+                </div>
+                <div class="line_form">
+                    <label for="birthday">Birthday</label>
+                    <input type="date" id="birthday" name="birthday"/>
+                </div>
+                <div class="line_form">
+                    <label>Country</label>
+                    <select id="country" class="select_search" name="country">
+                        <option value="0">No Countries</option>
+                        {% for country in countries %}
+                            <option value="{{ country.country_id}}">{{ country.country_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="line_form">
+                    <label>US State</label>
+                    <select id="us_state" class="select_search" name="state">
+                        <option value="0">No US State</option>
+                        {% for state in states%}
+                            <option value="{{ state.us_state_id }}">{{ state.us_state_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="line_form">
+                    <label>Zip Code</label>
+                    <select id="city" class="select_location" name="zipcode">
+                        <option value="0">No Zip Code</option>
+                        {% for zipcode in zipcodes %}
+                            <option value="{{ zipcode.us_zip_code_id }}">{{ zipcode.us_zip_code }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="line_form">
+                    <label>City</label>
+                    <select id="city" class="select_location" name="city">
+                        <option value="0">No City</option>
+                        {% for city in cities %}
+                            <option value="{{ city.city_id }}">{{ city.city_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="line_form">
+                    <label>Contact List</label>
+                    <select id="list" class="select_location" name="list">
+                        <option value="0">No List</option>
+                        {% for l in lists %}
+                            <option value="{{ l.list_id}}">{{ l.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="submitdiv">
+                    <button type="submit" name="btn_new_contact" class="button_form" >Submit</button>
+                    <button type="reset" name="btn_reset" class="button_form">Reset</button>
+                </div>
             </div>
-            <div id="newcontact">
-                <div id="title_new_contact">
-                    <a class="toggle_title" href="javascript:display_inactive('infos_new_list')">New List</a>
+        </form>
+    </div>
+    <div id="newcontact">
+        <div id="title_new_contact">
+            <a class="toggle_title" href="javascript:display_inactive('infos_new_list')">New List</a>
+        </div>
+        <form method='post'>
+            {% csrf_token %}
+            <div id="infos_new_list" class="infos" style="display: none">
+                <div class="line_form">
+                    <label for="firstname">Name</label>
+                    <input type="text" id="name_list" name="name_list"/>
                 </div>
-                <form method='post'>
-                    {% csrf_token %}
-                    <div id="infos_new_list" class="infos" style="display: none">
-                        <div class="line_form">
-                            <label for="firstname">Name</label>
-                            <input type="text" id="name_list" name="name_list"/>
-                        </div>
-                        <div class="line_form">
-                            <label for="lastname">Description</label>
-                            <input type="text" id="desc_list" name="desc_list"/>
-                        </div>
-                        <div>
-
-                        </div>
-                        <div class="submitdiv">
-                            <button type="submit" name="btn_new_list" class="button_form" >Submit</button>
-                            <button type="reset" name="btn_reset" class="button_form">Reset</button>
-                        </div>
-                    </div>
-                </form>
+                <div class="line_form">
+                    <label for="lastname">Description</label>
+                    <input type="text" id="desc_list" name="desc_list"/>
+                </div>
+                <div class="line_form">
+                    {% for group in groups %}
+                        {% if group.is_active %}
+                            <li>
+                                <input type="checkbox" name="group_selected" value="{{ group.group_id }}"/> {{ group.group_name }}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="submitdiv">
+                    <button type="submit" name="btn_new_list" class="button_form" >Submit</button>
+                    <button type="reset" name="btn_reset" class="button_form">Reset</button>
+                </div>
             </div>
-            <div id="contacts">
-                <div id="title_new_contact">
-                    <a class="toggle_title" href="javascript:display_inactive('contacts_table')">Contacts lists</a>
-                </div>
-                <div class="groupinfos">
-                    <div id="contacts_table" class="table">
-                        <table width="100%" cellpadding="2px" cellspacing="0px">
-                            <tr>
-                                <th>List Name</th>
-                                <th>Contacts</th>
-                                <th>Delete</th>
-                            </tr>
-                            {% if lists %}
-                                {% for list in lists%}
-                                    {% if list.is_active %}
+        </form>
+    </div>
+    <div id="contacts">
+        <div id="title_new_contact">
+            <a class="toggle_title" href="javascript:display_inactive('contacts_table')">Contacts lists</a>
+        </div>
+        <div class="groupinfos">
+            <div id="contacts_table" class="table">
+                <table width="100%" cellpadding="2px" cellspacing="0px">
+                    <tr>
+                        <th>List Name</th>
+                        <th>Contacts</th>
+                        <th>Delete</th>
+                    </tr>
+                    {% if lists %}
+                        {% for list in lists%}
+                            {% if list.is_active %}
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <tr>
+                                        <td><a href="lists/{{ list.list_id }}">{{ list.name }}</a></td>
+                                        <td>
+                                            {% for contact in list.contacts.all %}
+                                                {% if contact.is_active %}
+                                                    <li>
+                                                        <a href="lists/{{ list.list_id }}/contacts/{{ contact.contact_id }}">{{ contact.firstname }} {{ contact.lastname }}</a>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </td>
                                         <form method="post">
                                             {% csrf_token %}
-                                            <tr>
-                                                <td><a href="lists/{{ list.list_id }}">{{ list.name }}</a></td>
-                                                <td>
-                                                    {% for contact in list.contacts.all %}
-                                                        {% if contact.is_active %}
-                                                            <li>
-                                                                <a href="lists/{{ list.list_id }}/contacts/{{ contact.contact_id }}">{{ contact.firstname }} {{ contact.lastname }}</a>
-                                                            </li>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </td>
-                                                <form method="post">
-                                                    {% csrf_token %}
-                                                    <input type="hidden" name="list" value="{{ list.name }}"/>
-                                                    <td><button type="submit" name="btn_delgroup" class="button_form">Delete</button></td>
-                                                </form>
-                                            </tr>
+                                            <input type="hidden" name="list" value="{{ list.name }}"/>
+                                            <td><button type="submit" name="btn_delgroup" class="button_form">Delete</button></td>
                                         </form>
-                                    {% endif %}
-                                {% endfor %}
+                                    </tr>
+                                </form>
                             {% endif %}
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="title_inactive">
-                <a id="title_inactives" class="link_title" href="javascript:display_inactive('inactive_table')">Inactive Contacts Lists</a>
-            </div>
-            <div id="inactive_table" class="table hidable" style="display: none">
-                <table width="100%" cellpadding="2px" cellspacing="0px">
-                    <tr>
-                        <th>Contacts Lists</th>
-                        <th>Activate</th>
-                    </tr>
-                    {% if inactive_lists %}
-                        {% for list in inactive_lists %}
-                            <form method="post">
-                                {% csrf_token %}
-                                <tr>
-                                    <td>{{ list.name }} </td>
-                                    <input type="hidden" name="list" value="{{ list.name }}"/>
-                                    <td><button type="submit" name="btn_active" class="button_form">Activate</button></td>
-                                </tr>
-                            </form>
-                        {% endfor %}
-                    {% endif %}
-                </table>
-            </div>
-            <div class="title_inactive">
-                <a id="title_inactives_contacts" class="link_title" href="javascript:display_inactive('inactive_table_contacts')">Inactive Contacts</a>
-            </div>
-            <div id="inactive_table_contacts" class="table hidable" style="display: none">
-                <table width="100%" cellpadding="2px" cellspacing="0px">
-                    <tr>
-                        <th>Contacts</th>
-                        <th>Activate</th>
-                    </tr>
-                    {% if inactive_contacts %}
-                        {% for contact in inactive_contacts %}
-                            <form method="post">
-                                {% csrf_token %}
-                                <tr>
-                                    <td>{{ contact.firstname }} {{ contact.lastname }}</td>
-                                    <input type="hidden" name="inactive_contact" value="{{ contact.contact_id }}"/>
-                                    <td><button type="submit" name="btn_active_contact" class="button_form">Activate</button></td>
-                                </tr>
-                            </form>
                         {% endfor %}
                     {% endif %}
                 </table>
             </div>
         </div>
+    </div>
+    <div class="title_inactive">
+        <a id="title_inactives" class="link_title" href="javascript:display_inactive('inactive_table')">Inactive Contacts Lists</a>
+    </div>
+    <div id="inactive_table" class="table hidable" style="display: none">
+        <table width="100%" cellpadding="2px" cellspacing="0px">
+            <tr>
+                <th>Contacts Lists</th>
+                <th>Activate</th>
+            </tr>
+            {% if inactive_lists %}
+                {% for list in inactive_lists %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <tr>
+                            <td>{{ list.name }} </td>
+                            <input type="hidden" name="list" value="{{ list.name }}"/>
+                            <td><button type="submit" name="btn_active" class="button_form">Activate</button></td>
+                        </tr>
+                    </form>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+    <div class="title_inactive">
+        <a id="title_inactives_contacts" class="link_title" href="javascript:display_inactive('inactive_table_contacts')">Inactive Contacts</a>
+    </div>
+    <div id="inactive_table_contacts" class="table hidable" style="display: none">
+        <table width="100%" cellpadding="2px" cellspacing="0px">
+            <tr>
+                <th>Contacts</th>
+                <th>Activate</th>
+            </tr>
+            {% if inactive_contacts %}
+                {% for contact in inactive_contacts %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <tr>
+                            <td>{{ contact.firstname }} {{ contact.lastname }}</td>
+                            <input type="hidden" name="inactive_contact" value="{{ contact.contact_id }}"/>
+                            <td><button type="submit" name="btn_active_contact" class="button_form">Activate</button></td>
+                        </tr>
+                    </form>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+    </div>
     </div>
 {% endblock %}

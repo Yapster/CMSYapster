@@ -31,12 +31,21 @@ class CmsUser (models.Model):
         email = kwargs["email"]
         first_name = kwargs["first_name"]
         last_name = kwargs["last_name"]
-        user = User.objects.create_user(username=username, email=email,
+        try:
+            user = User.objects.create_user(username=username, email=email,
                                         password=password, first_name=first_name,
                                         last_name=last_name)
+        except:
+            return False
         kwargs["user"] = user
-        logger.warning(user)
-        CmsUser.objects.create(**kwargs)
+        group = None
+        try:
+            group = kwargs.pop('group')
+        except KeyError:
+            pass
+        cmsuser = CmsUser.objects.create(**kwargs)
+        if group:
+                cmsuser.group.add(group)
         cal_name = first_name + " " + last_name
         MyCalendar.objects.create_calendar(user=user, name=cal_name)
         return user

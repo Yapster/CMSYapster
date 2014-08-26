@@ -8,6 +8,7 @@
         google.load("visualization", "1", {packages:["corechart"]});
         $(document).ready(function() {
             var list_instances = $(".instance_id").map(function(){return $(this).text();}).get();
+            $('#graph').html("LOADING");
             $.ajax({
                 data : {
                     instances: list_instances,
@@ -20,9 +21,13 @@
                 type : "POST",
                 success: function(newData){
                     $('#graph').html(newData);
+                },
+                error: function(newData){
+                    $('#graph').html("FAIL");
                 }
             });
             $(".button_graph").click(function(){
+                $('#graph').html("LOADING");
                 var list_instances = $(".instance_id").map(function(){return $(this).text();}).get();
                 $.ajax({
                     data : {

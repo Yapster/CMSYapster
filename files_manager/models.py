@@ -50,12 +50,12 @@ class FileManager(models.Model):
 
     #TODO: Optimized
     @staticmethod
-    def store(path_bucket, content, filename, file_type=None, user=None):
+    def store(bucket, path_bucket, content, filename="", file_type=None, user=None):
         """
         Store the file into S3. Return Something if success/ False if not
         """
         c = boto.connect_s3()
-        b = c.get_bucket(settings.BUCKET_NAME)
+        b = c.get_bucket(bucket)
         if b:
             k = b.get_key(path_bucket)
             if not k:
@@ -69,6 +69,9 @@ class FileManager(models.Model):
                     except:
                         pass
                     ProfilePicture.objects.create(name=filename, path=path_bucket, user_id=user, is_current=True)
+            else:
+                if file_type == "channel":
+                    k.set_contents_from_string(content)
         return
 
     @staticmethod

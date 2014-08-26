@@ -1,0 +1,14 @@
+<div class="countries_listing">
+    <div id="header_countries_listing">
+        <span>{{ title }}: {{ res|length }}</span>
+    </div>
+    <div>
+    {% if title == 'Top Countries Users' %}
+        {% for c, num in res %}
+            <div>
+                <a href="/countries/{{ c }}" class="user_link">{{ c.country_name }}: {{ num }}</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+</div>

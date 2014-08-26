@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block localfiles %}
+    {% load dictionary_extras %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/listings/channel.css" %}" />
+    <script type="text/javascript" src="{% static "js/channels/main.js" %} "></script>
+{% endblock %}
+{% block content %}
+    <div id="content" class="clearfix">
+        <div id="channel_stats" class="div_channel">
+            <div id="title_channel" >
+                <span>Channel</span>
+            </div>
+            <div id="channel_name">
+                <span>Name</span>
+                <span>@{{ c.channel_name }}</span>
+            </div>
+            <div id="channel_desc">
+                <span>Description</span>
+                <span></span>{{ c.channel_description }}</div>
+            <div id="channel_created_date">
+                <span>Date Created</span>
+                <span>{{ c.date_created }}</span>
+            </div>
+            <div id="other_infos_channel">
+                <div>
+                    {% if c.is_bonus_channel %}
+                        <span class="valid">bonus</span>
+                    {% else %}
+                        <span class="not_valid">no bonus</span>
+                    {% endif %}
+                </div>
+                <div>
+                    {% if c.is_promoted %}
+                        <span class="valid">promoted</span>
+                    {% else %}
+                        <span class="not_valid">not promoted</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div id="yaps_channel" class="div_channel">
+            <div id="latest_yaps_title" >Latest Yaps</div>
+            <div id="latest_yap_container">
+                {% for yap in l_yaps %}
+                    <span><a class="yap_link" href="/yaps/{{ yap.yap_id }}">{{ yap.title }}</a></span>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="users_channel" class="div_channel">
+            <div id="latest_users_title" >Top Users</div>
+            <div id="latest_users_container">
+                <ul>
+                    <li>User</li>
+                </ul>
+            </div>
+        </div>
+        <div id="admin_channel">
+            <div id="path_clicked_image_edit">
+                <img class="icon_channel" src="{{ d_urls|access:"icon_explore_path_clicked" }}"/>
+                <span class="button_form show_pix">Change</span>
+                <div id="upload_pix" style="display: none">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="channel_name" value="{{ c.channel_name }}"/>
+                        <input type="hidden" name="type_pix" value="/explore/{{ c.channel_name }}_explore_clicked"/>
+                        <input id="input_pix" type="file" name="new_pic" class=""/>
+                        <input type="submit" name="button_new_pic" value="Upload the Pic ;)" class=""/>
+                    </form>
+                </div>
+            </div>
+            <div id="path_clicked_image_edit">
+                <img class="icon_channel" src="{{ d_urls|access:"icon_explore_path_unclicked" }}"/>
+                <span class="button_form show_pix">Change</span>
+                <div id="upload_pix" style="display: none">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="channel_name" value="{{ c.channel_name }}"/>
+                        <input type="hidden" name="type_pix" value="/explore/{{ c.channel_name }}_explore_unclicked"/>
+                        <input id="input_pix" type="file" name="new_pic" class=""/>
+                        <input type="submit" name="button_new_pic" value="Upload the Pic ;)" class=""/>
+                    </form>
+                </div>
+            </div>
+            <div id="path_clicked_image_edit" enctype="multipart/form-data">
+                <img class="icon_channel" src="{{ d_urls|access:"icon_yap_path_clicked" }}"/>
+                <span class="button_form show_pix">Change</span>
+                <div id="upload_pix" style="display: none">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="channel_name" value="/yap/{{ c.channel_name }}_yap_clicked"/>
+                        <input type="hidden" name="type_pix" value="yap_clicked"/>
+                        <input id="input_pix" type="file" name="new_pic" class=""/>
+                        <input type="submit" name="button_new_pic" value="Upload the Pic ;)" class=""/>
+                    </form>
+                </div>
+
+            </div>
+            <div id="path_clicked_image_edit">
+                <img class="icon_channel" src="{{ d_urls|access:"icon_yap_path_unclicked" }}"/>
+                <span class="button_form show_pix">Change</span>
+                <div id="upload_pix" style="display: none">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="channel_name" value="/yap/{{ c.channel_name }}_yap_unclicked"/>
+                        <input type="hidden" name="type_pix" value="yap_unclicked"/>
+                        <input id="input_pix" type="file" name="new_pic" class=""/>
+                        <input type="submit" name="button_new_pic" value="Upload the Pic ;)" class=""/>
+                    </form>
+                </div>
+
+            </div>
+            <div id="navigation_channel">
+                <a href="/channels/{{ c.channel_id|add:-1 }}">Prev</a>
+                <a href="/channels/{{ c.channel_id|add:1 }}">Next</a>
+                <a href="/channels/new/">New Channel</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

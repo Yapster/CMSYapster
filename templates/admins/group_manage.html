@@ -5,7 +5,9 @@
 {% endblock %}
 {% block headbar %}
     <div id="headbar_empty">
-
+        {% for error in errors %}
+            <div class="error">Error : {{ error }}</div>
+        {% endfor %}
     </div>
 {% endblock %}
 {% block content %}
@@ -78,7 +80,7 @@
                     </table>
                 </div>
             </div>
-        <div class="title_groups">
+            <div class="title_groups">
                 <a class="toggle_title" href="javascript:display_inactive('inactive_groups')">Inactive Permissions Groups</a>
             </div>
             <div id="inactive_groups" style="display: none">

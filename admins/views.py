@@ -43,6 +43,7 @@ def users_manage(request):
     """
     List of users. Create and view users
     """
+    errors = []
     conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
     announcements = Announcement.objects.all()
     users_managed = CmsUser.objects.filter(is_active=True)
@@ -64,8 +65,14 @@ def users_manage(request):
         return HttpResponseRedirect('/cmsusers/')
 
     if 'btn_new' in request.POST:
-        if request.POST['password'] == request.POST['password2'] \
-                and request.POST['email'] == request.POST['email2']:
+        if  request.POST['username'] == "" or  request.POST['firstname'] == "" or request.POST['lastname'] == "" or \
+        request.POST['email'] == "" or request.POST['password'] == "":
+            errors.append("Mandatory fields empty")
+        if request.POST['password'] != request.POST['password2']:
+            errors.append("Password not valid")
+        if request.POST['email'] != request.POST['email2']:
+            errors.append("Password not valid")
+        if not errors:
             username = request.POST['username']
             first = request.POST['firstname']
             last = request.POST['lastname']
@@ -75,15 +82,18 @@ def users_manage(request):
             occ = request.POST['occupation']
             id_group = request.POST['group']
             group = GroupPermission.objects.get(pk=id_group)
-            CmsUser.new_user(username=username, first_name=first, last_name=last,
+            if not CmsUser.new_user(username=username, first_name=first, last_name=last,
                              email=email, password=password, department=dep,
-                             occupation=occ, group=group)
-            return HttpResponseRedirect('/cmsusers/')
+                             occupation=occ, group=group):
+                errors.append("User already Exist")
     return render(request, 'admins/users_manage.html',
                   {'users': users_managed,
                    'inactive_users': inactive_users,
                    'groups':groups,
-                   "user": request.user})
+                   "user": request.user,
+                   "announcements": announcements,
+                   "conversations": conversations,
+                   "errors": errors})
 
 @active_and_login_required
 @user_has_perm
@@ -195,7 +205,7 @@ def edit_profile_pic(request, username):
         if form.is_valid():
             file = request.FILES['new_pic']
             path_bucket = "yapstercmsusers/uid/" + str(CmsUser.objects.get(username=username).user_id) + "/profile_pictures/" + file.name
-            FileManager.store(path_bucket, file.read(), file.name, "profile", request.user)
+            FileManager.store("yapstercms", path_bucket, file.read(), file.name, "profile", request.user)
 
     # Get all pictures from user
     pictures = ProfilePicture.objects.filter(user_id=request.user)

@@ -1,0 +1,41 @@
+.icon_channel {
+    width: 100px;
+    height: 100px;
+    border: 1px black solid;
+}
+
+.div_channel {
+    margin-bottom: 38px;
+    padding: 10px;
+    border: 1px #000000 solid;
+}
+
+.valid {
+    color: #15D400;
+}
+
+.not_valid {
+    color: red;
+}
+
+#channel_stats {
+    float: left;
+    width: 50%;
+    margin-left: 25%;
+}
+
+#yaps_channel {
+    float:left;
+    width: 45%;
+    margin-left: 10px;
+}
+
+#users_channel {
+    float: left;
+    width: 45%;
+    margin-left: 30px;
+}
+
+#admin_channel {
+    float: left;
+}

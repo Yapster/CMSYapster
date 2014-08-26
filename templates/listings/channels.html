@@ -1,0 +1,12 @@
+<div class="listens_listing">
+    <div id="header_channels_listing">
+        <span>{{ title }} : {{ channels|length }}</span>
+    </div>
+    <div>
+        {% for c in channels %}
+            <div>
+                <a href="/channels/{{ c.channel_id }}" class="channel_link">{{ c }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="reports_listing">
+    <div id="header_reports_listing">
+        <span>{{ title }} : {{ reports|length }}</span>
+    </div>
+    <div>
+        {% for r in reports %}
+            <div>
+                <a href="/reports/{{ r.report_id }}" class="report_link">{{ r }} => {{ r.user }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.db.models import Count
 from django.contrib.auth.models import User
+from admins.decorators import active_and_login_required
 from chat.models import Conversation, Message
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 
 
+@active_and_login_required
 @csrf_exempt
 def chat(request):
     messages = []

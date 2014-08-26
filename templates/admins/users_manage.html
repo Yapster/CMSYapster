@@ -5,7 +5,9 @@
 {% endblock %}
 {% block headbar %}
     <div id="headbar_empty">
-
+        {% for error in errors %}
+            <div class="error">Error : {{ error }}</div>
+        {% endfor %}
     </div>
 {% endblock %}
 {% block content %}
@@ -18,31 +20,31 @@
                 {% csrf_token %}
                 <div id="infos" class="infos" style="display: none">
                     <div class="line_form">
-                        <label for="username">Username</label>
+                        <label for="username">Username*</label>
                         <input type="text" id="username" name="username"/>
                     </div>
                     <div class="line_form">
-                        <label for="firstname">First Name</label>
+                        <label for="firstname">First Name*</label>
                         <input type="text" id="firstname" name="firstname"/>
                     </div>
                     <div class="line_form">
-                        <label for="lastname">Last Name</label>
+                        <label for="lastname">Last Name*</label>
                         <input type="text" id="lastname" name="lastname"/>
                     </div>
                     <div class="line_form">
-                        <label for="email">Email</label>
+                        <label for="email">Email*</label>
                         <input type="text" id="email" name="email"/>
                     </div>
                     <div class="line_form">
-                        <label for="email2">Confirm Email</label>
+                        <label for="email2">Confirm Email*</label>
                         <input type="text" id="email2" name="email2"/>
                     </div>
                     <div class="line_form">
-                        <label for="password">Password</label>
+                        <label for="password">Password*</label>
                         <input type="password" id="password" name="password"/>
                     </div>
                     <div class="line_form">
-                        <label for="password2">Confirm Password</label>
+                        <label for="password2">Confirm Password*</label>
                         <input type="password" id="password2" name="password2"/>
                     </div>
                     <div class="line_form">
@@ -107,8 +109,8 @@
             </div>
             <div id="inactive_div_cms">
                 <div id="title_new_user">
-                <a class="toggle_title" href="javascript:display_inactive('table_inactive')">Inactive CMS Users</a>
-            </div>
+                    <a class="toggle_title" href="javascript:display_inactive('table_inactive')">Inactive CMS Users</a>
+                </div>
                 <div id="table_inactive" style="display: none">
                     <table width="100%" cellpadding="2px" cellspacing="0px">
                         <tr>

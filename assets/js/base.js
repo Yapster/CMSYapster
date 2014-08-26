@@ -141,6 +141,6 @@ $(document).ready(function() {
         return false;
     });
     navigation_bar();
-    scroll_down();
+    // Add scroll ??
     side_bar();
 });

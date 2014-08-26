@@ -1,13 +1,17 @@
 from django.shortcuts import render
+from admins.decorators import active_and_login_required
 from contacts.models import Note, List, Contact
 from admins.models import CmsUser
 from django.db.models import Count
 from django.contrib.auth.models import User
 from announcements.models import Announcement
 from chat.models import Conversation, Message
+from groups.models import *
 from files_manager.models import FileManager
 from cms_location.models import *
 
+
+@active_and_login_required
 def contacts_lists(request):
     errors = []
     announcements = Announcement.objects.all()
@@ -16,6 +20,7 @@ def contacts_lists(request):
     lists = List.objects.filter(is_active=True)
     inactive_lists = List.objects.filter(is_active=False)
     inactive_contacts = Contact.objects.filter(is_active=False)
+    groups = GroupPermission.objects.all()
 
     countries = CmsCountry.objects.all()
     cities = CmsCity.objects.all()
@@ -32,11 +37,14 @@ def contacts_lists(request):
     if 'btn_new_contact' in request.POST:
         Contact.new_contact(request.POST)
     if 'btn_new_list' in request.POST:
-        groups = request.POST.getlist('groups[]')
-        List.create(name=request.POST['name_list'],
-                            description=request.POST['desc_list'],
-                            created_by=request.user,
-                            groups=groups)
+        if request.POST['name_list'] == "" or request.POST['desc_list'] == "":
+            errors.append("Mandatory fields empty")
+        else:
+            groups = request.POST.getlist('group_selected[]')
+            List.create(name=request.POST['name_list'],
+                        description=request.POST['desc_list'],
+                        created_by=request.user,
+                        groups=groups)
 
     return render(request,
                   'contacts/lists.html',
@@ -51,9 +59,11 @@ def contacts_lists(request):
                    "announcements": announcements,
                    "conversations": conversations,
                    "chaters": users,
+                   "groups": groups,
                    "errors": errors})
 
 
+@active_and_login_required
 def contacts_lists_details(request, list):
     announcements = Announcement.objects.all()
     users = User.objects.exclude(username=request.user.username)
@@ -70,6 +80,7 @@ def contacts_lists_details(request, list):
                                                           "chaters": users})
 
 
+@active_and_login_required
 def contacts_details(request, list, contact):
     announcements = Announcement.objects.all()
     users = User.objects.exclude(username=request.user.username)

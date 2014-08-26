@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from django.views.decorators.http import require_POST
 from announcements.models import Announcement
 from location.models import *
 from chat.signals import *
@@ -12,6 +13,8 @@ from cms_location.models import *
 import logging
 
 logger = logging.getLogger(__name__)
+
+
 
 @login_required(login_url='/login/')
 @csrf_exempt
@@ -30,9 +33,6 @@ def homepage(request):
                                                "chaters": users})
 
 
-def stats_yaps(request):
-
-    return render(request, 'stats/statistics.html', {})
 
 @login_required(login_url='/login/')
 @csrf_exempt
@@ -42,13 +42,12 @@ def stats_usership(request):
 
     # Statistiques handling
     countries = CmsCountry.objects.all()
-    datas = HomePageStatistics.get_users_stats(request).data.items()
 
     return render(request, 'stats/statistics.html', {"announcements": announcements,
                                                      "user": request.user,
                                                      "conversations": conversations,
                                                      "countries": countries,
-                                                     "datas": datas})
+                                                     "type": "usership"})
 
 
 @login_required(login_url='/login')
@@ -57,49 +56,47 @@ def stats_yaps(request):
     conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
     announcements = Announcement.objects.all()
 
-# Statistiques handling
+    # Statistiques handling
     countries = CmsCountry.objects.all()
-    datas = HomePageStatistics.get_yaps_stats(request).data.items()
 
     return render(request, 'stats/statistics.html', {"announcements": announcements,
                                                      "user": request.user,
                                                      "conversations": conversations,
                                                      "countries": countries,
-                                                     "datas": datas})
+                                                     "type": "yaps"})
 
 @csrf_exempt
 def more_data_usership(request):
-    datas = HomePageStatistics.get_users_stats(request).data.items()
-    datas_month = HomePageStatistics.get_users_stats(request, _time=43829.0639).data
-    datas_week = HomePageStatistics.get_users_stats(request, _time=10080).data
-    datas_day = HomePageStatistics.get_users_stats(request, _time=1440).data
-    datas_hour = HomePageStatistics.get_users_stats(request, _time=60).data
-    datas_min = HomePageStatistics.get_users_stats(request, _time=1).data
-    more_data = True
-    return render(request, 'stats/more_stats.html', {"datas": datas,
-                                                     "more_data": more_data,
-                                                     "datas_month": datas_month,
-                                                     "datas_week": datas_week,
-                                                     "datas_day": datas_day,
-                                                     "datas_hour": datas_hour,
-                                                     "datas_min": datas_min})
+    specific_data = None
+    time = float(request.POST['time'])
+    if request.POST['type_stats'] == 'usership':
+        specific_data = HomePageStatistics.get_users_stats(request, _time=time).data.items()
+    elif request.POST['type_stats'] == 'yaps':
+        specific_data = HomePageStatistics.get_yaps_stats(request, _time=time).data.items()
+        if request.POST['type_time'] == 'min':
+            for key, value in specific_data:
+                print key
+    return render(request,
+                  'stats/sub_templates/col_stats_div.html',
+                  {"specific_datas": specific_data,
+                   "type_time": request.POST['type_time']})
 
 @csrf_exempt
 def more_data_yaps(request):
     datas = HomePageStatistics.get_yaps_stats(request).data.items()
+
+    datas_year = HomePageStatistics.get_yaps_stats(request, _time=525949).data
     datas_month = HomePageStatistics.get_yaps_stats(request, _time=43829.0639).data
     datas_week = HomePageStatistics.get_yaps_stats(request, _time=10080).data
-    datas_day = HomePageStatistics.get_yaps_stats(request, _time=1440).data
-    datas_hour = HomePageStatistics.get_yaps_stats(request, _time=60).data
-    datas_min = HomePageStatistics.get_yaps_stats(request, _time=1).data
+
     more_data = True
     return render(request, 'stats/more_stats.html', {"datas": datas,
                                                      "more_data": more_data,
+                                                     "datas_year": datas_year,
                                                      "datas_month": datas_month,
-                                                     "datas_week": datas_week,
-                                                     "datas_day": datas_day,
-                                                     "datas_hour": datas_hour,
-                                                     "datas_min": datas_min})
+                                                     "datas_week": datas_week})
+
+
 
 @login_required(login_url='/login/')
 def search(request):
@@ -158,30 +155,40 @@ def specific_search(request):
             state = request.POST['state']
         if 'city' in request.POST:
             city = request.POST['city']
-        new_data = HomePageStatistics.get(request,
-                                          country=request.POST['country'],
-                                          state=state,
-                                          city=city,
-                                          gender=request.POST['gender'],
-                                          min_age=request.POST['from_age'],
-                                          max_age=request.POST['to_age']
-        ).data.items()
-        return render(request, 'stats/specific_search.html', {"new_data": new_data})
+        type_stats = request.POST['type_stats'].split('/')[-2]
+        if type_stats == "yaps":
+            new_data = HomePageStatistics.get_yaps_stats(request,
+                                                         country=request.POST['country'],
+                                                         state=state,
+                                                         city=city,
+                                                         gender=request.POST['gender'],
+                                                         min_age=request.POST['from_age'],
+                                                         max_age=request.POST['to_age']
+            ).data.items()
+        elif type_stats == "usership":
+            new_data = HomePageStatistics.get_users_stats(request,
+                                                          country=request.POST['country'],
+                                                          state=state,
+                                                          city=city,
+                                                          gender=request.POST['gender'],
+                                                          min_age=request.POST['from_age'],
+                                                          max_age=request.POST['to_age'])
+    return render(request, 'stats/specific_search.html', {"new_data": new_data})
 
-        # @login_required(login_url='/login/')
-        # def hashtag(request, tag):
-        #     """
-        #     Display hashtag with count of people that used it and few yaps
-        #     """
-        #
-        #     current_tag = Hashtag.objects.get(name=tag)
-        #     return render(request, 'stats/hashtag.html', {'tag': current_tag})
-        #
-        #
-        # @login_required(login_url='/login/')
-        # def group_page(request, group):
-        #     """
-        #     Display group page with count people in it and few yaps
-        #     """
-        #     current_group = Group.objects.get(pk=group)
-        #     return render(request, 'stats/group.html', {'group': current_group})
+    # @login_required(login_url='/login/')
+    # def hashtag(request, tag):
+    #     """
+    #     Display hashtag with count of people that used it and few yaps
+    #     """
+    #
+    #     current_tag = Hashtag.objects.get(name=tag)
+    #     return render(request, 'stats/hashtag.html', {'tag': current_tag})
+    #
+    #
+    # @login_required(login_url='/login/')
+    # def group_page(request, group):
+    #     """
+    #     Display group page with count people in it and few yaps
+    #     """
+    #     current_group = Group.objects.get(pk=group)
+    #     return render(request, 'stats/group.html', {'group': current_group})

@@ -6,26 +6,26 @@
 }
 .title_content{
     background-color: #15D400;
-	height:9%;
-	border:1px #15D400 solid;
-	text-align:center;
-	color: #ffffff;
-	line-height:38px;
+    height:9%;
+    border:1px #15D400 solid;
+    text-align:center;
+    color: #ffffff;
+    line-height:38px;
     font-size: 14px;
 }
 #info ul li{
-	min-height:52px;
-	border-top:1px #15D400 solid;
-	padding:0 15px;
-	font-size: 12px;
-	line-height:52px;
+    min-height:52px;
+    border-top:1px #15D400 solid;
+    padding:0 15px;
+    font-size: 12px;
+    line-height:52px;
 }
 .stat{
-	color:#15D400 !important;
+    color:#15D400 !important;
 }
 .info .hashtags a{
-	color:#15D400 !important;
-	text-transform: none !important;
+    color:#15D400 !important;
+    text-transform: none !important;
 }
 
 #new_infos{
@@ -36,11 +36,11 @@
 }
 
 #new_infos ul li{
-	min-height:52px;
-	border-bottom:1px #15D400 solid;
-	padding:0 15px;
-	font-size: 12px;
-	line-height:52px;
+    min-height:52px;
+    border-bottom:1px #15D400 solid;
+    padding:0 15px;
+    font-size: 12px;
+    line-height:52px;
 }
 
 button {

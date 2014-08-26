@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block localfiles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/tasks/main.css" %}" />
+    <script type="text/javascript" src="{% static "js/tasks/tasks_main.js" %} "></script>
+{% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+        <span id="text_headbar"></span>
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="content">
+        <div id="cols">
+            <div id="todo" class="main_col droppable">
+                <div id="header_todo" class="header_tasks">
+                    <span class="title_header">todo</span>
+                </div>
+                <div id="container_todo" class="container_tasks">
+                {% for task in todo_tasks %}
+                  {% include "tasks/task.html" %}
+                {% endfor %}
+            </div>
+            </div>
+            <div id="inprogress" class="main_col droppable">
+                <div id="header_inprogress" class="header_tasks">
+                    <span class="title_header">in progress</span>
+                </div>
+                <div id="container_inprogress" class="container_tasks">
+                {% for task in inprogress_tasks %}
+                  {% include "tasks/task.html" %}
+                {% endfor %}
+            </div>
+            </div>
+            <div id="done" class="main_col droppable">
+
+                <div id="header_done" class="header_tasks">
+                    <span class="title_header">done</span>
+                </div>
+                <div id="container_done" class="container_tasks">
+                {% for task in done_tasks %}
+                  {% include "tasks/task.html" %}
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

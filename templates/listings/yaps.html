@@ -1,0 +1,12 @@
+<div class="yaps_listing">
+    <div id="header_yaps_listing">
+        <span>{{ title }} : {{ yaps|length }}</span>
+    </div>
+    <div>
+        {% for y in yaps %}
+            <div>
+                <a href="/yaps/{{ y.yap_id }}" class="yap_link">{{ y.title }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

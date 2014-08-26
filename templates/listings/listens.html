@@ -1,0 +1,12 @@
+<div class="listens_listing">
+    <div id="header_listens_listing">
+        <span>{{ title }} : {{ listens|length }}</span>
+    </div>
+    <div>
+        {% for l in listens %}
+            <div>
+                <a href="/listens/{{ l.listen_id }}" class="listens_link">{{ l.yap.title }} => {{ l.user }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

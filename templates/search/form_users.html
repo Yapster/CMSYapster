@@ -1,6 +1,7 @@
 <div class="research">
     <label id="label_search_expression" >Search expression</label>
     <input id="input_search_expression" type="text" name="searchexp"/>
+    <input type="hidden" value="1" name="type_search" id="type_search"/>
 </div>
 <div class="group">
     <div class="line_search">
@@ -31,11 +32,11 @@
 <div class="group">
     <div class="line_search">
         <label for="gender">Gender</label>
-        <select id="gender" class="select_search">
-            <option value="n">No Gender</option>
-            <option value="m">Male</option>
-            <option value="f">Female</option>
-            <option value="o">Other</option>
+        <select id="gender" name="gender" class="select_search">
+            <option value="N">No Gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
         </select>
     </div>
     <div class="line_search">
@@ -66,8 +67,8 @@
         </select>
     </div>
     <div class="line_search">
-        <label>Is Active</label>
-        <input type="checkbox" name="is_active"/>
+        <label>Is Inactive</label>
+        <input type="checkbox" name="is_inactive"/>
     </div>
 </div>
 <div id="more_fields">

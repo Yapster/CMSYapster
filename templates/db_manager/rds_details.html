@@ -10,6 +10,7 @@
         google.load("visualization", "1", {packages:["corechart"]});
         $(document).ready(function() {
             $("#submit_button").click(function(){
+                $('#holy_graph').html("LOADING");
                 $.ajax({
                     data : {
                         time_graph: true,
@@ -86,8 +87,8 @@
                 <div id="submit_button" class="button_form">Submit</div>
             </div>
         </form>
-    <div id="holy_graph">
+        <div id="holy_graph">
 
-    </div>
+        </div>
     </div>
 {% endblock %}

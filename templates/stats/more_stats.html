@@ -1,5 +1,5 @@
 {% load dictionary_extras %}
-<tbody>
+<tbody xmlns="http://www.w3.org/1999/html">
 {% for key, value in datas %}
     <tr>
         <th class="first_column">
@@ -21,40 +21,108 @@
                     {% endfor %}
                 {% endif %}
             {% elif value|get_type_list == 'User'%}
-                {% for u in value %}
-                    <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
-                {% endfor %}
+                <div>
+                    {% if value %}
+                        {% for u in value %}
+                            <input type="hidden" name="users" class="user_{{ forloop.parentloop.counter }}" value="{{ u }}"/>
+                        {% endfor %}
+                        <a class="user_link" href="javascript:display_users('user_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>
+                    {% endif %}
+                </div>
             {% else %}
                 <div class="results_table">{{ value }}</div>
             {% endif %}
         </th>
-
-
-        {% if more_data %}
-            <th>
+        <th>
+            {% if key == 'Hashtags' %}
+                {% for hashtag in datas_min|access:key %}
+                    <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
+                {% endfor %}
+            {% elif key == 'yaps'%}
+                {% for yap in datas_min|access:key %}
+                    <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                {% endfor %}
+            {% elif key == 'Top Countries Users' %}
+                {% if datas_min|access:key %}
+                    {% for country in datas_min|access:key %}
+                        <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
+                    {% endfor %}
+                {% endif %}
+            {% elif value|get_type_list == 'User'%}
+                <div>
+                    {% if datas_min|access:key %}
+                        {% for u in datas_min|access:key %}
+                            <input type="hidden" name="users" class="user_min_{{ forloop.parentloop.counter }}" value="{{ u }}"/>
+                        {% endfor %}
+                        <a class="user_link" href="javascript:display_users('user_min_{{ forloop.counter }}', '{{ key }}')">{{ datas_min|access:key|length }}</a>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="results_table">{{ datas_min|access:key }}</div>
+            {% endif %}
+        </th>
+        <th>
                 {% if key == 'Hashtags' %}
-                    {% for hashtag in datas_month|access:key %}
+                    {% for hashtag in datas_hour|access:key %}
                         <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
                     {% endfor %}
                 {% elif key == 'yaps'%}
-                    {% for yap in datas_month|access:key %}
+                    {% for yap in datas_hour|access:key %}
                         <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
                     {% endfor %}
                 {% elif key == 'Top Countries Users' %}
-                    {% if value %}
-                        {% for country in value %}
+                    {% if datas_hour|access:key %}
+                        {% for country in datas_hour|access:key %}
                             <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
                         {% endfor %}
                     {% endif %}
                 {% elif value|get_type_list == 'User'%}
-                    {% for u in value %}
-                        <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
-                    {% endfor %}
+                    <div>
+                        {% if datas_hour|access:key %}
+                            {% for u in datas_hour|access:key %}
+                                <input type="hidden" name="users" class="user_hour_{{ forloop.parentloop.counter }}" value="{{ u }}"/>
+                            {% endfor %}
+                            <a class="user_link" href="javascript:display_users('user_hour_{{ forloop.counter }}', '{{ key }}')">{{ datas_hour|access:key|length }}</a>
+                        {% endif %}
+                    </div>
                 {% else %}
-                    <div class="results_table">{{ datas_month|access:key }}</div>
+                    <div class="results_table">{{ datas_hour|access:key }}</div>
+                {% endif %}
+            </th>
+             <th>
+                {% if key == 'Hashtags' %}
+                    {% for hashtag in datas_day|access:key %}
+                        <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
+                    {% endfor %}
+                {% elif key == 'yaps'%}
+                    {% for yap in datas_day|access:key %}
+                        <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
+                    {% endfor %}
+                {% elif key == 'Top Countries Users' %}
+                    {% if datas_day|access:key %}
+                        {% for country in datas_day|access:key %}
+                            <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
+                        {% endfor %}
+                    {% endif %}
+                {% elif value|get_type_list == 'User'%}
+                    <div>
+                        {% if datas_day|access:key %}
+                            {% for u in datas_day|access:key %}
+                                <input type="hidden" name="users" class="user_day_{{ forloop.parentloop.counter }}" value="{{ u }}"/>
+                            {% endfor %}
+                            <a class="user_link" href="javascript:display_users('user_day_{{ forloop.counter }}', '{{ key }}')">{{ datas_day|access:key|length }}</a>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="results_table">{{ datas_day|access:key }}</div>
                 {% endif %}
             </th>
 
+
+
+
+
+        {% if more_data %}
             <th>
                 {% if key == 'Hashtags' %}
                     {% for hashtag in datas_week|access:key %}
@@ -71,84 +139,74 @@
                         {% endfor %}
                     {% endif %}
                 {% elif value|get_type_list == 'User'%}
-                    {% for u in value %}
-                        <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
-                    {% endfor %}
+                    <div>
+                        {% if datas_week|access:key %}
+                            {% for u in datas_week|access:key %}
+                                <input type="hidden" name="users" class="user_week_{{ forloop.parentloop.counter }}" value="{{ u }}"/>
+                            {% endfor %}
+                            <a class="user_link" href="javascript:display_users('user_week_{{ forloop.counter }}', '{{ key }}')">{{ datas_week|access:key|length }}</a>
+                        {% endif %}
+                    </div>
                 {% else %}
                     <div class="results_table">{{ datas_week|access:key }}</div>
                 {% endif %}
             </th>
-
             <th>
                 {% if key == 'Hashtags' %}
-                    {% for hashtag in datas_day|access:key %}
+                    {% for hashtag in datas_month|access:key %}
                         <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
                     {% endfor %}
                 {% elif key == 'yaps'%}
-                    {% for yap in datas_day|access:key %}
+                    {% for yap in datas_month|access:key %}
                         <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
                     {% endfor %}
                 {% elif key == 'Top Countries Users' %}
                     {% if value %}
-                        {% for country in value %}
+                        {% for country in datas_month|access:key %}
                             <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
                         {% endfor %}
                     {% endif %}
                 {% elif value|get_type_list == 'User'%}
-                    {% for u in value %}
-                        <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
-                    {% endfor %}
+                    <div>
+                        {% if datas_month|access:key %}
+                            {% for u in datas_month|access:key %}
+                                <input type="hidden" name="users" class="user_month_{{ forloop.parentloop.counter }}" value="{{ u }}"/>
+                            {% endfor %}
+                            <a class="user_link" href="javascript:display_users('user_month_{{ forloop.counter }}', '{{ key }}')">{{ datas_month|access:key|length }}</a>
+                        {% endif %}
+                    </div>
                 {% else %}
-                    <div class="results_table">{{ datas_day|access:key }}</div>
+                    <div class="results_table">{{ datas_month|access:key }}</div>
                 {% endif %}
             </th>
             <th>
                 {% if key == 'Hashtags' %}
-                    {% for hashtag in datas_hour|access:key %}
+                    {% for hashtag in datas_year|access:key %}
                         <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
                     {% endfor %}
                 {% elif key == 'yaps'%}
-                    {% for yap in datas_hour|access:key %}
+                    {% for yap in datas_year|access:key %}
                         <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
                     {% endfor %}
                 {% elif key == 'Top Countries Users' %}
                     {% if value %}
-                        {% for country in value %}
+                        {% for country in datas_year|access:key %}
                             <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
                         {% endfor %}
                     {% endif %}
                 {% elif value|get_type_list == 'User'%}
-                    {% for u in value %}
-                        <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
-                    {% endfor %}
+                    <div>
+                        {% if datas_month|access:key %}
+                            {% for u in datas_month|access:key %}
+                                <input type="hidden" name="users" class="user_month_{{ forloop.parentloop.counter }}" value="{{ u }}"/>
+                            {% endfor %}
+                            <a class="user_link" href="javascript:display_users('user_month_{{ forloop.counter }}', '{{ key }}')">{{ datas_year|access:key|length }}</a>
+                        {% endif %}
+                    </div>
                 {% else %}
-                    <div class="results_table">{{ datas_hour|access:key }}</div>
+                    <div class="results_table">{{ datas_year|access:key }}</div>
                 {% endif %}
             </th>
-            <th>
-                {% if key == 'Hashtags' %}
-                    {% for hashtag in datas_min|access:key %}
-                        <div><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></div>
-                    {% endfor %}
-                {% elif key == 'yaps'%}
-                    {% for yap in datas_min|access:key %}
-                        <div><a class="hashtag" href="/yap/{{ yap.yap_id }}">{{ yap.title }}</a></div>
-                    {% endfor %}
-                {% elif key == 'Top Countries Users' %}
-                    {% if value %}
-                        {% for country in value %}
-                            <div><a class="country" href="/country/{{ country|access:0 }}">{{ country|access:0 }}</a></div>
-                        {% endfor %}
-                    {% endif %}
-                {% elif value|get_type_list == 'User'%}
-                    {% for u in value %}
-                        <div><a class="user" href="/user/{{ u }}">{{ u }}</a></div>
-                    {% endfor %}
-                {% else %}
-                    <div class="results_table">{{ datas_min|access:key }}</div>
-                {% endif %}
-            </th>
-
         {% else %}
             <th class="hide"></th>
         {% endif %}

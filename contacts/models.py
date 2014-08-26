@@ -14,12 +14,13 @@ class List(models.Model):
     created_by = models.ForeignKey(to=User, related_name='contact_lists')
     is_active = models.BooleanField(default=True)
 
+    @staticmethod
     def create(**kwargs):
         groups = kwargs.pop('groups')
-        List.objects.create(kwargs)
+        List.objects.create(**kwargs)
         url = "contacts/lists/" + kwargs['name']
         name = "Contacts List: " + kwargs['name']
-        description = kwargs['desc']
+        description = kwargs['description']
         new_p = Page.objects.create(name=name, url=url, description=description)
         for g in groups:
             new_p.perms.add(GroupPermission.objects.get(pk=g))
@@ -97,7 +98,7 @@ class Note(models.Model):
     """
     note_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=64)
-    description = models.CharField(max_length=256)
+    description = models.CharField(max_length=255)
     date_last = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(to=User, related_name='created_notes')
     contact = models.ForeignKey(to=Contact, related_name='notes')

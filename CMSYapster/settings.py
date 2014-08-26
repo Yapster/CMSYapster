@@ -30,6 +30,18 @@ BUCKET_NAME = 'yapstercms'
 
 DB_YAPSTER = 'ye_1_db_1'
 
+# USER_GITHUB = 'chrislerus'
+#
+# PWD_GITHUB = '3010902213gi'
+#
+# CLIENT_ID_GOOGLE = '190947602394-nkskl36ugndmdhqa4tankucetlidbggt.apps.googleusercontent.com'
+#
+# SECRET_KEY_GOOGLE = 'rDdPo2skoreKG0bQiOM9d908'
+#
+# SCOPE_GOOGLE = 'https://www.googleapis.com/auth/drive'
+#
+# REDIRECT_URI = 'urn:ietf:wg:oauth:2.0:oob'
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -45,10 +57,15 @@ INSTALLED_APPS = (
     'boto',
     'rest_framework',
     'schedule',
+    'github',
+    'apiclient',
+    'oauth2client',
+
     'admins',
     'announcements',
     'calendars',
     'chat',
+    'cms_channels',
     'cms_search_log',
     'cms_location',
     'cms_notifications',
@@ -56,8 +73,11 @@ INSTALLED_APPS = (
     'db_manager',
     'db_recover',
     'files_manager',
+    'gits',
     'groups',
+    'listings',
     'stats',
+    'tasks',
 
     'location',
     'manual_override',

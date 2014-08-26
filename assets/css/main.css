@@ -310,6 +310,7 @@ table tr td:last-child,table tr th:last-child{
     font-family: Arial,Helvetica,sans-serif;
     border: none;
     cursor: pointer;
+    padding: 5px;
 }
 
 .button_form:hover {
@@ -501,3 +502,133 @@ table tr td:last-child,table tr th:last-child{
     z-index: 1;
     background-color: white;
 }
+
+.error {
+    font-size: 10px;
+    color: red;
+}
+
+
+.user_link {
+    color: indigo;
+}
+
+.country_link {
+    color: red;
+}
+
+.hashtag_link {
+    color: orange;
+}
+
+.yap_link {
+    color: green;
+}
+
+.reyap_link {
+    color: darkgreen;
+}
+
+.like_link {
+    color: darkorange;
+}
+
+.listen_link {
+    color: saddlebrown;
+}
+
+.channel_link {
+    color: navy;
+}
+
+.report_link {
+    color: hotpink;
+}
+
+.user_link:hover, .country_link:hover,
+.hashtag_link:hover, .reyap_link:hover,
+.channel_link:hover, .listen_link:hover,
+.report_link:hover
+{
+    text-decoration: underline;
+}
+
+
+/* Users listing*/
+
+#header_users_listing {
+    text-align: center;
+    margin: 20px;
+}
+
+#list_users_container{
+
+}
+
+.user_container {
+    border: 1px #000000 solid;
+    height: 110px;
+    width: 50%;
+    font-size: 12px;
+    margin: 0 auto;
+    margin-bottom: 25px;
+}
+
+.pix_user {
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.picture_profile {
+    width: 80px;
+    height: 80px;
+}
+
+.right_side_user {
+    margin-left: 120px;
+    margin-top: 8px;
+}
+
+.line_user_info {
+    height: 31px;
+    margin-bottom: 20px;
+}
+
+.civil_names {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.handle {
+    color: #8b8b8d;
+}
+
+.description_user {
+    overflow: hidden;
+}
+
+.stats_user_container {
+    width: 150px;
+    float: left;
+}
+
+.details_button {
+    float: right;
+    margin-top: 31px;
+}
+
+.text_stats {
+
+}
+
+.number_stat {
+    float: right;
+    margin-right: 10px;
+    color: #15D400;
+}
+
+.line_stat_user:hover {
+    color: #15D400;
+}
+

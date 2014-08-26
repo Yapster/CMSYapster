@@ -12,100 +12,17 @@
         <a class="tab_headbar" href="/statistics/sharing/">Sharing</a>
         <a class="tab_headbar" href="/statistics/servers/">Servers</a>
         <a class="tab_headbar" href="/statistics/databases/">Databases</a>
-        <span id="loading_image" style="display: none">looool</span>
     </div>
 {% endblock %}
 {% block content %}
     <div id="content" class="clearfix">
-        <div id="stats_title">
-        Usership Statistics
-        </div>
-        <div id="stats_description">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </div>
-        <div id="location_selection">
-            <div class="location_option">
-                <label class="label_location_option" for="country">Country</label>
-                <select id="country" class="select_location">
-                    <option value="0">No Countries</option>
-                    {% for country in countries %}
-                        <option value="{{ country.country_id}}">{{ country.country_name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div id="state_option" class="location_option" style="display: none">
-            </div>
-            <div id="city_option" class="location_option" style="display: none">
-            </div>
-            <div class="location_option">
-                <label class="label_location_option" for="gender">Gender</label>
-                <select id="gender" class="select_location">
-                    <option value="n">No Gender</option>
-                    <option value="m">Male</option>
-                    <option value="f">Female</option>
-                    <option value="o">Other</option>
-                </select>
-            </div>
-            <div class="location_option">
-                <label class="label_location_option" for="age">Age Range</label>
-                <input id="from_age" type="number" name="from_age" min="13" max="99" value="13"> To*
-                <input id="to_age" type="number" name="to_age" min="13" max="99" value="99">
-            </div>
-            <div id="location_submit">
-                <form method="post">
-                    {% csrf_token %}
-                    <button type="submit" id="location_button" class="button_form">Submit</button>
-                </form>
-            </div>
-        </div>
+    <input type="hidden" value="{{ type }}" id="type_stats"/>
+        {% include "stats/sub_templates/description_stats_div.html" %}
+        {% include "stats/sub_templates/search_stats_div.html" %}
         <div id="stats">
-            <div id="all_stats">
-                <div id="specific_search" style="display: none">
-                </div>
-                <div id="tabs">
-                <span id="live" class="tab_option">
-                <span id="live_icone" class="icone selected">
-                    Live
-                </span>
-                </span>
-                <span class="tab_option">
-                <span class="tab_green icone">
-                   Year
-                </span>
-                </span>
-                <span class="tab_option">
-                <span class="tab_green icone">
-                    Month
-                </span>
-                </span>
-                <span class="tab_option">
-                <span class="tab_green icone">
-                    Week
-                </span>
-                </span>
-                <span class="tab_option">
-                <span class="tab_green icone">
-                   Day
-                </span>
-                </span>
-                <span class="tab_option">
-                <span class="tab_green icone">
-                    Hour
-                </span>
-                </span>
-                <span class="tab_option">
-                <span class="tab_green icone">
-                    Min
-                </span>
-                </span>
-                </div>
-                <div id="table_stats">
-                    <table id="general_stats_table" width="100%" cellpadding="2px" cellspacing="0px" border="0px">
-                        {% include "stats/more_stats.html" %}
-                    </table>
-                </div>
-            </div>
+            {% include "stats/sub_templates/table_stats_div.html" %}
+        </div>
+        <div id="more_infos" style="display: none">
         </div>
     </div>
 {% endblock %}

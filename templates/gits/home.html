@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block localfiles %}
+    {% load staticfiles %}
+    <script type="text/javascript" src="{% static "js/tasks/tasks_main.js" %} "></script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/gits/main.css" %}" />
+{% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+        <span id="text_headbar"></span>
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="content">
+    {% for repo in repos %}
+    <div class="repo">
+        <span class="title_repo">{{ repo.name }}</span>
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,6 +1,7 @@
 <div class="research">
     <label id="label_search_expression" >Search expression</label>
     <input id="input_search_expression" type="text" name="searchexp"/>
+    <input type="hidden" value="3" name="type_search" id="type_search"/>
 </div>
 <div class="group">
     <div class="line_search">
@@ -20,16 +21,28 @@
         <input type="text" name="title_yap"/>
     </div>
     <div class="line_search">
-        <label>Listen Counts</label>
-        <input type="number" name="listens"/>
+        <label>Max Listen Counts</label>
+        <input type="number" name="max_listens"/>
     </div>
     <div class="line_search">
-        <label>Reyap Counts</label>
-        <input type="number" name="reyaps"/>
+        <label>Min Listen Counts</label>
+        <input type="number" name="min_listens"/>
     </div>
     <div class="line_search">
-        <label>Like Counts</label>
-        <input type="number" name="likes"/>
+        <label>Max Reyap Counts</label>
+        <input type="number" name="max_reyaps"/>
+    </div>
+    <div class="line_search">
+        <label>Min Reyap Counts</label>
+        <input type="number" name="min_reyaps"/>
+    </div>
+    <div class="line_search">
+        <label>Max Like Counts</label>
+        <input type="number" name="max_likes"/>
+    </div>
+    <div class="line_search">
+        <label>Min Like Counts</label>
+        <input type="number" name="min_likes"/>
     </div>
 </div>
 <div class="group">
@@ -42,16 +55,16 @@
         <input type="date" name="date_deleted"/>
     </div>
     <div class="line_search">
-        <label>Is Unreyapped</label>
-        <input type="checkbox" name="user_is_active"/>
+        <label>Is unreyapped</label>
+        <input type="checkbox" name="is_unreyapped"/>
     </div>
     <div class="line_search">
-        <label>Is Active</label>
-        <input type="checkbox" name="is_active"/>
+        <label>Is Inactive</label>
+        <input type="checkbox" name="is_inactive"/>
     </div>
     <div class="line_search">
-        <label>User Is Active</label>
-        <input type="checkbox" name="user_is_active"/>
+        <label>User Is Inactive</label>
+        <input type="checkbox" name="user_is_inactive"/>
     </div>
 </div>
 <div id="more_fields">

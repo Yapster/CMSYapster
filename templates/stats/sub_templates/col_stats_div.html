@@ -1,0 +1,42 @@
+{% load dictionary_extras %}
+{% for  key, value in specific_datas %}
+    <div class="cell">
+        {% if key == 'Hashtags' %}
+            {% if value %}
+                {% for hashtag in value %}
+                    <input type="hidden" name="hashtags" class="hashtag_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ hashtag }}"/>
+                {% endfor %}
+                <a class="hashtag_link" href="javascript:display_hashtags('hashtag_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>
+            {% endif %}
+        {% elif key == 'yaps'%}
+            {% if value %}
+                {% for yap in value %}
+                    <input type="hidden" name="yaps" class="yap_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ yap }}"/>
+                {% endfor %}
+                <a class="yaps_link" href="javascript:display_yaps('yap_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>
+            {% endif %}
+        {% elif key == 'Top Countries Users' %}
+            {% if value %}
+                {% for c in value %}
+                    <input type="hidden" name="countries" class="country_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ c }}"/>
+                {% endfor %}
+                <a class="country_link" href="javascript:display_countries('country_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>
+            {% endif %}
+        {% elif value|get_type_list == 'User'%}
+            <div>
+                {% if value %}
+                    {% for u in value %}
+                        <input type="hidden" name="users" class="user_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ u }}"/>
+                    {% endfor %}
+                    <a class="user_link" href="javascript:display_users('user_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>
+                {% else %}
+
+                {% endif %}
+            </div>
+        {% else %}
+            {% if value %}
+                <div class="results_table">{{ value }}</div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endfor %}

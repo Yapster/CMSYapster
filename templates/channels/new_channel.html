@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block localfiles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/edit_cms.css" %}" />
+    <script type="text/javascript" src="{% static "js/channels/main.js" %} "></script>
+
+{% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="content" class="clearfix">
+        <div id="new_channel">
+            <div class="title_new_channel">New Channel</div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <label for="name">Channel Name: </label>
+                    <input name="name" type="text"/>
+                </div>
+                <div>
+                    <label for="description">Channel Description: </label>
+                    <input name="description" type="text"/>
+                </div>
+                <div>
+                    <label>Is Bonus: </label>
+                    <input type="checkbox" name="is_bonus"/>
+                </div>
+                <div>
+                    <label>is Promoted: </label>
+                    <input type="checkbox" name="is_promo"/>
+                </div>
+                <div>
+                    <label>Icon Explore Clicked: </label>
+                    <input id="icon_explore_clicked" type="file" name="icon_explore_clicked" class=""/>
+                </div>
+                <div>
+                    <label>Icon Explore Unclicked</label>
+                    <input id="icon_explore_unclicked" type="file" name="icon_explore_unclicked" class=""/>
+                </div>
+                <div>
+                    <label>Icon Yap Clicked</label>
+                    <input id="icon_yap_clicked" type="file" name="icon_yap_clicked" class=""/>
+                </div>
+                <div>
+                    <label>Icon Yap Unclicked</label>
+                    <input id="icon_yap_unclicked" type="file" name="icon_yap_unclicked" class=""/>
+                </div>
+                <div>
+                    <label for="add_new_user">Create User</label>
+                    <input id="add_new_user" type="checkbox" name="add_new_user"/>
+                    <div id="form_new_user" style="display: none">
+                        <div>
+                            <label>Username:</label>
+                            <input name="username"/>
+                        </div>
+                        <div>
+                            <label>New Password:</label>
+                            <input name="password" type="password"/>
+                        </div>
+                        <div>
+                            <label>Confirm new Password: </label>
+                            <input name="password2" type="password"/>
+                        </div>
+                        <div>
+                            <label>New Email: </label>
+                            <input name="email" />
+                        </div>
+                        <div>
+                            <label>Confirm Email: </label>
+                            <input name="email2" />
+                        </div>
+                    </div>
+                </div>
+                <button id="submit_button" type="submit" name="btn_newinfos" class="button_form">Create</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -3,11 +3,11 @@
 <head>
     {% block mainfiles %}
         {% load staticfiles %}
-        <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
-        <link rel="stylesheet" type="text/css" href="{% static "css/clearfix.css" %}" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
         <script type="text/javascript" src="{% static "js/chat/jquery.cookie.js" %} "></script>
+        <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}" />
         <script type="text/javascript" src="{% static "js/base.js" %} "></script>
     {% endblock %}
     {% block localfiles %}
@@ -26,6 +26,12 @@
         <a class="text_icone" href="/permissionsgroups/">Groups Management</a>
         <span id="perms_icone" class="icone"></span>
         <a class="text_icone" href="/cmsusers/">Cms Users</a>
+        <span id="cmsusers_icone" class="icone"></span>
+        <a class="text_icone" href="/tasks/">Tasks</a>
+        <span id="cmsusers_icone" class="icone"></span>
+        <a class="text_icone" href="/gits/">Gits</a>
+        <span id="cmsusers_icone" class="icone"></span>
+        <a class="text_icone" href="/calendar/">Calendar</a>
         <span id="cmsusers_icone" class="icone"></span>
         <a class="text_icone" href="/{{ user.username }}">{{ user.username }}</a>
         <span id="cmsuser_icone" class="icone"></span>

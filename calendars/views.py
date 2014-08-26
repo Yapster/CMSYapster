@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
+from admins.decorators import active_and_login_required
 from calendars.models import *
 import calendar as cals
 import time
@@ -11,6 +12,8 @@ mnames = mnames.split()
 hours = "9am 10am 11am 12am 1pm 2pm 3pm 4pm 5pm 6pm 7pm 8pm"
 hours = hours.split()
 
+
+@active_and_login_required
 @csrf_exempt
 def calendar(request):
     if request.POST:
@@ -23,6 +26,8 @@ def calendar(request):
                   'calendars/calendar.html',
                   {"calendars": calendars})
 
+
+@active_and_login_required
 @csrf_exempt
 def by_years(request):
     year = 0
@@ -54,6 +59,7 @@ def by_years(request):
                    "mlst": mlst})
 
 
+@active_and_login_required
 @csrf_exempt
 def by_month(request):
     calendars = MyCalendar.objects.filter(Q(public=True)|Q(owner__username=request.user.username))
@@ -91,7 +97,7 @@ def by_month(request):
 
 
 
-
+@active_and_login_required
 @csrf_exempt
 def by_week(request):
     calendars = MyCalendar.objects.filter(Q(public=True)|Q(owner__username=request.user.username))
@@ -124,6 +130,7 @@ def by_week(request):
                    "start_of_week": start_of_week})
 
 
+@active_and_login_required
 @csrf_exempt
 def by_day(request):
     calendars = MyCalendar.objects.filter(Q(public=True)|Q(owner__username=request.user.username))
@@ -140,7 +147,7 @@ def by_day(request):
                    "hours": hours,
                    "events": events})
 
-
+@active_and_login_required
 @csrf_exempt
 def event(request):
     if request.POST:
@@ -175,7 +182,7 @@ def event(request):
                   "calendars/event.html",
                   {"calendars": calendars})
 
-
+@active_and_login_required
 @csrf_exempt
 def details_event(request):
     if request.POST:

@@ -1,0 +1,12 @@
+<div class="reyaps_listing">
+    <div id="header_reyaps_listing">
+        <span>{{ title }} : {{ reyaps|length }}</span>
+    </div>
+    <div>
+        {% for r in reyaps %}
+            <div>
+                <a href="/reyaps/{{ r.reyap_id }}" class="reyap_link">{{ r.yap.title }} => {{ r.user_id }}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
