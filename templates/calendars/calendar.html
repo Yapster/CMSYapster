@@ -3,8 +3,6 @@
     {% load staticfiles %}
     <script type="text/javascript" src="{% static "js/calendars/main.js" %} "></script>
     <link rel="stylesheet" type="text/css" href="{% static "css/calendars/main.css" %}" />
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-
 {% endblock %}
 {% block headbar %}
     <div id="headbar_empty">
@@ -25,11 +23,14 @@
                     {% for c in calendars %}
                         <a href="javascript:toggle_calendar('{{ c.id }}')">
                             <div class="calendar" id="calendar_{{ c.id }}">
-                                <span class="square_color" id="color_{{ c.id }}" style="background-color: #{{ c.color }}"></span>
-                                <span>{{ c.name }}</span>
+                                <div class="calendar" id="calendar_{{ c.id }}">
+                                    <span class="square_color" id="color_{{ c.id }}" style="background-color: #{{ c.color }}"></span>
+                                    <span>{{ c.name }}</span>
+                                </div>
                             </div>
                         </a>
                     {% endfor %}
+
                     <div class="calendar" id="new_calendar">
                         <span class="square_color" id="new_color"></span>
                         <span> <a href="javascript:new_calendar()">New Calendar</a></span>

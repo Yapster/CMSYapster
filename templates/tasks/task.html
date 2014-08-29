@@ -1,20 +1,72 @@
-<div class="task draggable {{ task.category.name }}" id="{{ task.task_id }}">
+<div class="task draggable category_{{ task.category.category_id }} {% if task.is_public %}public{% endif %}" id="{{ task.task_id }}" style="color: #{{ task.category.color }}">
     <div class="header_task">
         <span class="priority_task">{{ task.priority }}</span>
         <span class="title_task">{{ task.name }}</span>
-    </div>
-    <div class="details_task" style="display: none">
-        <div class="line_detail_task">
-            <label class="label_detail_task">Description</label>
-            <span class="detail_task">{{ task.description }}</span>
+        <span class="details_task_icone icone" id="{{ task.task_id }}"></span>
+        <div class="details_task_pop" id="pop_up_{{ task.task_id }}" title="{{ task.name }}">
+            <div class="members_task">
+                <div class="header_members_task">
+                    <span>Members</span>
+                </div>
+                <div class="member_task_container">
+                    {% for u in task.workers.all %}
+                        <span>{{ u }}</span>
+                    {% endfor %}
+                    <span class="button_form" onclick="display_date('members_{{ task.task_id }}')">Change</span>
+                    <div id="members_{{ task.task_id }}" style="display: none">
+                        {% for u in users %}
+                            <span class="member" id="{{ u.id }}">{{ u }}</span>
+                        {% endfor %}
+                        <span class="button_form" onclick="save_members('members_{{ task.task_id }}', '{{ task.task_id }}')">Save</span>
+                    </div>
+                    <span></span>
+                </div>
+                <div class="date_task">
+                    <div class="header_date_task">
+                        <span>Deadline</span>
+                        <span class="button_form" onclick="display_date('date_{{ task.task_id }}')">Change</span>
+                        <div id="date_{{ task.task_id }}" style="display: none">
+                            <input type="date" />
+                        </div>
+                    </div>
+                    <span>{{ task.deadline }}</span>
+                </div>
+                <div class="priority">
+
+                </div>
+                <div class="notes_task">
+                    <div class="header_notes_task">Notes</div>
+                    <div class="notes_task_container">
+                        <div class="note">
+                            <img id="img_note" src="">
+                            <textarea id="input_note_{{ task.task_id }}" name="newnote" placeholder="Write a note..."></textarea>
+                        </div>
+                        <div class="submitdiv" id="{{ task.task_id }}">
+                            <button onclick="send_note('{{ user.id }}', '{{ task.task_id }}')" name="btn_newnote">Submit</button>
+                        </div>
+                        {% for note in task.task.all %}
+                            <div class="note_task">
+                                <span>{{ request.user.username }}</span>
+                                <span>{{ note.text_note }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="line_detail_task">
-            <label class="label_detail_task">Workers</label>
-            <span class="detail_task">{% for u in task.workers.all %}{{ u }} {% endfor %}</span>
-        </div>
-        <div class="line_detail_task">
-            <label class="label_detail_task">Deadline</label>
-            <span class="detail_task">{{ task.deadline }}</span>
+        <div class="details_task" style="display: none">
+            <div class="line_detail_task">
+                <label class="label_detail_task">Description</label>
+                <span class="detail_task">{{ task.description }}</span>
+            </div>
+            <div class="line_detail_task">
+                <label class="label_detail_task">Workers</label>
+                <span class="detail_task">{% for u in task.workers.all %}{{ u }} {% endfor %}</span>
+            </div>
+            <div class="line_detail_task">
+                <label class="label_detail_task">Deadline</label>
+                <span class="detail_task">{{ task.deadline }}</span>
+            </div>
         </div>
     </div>
 </div>

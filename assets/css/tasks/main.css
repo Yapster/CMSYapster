@@ -1,8 +1,7 @@
 /*main css*/
 
 #content {
-    margin-left: 200px;
-    margin-right: 10px;
+    margin-top: 38px;
     height: 100%;
 }
 #cols {
@@ -10,16 +9,24 @@
 }
 
 .main_col {
-    width: 30%;
+    width: 33%;
     float: left;
     text-align: center;
     height: 100%;
 
 }
 
+#todo {
+    border-left: 1px #8b8b8d solid;
+}
+
 #inprogress {
     border-right: 1px #8b8b8d solid;
     border-left: 1px #8b8b8d solid;
+}
+
+#done {
+    border-right: 1px #8b8b8d solid;
 }
 
 .header_tasks {
@@ -41,7 +48,7 @@
     margin: 8px;
     padding: 10px;
     border: 1px black solid;
-    border-radius: 12px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -54,7 +61,7 @@
     font-weight: bold;
 }
 
-.header_task:hover {
+.title_task:hover {
     text-decoration: underline;
 }
 
@@ -87,18 +94,64 @@
     cursor: pointer;
 }
 
-.Bug {
-    color: blue;
+.details_task_icone {
+    background-position: 44% 30%;
+    width: 20px;
+    height: 20px;
+    float: right;
 }
 
-.Feature {
-    color: red;
+.ui-dialog {
+    width: 50% !important;
+    height: 90% !important;
 }
 
-.Design {
-    color: fuchsia;
+.select, .member:hover {
+    color: #15D400;
 }
 
-.Brainstorming {
-    color: darkslategray;
+#categories_toggle {
+    margin-bottom: 10px;
+}
+
+.category {
+    margin-bottom: 1px;
+}
+
+.category:hover, .option_task:hover, .main_option_task:hover, .selected_option{
+    color: #15D400;
+}
+
+#categories_toggle, #categories_search {
+    width: 25%;
+    float: left;
+    padding: 10px;
+    border: 1px black solid;
+}
+
+#categories_search {
+    float: right;
+}
+
+#categories_manager {
+    width: 100%;
+    float: left;
+}
+
+.option_task {
+    font-size: 11px;
+
+}
+
+.main_option_task {
+    width: 50%;
+    float:left;
+    text-align: center;
+}
+
+.square_color {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-right: 8px;
 }

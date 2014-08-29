@@ -15,8 +15,17 @@ def list_users(request):
 
     return render(request,
                   "listings/users.html",
-        {"users": users,
-         "title": request.POST['title']})
+                  {"users": users,
+                   "title": request.POST['title']})
+
+@csrf_exempt
+def user_details(request):
+    u = None
+    if request.POST:
+        u = User.objects.using('ye_1_db_1').get(username=request.POST['username'])
+    return render(request,
+                  "listings/user_details.html",
+                  {"u": u})
 
 @csrf_exempt
 def list_countries(request):
@@ -31,8 +40,8 @@ def list_countries(request):
                 res.append((c, num))
     return render(request,
                   "listings/countries.html",
-        {"res": res,
-        "title": request.POST['title']})
+                  {"res": res,
+                   "title": request.POST['title']})
 
 
 @csrf_exempt
@@ -45,8 +54,8 @@ def list_hashtags(request):
 
     return render(request,
                   "listings/hashtags.html",
-        {"hashtags": hashtags,
-         "title": request.POST['title']})
+                  {"hashtags": hashtags,
+                   "title": request.POST['title']})
 
 
 @csrf_exempt
@@ -59,5 +68,5 @@ def list_yaps(request):
 
     return render(request,
                   "listings/yaps.html",
-        {"yaps": yaps,
-         "title": request.POST['title']})
+                  {"yaps": yaps,
+                   "title": request.POST['title']})

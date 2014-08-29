@@ -1,41 +1,45 @@
 {% load dictionary_extras %}
 <div class="users_listing">
-    <div id="header_users_listing">
-        <span>{{ title }}: {{ users|length }}</span>
+    <div id="left_side_users_listing">
+        <div id="header_users_listing">
+            <span>{{ title }}: {{ users|length }}</span>
+        </div>
+        <div id="list_users_container">
+            {% for u in users %}
+                <div class="user_container">
+                    <div class="pix_user">
+                        <img class="picture_profile" src="{{ u.profile.profile_picture_cropped_path|get_url_yapsterapp_s3 }}"/>
+                    </div>
+                    <div class="right_side_user">
+                        <div class="header_user line_user_info">
+                            <div class="id_user">
+                                <span class="civil_names">{{ u.first_name }} {{ u.last_name }}</span>
+                                <span class="handle">@{{ u.username }}</span>
+                            </div>
+                            <span class="description_user">{{ u.profile.description }}</span>
+                        </div>
+                        <div class="infos_user line_user_info">
+                            <div class="stats_user_container">
+                                <div class="line_stat_user">
+                                    <span class="text_stats">Yaps</span>
+                                    <span class="number_stat"><a href="/users/{{ u }}/yaps/">{{ u.profile.yap_count }}</a></span>
+                                </div>
+                                <div class="line_stat_user">
+                                    <span class="text_stats">Following</span>
+                                    <span class="number_stat"><a href="/users/{{ u }}/following/">{{ u.profile.following_count }}</a></span>
+                                </div>
+                                <div class="line_stat_user">
+                                    <span class="text_stats">Followers</span>
+                                    <span class="number_stat"><a href="/users/{{ u }}/followers/">{{ u.profile.follower_count }}</a></span>
+                                </div>
+                            </div>
+                            <div class="details_button"><a href="javascript:display_user_detail('{{ u.username }}')" class="button_form">Details</a></div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    <div id="list_users_container">
-        {% for u in users %}
-            <div class="user_container">
-                <div class="pix_user">
-                    <img class="picture_profile" src="{{ u.profile.profile_picture_cropped_path|get_url_yapsterapp_s3 }}"/>
-                </div>
-                <div class="right_side_user">
-                    <div class="header_user line_user_info">
-                        <div class="id_user">
-                            <span class="civil_names">{{ u.first_name }} {{ u.lastname }}</span>
-                            <span class="handle">@{{ u.username }}</span>
-                        </div>
-                        <span class="description_user">{{ u.profile.description }}</span>
-                    </div>
-                    <div class="infos_user line_user_info">
-                        <div class="stats_user_container">
-                            <div class="line_stat_user">
-                                <span class="text_stats">Yaps</span>
-                                <span class="number_stat"><a href="/users/{{ u }}/yaps/">{{ u.profile.yap_count }}</a></span>
-                            </div>
-                            <div class="line_stat_user">
-                                <span class="text_stats">Following</span>
-                                <span class="number_stat"><a href="/users/{{ u }}/following/">{{ u.profile.following_count }}</a></span>
-                            </div>
-                            <div class="line_stat_user">
-                                <span class="text_stats">Followers</span>
-                                <span class="number_stat"><a href="/users/{{ u }}/followers/">{{ u.profile.follower_count }}</a></span>
-                            </div>
-                        </div>
-                        <div class="details_button"><a href="/users/{{ u }}" class="button_form">Details</a></div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+    <div id="right_side_users_listing" style="display: none">
     </div>
 </div>

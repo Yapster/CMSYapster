@@ -1,0 +1,16 @@
+@classmethod
+ def create(self,**kwargs):
+  # create all user methods to avoid signals
+  # return user_id
+  password = kwargs.pop('password')
+  username = kwargs["username"]
+  email = kwargs["email"]
+  first_name = kwargs.get("first_name",None)
+  last_name = kwargs.get("last_name",None)
+  user = User.objects.create_user(email=email,password=password,username=username,first_name=first_name,last_name=last_name)
+  UserInfo.objects.create(**kwargs)
+  UserFunctions.objects.create(user=user)
+  session = SessionVerification.objects.get_or_create(session_user=user)
+  if session[0].session_id is None:
+   session[0].set_id()
+  return (user.pk,user.username,user.first_name,user.last_name,user.session.session_id,)

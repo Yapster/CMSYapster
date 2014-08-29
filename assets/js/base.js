@@ -45,6 +45,30 @@ function scroll_down()
     return false;
 }
 
+function display_user_detail(username)
+{
+    $.ajax({
+        data : {
+            username : username
+        },
+        url : "/lists/user_details/",
+        type : "POST",
+        success: function(newData){
+            if (newData) {
+                if ($('#right_side_users_listing').is(':visible'))
+                {
+                    $('#right_side_users_listing').html(newData);
+                }
+                else
+                {
+                    $('#right_side_users_listing').html(newData).slideToggle("slow");
+                }
+            }
+
+        }
+    });
+}
+
 $(document).ready(function() {
 
     $("#message").keypress(function(e) {
