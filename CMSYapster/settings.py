@@ -69,6 +69,7 @@ INSTALLED_APPS = (
     'cms_search_log',
     'cms_location',
     'cms_notifications',
+    'cms_reports',
     'contacts',
     'db_manager',
     'db_recover',

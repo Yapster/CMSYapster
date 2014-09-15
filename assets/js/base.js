@@ -53,20 +53,17 @@ function display_user_detail(username)
         },
         url : "/lists/user_details/",
         type : "POST",
+        context: username,
         success: function(newData){
             if (newData) {
-                if ($('#right_side_users_listing').is(':visible'))
-                {
-                    $('#right_side_users_listing').html(newData);
-                }
-                else
-                {
-                    $('#right_side_users_listing').html(newData).slideToggle("slow");
-                }
+                $('#more_' + username).html(newData).slideToggle("slow");
             }
-
         }
     });
+}
+
+function slide_div(divId){
+    $('#' + divId).slideToggle("slow");
 }
 
 $(document).ready(function() {
@@ -106,6 +103,9 @@ $(document).ready(function() {
                 url : "/post/messenger/",
                 type : "POST",
                 success: function(newData){
+                    $('#messenger_to_up').html(newData);
+                },
+                error: function(newData){
                     $('#messenger_to_up').html(newData);
                 }
             });

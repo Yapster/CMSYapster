@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load dictionary_extras %}
 {% block localfiles %}
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/group_manage.css" %}" />
@@ -23,10 +24,10 @@
                         <label for="groupname">Group Name</label>
                         <input type="text" id="groupname" name="groupname"/>
                     </div>
-                    <div id="pages">
-                        {% for page in pages %}
+                    <div id="perms">
+                        {% for perm in perms %}
                             <li>
-                                <input type="checkbox" name="page_selected" value="{{ page.page_id }}"/> {{ page.name }}
+                                <input type="checkbox" name="page_selected" value="{{ perm.id }}"/> {{ perm.name }}
                             </li>
                         {% endfor %}
                     </div>
@@ -44,39 +45,41 @@
             <div id="active_groups" class="groupinfos">
                 <div id="table">
                     <table width="100%" cellpadding="2px" cellspacing="0px">
+                        <tbody>
                         <tr>
                             <th>Group name</th>
                             <th>Members</th>
-                            <th>Pages</th>
+                            <th>Rights</th>
                             <th>Delete</th>
                         </tr>
                         {% if groups %}
-                            {% for group in groups%}
+                            {% for group in groups %}
                                 <form method="post">
                                     {% csrf_token %}
                                     <tr>
-                                        <td><a href="{{ group.group_name }}"/>{{ group.group_name }} </td>
+                                        <td><a href="{{ group.name }}"/>{{ group.name }} </td>
                                         <td>
-                                            {% for member in group.members.all %}
+                                            {% for member in group.user_set.all %}
                                                 <li>
-                                                    <a href="/cmsusers/{{ member.username }}">{{ member.username }}</a>
+                                                    <a href="/profile/{{ member.username }}">{{ member.username }}</a>
                                                 </li>
                                             {% endfor %}
                                         </td>
                                         <td>
-                                            {% for page in group.pages.all %}
-                                                <li>{{ page.name }}</li>
+                                            {% for perm in group.permissions.all %}
+                                                <li>{{ perm.name }}</li>
                                             {% endfor %}
                                         </td>
                                         <form method="post">
                                             {% csrf_token %}
-                                            <input type="hidden" name="group" value="{{ group.group_name }}"/>
+                                            <input type="hidden" name="group" value="{{ group.id }}"/>
                                             <td><button type="submit" name="btn_delgroup" class="button_form">Delete</button></td>
                                         </form>
                                     </tr>
                                 </form>
                             {% endfor %}
                         {% endif %}
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -94,8 +97,8 @@
                             <form method="post">
                                 {% csrf_token %}
                                 <tr>
-                                    <td>{{ group.group_name }} </td>
-                                    <input type="hidden" name="group" value="{{ group.group_name }}"/>
+                                    <td>{{ group.name }} </td>
+                                    <input type="hidden" name="group" value="{{ group.name }}"/>
                                     <td><button type="submit" name="btn_active" class="button_form">Activate</button></td>
                                 </tr>
                             </form>

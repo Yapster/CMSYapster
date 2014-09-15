@@ -25,9 +25,3 @@ class Report(models.Model):
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
     objects = models.GeoManager()
-
-
-
-
-
-

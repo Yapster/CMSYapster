@@ -1,12 +1,12 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from schedule.periods import Year, Month, Week, Day
 import calendars.urls
 import tasks.urls
 import gits.urls
 import listings.urls
 import cms_channels.urls
-from yap.views import *
+import cms_reports.urls
+
 
 admin.autodiscover()
 
@@ -21,6 +21,7 @@ urlpatterns = patterns('',
                        url(r'^gits/', include(gits.urls)),
                        url(r'^lists/', include(listings.urls)),
                        url(r'^channels/', include(cms_channels.urls)),
+                       url(r'^reports/', include(cms_reports.urls)),
                        url(r'^login/', 'admins.views.login_user'),
                        url(r'^home/', 'stats.views.homepage'),
                        url(r'^statistics/usership/$', 'stats.views.stats_usership'),

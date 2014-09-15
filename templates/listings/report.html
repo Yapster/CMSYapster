@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block localfiles %}
+    {% load dictionary_extras %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/listings/report.css" %}" />
+    <script type="text/javascript" src="{% static "js/listings/report.js" %} "></script>
+{% endblock %}
+{% block content %}
+    <div id="content" class="clearfix">
+        <div id="navigation_report">
+            <div id="left_navigation_report">
+                <a href="/reports/" class="button_form"> &lt  Back to Reports</a>
+            </div>
+            <div id="right_navigation_report">
+                <a href="/reports/{{ r.report_id|add:-1 }}/" class="button_form">&lt Prev</a>
+                <a href="/reports/{{ r.report_id|add:1 }}/" class="button_form">Next &gt</a>
+            </div>
+        </div>
+        <div id="header_report">
+            <div id="checkbox_container">
+                <input id="checkbox_is_active" type="checkbox" {% if not r.is_active %}checked{% endif %}/>
+            </div>
+            <div id="report_type" class="header_cell">
+                <span class="text_header_report">Report ID:</span>
+                <span id="report_id" class="value_header_report">{{ r.report_id }}</span>
+            </div>
+            <div id="report_user_id" class="header_cell">
+                <span class="text_header_report">User ID:</span>
+                <span class="value_header_report">{{ r.user_id }}</span>
+            </div>
+            <div id="report_type" class="header_cell">
+                <span class="text_header_report">Type:</span>
+                {% if r.reported_yap_flag %}
+                    <span class="report_type_text yap_type value_header_report">Yap</span>
+                {% elif  r.reported_reyap_flag %}
+                    <span class="report_type_text reyap_type value_header_report">Reyap</span>
+                {% elif  r.reported_user_flag %}
+                    <span class="report_type_text user_type value_header_report">User</span>
+                {% elif r.reported_bug_flag %}
+                    <span class="report_type_text bug_type value_header_report">Bug</span>
+                {% elif r.reported_general_flag %}
+                    <span class="report_type_text general_type value_header_report">General</span>
+                {% endif %}
+            </div>
+            <div id="user_in_charger" class="header_cell">
+                <span class="text_header_report">In Charge:</span>
+                {% if r_cms %}
+                    <span class="value_header_report">{{ r_cms.user_in_charge.username }}</span>
+                {% else %}
+                    <span class="value_header_report">???</span>
+                {% endif %}
+            </div>
+        </div>
+        <div id="details_report">
+            <div id="description_report">
+                {{ r.description }}
+            </div>
+        </div>
+        <div id="user_details">
+            {{  u.id|user_window }}
+        </div>
+        <div id="reported">
+          {% if r.reported_user_flag %}
+            {{ r.reported_user_id|user_window }}
+          {% endif %}
+        </div>
+        <div id="notes_report">
+            <div class="notes_header">
+                <div class="checkbox_col">
+                    <span>Check</span>
+                </div>
+                <div class="user_image_col">
+                    <span>User Image</span>
+                </div>
+                <div class="user_name_col">
+                    <span>User ID</span>
+                </div>
+                <div class="date_col">
+                    <span>Date</span>
+                </div>
+            </div>
+            <div id="notes_report_container">
+                {% for note in r_cms.notes.all %}
+                    <div class="note">
+                    <div class="note_first_raw">
+                        <input class="checkbox_col" type="checkbox" name="note_{{ note.id }}" id="note_{{ note.id }}"/>
+                        <div class="user_image_col">
+                            <img class="img_note" src="{{ note.owner.id|get_profile_pic }}">
+                        </div>
+                        <span class="user_note user_name_col">{{ note.owner.username }}</span>
+                        <span class="date_note date_col">{{ note.date_last }}</span>
+                    </div>
+                    {% if forloop.last %}
+                        <div class="note_second_raw">
+                    {% else %}
+                        <div class="note_second_raw" style="display: none">
+                    {% endif %}
+                <span class="desc_note">{{ note.text }} </span>
+                </div>
+                </div>
+                {% endfor %}
+                </div>
+                <div id="tabs">
+                    <div class="tab selected" id="note_tab">
+                        <span class="text_tab">Note</span>
+                    </div>
+                    <div class="tab" id="email_tab">
+                        <span class="text_tab" >Email User</span>
+                    </div>
+                </div>
+                <form method="post">
+                    <div id="new_note" class="is_visible" style="display: none">
+                        {% csrf_token %}
+                        <div id="current_user_profile_pic_container">
+                            <img id="current_user_profile_pic" class="img_note" src="{{ current_u.id|get_profile_pic }}"/>
+                        </div>
+                        <div id="text_container">
+                            <textarea rows="10" cols="80" name="new_note_text" id="text_area_note"></textarea>
+                        </div>
+                    </div>
+                    <div id="new_answer" style="display: none">
+                        {% csrf_token %}
+                        <div id="current_user_profile_pic_container">
+                            <img id="current_user_profile_pic" class="img_note" src="{{ current_u.id|get_profile_pic }}"/>
+                        </div>
+                        <div id="text_container">
+                            <textarea rows="10" cols="80" name="new_email_text" id="text_area_note"></textarea>
+                        </div>
+                    </div>
+                    <div id="report_actions">
+                        <div id="report_actions_container">
+                            <button type="submit" name="new_note_button" id="new_note_button" class="button_form button_report_action is_visible" style="display: none">Submit Note</button>
+                            <button type="submit" name="new_answer_button" id="new_answer_button" class="button_form button_report_action" style="display: none">Send Reply</button>
+                            <button type="reset" class="button_form button_report_action">Cancel</button>
+                            {% if r_cms %}
+                            {% else %}
+                                <a onclick="take_in_charge('{{ r.report_id }}')" class="button_form button_report button_report_action">Take in Charge</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock %}

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
 from django.db.models import Count
 from django.contrib.auth.models import User
@@ -9,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @active_and_login_required
 @csrf_exempt
+@permission_required('chat.messenger_access', raise_exception='sub_templates/access_denied.html')
 def chat(request):
     messages = []
     if 'chaters[]' in request.POST:

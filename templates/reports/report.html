@@ -1,0 +1,78 @@
+{% load dictionary_extras %}
+{% if report.reported_yap_flag %}
+    <div class="report_raw yap_report {% if cms_reports|access:report.report_id %}not_free_report{% endif %}">
+{% elif  report.reported_reyap_flag %}
+    <div class="report_raw reyap_report {% if cms_reports|access:report.report_id %}not_free_report{% endif %}">
+{% elif  report.reported_user_flag %}
+    <div class="report_raw user_report {% if cms_reports|access:report.report_id %}not_free_report{% endif %}">
+{% elif report.reported_bug_flag %}
+    <div class="report_raw bug_report {% if cms_reports|access:report.report_id %}not_free_report{% endif %}">
+{% elif report.reported_general_flag %}
+    <div class="report_raw general_report {% if cms_reports|access:report.report_id %}not_free_report{% endif %}">
+{% endif %}
+<div class="report_first_raw">
+    {% csrf_token %}
+    <div class="sub_div_report checkbox_report">
+        <input type="checkbox" {% if not report.is_active %}checked{% endif %}/>
+    </div>
+    <div class="report_id sub_div_report">
+        <span>{{ report.report_id }}</span>
+    </div>
+    <div class="report_user_id sub_div_report">
+        <a class="user_link" href="/users/{{ report_user_id }}"><span class="user_id">{{ report.user_id }}</span></a>
+    </div>
+    <div class="report_type sub_div_report">
+        {% if report.reported_yap_flag %}
+            <span class="report_type_text yap_type">Yap</span>
+        {% elif  report.reported_reyap_flag %}
+            <span class="report_type_text reyap_type">Reyap</span>
+        {% elif  report.reported_user_flag %}
+            <span class="report_type_text user_type">User</span>
+        {% elif report.reported_bug_flag %}
+            <span class="report_type_text bug_type">Bug</span>
+        {% elif report.reported_general_flag %}
+            <span class="report_type_text general_type">General</span>
+        {% endif %}
+    </div>
+    <div class="report_datetime_reported sub_div_report">
+        <span>{{ report.datetime_reported }}</span>
+    </div>
+    <div class="report_in_charge sub_div_report">
+        {% if cms_reports|access:report.report_id %}
+            <a href="/{{ cms_reports|cms_report_get_username:report.report_id }}/" class="user_in_charge">{{ cms_reports|cms_report_get_username:report.report_id }}</a>
+        {% else %}
+            <span>????</span>
+        {% endif %}
+    </div>
+</div>
+<div class="report_second_raw" style="display: none">
+    <div class="report_details sub_div_report">
+        <div class="report_infos">
+            <div class="email_container">
+                <span>Email: </span>
+                {% if report.contact_email %}
+                    <span>{{ report.contact_email }}</span>
+                {% else %}
+                    <span>No Email</span>
+                {% endif %}
+            </div>
+            <div class="phone_container">
+                <span>Phone Number: </span>
+                <span>{{ report.contact_phone_number }}</span>
+            </div>
+            <div class="desc_container">
+                <span>{{ report.description }}</span>
+            </div>
+        </div>
+        <div class="user_details">
+        </div>
+        <div class="button_report">
+            <a class="button_form button_report">Reply</a>
+            <a class="button_form button_report">Delete</a>
+            <a onclick="take_in_charge('{{ report.report_id }}')" class="button_form button_report">Take in Charge</a>
+            <a href="/reports/{{ report.report_id }}/" class="button_form button_report">Details</a>
+        </div>
+    </div>
+
+</div>
+</div>

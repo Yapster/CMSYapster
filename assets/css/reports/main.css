@@ -1,0 +1,198 @@
+#content {
+    overflow: visible;
+}
+
+#reports_manager {
+    font-size: 11px;
+    margin-bottom: 38px;
+    margin-top: 38px;
+}
+
+#table_reports {
+    font-size: 12px;
+    margin-top: 38px;
+    float: left;
+}
+
+.report_raw, .reports_title {
+    float: left;
+    width: 100%;
+    text-align: center;
+    border: 1px #000000 solid;
+    border-top: 0px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.reports_title {
+    border: 1px black solid;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+
+.report_raw:hover {
+    background-color: #f4f4f4;
+}
+
+.report_first_raw {
+    cursor: pointer;
+}
+
+.report_second_raw {
+    float: left;
+    width: 100%;
+}
+
+.sub_div_report {
+    float: left;
+}
+
+.checkbox_report {
+    width: 7%;
+}
+
+.report_id {
+    width: 5%;
+}
+
+.report_user_id {
+    width: 22%;
+}
+
+.report_type {
+    width: 22%;
+}
+
+.report_datetime_reported {
+    width: 22%;
+}
+
+.report_in_charge {
+    width: 22%;
+}
+
+.report_details {
+    width: 92%;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.email_container, .phone_container {
+    float: left;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.desc_container {
+    margin-bottom: 20px;
+}
+
+#reports_toggle {
+    padding: 10px;
+    border: 1px black solid;
+}
+
+.square_color {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-right: 8px;
+}
+
+.type_report {
+    margin-bottom: 6px;
+    width: 19%;
+    float: left;
+}
+
+.general_type {
+    color: #d40e00;
+}
+
+.yap_type {
+    color: blue;
+}
+
+.reyap_type {
+    color: green;
+}
+
+.bug_type {
+    color: pink;
+}
+
+.user_type {
+    color: indigo;
+}
+
+.user_in_charge {
+    font-weight: bold;
+}
+
+#general_square {
+    background-color: #d40e00;
+}
+
+#yap_square {
+    background-color: blue;
+}
+
+#reyap_square{
+    background-color: green;
+}
+
+#bug_square {
+    background-color: pink;
+}
+
+#user_square {
+    background-color: indigo;
+}
+
+#reports_search {
+    float: right;
+    border: 1px black solid;
+    padding: 10px;
+}
+
+.square_color.unselected {
+    background-color: #f4f4f4 !important;
+}
+
+.report_text.unselected {
+    color: #f4f4f4 !important;
+}
+
+.inactive_report {
+    display: none;
+}
+
+.selected {
+    color: #15D400;
+}
+
+.report_infos {
+    float: left;
+    width: 50%;
+}
+
+.user_details {
+    float: left;
+    width: 50%;
+}
+
+.button_report {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#inactive_reports {
+    float: left;
+    width: 100%;
+    border-top: 3px black solid;
+    padding-right: 2px;
+}

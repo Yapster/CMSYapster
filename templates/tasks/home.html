@@ -16,7 +16,7 @@
                 {% for c in categories %}
                     <a href="javascript:toggle_categories('{{ c.category_id }}')">
                         <div class="category" id="category_{{ c.category_id }}">
-                            <span class="square_color" id="color_{{ c.id }}" style="background-color:#{{ c.color }}"></span>
+                            <span class="square_color" id="color_{{ c.category_id }}" style="background-color:#{{ c.color }}"></span>
                             <span class="option_task">{{ c.name }}</span>
                         </div>
                     </a>
@@ -25,11 +25,8 @@
             <div id="categories_search">
 
                 <div class="option_tasks" id="main_options">
-                    <a href="javascript:toggle_options('public')">
-                        <div class="main_option_task selected_option">Is Public</div>
-                    </a>
-                    <a href="javascript:toggle_options('{{ user.user_id }}')">
-                        <div class="main_option_task selected_option">Mine</div>
+                    <a href="javascript:toggle_public()">
+                        <div class="main_option_task selected_option" id="public_option">Is Public</div>
                     </a>
                 </div>
                 <div class="option_tasks" id="">

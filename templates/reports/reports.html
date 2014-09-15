@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block localfiles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/reports/main.css" %}" />
+    <script type="text/javascript" src="{% static "js/reports/main.js" %} "></script>
+{% endblock %}
+{% block headbar %}
+    <div id="headbar_empty">
+        <span id="text_headbar"></span>
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="content">
+        <div id="reports_manager">
+            <div id="reports_toggle">
+                <a href="javascript:toggle_unselected('general')">
+                    <div class="type_report" id="general_report">
+                        <span class="square_color" id="general_square"></span>
+                        <span class="type_report_text" id="general_text">General</span>
+                    </div>
+                </a>
+                <a href="javascript:toggle_unselected('user')">
+                    <div class="type_report" id="user_report">
+                        <span class="square_color" id="user_square"></span>
+                        <span class="type_report_text" id="user_text">User</span>
+                    </div>
+                </a>
+                <a href="javascript:toggle_unselected('yap')">
+                    <div class="type_report" id="yap_report">
+                        <span class="square_color" id="yap_square"></span>
+                        <span class="type_report_text" id="yap_text">Yap</span>
+                    </div>
+                </a>
+                <a href="javascript:toggle_unselected('reyap')">
+                    <div class="type_report" id="reyap_report">
+                        <span class="square_color" id="reyap_square"></span>
+                        <span class="type_report_text" id="reyap_text">Reyap</span>
+                    </div>
+                </a>
+                <a href="javascript:toggle_unselected('bug')">
+                    <div class="type_report" id="bug_report">
+                        <span class="square_color" id="bug_square"></span>
+                        <span class="type_report_text" id="bug_text">Bug</span>
+                    </div>
+                </a>
+                <div class="option_reports" id="main_reports">
+                    <a href="javascript:toggle_unselected('not_free')">
+                        <div class="main_option_report selected_option" id="not_free_button">Free</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="table_reports">
+            <div class="reports_title">
+                <div class="sub_div_report checkbox_report">
+                    <span>Check</span>
+                </div>
+                <div class="report_id sub_div_report">
+                    <span>ID</span>
+                </div>
+                <div class="report_user_id sub_div_report">
+                    <span>User ID</span>
+                </div>
+                <div class="report_type sub_div_report">
+                    <span>Report Type</span>
+                </div>
+                <div class="report_datetime_reported sub_div_report">
+                    <span>Datetime Reported</span>
+                </div>
+                <div class="report_in_charge sub_div_report">
+                    <span>In Charge</span>
+                </div>
+            </div>
+            {% for report in reports %}
+                {% include "reports/report.html" %}
+            {% endfor %}
+            <div id="inactive_reports">
+            {% for report in inactive_reports %}
+                {% include "reports/report.html" %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

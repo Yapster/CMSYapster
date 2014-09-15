@@ -571,30 +571,40 @@ table tr td:last-child,table tr th:last-child{
 
 .user_container {
     border: 1px #000000 solid;
-    height: 110px;
     font-size: 12px;
     margin-bottom: 25px;
+    float: left;
 }
 
 .pix_user {
     float: left;
-    margin-top: 15px;
     margin-left: 10px;
+    height: 100%;
+}
+
+.upper_user {
+    width: 400px;
+}
+
+.picture_profile_container{
+    float: left;
 }
 
 .picture_profile {
     width: 80px;
     height: 80px;
+    margin-top: 10px;
 }
 
-.right_side_user {
-    margin-left: 120px;
-    margin-top: 8px;
+.upper_right_side {
+    overflow: hidden;
 }
 
 .line_user_info {
     height: 31px;
     margin-bottom: 20px;
+    float: left;
+    margin-top: 12px;
 }
 
 .civil_names {
@@ -607,17 +617,21 @@ table tr td:last-child,table tr th:last-child{
 }
 
 .description_user {
-    overflow: hidden;
+    float: left;
+    width: 300px;
+    margin-left: 8px;
+    height: 60px;
 }
 
 .stats_user_container {
-    width: 150px;
+    width: 20%;
     float: left;
 }
 
 .details_button {
-    float: right;
-    margin-top: 31px;
+    margin-top: 5px;
+    float:right;
+    margin-left: 33px;
 }
 
 .text_stats {
@@ -637,4 +651,35 @@ table tr td:last-child,table tr th:last-child{
 #right_side_users_listing {
     float: right;
     width: 45%;
+}
+
+.first_line {
+    width: 100px;
+}
+
+.main_user {
+    float: left;
+    margin: 10px;
+    margin-left: 40px;
+}
+
+.line_stat_user {
+    float: left;
+    width: 190px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+.header_user {
+    margin-top: 8px;
+    width: 70%;
+    text-align: left;
+}
+
+.more_details_user {
+    overflow: hidden;
+    font-size: 11px;
+    border-top: 1px black solid;
+    margin-top: 10px;
+    padding: 10px;
 }

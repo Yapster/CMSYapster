@@ -1,3 +1,4 @@
+from django.core.context_processors import request
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from location.models import Country
@@ -17,6 +18,14 @@ def list_users(request):
                   "listings/users.html",
                   {"users": users,
                    "title": request.POST['title']})
+
+@csrf_exempt
+def one_user(request):
+    if request.POST:
+        u = User.objects.using('ye_1_db_1').get(pk=request.POST['userId'])
+    return render(request,
+                  "listings/user.html",
+                  {"u": u})
 
 @csrf_exempt
 def user_details(request):

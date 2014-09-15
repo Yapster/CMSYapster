@@ -118,12 +118,27 @@
     margin-bottom: 1px;
 }
 
-.category:hover, .option_task:hover, .main_option_task:hover, .selected_option{
+.category:hover, .option_task:hover{
+    background-color: #f4f4f4;
+}
+
+.main_option_task:hover, .selected_option {
     color: #15D400;
 }
 
+.inactive_category {
+    color: grey;
+}
+
+.inactive_color {
+    background-color: #f4f4f4 !important;
+}
+
+.inactive_task {
+    display: none;
+}
+
 #categories_toggle, #categories_search {
-    width: 25%;
     float: left;
     padding: 10px;
     border: 1px black solid;
@@ -144,9 +159,9 @@
 }
 
 .main_option_task {
-    width: 50%;
     float:left;
     text-align: center;
+    padding: 2px;
 }
 
 .square_color {

@@ -25,7 +25,7 @@ class APIRouter(object):
         """
         API models to api_db
         """
-        if model._meta.app_label == 'yap':
+        if (model._meta.app_label == 'yap') or (model._meta.app_label == 'report'):
             return 'ye_1_db_1'
         return 'default'
 

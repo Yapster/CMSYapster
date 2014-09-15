@@ -1,0 +1,21 @@
+{% load dictionary_extras %}
+<div class="user_container">
+    <div class="upper_user">
+        <div class="picture_profile_container">
+            <img class="picture_profile" src="{{ u.profile.profile_picture_cropped_path|get_url_yapsterapp_s3 }}"/>
+        </div>
+        <div class="upper_right_side">
+            <div class="main_user">
+                <span class="civil_names">{{ u.first_name }} {{ u.last_name }}</span>
+                <span class="handle">@{{ u.username }}</span>
+            </div>
+            <div class="details_button"><a href="javascript:display_user_detail('{{ u.username }}')" class="button_form">Details</a></div>
+            <div class="description_user">
+                <span>{{ u.profile.description }}</span>
+            </div>
+        </div>
+        <div class="more_details_user" id="more_{{ u.username }}" style="display: none">
+        </div>
+    </div>
+
+</div>

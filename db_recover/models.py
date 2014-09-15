@@ -4,8 +4,14 @@ from announcements.models import Announcement
 from chat.models import Conversation, Message
 from groups.models import GroupPermission, Page
 from contacts.models import Contact, List
+from yap.models import Channel
 from tasks.models import *
+from cms_search_log.models import *
+from calendars.models import *
 from datetime import datetime
+from django.contrib.auth.models import User, Permission, Group
+from django.contrib.contenttypes.models import ContentType
+
 
 class Recover(models.Model):
     """
@@ -14,15 +20,15 @@ class Recover(models.Model):
     @staticmethod
     def users():
         CmsUser.new_user(username="Chris", first_name="Chris", last_name="Lerus",
-                              email="admin@admin.com", password="fefe")
+                         email="admin@admin.com", password="fefe")
         CmsUser.new_user(username="G", first_name="Gurkaran", last_name="Gulati",
-                                       email="g@yapsterapp.com", password="fefe")
+                         email="g@yapsterapp.com", password="fefe")
         CmsUser.new_user(username="Abu", first_name="Abu", last_name="Ba",
-                                       email="abu@yapsterapp.com", password="fefe")
+                         email="abu@yapsterapp.com", password="fefe")
         CmsUser.new_user(username="Lilian", first_name="Lilian", last_name="Zu",
-                                       email="abu@yapsterapp.com", password="fefe")
+                         email="abu@yapsterapp.com", password="fefe")
         CmsUser.new_user(username="Tommy", first_name="Tommy", last_name="Sondgroth",
-                                       email="abu@yapsterapp.com", password="fefe")
+                         email="abu@yapsterapp.com", password="fefe")
         return
 
     @staticmethod
@@ -45,11 +51,11 @@ class Recover(models.Model):
         group6 = GroupPermission.objects.create(group_name="UI")
         group7 = GroupPermission.objects.create(group_name="Mobile")
         p = Page.objects.create(name="groups permissions", url="/permissionsgroups/",
-                    description="Manage permissions for groups")
+                                description="Manage permissions for groups")
         p2 = Page.objects.create(name="CmsUsers", url="/cmsusers/",
-                            description="Manage Cms users")
+                                 description="Manage Cms users")
         p3 = Page.objects.create(name="Announcements", url="/announcements/",
-                             description="Manage Announcements")
+                                 description="Manage Announcements")
 
 
         return
@@ -74,23 +80,23 @@ class Recover(models.Model):
         Run all scripts
         """
 
-        group = GroupPermission.objects.create(group_name="No Group")
-        group1 = GroupPermission.objects.create(group_name="Admin")
-        group2 = GroupPermission.objects.create(group_name="Design/UI")
-        group3 = GroupPermission.objects.create(group_name="Backend")
-        group4 = GroupPermission.objects.create(group_name="Frontend")
-        group5 = GroupPermission.objects.create(group_name="Mobile")
+        # group = GroupPermission.objects.create(group_name="No Group")
+        # group1 = GroupPermission.objects.create(group_name="Admin")
+        # group2 = GroupPermission.objects.create(group_name="Design/UI")
+        # group3 = GroupPermission.objects.create(group_name="Backend")
+        # group4 = GroupPermission.objects.create(group_name="Frontend")
+        # group5 = GroupPermission.objects.create(group_name="Mobile")
 
         user = CmsUser.new_user(username="Chris", first_name="Chris", last_name="Lerus",
-                                      email="chris@yapsterapp.com", password="fefe")
+                                email="chris@yapsterapp.com", password="fefe")
         user1 = CmsUser.new_user(username="Gurkaran", first_name="Gurkaran", last_name="Gulati",
-                                       email="g@yapsterapp.com", password="fefe")
+                                 email="g@yapsterapp.com", password="fefe")
         user2 = CmsUser.new_user(username="Abu", first_name="Abu", last_name="Ba",
-                                       email="abu@yapsterapp.com", password="fefe")
+                                 email="abu@yapsterapp.com", password="fefe")
         user3 = CmsUser.new_user(username="Lilian", first_name="Lilian", last_name="Zhu",
-                                       email="lilianz@yapsterapp.com", password="fefe")
+                                 email="lilianz@yapsterapp.com", password="fefe")
         user4 = CmsUser.new_user(username="Tommy", first_name="Tommy", last_name="Sondgroth",
-                                       email="tommy@yapsterapp.com", password="fefe")
+                                 email="tommy@yapsterapp.com", password="fefe")
 
         cmsuser = CmsUser.objects.get(username=user.username)
         cmsuser1 = CmsUser.objects.get(username=user1.username)
@@ -98,60 +104,60 @@ class Recover(models.Model):
         cmsuser3 = CmsUser.objects.get(username=user3.username)
         cmsuser4 = CmsUser.objects.get(username=user4.username)
 
-        group1.members.add(cmsuser1)
-        group2.members.add(cmsuser3)
-        group2.members.add(cmsuser4)
-        group3.members.add(cmsuser)
-        group4.members.add(cmsuser2)
-        group5.members.add(cmsuser2)
+        # group1.members.add(cmsuser1)
+        # group2.members.add(cmsuser3)
+        # group2.members.add(cmsuser4)
+        # group3.members.add(cmsuser)
+        # group4.members.add(cmsuser2)
+        # group5.members.add(cmsuser2)
 
         l = List.objects.create(name="Business Contacts",
-                            description="Business guys who want to do business stuff",
-                            created_by=user)
+                                description="Business guys who want to do business stuff",
+                                created_by=user)
 
         l1 = List.objects.create(name="Fun Contacts",
-                            description="Fun guys who want to do fun stuff",
-                            created_by=user)
+                                 description="Fun guys who want to do fun stuff",
+                                 created_by=user)
 
         l2 = List.objects.create(name="Admin Contacts",
-                            description="Only seen by the admin",
-                            created_by=user)
+                                 description="Only seen by the admin",
+                                 created_by=user)
 
 
-        p = Page.objects.create(name="groups permissions", url="/permissionsgroups/",
-                            description="Manage permissions for groups")
-        p2 = Page.objects.create(name="CmsUsers", url="/cmsusers/",
-                            description="Manage Cms users")
-        p3 = Page.objects.create(name="Announcements", url="/announcements/",
-                             description="Manage Announcements")
-        p4 = Page.objects.create(name="business_contacts_list", url="/contacts/lists/Business Contacts/",
-                                 description="")
-        p5 = Page.objects.create(name="fun_contacts_list", url="Fun Contacts",
-                                 description="")
-        p6 = Page.objects.create(name="admin_contacts_list", url="Admin Contacts",
-                                 description="")
-
-        p.perms.add(group1)
-
-        p2.perms.add(group1)
-
-        p3.perms.add(group1)
-
-        p4.perms.add(group1)
-        p4.perms.add(group2)
-        p4.perms.add(group3)
-
-        p5.perms.add(group1)
-        p5.perms.add(group2)
-
-        p6.perms.add(group1)
+        # p = Page.objects.create(name="groups permissions", url="/permissionsgroups/",
+        #                     description="Manage permissions for groups")
+        # p2 = Page.objects.create(name="CmsUsers", url="/cmsusers/",
+        #                     description="Manage Cms users")
+        # p3 = Page.objects.create(name="Announcements", url="/announcements/",
+        #                      description="Manage Announcements")
+        # p4 = Page.objects.create(name="business_contacts_list", url="/contacts/lists/Business Contacts/",
+        #                          description="")
+        # p5 = Page.objects.create(name="fun_contacts_list", url="Fun Contacts",
+        #                          description="")
+        # p6 = Page.objects.create(name="admin_contacts_list", url="Admin Contacts",
+        #                          description="")
+        #
+        # p.perms.add(group1)
+        #
+        # p2.perms.add(group1)
+        #
+        # p3.perms.add(group1)
+        #
+        # p4.perms.add(group1)
+        # p4.perms.add(group2)
+        # p4.perms.add(group3)
+        #
+        # p5.perms.add(group1)
+        # p5.perms.add(group2)
+        #
+        # p6.perms.add(group1)
 
         c = Contact.objects.create(firstname="Bill",
                                    lastname="Gates",
                                    email="boss@ms.com")
         c1 = Contact.objects.create(firstname="Mark",
-                                   lastname="Zuckzuck",
-                                   email="boss@fb.com")
+                                    lastname="Zuckzuck",
+                                    email="boss@fb.com")
         c2 = Contact.objects.create(firstname="Nana",
                                     lastname="Mouskouri",
                                     phone="0102030405")
@@ -184,6 +190,114 @@ class Recover(models.Model):
         t1.workers.add(user3)
         t2.workers.add(user2)
 
+        # Permissions :
+        #
+        # Group Manage
+        # Users Manage
+        # Contacts lists
+        # Search
+        # Calendar
+        # Gits
+        # Tasks
+        # Announcements
+        # Messenger
+        # Databases
+        # Servers
+        # Stats
+        # Channels
 
+
+        for p in Permission.objects.all():
+            p.delete()
+
+        # New Perms
+        content_type = ContentType.objects.get_for_model(User)
+        permission1 = Permission.objects.create(codename='group_management',
+                                                name='Manage Group',
+                                                content_type=content_type)
+        content_type = ContentType.objects.get_for_model(User)
+        permission2 = Permission.objects.create(codename='users_management',
+                                                name='Manage Users',
+                                                content_type=content_type)
+        content_type = ContentType.objects.get_for_model(CmsSearchLog)
+        permission3 = Permission.objects.create(codename='search_management',
+                                                name='Do Search',
+                                                content_type=content_type)
+        content_type = ContentType.objects.get_for_model(MyCalendar)
+        permission4 = Permission.objects.create(codename='calendar_management',
+                                                name='Has a calendar',
+                                                content_type=content_type)
+        content_type = ContentType.objects.get_for_model(User)
+        permission5 = Permission.objects.create(codename='gits_management',
+                                                name='Manage Gits',
+                                                content_type=content_type)
+        content_type = ContentType.objects.get_for_model(Task)
+        permission6 = Permission.objects.create(codename='tasks_management',
+                                                name='Has Tasks panel',
+                                                content_type=content_type)
+        content_type = ContentType.objects.get_for_model(Announcement)
+        permission7 = Permission.objects.create(codename='announcement_management',
+                                                name='Manage Announcement',
+                                                content_type=content_type)
+        content_type = ContentType.objects.get_for_model(Message)
+        permission8 = Permission.objects.create(codename='messenger_access',
+                                                name='Can Use Messenger',
+                                                content_type=content_type)
+        content_type = ContentType.objects.get_for_model(User)
+        permission9 = Permission.objects.create(codename='amazon_databases_management',
+                                                name='Amazon DB Management',
+                                                content_type=content_type)
+        content_type = ContentType.objects.get_for_model(User)
+        permission10 = Permission.objects.create(codename='amazon_servers_management',
+                                                 name='Amazon Servers Management',
+                                                 content_type=content_type)
+        content_type = ContentType.objects.get_for_model(User)
+        permission11 = Permission.objects.create(codename='stats_management',
+                                                 name='Stats management',
+                                                 content_type=content_type)
+        content_type = ContentType.objects.get_for_model(Channel)
+        permission12 = Permission.objects.create(codename='channel_management',
+                                                 name='Channel management',
+                                                 content_type=content_type)
+
+        # Create Group Perms
+        group1 = Group.objects.create(name='Admin')
+        group2 = Group.objects.create(name='Permanent')
+        group3 = Group.objects.create(name='Intern')
+        group4 = Group.objects.create(name='Extern')
+
+        # Add Permissions to groups
+        group1.permissions.add(permission1)
+        group1.permissions.add(permission2)
+        group1.permissions.add(permission3)
+        group1.permissions.add(permission4)
+        group1.permissions.add(permission5)
+        group1.permissions.add(permission6)
+        group1.permissions.add(permission7)
+        group1.permissions.add(permission8)
+        group1.permissions.add(permission9)
+        group1.permissions.add(permission10)
+        group1.permissions.add(permission11)
+        group1.permissions.add(permission12)
+
+        group2.permissions.add(permission3)
+        group2.permissions.add(permission4)
+        group2.permissions.add(permission5)
+        group2.permissions.add(permission6)
+        group2.permissions.add(permission7)
+        group2.permissions.add(permission8)
+        group2.permissions.add(permission9)
+        group2.permissions.add(permission10)
+        group2.permissions.add(permission11)
+        group2.permissions.add(permission12)
+
+        group3.permissions.add(permission4)
+        group3.permissions.add(permission6)
+        group3.permissions.add(permission8)
+
+        user.groups.add(group1)
+        user1.groups.add(group2)
+        user2.groups.add(group3)
+        user3.groups.add(group4)
 
         return

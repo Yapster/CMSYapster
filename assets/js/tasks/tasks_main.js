@@ -7,16 +7,21 @@ function hide_tasks()
 {
     $('.inactive_cal').each(function(index) {
         var class_to_hide = $(this).attr('id');
-        $('.' + class_to_hide).addClass('inactive_event');
+        $('.' + class_to_hide).addClass('inactive_task');
     })
 }
 
 function toggle_categories(categoryId)
 {
     $('#color_' + categoryId).toggleClass("inactive_color");
-    $('#calendar_' + categoryId).toggleClass("inactive_cal");
-    $('.calendar_' + categoryId).toggleClass("inactive_event");
-    hide_tasks();
+    $('#category_' + categoryId).toggleClass("inactive_category");
+    $('.category_' + categoryId).toggleClass("inactive_task");
+}
+
+function toggle_public()
+{
+    $('.public').toggleClass("inactive_task");
+    $('#public_option').toggleClass("selected_option");
 }
 
 function set_task(taskId, typeTask)
