@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block localfiles %}
+    {% load dictionary_extras %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/wiki/home.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/wiki/results.css" %}" />
+    <script type="text/javascript" src="{% static "js/wiki/main.js" %} "></script>
+{% endblock %}
+{% block content %}
+    <div id="content">
+        {% include "wiki/search_bar.html" %}
+        <div id="new_article_container">
+            <button id="new_article_button" type="button" class="button_form">Add New Article</button>
+        </div>
+        <div id="results_container" class="part_main_wiki">
+            <div id="results_header" class="header_main_wiki">
+                <span id="results_header_text" class="title_main_wiki">Search Results</span>
+            </div>
+            <div id="recent_viewed_content">
+            {% for article in articles %}
+                {% include "wiki/preview_article.html" %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

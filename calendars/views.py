@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from admins.decorators import active_and_login_required
 from calendars.models import *
@@ -16,15 +16,23 @@ hours = hours.split()
 @active_and_login_required
 @csrf_exempt
 def calendar(request):
+    errors = []
     if request.POST:
         params = request.POST.copy()
         is_public = params['public'] != "false"
-        MyCalendar.objects.create_calendar(request.user, params['name'], is_public)
+        if params['name'] == "":
+            return False
+        elif MyCalendar.objects.filter(owner=request.user, name=params['name']):
+            return False
+        else:
+            MyCalendar.objects.create_calendar(request.user, params['name'], is_public)
+
     calendars = MyCalendar.objects.filter(Q(public=True)|Q(owner__username=request.user.username))
 
     return render(request,
                   'calendars/calendar.html',
-                  {"calendars": calendars})
+                  {"calendars": calendars,
+                   "errors": errors})
 
 
 @active_and_login_required
@@ -150,37 +158,44 @@ def by_day(request):
 @active_and_login_required
 @csrf_exempt
 def event(request):
+    errors = []
     if request.POST:
         post_params = request.POST.copy()
         params = {}
-        start_year, start_month, start_day = post_params['start'].split('-')
-        end_year, end_month, end_day = post_params['end'].split('-')
-        start_hours, start_minutes = post_params['from_time'].split(':')
-        end_hours, end_minutes = post_params['to_time'].split(':')
-        current_cal = MyCalendar.objects.get(pk=post_params['choose_calendar'])
+        if not request.POST['start']:
+            errors.append('No starting Date for the Event')
+        if not request.POST['end']:
+            errors.append('No ending Date for the Event')
+        if not errors:
+            start_year, start_month, start_day = post_params['start'].split('-')
+            end_year, end_month, end_day = post_params['end'].split('-')
+            start_hours, start_minutes = post_params['from_time'].split(':')
+            end_hours, end_minutes = post_params['to_time'].split(':')
+            current_cal = MyCalendar.objects.get(pk=post_params['choose_calendar'])
 
-        params['start'] = datetime.datetime(year=int(start_year),
-                                            month=int(start_month),
-                                            day=int(start_day),
-                                            hour=int(start_hours),
-                                            minute=int(start_minutes))
-        params['end'] =  datetime.datetime(year=int(end_year),
-                                           month=int(end_month),
-                                           day=int(end_day),
-                                           hour=int(end_hours),
-                                           minute=int(end_minutes))
-        params['creator'] = request.user
-        params['title'] = post_params['title']
-        params['mycalendar'] = current_cal
-        params['description'] = post_params['description']
-        MyEvent.objects.new_event(participants=[], **params)
+            params['start'] = datetime.datetime(year=int(start_year),
+                                                month=int(start_month),
+                                                day=int(start_day),
+                                                hour=int(start_hours),
+                                                minute=int(start_minutes))
+            params['end'] =  datetime.datetime(year=int(end_year),
+                                               month=int(end_month),
+                                               day=int(end_day),
+                                               hour=int(end_hours),
+                                               minute=int(end_minutes))
+            params['creator'] = request.user
+            params['title'] = post_params['title']
+            params['mycalendar'] = current_cal
+            params['description'] = post_params['description']
+            MyEvent.objects.new_event(participants=[], **params)
 
-        return HttpResponseRedirect('/calendar/')
+            return HttpResponseRedirect('/calendar/')
 
     calendars = MyCalendar.objects.filter(Q(public=True)|Q(owner__username=request.user.username))
     return render(request,
                   "calendars/event.html",
-                  {"calendars": calendars})
+                  {"calendars": calendars,
+                   "errors": errors})
 
 @active_and_login_required
 @csrf_exempt

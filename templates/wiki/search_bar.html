@@ -1,0 +1,33 @@
+<div id="search_bar_wiki">
+    <form method="post" action="/wiki/search/">
+        {% csrf_token %}
+        <div id="left_search_bar">
+            <div id="search_bar">
+                <label id="label_search_first" for="search_text">Search</label>
+                <input type="text" id="search_text" name="search_text" autocomplete="off" placeholder="type in key words to search" {% if text_search %}value="{{ text_search }}"{% endif %}/>
+            </div>
+            <div id="advanced_search_bar" style="display: none">
+                <div id="category_search" class="part_search">
+                    <label for="category_search" id="category_search_label" class="label_search_wiki">Category</label>
+                    <select name="category_search" id="category_search">
+                    <option value="0">(select a category)</option>
+                        {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div id="tags_search" class="part_search">
+                    <label id="tags_search_label" class="label_search_wiki">Tags</label>
+                    <input id="tags_search_text" name="tags_search_text" placeholder="add tags"/>
+                </div>
+            </div>
+            <div id="button_search_bar_container">
+                <button type="submit" name="search_btn" class="button_form">Submit</button>
+                <button type="reset" name="reset_btn" class="button_form">Reset</button>
+            </div>
+        </div>
+        <div id="right_search_bar">
+            <button id="advanced_button" type="button" onclick="toggle_advanced()" class="button_form">Advanced</button>
+        </div>
+    </form>
+</div>

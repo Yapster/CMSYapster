@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block localfiles %}
+    {% load dictionary_extras %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/wiki/home.css" %}" />
+    <script type="text/javascript" src="{% static "js/wiki/main.js" %} "></script>
+{% endblock %}
+{% block content %}
+    <div id="content">
+        {% include "wiki/search_bar.html" %}
+        <div id="new_article_container">
+            <div id="back_button">
+                <a href="/wiki/">
+                    <span class="icone" id="back_button_icone"></span>
+                    <span id="back_button_text">Back</span>
+                </a>
+            </div>
+            <div id="add_article" class="button_form">
+                <a href="/wiki/new/edit/">
+                    <span class="icone" id="add_article_icone"></span>
+                    <button id="new_article_button" type="button" class="button_form">Add New Article</button>
+                </a>
+            </div>
+        </div>
+        <div id="article">
+        {% for section in page.sections.all %}
+            {% if section.is_current %}
+                {% if forloop.first %}
+                    {% include "wiki/main_section.html" %}
+                    {% include "wiki/table_of_content.html" %}
+                {% endif %}
+                {% include "wiki/section.html" %}
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -137,6 +137,10 @@ function add_calendar(){
         url : "/calendar/",
         type : "POST",
         success: function(newData){
+            location.reload();
+        },
+        error : function(newData){
+            $("#errors").html("Calendar can't have an empty name or already existing name");
         }
     });}
 

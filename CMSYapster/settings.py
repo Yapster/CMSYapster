@@ -79,6 +79,7 @@ INSTALLED_APPS = (
     'listings',
     'stats',
     'tasks',
+    'wiki',
 
     'location',
     'manual_override',

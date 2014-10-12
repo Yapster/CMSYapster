@@ -1,0 +1,61 @@
+<div id="main_section">
+    <div id="title_article">
+        <span id="title_article_text">{{ page.title }}</span>
+        <span ><a class="edition_button" href="edit/">Edit</a></span>
+    </div>
+    <div id="content_article">
+        <div id="right_content_article">
+            <img id="main_pix_article" src=""/>
+            <div id="favorite_line">
+                {% if is_favorite %}
+                    <span id="logo_bookmark" class="icone unfav"></span>
+                    <span id="favorite_text">Bookmarked</span>
+                {% else %}
+                    <span id="logo_not_bookmark" class="icone fav"></span>
+                    <span id="favorite_text">Bookmark</span>
+                {% endif %}
+            </div>
+            <div id="bookmark_window">
+                <form>
+                    <div class="icone" id="close_bookmark_window"></div>
+                    <div id="bookmark_window_lines">
+                        <div id="article_line" class="bookmark_line">
+                            <span class="label_bookmark">Article</span>
+                            <span class="input_bookmark">{{ page.title }}</span>
+                            <input type="hidden" value="{{ page.id }}" id="page_id" name="page_id"/>
+                        </div>
+                        <div id="existing_folder_line" class="bookmark_line">
+                            <label class="label_bookmark" for="folder_id">Folder</label>
+                            <select name="folder_id" id="folder_id" class="input_bookmark">
+                                <option value="0">(select a folder for the article)</option>
+                                {% for folder in user.favorites_folders.all %}
+                                    <option value="{{ folder.id }}">{{ folder.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div id="new_folder_line" class="bookmark_line">
+                            <span class="label_bookmark">New Folder</span>
+                            <input id="new_folder" type="text" placeholder="type in to create a new folder" name="new_folder" class="input_bookmark"/>
+                        </div>
+                    </div>
+                    <div id="submit_favorite">
+                      <span id="submit_favorite_text" class="button_form">Add to Favorites</span>
+                    </div>
+                </form>
+            </div>
+            <div id="fade" class="black_overlay"></div>
+        </div>
+        <div id="left_content_article">
+            <div id="infos_article">
+                <div class="stats_article">
+                    <span>1025 words</span>
+                    <span>-</span>
+                    <span>{{ page.date_created }}</span>
+                </div>
+                <div class="content_section_article">
+                    <span>{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -60,7 +60,7 @@
                         <select id="group" name="group">
                             {% if groups %}
                                 {% for group in groups %}
-                                    <option value="{{ group.group_id }}">{{ group.group_name }}</option>
+                                    <option value="{{ group.id }}">{{ group.name }}</option>
                                 {% endfor %}
                             {% endif %}
                         </select>
@@ -92,8 +92,8 @@
                                     <tr>
                                         <td>{{ user.username }} </td>
                                         <td>
-                                            {% for group in user.group.all %}
-                                                <div>{{ group.group_name }}</div>
+                                            {% for group in user.user.groups.all %}
+                                                <div>{{ group.name }}</div>
                                             {% endfor %}
                                         </td>
                                         <td>{{ user.occupation }}</td>
@@ -126,8 +126,8 @@
                                     <tr>
                                         <td>{{ user.username }} </td>
                                         <td>
-                                            {% for group in user.group.all %}
-                                                <div>{{ group.group_name }}</div>
+                                            {% for group in user.user.groups.all %}
+                                                <div>{{ group.name }}</div>
                                             {% endfor %}
                                         </td>
                                         <td>{{ user.occupation }}</td>

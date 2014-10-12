@@ -13,7 +13,7 @@
 <div class="report_first_raw">
     {% csrf_token %}
     <div class="sub_div_report checkbox_report">
-        <input type="checkbox" {% if not report.is_active %}checked{% endif %}/>
+        <input type="checkbox" name="checkbox_{{ report.report_id }}" {% if not report.is_active %}checked{% endif %}/>
     </div>
     <div class="report_id sub_div_report">
         <span>{{ report.report_id }}</span>
@@ -68,8 +68,12 @@
         </div>
         <div class="button_report">
             <a class="button_form button_report">Reply</a>
-            <a class="button_form button_report">Delete</a>
-            <a onclick="take_in_charge('{{ report.report_id }}')" class="button_form button_report">Take in Charge</a>
+            {% if not report.is_active %}
+                <a class="button_form button_report">Delete</a>
+            {% endif %}
+            {% if cms_reports|access:report.report_id %}
+                <a onclick="take_in_charge('{{ report.report_id }}')" class="button_form button_report">Take in Charge</a>
+            {% endif %}
             <a href="/reports/{{ report.report_id }}/" class="button_form button_report">Details</a>
         </div>
     </div>

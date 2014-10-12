@@ -1,0 +1,22 @@
+<div class="edit_main_section" id="{{ article.id }}_section">
+    <div class="header_main_section" id="{{ article.id }}_header">
+        <label class="title_section_label" for="{{ article.id }}_title">Title</label>
+        <input class="title_section_text grey_input input_form" type="text" name="{{ article.id }}_title" id="title" value="{{ article.title }}"/>
+        <input type="hidden" value="0"/>
+        <span class="icone" id="slide_up"></span>
+    </div>
+    <div class="content_section" id="{{ article.id }}_content">
+        <div id="left_main_section">
+            <textarea class="input_form" id="main_section_text">{{ article.description}}</textarea>
+            <input type="hidden" value="0"/>
+        </div>
+s        <div id="right_main_section">
+            <img src="" id="main_pix_article"/>
+        </div>
+    </div>
+    <div class="tags_section">
+        <label class="title_section_label" for="tags_{{ article.id }}">Tags</label>
+        <input type="text" value="{% for tag in article.tags.all %}{{ tag.name }} {% endfor %}" name="tags_{{ article.id }}" class="tags_input grey_input input_form" id="tags"/>
+        <input type="hidden" value="0"/>
+    </div>
+</div>

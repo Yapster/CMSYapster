@@ -76,6 +76,9 @@
     </div>
     {% block headbar %}
         <div id="headbar_empty">
+            {% for error in errors %}
+                <div class="error">Error : {{ error }}</div>
+            {% endfor %}
         </div>
     {% endblock %}
 {% endblock %}

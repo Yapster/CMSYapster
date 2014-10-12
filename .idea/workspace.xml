@@ -32,10 +32,19 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/report/models.py">
+            <file leaf-file-name="group_details.html" pinned="false" current="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/templates/admins/group_details.html">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state line="26" column="14" selection-start="1470" selection-end="1470" vertical-scroll-proportion="0.4047619" vertical-offset="0" max-vertical-offset="966">
+                  <state line="34" column="45" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="1088">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/assets/js/reports/main.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="10" column="39" selection-start="188" selection-end="188" vertical-scroll-proportion="0.17598344" vertical-offset="0" max-vertical-offset="966">
                     <folding />
                   </state>
                 </provider>
@@ -52,46 +61,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="user.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/listings/user.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="18" selection-start="765" selection-end="765" vertical-scroll-proportion="-0.0" vertical-offset="238" max-vertical-offset="459">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="report.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/listings/report.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="89" selection-start="1231" selection-end="1231" vertical-scroll-proportion="-0.0" vertical-offset="425" max-vertical-offset="2550">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="report.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/js/listings/report.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="40" selection-start="1888" selection-end="1897" vertical-scroll-proportion="0.0" vertical-offset="502" max-vertical-offset="1547">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms_reports/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="49" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cms_reports/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="56" selection-start="992" selection-end="992" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1156">
+            <state line="33" column="89" selection-start="1361" selection-end="1361" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1156">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="csrf.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://C:/Python27/Lib/site-packages/django/views/decorators/csrf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="0" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1088">
               <folding />
             </state>
           </provider>
@@ -100,34 +82,34 @@
       <file leaf-file-name="reports.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/reports/reports.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="37" selection-start="3481" selection-end="3497" vertical-scroll-proportion="-19.576923" vertical-offset="783" max-vertical-offset="1513">
+            <state line="74" column="40" selection-start="3423" selection-end="3423" vertical-scroll-proportion="0.0" vertical-offset="857" max-vertical-offset="1513">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/assets/css/reports/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="177" column="15" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.5277778" vertical-offset="2610" max-vertical-offset="3451">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="report.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="report.html" pinned="false" current="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/reports/report.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="48" selection-start="412" selection-end="412" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="1411">
+            <state line="71" column="63" selection-start="3394" selection-end="3394" vertical-scroll-proportion="0.70962733" vertical-offset="750" max-vertical-offset="1479">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="router.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yap/router.py">
+      <file leaf-file-name="scripts.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cms_reports/scripts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="83" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+            <state line="8" column="26" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cms_reports/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
               <folding />
             </state>
           </provider>
@@ -143,57 +125,57 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/assets/css/index.css" />
-        <option value="$PROJECT_DIR$/templates/tasks/new_note.html" />
-        <option value="$PROJECT_DIR$/tasks/urls.py" />
-        <option value="$PROJECT_DIR$/templates/calendars/calendar.html" />
-        <option value="$PROJECT_DIR$/tasks/views.py" />
-        <option value="$PROJECT_DIR$/templates/tasks/task.html" />
-        <option value="$PROJECT_DIR$/assets/js/calendars/main.js" />
-        <option value="C:/Python27/Lib/site-packages/django/contrib/auth/models.py" />
-        <option value="$PROJECT_DIR$/assets/js/tasks/tasks_main.js" />
-        <option value="$PROJECT_DIR$/templates/tasks/home.html" />
-        <option value="$PROJECT_DIR$/assets/css/tasks/main.css" />
-        <option value="$PROJECT_DIR$/tasks/models.py" />
-        <option value="$PROJECT_DIR$/assets/css/group_manage.css" />
-        <option value="$PROJECT_DIR$/db_recover/models.py" />
-        <option value="$PROJECT_DIR$/templates/admins/group_manage.html" />
-        <option value="$PROJECT_DIR$/groups/views.py" />
-        <option value="C:/Python27/Lib/site-packages/django/contrib/auth/decorators.py" />
-        <option value="$PROJECT_DIR$/chat/views.py" />
-        <option value="$PROJECT_DIR$/templates/sub_templates/access_denied.html" />
-        <option value="$PROJECT_DIR$/CMSYapster/urls.py" />
-        <option value="$PROJECT_DIR$/CMSYapster/settings.py" />
-        <option value="$PROJECT_DIR$/cms_reports/scripts.py" />
-        <option value="$PROJECT_DIR$/files_manager/models.py" />
-        <option value="$PROJECT_DIR$/assets/css/reports/main.css.html" />
-        <option value="$PROJECT_DIR$/templates/listings/users.html" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/reports/in_charge.html" />
-        <option value="C:/Python27/Lib/site-packages/django/views/decorators/csrf.py" />
-        <option value="$PROJECT_DIR$/listings/urls.py" />
-        <option value="$PROJECT_DIR$/listings/views.py" />
-        <option value="$PROJECT_DIR$/templates/reports/details_report.html" />
-        <option value="$PROJECT_DIR$/cms_channels/urls.py" />
-        <option value="C:/Python27/Lib/site-packages/django/db/models/loading.py" />
-        <option value="$PROJECT_DIR$/report/models.py" />
-        <option value="$PROJECT_DIR$/cms_reports/models.py" />
-        <option value="$PROJECT_DIR$/assets/js/base.js" />
-        <option value="$PROJECT_DIR$/templates/listings/user_details.html" />
-        <option value="$PROJECT_DIR$/assets/css/contacts/contact_details.css" />
-        <option value="$PROJECT_DIR$/stats/templatetags/dictionary_extras.py" />
-        <option value="$PROJECT_DIR$/templates/listings/user.html" />
-        <option value="$PROJECT_DIR$/assets/js/reports/main.js" />
-        <option value="$PROJECT_DIR$/assets/css/main.css" />
-        <option value="$PROJECT_DIR$/assets/css/listings/report.css" />
-        <option value="$PROJECT_DIR$/templates/listings/report.html" />
         <option value="$PROJECT_DIR$/cms_reports/urls.py" />
         <option value="$PROJECT_DIR$/assets/js/listings/report.js" />
         <option value="$PROJECT_DIR$/yap/router.py" />
-        <option value="$PROJECT_DIR$/templates/reports/report.html" />
-        <option value="$PROJECT_DIR$/cms_reports/views.py" />
         <option value="$PROJECT_DIR$/templates/reports/reports.html" />
         <option value="$PROJECT_DIR$/assets/css/reports/main.css" />
+        <option value="$PROJECT_DIR$/assets/css/listings/channel.css" />
+        <option value="$PROJECT_DIR$/CMSYapster/settings.py" />
+        <option value="$PROJECT_DIR$/CMSYapster/urls.py" />
+        <option value="$PROJECT_DIR$/templates/wiki/preview_article.html" />
+        <option value="$PROJECT_DIR$/templates/wiki/results.html" />
+        <option value="$PROJECT_DIR$/templates/wiki/table_of_content.html" />
+        <option value="$PROJECT_DIR$/templates/wiki/folder.html" />
+        <option value="$PROJECT_DIR$/templates/wiki/search_bar.html" />
+        <option value="$PROJECT_DIR$/templates/wiki/section.html" />
+        <option value="$PROJECT_DIR$/templates/wiki/new_article.html" />
+        <option value="$PROJECT_DIR$/wiki/models.py" />
+        <option value="$PROJECT_DIR$/templates/wiki/home.html" />
+        <option value="$PROJECT_DIR$/templates/wiki/article.html" />
+        <option value="$PROJECT_DIR$/templates/wiki/edit_main_section.html" />
+        <option value="$PROJECT_DIR$/db_recover/models.py" />
+        <option value="$PROJECT_DIR$/templates/wiki/main_section.html" />
+        <option value="$PROJECT_DIR$/wiki/urls.py" />
+        <option value="$PROJECT_DIR$/templates/wiki/favorites.html" />
+        <option value="$PROJECT_DIR$/wiki/views.py" />
+        <option value="$PROJECT_DIR$/templates/wiki/edit_section.html" />
+        <option value="$PROJECT_DIR$/assets/css/wiki/home.css" />
+        <option value="$PROJECT_DIR$/templates/wiki/edit_article.html" />
+        <option value="$PROJECT_DIR$/assets/js/wiki/main.js" />
+        <option value="$PROJECT_DIR$/yap/models.py" />
+        <option value="$PROJECT_DIR$/admins/scripts.py" />
+        <option value="$PROJECT_DIR$/templates/admins/login.html" />
+        <option value="$PROJECT_DIR$/assets/css/login.css" />
+        <option value="$PROJECT_DIR$/admins/models.py" />
+        <option value="$PROJECT_DIR$/admins/views.py" />
+        <option value="$PROJECT_DIR$/templates/admins/users_manage.html" />
+        <option value="$PROJECT_DIR$/templates/admins/group_manage.html" />
+        <option value="$PROJECT_DIR$/templates/admins/group_details.html" />
+        <option value="$PROJECT_DIR$/groups/views.py" />
+        <option value="$PROJECT_DIR$/assets/css/admins/edit_profile_pic.css" />
+        <option value="$PROJECT_DIR$/assets/js/edit_photos.js" />
+        <option value="$PROJECT_DIR$/assets/css/main.css" />
+        <option value="$PROJECT_DIR$/templates/calendars/event.html" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/templates/calendars/calendar.html" />
+        <option value="$PROJECT_DIR$/assets/css/calendars/main.css" />
+        <option value="$PROJECT_DIR$/assets/js/calendars/main.js" />
+        <option value="$PROJECT_DIR$/calendars/views.py" />
+        <option value="$PROJECT_DIR$/cms_channels/views.py" />
+        <option value="$PROJECT_DIR$/cms_reports/views.py" />
+        <option value="$PROJECT_DIR$/assets/js/reports/main.js" />
+        <option value="$PROJECT_DIR$/templates/reports/report.html" />
       </list>
     </option>
   </component>
@@ -260,14 +242,6 @@
               <option name="myItemId" value="CMSYapster" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 2.7 (C:/Python27/python.exe) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -289,7 +263,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="yap" />
+              <option name="myItemId" value="cms_reports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CMSYapster" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CMSYapster" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms_channels" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CMSYapster" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CMSYapster" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CMSYapster" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -302,8 +304,8 @@
     <property name="FullScreen" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="SearchEverywhereHistory" value="&#10;D&#10;5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../yapster_app/yapsterapp_ios/create_real_database_script.py" />
+    <property name="SearchEverywhereHistory" value="&#10;/&#10;D&#10;5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../yapster_app/yapsterapp_ios/yap/models.py" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.lastSelected" value="terminal" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -581,26 +583,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="74" y="0" width="1243" height="1080" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32608697" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.68016875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.67932487" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2607595" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1443038" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1565126" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1410" y="26" width="1132" height="836" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5168067" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31092438" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1380" y="5" width="1082" height="1010" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20421942" sideWeight="0.49923664" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2552521" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1410" y="26" width="1132" height="836" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14599156" sideWeight="0.50076336" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30882353" sideWeight="0.50042194" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36896196" sideWeight="0.49957806" order="2" side_tool="false" content_ui="tabs" x="1380" y="5" width="1082" height="1010" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5105042" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5121951" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -654,296 +656,330 @@
           <line>57</line>
           <option name="timeStamp" value="232" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/wiki/views.py</url>
+          <line>113</line>
+          <option name="timeStamp" value="289" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/wiki/views.py</url>
+          <line>202</line>
+          <option name="timeStamp" value="290" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/wiki/views.py</url>
+          <line>218</line>
+          <option name="timeStamp" value="291" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/admins/models.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="298" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/calendars/views.py</url>
+          <line>160</line>
+          <option name="timeStamp" value="302" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/cms_reports/views.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="306" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="254" />
+      <option name="time" value="307" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python27/Lib/site-packages/django/db/models/loading.py">
+    <entry file="file://$PROJECT_DIR$/templates/wiki/favorites.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="21" selection-start="4392" selection-end="4392" vertical-scroll-proportion="0.30769232" vertical-offset="1590" max-vertical-offset="5491" />
+        <state line="34" column="31" selection-start="1689" selection-end="1689" vertical-scroll-proportion="0.6204147" vertical-offset="189" max-vertical-offset="867" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/calendars/calendar_day.html">
+    <entry file="file://$PROJECT_DIR$/wiki/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="26" selection-start="765" selection-end="765" vertical-scroll-proportion="-13.346154" vertical-offset="10" max-vertical-offset="816" />
+        <state line="190" column="0" selection-start="7114" selection-end="7114" vertical-scroll-proportion="4.6596384" vertical-offset="0" max-vertical-offset="4080">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/calendars/details_event.html">
+    <entry file="file://$PROJECT_DIR$/wiki/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="692" />
+        <state line="10" column="13" selection-start="327" selection-end="327" vertical-scroll-proportion="0.17921686" vertical-offset="0" max-vertical-offset="664" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/calendars/calendar.html">
+    <entry file="file://$PROJECT_DIR$/templates/wiki/edit_article.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="51" selection-start="1181" selection-end="1181" vertical-scroll-proportion="0.5053599" vertical-offset="112" max-vertical-offset="1224" />
+        <state line="12" column="31" selection-start="449" selection-end="449" vertical-scroll-proportion="0.3264" vertical-offset="0" max-vertical-offset="901" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/models.py">
+    <entry file="file://$PROJECT_DIR$/templates/wiki/edit_section.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="692" />
+        <state line="7" column="3" selection-start="334" selection-end="1152" vertical-scroll-proportion="0.1904" vertical-offset="0" max-vertical-offset="625" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats/views.py">
+    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/admin/validation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="46" selection-start="3496" selection-end="3496" vertical-scroll-proportion="-1.284682" vertical-offset="2385" max-vertical-offset="3383" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/stats/statistics.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="81" selection-start="157" selection-end="157" vertical-scroll-proportion="0.078947365" vertical-offset="0" max-vertical-offset="646" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yap/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="95" selection-start="806" selection-end="806" vertical-scroll-proportion="-0.2837633" vertical-offset="374" max-vertical-offset="2261" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/listings/users.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="10" selection-start="291" selection-end="291" vertical-scroll-proportion="0.20389806" vertical-offset="0" max-vertical-offset="667" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/reports/details_report.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="667" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tasks/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="22" selection-start="595" selection-end="595" vertical-scroll-proportion="0.36956522" vertical-offset="0" max-vertical-offset="966" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files_manager/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="673" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/auth/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="360" column="12" selection-start="12672" selection-end="12672" vertical-scroll-proportion="0.33283803" vertical-offset="5556" max-vertical-offset="8721" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/stats/more_stats.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="51" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="3740" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/contacts/contact_details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="52" selection-start="2323" selection-end="2323" vertical-scroll-proportion="0.0" vertical-offset="116" max-vertical-offset="1003" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/channels/new_channel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="21" selection-start="1255" selection-end="1255" vertical-scroll-proportion="-0.36419752" vertical-offset="814" max-vertical-offset="1462" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/listings/channel.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="18" selection-start="5882" selection-end="5882" vertical-scroll-proportion="0.7674772" vertical-offset="1484" max-vertical-offset="2142" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/listings/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="32" selection-start="818" selection-end="818" vertical-scroll-proportion="0.42037302" vertical-offset="64" max-vertical-offset="1377" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="26" selection-start="1253" selection-end="1253" vertical-scroll-proportion="0.53402364" vertical-offset="574" max-vertical-offset="2975" />
+        <state line="19" column="0" selection-start="760" selection-end="786" vertical-scroll-proportion="0.3323124" vertical-offset="38" max-vertical-offset="7327" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/users/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="0" selection-start="3619" selection-end="3619" vertical-scroll-proportion="0.34623218" vertical-offset="1088" max-vertical-offset="3757" />
+        <state line="27" column="32" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.6891892" vertical-offset="0" max-vertical-offset="3757" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/listings/user_details.html">
+    <entry file="file://$PROJECT_DIR$/../../yapster_app/yapsterapp_ios/yap/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343" />
+        <state line="52" column="0" selection-start="2195" selection-end="2195" vertical-scroll-proportion="0.25199363" vertical-offset="522" max-vertical-offset="14365" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/contacts/contact_details.css">
+    <entry file="file://$PROJECT_DIR$/yap/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="1" selection-start="483" selection-end="483" vertical-scroll-proportion="0.39614856" vertical-offset="188" max-vertical-offset="952" />
+        <state line="83" column="53" selection-start="4028" selection-end="4028" vertical-scroll-proportion="0.6707504" vertical-offset="973" max-vertical-offset="4947" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMSYapster/settings.py">
+    <entry file="file://$PROJECT_DIR$/admins/decorators.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="38" selection-start="3391" selection-end="3391" vertical-scroll-proportion="0.65874124" vertical-offset="2028" max-vertical-offset="2754" />
+        <state line="28" column="40" selection-start="1043" selection-end="1043" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/wiki/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="469" column="22" selection-start="6693" selection-end="6693" vertical-scroll-proportion="0.0" vertical-offset="7364" max-vertical-offset="8330" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wiki/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="7" selection-start="2012" selection-end="2012" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admins/scripts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="966" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="12" selection-start="277" selection-end="277" vertical-scroll-proportion="0.16393442" vertical-offset="162" max-vertical-offset="833" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admins/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="68" selection-start="206" selection-end="206" vertical-scroll-proportion="0.13178295" vertical-offset="0" max-vertical-offset="799" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/django/core/handlers/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="31" selection-start="6133" selection-end="6133" vertical-scroll-proportion="3.219697" vertical-offset="0" max-vertical-offset="4743" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db_recover/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="275" column="43" selection-start="13246" selection-end="13246" vertical-scroll-proportion="0.0" vertical-offset="3400" max-vertical-offset="5780" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admins/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="24" selection-start="1524" selection-end="1524" vertical-scroll-proportion="0.0" vertical-offset="516" max-vertical-offset="1190">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admins/group_manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="55" selection-start="3188" selection-end="3192" vertical-scroll-proportion="-5.8653846" vertical-offset="851" max-vertical-offset="1989" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/groups/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="6" selection-start="73" selection-end="73" vertical-scroll-proportion="0.07566766" vertical-offset="0" max-vertical-offset="674" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/auth/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="46" selection-start="2867" selection-end="2867" vertical-scroll-proportion="-20.076923" vertical-offset="447" max-vertical-offset="8721" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/groups/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="70" selection-start="1196" selection-end="1196" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/auth/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="874" selection-end="874" vertical-scroll-proportion="0.33333334" vertical-offset="13" max-vertical-offset="1207" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/django/core/files/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/django/core/files/uploadedfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.3429878" vertical-offset="285" max-vertical-offset="2125" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/admins/edit_profile_pic.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="15" selection-start="410" selection-end="412" vertical-scroll-proportion="0.33333334" vertical-offset="130" max-vertical-offset="2975" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/edit_photos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="34" selection-start="275" selection-end="275" vertical-scroll-proportion="0.20731707" vertical-offset="0" max-vertical-offset="656" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/wiki/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="34" selection-start="1304" selection-end="1304" vertical-scroll-proportion="0.81904763" vertical-offset="198" max-vertical-offset="1547" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/files_manager/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="50" selection-start="1681" selection-end="1681" vertical-scroll-proportion="0.10248447" vertical-offset="1023" max-vertical-offset="1989" />
+        <state line="91" column="0" selection-start="2485" selection-end="2485" vertical-scroll-proportion="0.0" vertical-offset="921" max-vertical-offset="1870" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contacts/models.py">
+    <entry file="file://$PROJECT_DIR$/templates/calendars/event.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="65" selection-start="3722" selection-end="3722" vertical-scroll-proportion="0.70082814" vertical-offset="1074" max-vertical-offset="2040" />
+        <state line="4" column="14" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1054" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/calendars/main.js">
+    <entry file="file://$PROJECT_DIR$/calendars/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="1346" selection-end="1346" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="2975" />
+        <state line="20" column="36" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3604">
+          <folding>
+            <element signature="e#0#54#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/template/loader.py">
+    <entry file="file://$PROJECT_DIR$/calendars/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="0" selection-start="6570" selection-end="6570" vertical-scroll-proportion="0.0" vertical-offset="2474" max-vertical-offset="3230" />
+        <state line="59" column="6" selection-start="1685" selection-end="1685" vertical-scroll-proportion="0.45909092" vertical-offset="632" max-vertical-offset="1292" />
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/shortcuts/__init__.py">
+    <entry file="file://$PROJECT_DIR$/assets/css/calendars/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1096" selection-end="1096" vertical-scroll-proportion="-0.15027624" vertical-offset="476" max-vertical-offset="2703" />
+        <state line="274" column="15" selection-start="3584" selection-end="3584" vertical-scroll-proportion="0.8443465" vertical-offset="4083" max-vertical-offset="4777" />
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/httplib.py">
+    <entry file="file://$PROJECT_DIR$/templates/calendars/calendar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="735" column="0" selection-start="25117" selection-end="25117" vertical-scroll-proportion="14.241084" vertical-offset="2427" max-vertical-offset="23205" />
+        <state line="4" column="76" selection-start="240" selection-end="240" vertical-scroll-proportion="0.105919" vertical-offset="0" max-vertical-offset="1207" />
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/template/base.py">
+    <entry file="file://$PROJECT_DIR$/admins/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="612" column="0" selection-start="21825" selection-end="21825" vertical-scroll-proportion="0.33238232" vertical-offset="9797" max-vertical-offset="22423" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats/templatetags/dictionary_extras.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="17" selection-start="1863" selection-end="1863" vertical-scroll-proportion="0.74099725" vertical-offset="672" max-vertical-offset="1394" />
+        <state line="211" column="0" selection-start="8812" selection-end="8812" vertical-scroll-proportion="0.5419162" vertical-offset="3021" max-vertical-offset="3689">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="685" column="0" selection-start="10342" selection-end="10342" vertical-scroll-proportion="0.9170732" vertical-offset="10893" max-vertical-offset="11747">
+        <state line="312" column="14" selection-start="4680" selection-end="4693" vertical-scroll-proportion="0.34508076" vertical-offset="5069" max-vertical-offset="11866">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/reports/main.js">
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="3" selection-start="102" selection-end="102" vertical-scroll-proportion="0.14078675" vertical-offset="0" max-vertical-offset="966">
+        <state line="76" column="0" selection-start="3816" selection-end="4030" vertical-scroll-proportion="0.28549618" vertical-offset="1105" max-vertical-offset="1887">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/utils/datastructures.py">
+    <entry file="file://$PROJECT_DIR$/templates/admins/users_manage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="302" column="0" selection-start="8828" selection-end="8828" vertical-scroll-proportion="0.33333334" vertical-offset="4903" max-vertical-offset="8976" />
+        <state line="7" column="0" selection-start="229" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2584" />
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/core/handlers/wsgi.py">
+    <entry file="file://$PROJECT_DIR$/cms_channels/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="0" selection-start="5225" selection-end="5225" vertical-scroll-proportion="0.33333334" vertical-offset="2047" max-vertical-offset="3519">
-          <folding />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/db/models/manager.py">
+    <entry file="file://$PROJECT_DIR$/report/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="255" column="23" selection-start="9317" selection-end="9317" vertical-scroll-proportion="0.4016563" vertical-offset="3845" max-vertical-offset="4811">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/reports/in_charge.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="29" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="940" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/listings/report.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="229" column="0" selection-start="3140" selection-end="3140" vertical-scroll-proportion="6.361111" vertical-offset="0" max-vertical-offset="4318">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cms_reports/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="8" selection-start="1037" selection-end="1041" vertical-scroll-proportion="0.7777778" vertical-offset="0" max-vertical-offset="612" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/listings/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="39" selection-start="233" selection-end="233" vertical-scroll-proportion="0.16666667" vertical-offset="0" max-vertical-offset="612">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="682">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/listings/user.html">
+    <entry file="file://$PROJECT_DIR$/templates/reports/in_charge.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="18" selection-start="765" selection-end="765" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="459">
-          <folding />
-        </state>
+        <state line="0" column="29" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="656" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/listings/report.html">
+    <entry file="file://$PROJECT_DIR$/assets/js/calendars/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="89" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="2550">
-          <folding />
-        </state>
+        <state line="154" column="41" selection-start="3793" selection-end="3793" vertical-scroll-proportion="0.5600414" vertical-offset="2077" max-vertical-offset="3043" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cms_reports/urls.py">
+    <entry file="file://$PROJECT_DIR$/templates/admins/group_details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="49" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/listings/report.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="40" selection-start="1888" selection-end="1897" vertical-scroll-proportion="0.0" vertical-offset="502" max-vertical-offset="1547">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/views/decorators/csrf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="0" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.8030888" vertical-offset="311" max-vertical-offset="1088">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yap/router.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="83" selection-start="920" selection-end="920" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/reports/report.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="48" selection-start="412" selection-end="412" vertical-scroll-proportion="-3.9230769" vertical-offset="0" max-vertical-offset="1411">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cms_reports/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="56" selection-start="992" selection-end="992" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1156">
+        <state line="34" column="45" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="1088">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/reports/reports.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="37" selection-start="3481" selection-end="3497" vertical-scroll-proportion="-19.576923" vertical-offset="783" max-vertical-offset="1513">
+        <state line="74" column="40" selection-start="3423" selection-end="3423" vertical-scroll-proportion="0.0" vertical-offset="857" max-vertical-offset="1513">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/report/models.py">
+    <entry file="file://$PROJECT_DIR$/cms_reports/scripts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="14" selection-start="1470" selection-end="1470" vertical-scroll-proportion="0.4047619" vertical-offset="0" max-vertical-offset="966">
+        <state line="8" column="26" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/reports/main.css">
+    <entry file="file://C:/Python27/Lib/site-packages/django/views/decorators/csrf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="15" selection-start="2208" selection-end="2208" vertical-scroll-proportion="0.5277778" vertical-offset="2610" max-vertical-offset="3451">
+        <state line="57" column="0" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms_reports/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="89" selection-start="1361" selection-end="1361" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1156">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/reports/report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="63" selection-start="3394" selection-end="3394" vertical-scroll-proportion="0.70962733" vertical-offset="750" max-vertical-offset="1479">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/reports/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="39" selection-start="188" selection-end="188" vertical-scroll-proportion="0.17598344" vertical-offset="0" max-vertical-offset="966">
           <folding />
         </state>
       </provider>

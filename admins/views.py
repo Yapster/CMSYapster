@@ -1,44 +1,47 @@
-from django.contrib.comments.views.comments import post_comment
+from _socket import error
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
-from admins.models import CmsUser
 from admins.decorators import user_has_perm, active_and_login_required
 from admins.signals import *
-from django.db.models import Count
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from chat.models import Conversation, Message
 from files_manager.models import FileManager, FileForm, ProfilePicture
 from users.models import *
+from admins.scripts import *
 import logging
 
 logger = logging.getLogger(__name__)
 
 
-def login_user(request):
+def login_user(request, errors=[]):
     """
     Display login page. Redirect to homepage if success
 
     TODO: Add yapster profile in session?
     """
     logout(request)
+    errors = []
     if request.POST:
         username = request.POST['username']
         password = request.POST['password']
-        current_user = authenticate(username=username, password=password)
-        current_cms_user = CmsUser.objects.get(pk=current_user)
-        if current_cms_user is not None:
-            if current_cms_user.is_active:
-                login(request, current_user)
-                response = HttpResponseRedirect('/home/')
-                response.set_cookie('chat', 0, path='/')
-                return response
-    return render(request, 'admins/login.html', {})
+        try:
+            current_user = authenticate(username=username, password=password)
+            current_cms_user = CmsUser.objects.get(pk=current_user)
+            if current_cms_user is not None:
+                if current_cms_user.is_active:
+                    login(request, current_user)
+                    response = HttpResponseRedirect('/home/')
+                    return response
+        except:
+            errors.append('Password and/or username invalid')
+
+    return render(request, 'admins/login.html',
+                  {'errors': errors})
 
 
 @active_and_login_required
-@user_has_perm
 def users_manage(request):
     """
     List of users. Create and view users
@@ -48,8 +51,9 @@ def users_manage(request):
     announcements = Announcement.objects.all()
     users_managed = CmsUser.objects.filter(is_active=True)
     inactive_users = CmsUser.objects.filter(is_active=False)
-    groups = GroupPermission.objects.all()
+    groups = Group.objects.all()
 
+    # Delete User
     if 'btn_delete' in request.POST:
         username = request.POST['username']
         user = CmsUser.objects.get(username=username)
@@ -57,6 +61,7 @@ def users_manage(request):
         user.save()
         return HttpResponseRedirect('/cmsusers/')
 
+    # Activate User
     if 'btn_active' in request.POST:
         username = request.POST['username']
         user = CmsUser.objects.get(username=username)
@@ -64,13 +69,14 @@ def users_manage(request):
         user.save()
         return HttpResponseRedirect('/cmsusers/')
 
+    # Create new_user
     if 'btn_new' in request.POST:
         if  request.POST['username'] == "" or  request.POST['firstname'] == "" or request.POST['lastname'] == "" or \
-        request.POST['email'] == "" or request.POST['password'] == "":
+                        request.POST['email'] == "" or request.POST['password'] == "":
             errors.append("Mandatory fields empty")
-        if request.POST['password'] != request.POST['password2']:
+        elif request.POST['password'] != request.POST['password2']:
             errors.append("Password not valid")
-        if request.POST['email'] != request.POST['email2']:
+        elif request.POST['email'] != request.POST['email2']:
             errors.append("Password not valid")
         if not errors:
             username = request.POST['username']
@@ -81,10 +87,10 @@ def users_manage(request):
             dep = request.POST['department']
             occ = request.POST['occupation']
             id_group = request.POST['group']
-            group = GroupPermission.objects.get(pk=id_group)
+            group = Group.objects.get(pk=id_group)
             if not CmsUser.new_user(username=username, first_name=first, last_name=last,
-                             email=email, password=password, department=dep,
-                             occupation=occ, group=group):
+                                    email=email, password=password, department=dep,
+                                    occupation=occ, group=group):
                 errors.append("User already Exist")
     return render(request, 'admins/users_manage.html',
                   {'users': users_managed,
@@ -96,7 +102,6 @@ def users_manage(request):
                    "errors": errors})
 
 @active_and_login_required
-@user_has_perm
 def cmsuser(request, username):
     """
     Display CMS user info + change permissions/name/username
@@ -113,7 +118,6 @@ def cmsuser(request, username):
 
 
 @active_and_login_required
-@user_has_perm
 def edit_cmsuser(request, username):
     """
     Edit Cms User infos
@@ -182,7 +186,6 @@ def profile(request, username):
                                                    "conversations": conversations})
 
 @active_and_login_required
-@user_has_perm
 @csrf_exempt
 def edit_profile_pic(request, username):
 

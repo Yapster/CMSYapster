@@ -44,12 +44,26 @@ class Channel(models.Model):
         '''disabling delete'''
         raise NotImplementedError('Channels cannot be deleted.')
 
+class WebsiteLink(models.Model):
+    website_link_id = models.AutoField(primary_key=True)
+    website_link = models.URLField(max_length=255)
+    date_created = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
+    def __unicode__(self):
+        return self.website_link
+
+    def delete(self):
+        '''disabling delete'''
+        raise NotImplementedError('Tags cannot be deleted.')
+
 
 class Yap(models.Model):
     yap_id = models.AutoField(primary_key=True)
     user_yap_id = models.BigIntegerField(default=1)
     user = models.ForeignKey(User,related_name="yaps")
     title = models.CharField(max_length=255)
+    description = models.CharField(max_length=255,blank=True,null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     hashtags_flag = models.BooleanField(default=False)
     hashtags = models.ManyToManyField(Hashtag, related_name="yaps",blank=True,null=True) #foreign key to tags
@@ -61,8 +75,8 @@ class Yap(models.Model):
     listen_count = models.BigIntegerField(default=0)
     reyap_count = models.BigIntegerField(default=0)
     like_count = models.BigIntegerField(default=0)
-    web_link_flag = models.BooleanField(default=False)
-    web_link = models.URLField(max_length=255,null=True,blank=True)
+    website_links_flag = models.BooleanField(default=False)
+    website_links = models.ManyToManyField(WebsiteLink, related_name="yaps",blank=True,null=True)
     latitude = models.FloatField(null=True,blank=True)
     longitude = models.FloatField(null=True,blank=True)
     point = models.PointField(srid=4326,null=True,blank=True)
@@ -90,6 +104,7 @@ class Yap(models.Model):
 
     class Meta:
         ordering = ['-date_created']
+
 
     @classmethod
     def name(self):

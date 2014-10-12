@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import permission_required
+from django.core.context_processors import request
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from groups.models import GroupPermission, Page
@@ -10,7 +11,6 @@ from django.db.models import Count
 from django.contrib.auth.models import User, Group, Permission
 
 @active_and_login_required
-@permission_required('auth.group_management', login_url='/login/')
 def group_manage(request):
     """
     Display permissions groups. Display members and pages for each
@@ -35,7 +35,7 @@ def group_manage(request):
             Group.objects.get(pk=request.POST['group']).delete()
         if 'btn_active' in request.POST:
             # TODO: add Method in model : is_active + Signal Delete Group
-            group_to_act = GroupPermission.objects.get(group_name=request.POST['group'])
+            group_to_act = Group.objects.get(group_name=request.POST['group'])
             group_to_act.is_active = True
             group_to_act.save()
     return render(request, 'admins/group_manage.html',
@@ -48,9 +48,14 @@ def group_manage(request):
 
 def group_details(request, group):
     announcements = Announcement.objects.all()
-
-    g = GroupPermission.objects.get(group_name=group)
-
+    g = Group.objects.get(pk=group)
+    if request.POST:
+        if 'btn_delmember' in request.POST:
+            u = User.objects.get(pk=request.POST['member'])
+            u.groups.remove(g)
+        elif 'btn_delperm' in request.POST:
+            p = Permission.objects.get(pk=request.POST['perm'])
+            g.permissions.remove(p)
     return render(request, 'admins/group_details.html',
                   {"group": g,
                    "announcements": announcements,

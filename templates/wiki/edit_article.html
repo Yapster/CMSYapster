@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block localfiles %}
+    {% load dictionary_extras %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/wiki/home.css" %}" />
+    <script type="text/javascript" src="{% static "js/wiki/main.js" %} "></script>
+{% endblock %}
+{% block content %}
+    <div id="content">
+        <form method="post" id="form_edit_article">
+            {% csrf_token %}
+            <div id="sections">
+                {% include "wiki/edit_main_section.html" %}
+                <div id="nav_bar_edit">
+                    <span id="edit_button">Edit</span>
+                    <span id="add_button">Add</span>
+                </div>
+                <div id="title_sections">
+                    {% for section in article.sections.all %}
+                        <div id="top_{{ section.id }}" class="grey_bar">
+                            <input type="checkbox" class="hide delete_box" name="delete_{{ section.id }}"/>
+                            <span class="title_section">{{ section.title }}</span>
+                            <span class="edition_button hide" id=>Edit</span>
+                        </div>
+                        <div id="bottom_{{ section.id }}" style="display: none">
+                            <div class="header_section" id="{{ section.id }}_header">
+                                <label class="title_section_label" for="{{ section.id }}_title">Section {{ forloop.counter }}</label>
+                                <span class="title_section_text" id="{{ section.id }}_title"> {{ section.title }}</span>
+                            </div>
+                            <div class="content_section" id="{{ section_id }}_content">
+                                <div class="section_content">
+                                    <span class="section_text" id="{{ section.id }}">{{ section.content }}</span>
+                                    <input type="hidden" value="0"/>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div id="button_edit_sections">
+                <button type="button" name="delete_article" class="icone delete_button">Delete</button>
+                <button type="button" id="save_draft_article" name="save_draft_article" class="button_form">Save</button>
+                <button type="button" id="publish_article" name="publish_article" class="button_form" value="{{ article.id }}">Publish</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

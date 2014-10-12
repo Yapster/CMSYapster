@@ -31,7 +31,7 @@ def post_actions(request):
     if request.POST:
         if request.POST['typePost'] == 'take_in_charge':
             CmsReport.objects.create(report_id=request.POST['reportId'],
-                                 user_in_charge=User.objects.get(pk=request.user.id))
+                                     user_in_charge=User.objects.get(pk=request.user.id))
         if request.POST['typePost'] == 'checked':
             r = Report.objects.get(pk=request.POST['reportId'])
             r.is_active = False

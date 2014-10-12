@@ -8,6 +8,7 @@ from yap.models import Channel
 from tasks.models import *
 from cms_search_log.models import *
 from calendars.models import *
+from wiki.models import *
 from datetime import datetime
 from django.contrib.auth.models import User, Permission, Group
 from django.contrib.contenttypes.models import ContentType
@@ -72,7 +73,6 @@ class Recover(models.Model):
     @staticmethod
     def groups():
         return
-
 
     @staticmethod
     def run():
@@ -299,5 +299,50 @@ class Recover(models.Model):
         user1.groups.add(group2)
         user2.groups.add(group3)
         user3.groups.add(group4)
+
+        t1 = WikiTag.objects.create(name="lol")
+        t2 = WikiTag.objects.create(name="testing1234")
+        t3 = WikiTag.objects.create(name="random")
+
+        c1 = WikiCategory.objects.create(name="Design")
+        c2 = WikiCategory.objects.create(name="Database")
+        c3 = WikiCategory.objects.create(name="Server")
+
+        p1 = WikiPage.objects.create(title="How The Database works", description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
+        p2 = WikiPage.objects.create(title="How The Design works", description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
+        p3 = WikiPage.objects.create(title="How The Server works", description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua")
+
+        p1.categories.add(c1)
+        p2.categories.add(c1)
+        p2.categories.add(c2)
+        p2.categories.add(c3)
+        p3.categories.add(c2)
+        p3.categories.add(c3)
+
+        p1.tags.add(t1)
+        p1.tags.add(t2)
+        p2.tags.add(t2)
+        p1.tags.add(t3)
+        p2.tags.add(t3)
+
+        s1 = WikiSection.objects.create(order=1, title="Database Intro", page=p1, writer=user, content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+        s2 = WikiSection.objects.create(order=2, title="Database Dev", page=p1, writer=user, content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+        s3 = WikiSection.objects.create(order=3, title="Database End", page=p1, writer=user1, content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+        s4 = WikiSection.objects.create(order=1, title="Design Intro", page=p2, writer=user1, content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+        s5 = WikiSection.objects.create(order=2, title="Design Dev", page=p2, writer=user2, content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+        s6 = WikiSection.objects.create(order=1, title="Server Intro", page=p3, writer=user3, content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+        #
+        # p1.sections.add(s1)
+        # p1.sections.add(s2)
+        # p1.sections.add(s3)
+        # p2.sections.add(s4)
+        # p2.sections.add(s5)
+        # p3.sections.add(s6)
+
+        WikiFolder.objects.create(name="No Folder", user=user)
+        WikiFolder.objects.create(name="No Folder", user=user1)
+        WikiFolder.objects.create(name="No Folder", user=user2)
+        WikiFolder.objects.create(name="No Folder", user=user3)
+        WikiFolder.objects.create(name="No Folder", user=user4)
 
         return

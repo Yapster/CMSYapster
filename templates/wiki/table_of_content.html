@@ -1,0 +1,13 @@
+<div id="table_contents">
+    <div id="title_table">
+        <span class="title_section">Contents</span>
+        <span class="edition_button">Edit Article</span>
+    </div>
+    {% for section in page.sections.all %}
+        {% if section.is_current %}
+            <div class="title_table">
+                <a href="#{{ section.title }}"><span class="title_table_text">{{ forloop.counter }}.{{ section.title }}</span></a>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

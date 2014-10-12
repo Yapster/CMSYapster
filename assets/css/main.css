@@ -3,7 +3,7 @@
     outline: 0;
 }
 
-div {
+div, textarea, input {
     font-family: Arial,Helvetica,sans-serif;
 }
 
@@ -301,6 +301,11 @@ table tr td:last-child,table tr th:last-child{
     padding: 5px;
 }
 
+.grey_bar {
+    background-image: url("../images/buttons/BG-grey-gradient.png");
+    padding: 12px;
+}
+
 .button_form:hover {
     color: #000000;
 }
@@ -310,7 +315,6 @@ table tr td:last-child,table tr th:last-child{
     font-size: 14px;
     width:100%;
     background-color: #000000;
-
 }
 
 .title {
@@ -327,24 +331,24 @@ table tr td:last-child,table tr th:last-child{
     background: url("../images/icones/icones.png") no-repeat;
 }
 
-#home_icone {background-position: 0% 3%}
-#search_icone {background-position: 14% 3%}
-#cmsuser_icone {background-position: 28% 3%}
-#cmsusers_icone {background-position: 83% 3%}
-#perms_icone {background-position: 69% 3%}
-#contacts_icone {background-position: 96% 3%}
-#settings_icone {background-position: 41% 3%}
-#logout_icone {background-position: 55% 3%}
+#home_icone {background-position: 0% 1.5%}
+#search_icone {background-position: 14% 1.5%}
+#cmsuser_icone {background-position: 28% 1.5%}
+#cmsusers_icone {background-position: 83% 1.5%}
+#perms_icone {background-position: 69% 1.5%}
+#contacts_icone {background-position: 96% 1.5%}
+#settings_icone {background-position: 41% 1.5%}
+#logout_icone {background-position: 55% 1.5%}
 
 
-#home_icone.selected_icone {background-position: 0% 17%}
-#search_icone.selected_icone {background-position: 14% 17%}
-#cmsuser_icone.selected_icone {background-position: 28% 17%}
-#cmsusers_icone.selected_icone {background-position: 83% 17%}
-#perms_icone.selected_icone {background-position: 69% 17%}
-#contacts_icone.selected_icone {background-position: 96% 17%}
-#settings_icone.selected_icone {background-position: 41% 17%}
-#logout_icone.selected_icone {background-position: 55% 17%}
+#home_icone.selected_icone {background-position: 0% 8.5%}
+#search_icone.selected_icone {background-position: 14% 8.5%}
+#cmsuser_icone.selected_icone {background-position: 28% 8.5%}
+#cmsusers_icone.selected_icone {background-position: 83% 8.5%}
+#perms_icone.selected_icone {background-position: 69% 8.5%}
+#contacts_icone.selected_icone {background-position: 96% 8.5%}
+#settings_icone.selected_icone {background-position: 41% 8.5%}
+#logout_icone.selected_icone {background-position: 55% 8.5%}
 
 .delete_conversation_icone{
     background-position: 44% 89%;
@@ -357,7 +361,7 @@ table tr td:last-child,table tr th:last-child{
 }
 
 #new_conversation_icone {
-    background-position: 1% 28%;
+    background-position: 1% 13.5%;
     width: 29px;
     height: 35px;
     margin-left: 230px;
@@ -368,7 +372,7 @@ table tr td:last-child,table tr th:last-child{
 }
 
 #new_announcement_icone{
-    background-position: 70% 28%;
+    background-position: 70% 13.5%;
     width: 29px;
     height: 35px;
     margin-left: 230px;
@@ -682,4 +686,8 @@ table tr td:last-child,table tr th:last-child{
     border-top: 1px black solid;
     margin-top: 10px;
     padding: 10px;
+}
+
+.no_pix_article {
+
 }

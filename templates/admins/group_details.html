@@ -11,7 +11,7 @@
 {% block content %}
     <div id="content" class="clearfix">
         <div id="groups">
-            <h2 class="title_content">{{ group.group_name }}</h2>
+            <h2 class="title_content">{{ group.name }}</h2>
             <div class="groupinfos">
                 <div id="table">
                     <table width="100%" cellpadding="2px" cellspacing="0px">
@@ -23,26 +23,26 @@
                             {% csrf_token %}
                             <tr>
                                 <td>
-                                    {% for member in group.members.all %}
+                                    {% for member in group.user_set.all %}
                                         <li>
                                             <a href="/cmsusers/{{ member.username }}">{{ member.username }}</a>
 
                                             <form method="post">
                                                 {% csrf_token %}
-                                                <input type="hidden" name="group" value="{{ group.group_name }}"/>
-                                                <button type="submit" name="btn_delgroup" class="button_form">Delete</button>
+                                                <input type="hidden" name="member" value="{{ member.id }}"/>
+                                                <button type="submit" name="btn_delmember" class="button_form">Delete</button>
                                             </form>
                                         </li>
                                     {% endfor %}
                                 </td>
                                 <td>
-                                    {% for page in group.pages.all %}
+                                    {% for perm in group.permissions.all %}
                                         <li>
-                                            {{ page.name }}
-                                        <form method="post">
+                                            {{ perm.name }}
+                                            <form method="post">
                                                 {% csrf_token %}
-                                                <input type="hidden" name="group" value="{{ group.group_name }}"/>
-                                                <button type="submit" name="btn_delgroup" class="button_form">Delete</button>
+                                                <input type="hidden" name="perm" value="{{ perm.id }}"/>
+                                                <button type="submit" name="btn_delperm" class="button_form">Delete</button>
                                             </form>
                                         </li>
                                     {% endfor %}

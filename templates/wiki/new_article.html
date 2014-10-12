@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block localfiles %}
+    {% load dictionary_extras %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/wiki/home.css" %}" />
+    <script type="text/javascript" src="{% static "js/wiki/main.js" %} "></script>
+{% endblock %}
+{% block content %}
+    <div id="content">
+        <form method="post">
+            {% csrf_token %}
+            <div id="sections">
+                {% include "wiki/edit_main_section.html" %}
+            </div>
+            <div id="button_edit_sections">
+                <button type="submit" name="delete_article" class="icone delete_button">Delete</button>
+                <button type="submit" name="save_draft_article" class="button_form">Save</button>
+                <button type="submit" name="publish_article" class="button_form">Publish</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

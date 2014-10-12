@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block localfiles %}
+    {% load dictionary_extras %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/wiki/home.css" %}" />
+    <script type="text/javascript" src="{% static "js/wiki/main.js" %} "></script>
+{% endblock %}
+{% block content %}
+    <div id="content">
+        {% include "wiki/search_bar.html" %}
+        <div id="add_article" class="button_form">
+            <span class="icone" id="add_article_icone"></span>
+            <button id="new_article_button" type="button" class="button_form">Add New Article</button>
+        </div>
+        <div id="recent_viewed_articles" class="part_main_wiki">
+            <div id="recent_viewed_header" class="header_main_wiki">
+                <span id="recent_viewed_header_text" class="title_main_wiki">Recent Viewed Articles</span>
+                <span class="edition_button">View all</span>
+                <span class="edition_button">|</span>
+                <span class="edition_button">Edit</span>
+            </div>
+            <div id="recent_viewed_content">
+            {% for article in articles %}
+                {% include "wiki/preview_article.html" %}
+            {% endfor %}
+            </div>
+
+        </div>
+        <div id="bookmark_articles" class="part_main_wiki">
+            <div id="bookmark_header" class="header_main_wiki">
+                <span id="bookmark_header_text" class="title_main_wiki">Favorites Articles</span>
+                <span class="edition_button"><a href="/wiki/bookmarks/" class="category_link">View all</a></span>
+                <span class="edition_button">|</span>
+                <span class="edition_button">Edit</span>
+            </div>
+            <div id="bookmark_content">
+            {% for article in bookmarks %}
+                {% include "wiki/preview_article.html" %}
+            {% endfor %}
+        </div>
+
+        </div>
+    </div>
+
+{% endblock %}

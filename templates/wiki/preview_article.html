@@ -1,0 +1,24 @@
+<div class="preview_article">
+    <div class="left_side_preview">
+        <img src="" class="pix_preview"/>
+    </div>
+    <div class="right_side_preview">
+        <div class="title_article">
+            <span><a class="article_link" href="/wiki/{{ article.id }}/">{{ article.title }}</a></span>
+        </div>
+        <div class="content_article">
+            {% for section in article.sections.all|slice:":1" %}
+                {{ section.content }}
+            {% endfor %}
+        </div>
+        <div class="stats_article">
+            {% for category in article.categories.all %}
+                <span><a class="category_link" href="#">{{ category.name }}</a></span>
+            {% endfor %}
+            <span>-</span>
+            <span>1025 words</span>
+            <span>-</span>
+            <span>{{ article.date_created }}</span>
+        </div>
+    </div>
+</div>

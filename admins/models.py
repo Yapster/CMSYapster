@@ -1,7 +1,6 @@
 from collections import defaultdict
 from django.db import models
-from django.contrib.auth.models import User
-from groups.models import GroupPermission
+from django.contrib.auth.models import User, Group
 from calendars.models import MyCalendar
 
 import logging
@@ -19,7 +18,7 @@ class CmsUser (models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     email = models.EmailField(max_length=64)
-    group = models.ManyToManyField(to=GroupPermission, blank=True, related_name='members')
+    group = models.ManyToManyField(to=Group, blank=True, related_name='members')
     occupation = models.CharField(max_length=64, blank=True)
     department = models.CharField(max_length=64, blank=True)
     is_active = models.BooleanField(default=True)
@@ -33,8 +32,8 @@ class CmsUser (models.Model):
         last_name = kwargs["last_name"]
         try:
             user = User.objects.create_user(username=username, email=email,
-                                        password=password, first_name=first_name,
-                                        last_name=last_name)
+                                            password=password, first_name=first_name,
+                                            last_name=last_name)
         except:
             return False
         kwargs["user"] = user
@@ -42,10 +41,11 @@ class CmsUser (models.Model):
         try:
             group = kwargs.pop('group')
         except KeyError:
+            user.delete()
             pass
         cmsuser = CmsUser.objects.create(**kwargs)
         if group:
-                cmsuser.group.add(group)
+            user.groups.add(group)
         cal_name = first_name + " " + last_name
         MyCalendar.objects.create_calendar(user=user, name=cal_name)
         return user

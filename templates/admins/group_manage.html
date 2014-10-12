@@ -57,7 +57,7 @@
                                 <form method="post">
                                     {% csrf_token %}
                                     <tr>
-                                        <td><a href="{{ group.name }}"/>{{ group.name }} </td>
+                                        <td><a href="{{ group.id }}"/>{{ group.name }} </td>
                                         <td>
                                             {% for member in group.user_set.all %}
                                                 <li>

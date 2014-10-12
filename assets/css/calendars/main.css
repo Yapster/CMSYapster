@@ -270,3 +270,7 @@ table tr td:hover {
 .inactive_event {
     display: none;
 }
+
+#errors {
+    color: red;
+}

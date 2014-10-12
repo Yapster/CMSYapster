@@ -7,7 +7,8 @@ function take_in_charge(reportId)
     alert("wouow");
     $.ajax({
         data : {
-            reportId : reportId
+            reportId : reportId,
+            typePost : 'take_in_charge'
         },
         url : "/reports/post/take_in_charge/",
         type : "POST",

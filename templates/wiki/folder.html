@@ -1,0 +1,13 @@
+<div class="folder">
+    <div class="header_folder">
+        <span class="header_folder_text">{{ folder.name }}</span>
+        <span class="icone drop_down">V</span>
+    </div>
+    <div class="content_folder" style="display: none">
+        <div class="container_preview">
+        {% for article in folder.articles.all %}
+            {% include "wiki/preview_article.html" %}
+        {% endfor %}
+        </div>
+    </div>
+</div>

@@ -6,7 +6,7 @@ import gits.urls
 import listings.urls
 import cms_channels.urls
 import cms_reports.urls
-
+import wiki.urls
 
 admin.autodiscover()
 
@@ -22,6 +22,7 @@ urlpatterns = patterns('',
                        url(r'^lists/', include(listings.urls)),
                        url(r'^channels/', include(cms_channels.urls)),
                        url(r'^reports/', include(cms_reports.urls)),
+                       url(r'^wiki/', include(wiki.urls)),
                        url(r'^login/', 'admins.views.login_user'),
                        url(r'^home/', 'stats.views.homepage'),
                        url(r'^statistics/usership/$', 'stats.views.stats_usership'),

@@ -1,0 +1,21 @@
+<div class="edit_section" id="{{ section.id }}_section">
+    <div id="top_{{ section.id }}" class="grey_bar">
+        <span class="title_section">{{ section.title }}</span>
+        <span class="edition_button">View All</span>
+        <span class="edition_button">|</span>
+        <span class="delete_link">Delete</span>
+    </div>
+    <div id="bottom_{{ section.id }}" {% if not forloop.last %}style="display: none"{% endif %}>
+        <div class="header_section" id="{{ section.id }}_header">
+            <label class="title_section_label" for="{{ section.id }}_title">Section {{ forloop.counter }}</label>
+            <input class="title_section_text grey_input input_form" type="text" name="{{ section.id }}_title" id="{{ section.id }}_title" value="{{ section.title }}"/>
+            <input type="hidden" value="0"/>
+        </div>
+        <div class="content_section" id="{{ section_id }}_content">
+            <div class="section_content">
+                <textarea class="section_text input_form" id="{{ section.id }}">{{ section.content }}</textarea>
+                <input type="hidden" value="0"/>
+            </div>
+        </div>
+    </div>
+</div>
