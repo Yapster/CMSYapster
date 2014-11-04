@@ -1,7 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.contrib.auth.admin import User
-from schedule.models import *
+#from schedule.models import *
 import random
 
 

@@ -95,14 +95,15 @@ class HomePageStatistics(APIView):
     def get_teasing_stats(request,_time=1000000, amount=5):
         data = OrderedDict()
 
-        time = datetime.datetime.now() - datetime.timedelta(minutes=_time)
-        yaps = Yap.objects.filter(hashtags_flag=True,is_active=True,is_private=False,date_created__gte=time)
-        data['Yaps'] = Yap.objects.count()
-        data['Total Number of Active Users'] = User.objects.using('ye_1_db_1').filter(is_active=True).count()
-        data['Total Number of Listens'] = Listen.objects.count()
-        data['Average Time Listened'] = round(Listen.objects.aggregate(Avg('time_listened'))['time_listened__avg'], 3)
-        list_hashtags = Hashtag.objects.filter(yaps__in=yaps, is_blocked=False)
-        data['Hashtags'] = sorted(set(list_hashtags),key=attrgetter('hashtag_name'))[:amount]
+        # time = datetime.datetime.now() - datetime.timedelta(minutes=_time)
+        # yaps = Yap.objects.filter(hashtags_flag=True,is_active=True,is_private=False,date_created__gte=time)
+        # data['Yaps'] = Yap.objects.count()
+        # data['Total Number of Active Users'] = User.objects.using('ye_1_db_1').filter(is_active=True).count()
+        # data['Total Number of Listens'] = Listen.objects.count()
+        # data['Average Time Listened'] = round(Listen.objects.aggregate(Avg('time_listened'))['time_listened__avg'], 3)
+        # list_hashtags = Hashtag.objects.filter(yaps__in=yaps, is_blocked=False)
+        # data['Hashtags'] = sorted(set(list_hashtags),key=attrgetter('hashtag_name'))[:amount]
+
 
         return Response(data)
 
@@ -123,7 +124,7 @@ class HomePageStatistics(APIView):
                 data['Top Countries Users'] = sorted(d_countries.iteritems(), key=operator.itemgetter(1), reverse=True)[:amount]
                 data['Birthdays this Month'] = users.filter(profile__date_of_birth__month=datetime.date.today().month)
                 data['Birthdays Today'] = users.filter(profile__date_of_birth__month=datetime.date.today().month,
-                                                   profile__date_of_birth__day=datetime.date.today().day)
+                                                       profile__date_of_birth__day=datetime.date.today().day)
                 data['Users to pushnotify'] = []
                 for u in users:
                     last = u.sessions.order_by('date_created').last()

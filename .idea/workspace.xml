@@ -4,7 +4,346 @@
     <bookmark url="file://$PROJECT_DIR$/assets/css/listings/channel.css" line="36" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f8bd755-7fce-43a3-b2d2-226b3250df2a" name="Default" comment="" />
+    <list default="true" id="2f8bd755-7fce-43a3-b2d2-226b3250df2a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/chris.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/buttons/BG-grey-gradient.png" afterPath="$PROJECT_DIR$/assets/images/buttons/BG-grey-gradient.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/buttons/bttnBG_submit.png" afterPath="$PROJECT_DIR$/assets/images/buttons/bttnBG_submit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django.sqlite3" afterPath="$PROJECT_DIR$/django.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/icones/icones.png" afterPath="$PROJECT_DIR$/assets/images/icones/icones.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/samples/user.png" afterPath="$PROJECT_DIR$/assets/images/samples/user.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore.txt" afterPath="$PROJECT_DIR$/.gitignore.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/CMSYapster.iml" afterPath="$PROJECT_DIR$/.idea/CMSYapster.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Chris.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Chris.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMSYapster/__init__.py" afterPath="$PROJECT_DIR$/CMSYapster/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admins/__init__.py" afterPath="$PROJECT_DIR$/admins/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/announcements/__init__.py" afterPath="$PROJECT_DIR$/announcements/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calendars/__init__.py" afterPath="$PROJECT_DIR$/calendars/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat/__init__.py" afterPath="$PROJECT_DIR$/chat/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_channels/__init__.py" afterPath="$PROJECT_DIR$/cms_channels/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_location/__init__.py" afterPath="$PROJECT_DIR$/cms_location/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_notifications/__init__.py" afterPath="$PROJECT_DIR$/cms_notifications/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_reports/__init__.py" afterPath="$PROJECT_DIR$/cms_reports/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_search_log/__init__.py" afterPath="$PROJECT_DIR$/cms_search_log/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/contacts/__init__.py" afterPath="$PROJECT_DIR$/contacts/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_manager/__init__.py" afterPath="$PROJECT_DIR$/db_manager/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_recover/__init__.py" afterPath="$PROJECT_DIR$/db_recover/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files_manager/__init__.py" afterPath="$PROJECT_DIR$/files_manager/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gdrive/__init__.py" afterPath="$PROJECT_DIR$/gdrive/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gits/__init__.py" afterPath="$PROJECT_DIR$/gits/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groups/__init__.py" afterPath="$PROJECT_DIR$/groups/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/listings/__init__.py" afterPath="$PROJECT_DIR$/listings/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/location/__init__.py" afterPath="$PROJECT_DIR$/location/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manual_override/__init__.py" afterPath="$PROJECT_DIR$/manual_override/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notification/__init__.py" afterPath="$PROJECT_DIR$/notification/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/__init__.py" afterPath="$PROJECT_DIR$/report/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search/__init__.py" afterPath="$PROJECT_DIR$/search/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spams/__init__.py" afterPath="$PROJECT_DIR$/spams/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/__init__.py" afterPath="$PROJECT_DIR$/stats/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/templatetags/__init__.py" afterPath="$PROJECT_DIR$/stats/templatetags/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/__init__.py" afterPath="$PROJECT_DIR$/stream/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tasks/__init__.py" afterPath="$PROJECT_DIR$/tasks/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/__init__.py" afterPath="$PROJECT_DIR$/users/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wiki/__init__.py" afterPath="$PROJECT_DIR$/wiki/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yap/__init__.py" afterPath="$PROJECT_DIR$/yap/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sub_templates/access_denied.html" afterPath="$PROJECT_DIR$/templates/sub_templates/access_denied.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admins/admin.py" afterPath="$PROJECT_DIR$/admins/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/announcements/admin.py" afterPath="$PROJECT_DIR$/announcements/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calendars/admin.py" afterPath="$PROJECT_DIR$/calendars/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat/admin.py" afterPath="$PROJECT_DIR$/chat/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_channels/admin.py" afterPath="$PROJECT_DIR$/cms_channels/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_location/admin.py" afterPath="$PROJECT_DIR$/cms_location/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_notifications/admin.py" afterPath="$PROJECT_DIR$/cms_notifications/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_reports/admin.py" afterPath="$PROJECT_DIR$/cms_reports/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_search_log/admin.py" afterPath="$PROJECT_DIR$/cms_search_log/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/contacts/admin.py" afterPath="$PROJECT_DIR$/contacts/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_manager/admin.py" afterPath="$PROJECT_DIR$/db_manager/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_recover/admin.py" afterPath="$PROJECT_DIR$/db_recover/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files_manager/admin.py" afterPath="$PROJECT_DIR$/files_manager/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gdrive/admin.py" afterPath="$PROJECT_DIR$/gdrive/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gits/admin.py" afterPath="$PROJECT_DIR$/gits/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groups/admin.py" afterPath="$PROJECT_DIR$/groups/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/listings/admin.py" afterPath="$PROJECT_DIR$/listings/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/location/admin.py" afterPath="$PROJECT_DIR$/location/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manual_override/admin.py" afterPath="$PROJECT_DIR$/manual_override/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notification/admin.py" afterPath="$PROJECT_DIR$/notification/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/admin.py" afterPath="$PROJECT_DIR$/report/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search/admin.py" afterPath="$PROJECT_DIR$/search/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spams/admin.py" afterPath="$PROJECT_DIR$/spams/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/admin.py" afterPath="$PROJECT_DIR$/stats/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/admin.py" afterPath="$PROJECT_DIR$/stream/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tasks/admin.py" afterPath="$PROJECT_DIR$/tasks/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/admin.py" afterPath="$PROJECT_DIR$/users/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wiki/admin.py" afterPath="$PROJECT_DIR$/wiki/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yap/admin.py" afterPath="$PROJECT_DIR$/yap/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admins/annoucements_manage.html" afterPath="$PROJECT_DIR$/templates/admins/annoucements_manage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/announcements/announcement_manage.js" afterPath="$PROJECT_DIR$/assets/js/announcements/announcement_manage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/announcements/announcements.html" afterPath="$PROJECT_DIR$/templates/announcements/announcements.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/announcements_manage.css" afterPath="$PROJECT_DIR$/assets/css/announcements_manage.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/article.html" afterPath="$PROJECT_DIR$/templates/wiki/article.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/base.js" afterPath="$PROJECT_DIR$/assets/js/base.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/calendars/calendar.html" afterPath="$PROJECT_DIR$/templates/calendars/calendar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/calendars/calendar_day.html" afterPath="$PROJECT_DIR$/templates/calendars/calendar_day.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/calendars/calendar_month.html" afterPath="$PROJECT_DIR$/templates/calendars/calendar_month.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/calendars/calendar_week.html" afterPath="$PROJECT_DIR$/templates/calendars/calendar_week.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/calendars/calendar_year.html" afterPath="$PROJECT_DIR$/templates/calendars/calendar_year.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/listings/channel.css" afterPath="$PROJECT_DIR$/assets/css/listings/channel.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/channel.html" afterPath="$PROJECT_DIR$/templates/listings/channel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/channels.html" afterPath="$PROJECT_DIR$/templates/listings/channels.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_location/cities.csv" afterPath="$PROJECT_DIR$/cms_location/cities.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/clearfix.css" afterPath="$PROJECT_DIR$/assets/css/clearfix.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/cmsuser.css" afterPath="$PROJECT_DIR$/assets/css/cmsuser.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admins/cmsuser.html" afterPath="$PROJECT_DIR$/templates/admins/cmsuser.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/sub_templates/col_stats_div.html" afterPath="$PROJECT_DIR$/templates/stats/sub_templates/col_stats_div.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/contacts/contact_details.css" afterPath="$PROJECT_DIR$/assets/css/contacts/contact_details.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/contacts/contact_details.html" afterPath="$PROJECT_DIR$/templates/contacts/contact_details.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/contacts/contacts.css" afterPath="$PROJECT_DIR$/assets/css/contacts/contacts.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/chat/conversations.html" afterPath="$PROJECT_DIR$/templates/chat/conversations.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_location/countries.csv" afterPath="$PROJECT_DIR$/cms_location/countries.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/countries.html" afterPath="$PROJECT_DIR$/templates/listings/countries.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_location/create_script.py" afterPath="$PROJECT_DIR$/cms_location/create_script.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admins/decorators.py" afterPath="$PROJECT_DIR$/admins/decorators.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/sub_templates/description_stats_div.html" afterPath="$PROJECT_DIR$/templates/stats/sub_templates/description_stats_div.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/calendars/details_event.html" afterPath="$PROJECT_DIR$/templates/calendars/details_event.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/reports/details_report.html" afterPath="$PROJECT_DIR$/templates/reports/details_report.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/templatetags/dictionary_extras.py" afterPath="$PROJECT_DIR$/stats/templatetags/dictionary_extras.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/db_manager/ec2_details.html" afterPath="$PROJECT_DIR$/templates/db_manager/ec2_details.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/db_manager/ec2_home.html" afterPath="$PROJECT_DIR$/templates/db_manager/ec2_home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/edit_article.html" afterPath="$PROJECT_DIR$/templates/wiki/edit_article.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/edit_cms.css" afterPath="$PROJECT_DIR$/assets/css/edit_cms.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admins/edit_cmsuser.html" afterPath="$PROJECT_DIR$/templates/admins/edit_cmsuser.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admins/edit_group.html" afterPath="$PROJECT_DIR$/templates/admins/edit_group.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/edit_main_section.html" afterPath="$PROJECT_DIR$/templates/wiki/edit_main_section.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/edit_photos.js" afterPath="$PROJECT_DIR$/assets/js/edit_photos.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/admins/edit_profile_pic.css" afterPath="$PROJECT_DIR$/assets/css/admins/edit_profile_pic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admins/edit_profile_pic.html" afterPath="$PROJECT_DIR$/templates/admins/edit_profile_pic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/edit_section.html" afterPath="$PROJECT_DIR$/templates/wiki/edit_section.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/calendars/event.html" afterPath="$PROJECT_DIR$/templates/calendars/event.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/favorites.html" afterPath="$PROJECT_DIR$/templates/wiki/favorites.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/folder.html" afterPath="$PROJECT_DIR$/templates/wiki/folder.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search/form_channels.html" afterPath="$PROJECT_DIR$/templates/search/form_channels.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search/form_hashtags.html" afterPath="$PROJECT_DIR$/templates/search/form_hashtags.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search/form_likes.html" afterPath="$PROJECT_DIR$/templates/search/form_likes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search/form_listens.html" afterPath="$PROJECT_DIR$/templates/search/form_listens.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search/form_reports.html" afterPath="$PROJECT_DIR$/templates/search/form_reports.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search/form_reyaps.html" afterPath="$PROJECT_DIR$/templates/search/form_reyaps.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search/form_users.html" afterPath="$PROJECT_DIR$/templates/search/form_users.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search/form_yaps.html" afterPath="$PROJECT_DIR$/templates/search/form_yaps.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/db_manager/graph_displaying.html" afterPath="$PROJECT_DIR$/templates/db_manager/graph_displaying.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/group.css" afterPath="$PROJECT_DIR$/assets/css/group.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/group.html" afterPath="$PROJECT_DIR$/templates/stats/group.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/groups/group_details.css" afterPath="$PROJECT_DIR$/assets/css/groups/group_details.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admins/group_details.html" afterPath="$PROJECT_DIR$/templates/admins/group_details.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/group_manage.css" afterPath="$PROJECT_DIR$/assets/css/group_manage.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admins/group_manage.html" afterPath="$PROJECT_DIR$/templates/admins/group_manage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/hashtag.css" afterPath="$PROJECT_DIR$/assets/css/hashtag.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/hashtag.html" afterPath="$PROJECT_DIR$/templates/stats/hashtag.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/hashtags.html" afterPath="$PROJECT_DIR$/templates/listings/hashtags.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/sub_templates/header_stats_div.html" afterPath="$PROJECT_DIR$/templates/stats/sub_templates/header_stats_div.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/home.css" afterPath="$PROJECT_DIR$/assets/css/home.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/db_manager/home.css" afterPath="$PROJECT_DIR$/assets/css/db_manager/home.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/wiki/home.css" afterPath="$PROJECT_DIR$/assets/css/wiki/home.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/gits/home.html" afterPath="$PROJECT_DIR$/templates/gits/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/home.html" afterPath="$PROJECT_DIR$/templates/stats/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/tasks/home.html" afterPath="$PROJECT_DIR$/templates/tasks/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/home.html" afterPath="$PROJECT_DIR$/templates/wiki/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/stats/home.js" afterPath="$PROJECT_DIR$/assets/js/stats/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sub_templates/home_stats.html" afterPath="$PROJECT_DIR$/templates/sub_templates/home_stats.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/reports/in_charge.html" afterPath="$PROJECT_DIR$/templates/reports/in_charge.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/index.css" afterPath="$PROJECT_DIR$/assets/css/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search/index.html" afterPath="$PROJECT_DIR$/templates/search/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/search/index.js" afterPath="$PROJECT_DIR$/assets/js/search/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/jquery-1.10.2.min.js" afterPath="$PROJECT_DIR$/assets/js/jquery-1.10.2.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/chat/jquery.cookie.js" afterPath="$PROJECT_DIR$/assets/js/chat/jquery.cookie.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/likes.html" afterPath="$PROJECT_DIR$/templates/listings/likes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/contacts/list_details.css" afterPath="$PROJECT_DIR$/assets/css/contacts/list_details.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/contacts/list_details.html" afterPath="$PROJECT_DIR$/templates/contacts/list_details.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/listens.html" afterPath="$PROJECT_DIR$/templates/listings/listens.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/contacts/lists.html" afterPath="$PROJECT_DIR$/templates/contacts/lists.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/contacts/lists.js" afterPath="$PROJECT_DIR$/assets/js/contacts/lists.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/location_option.html" afterPath="$PROJECT_DIR$/templates/stats/location_option.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/login.css" afterPath="$PROJECT_DIR$/assets/css/login.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admins/login.html" afterPath="$PROJECT_DIR$/templates/admins/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/main.css" afterPath="$PROJECT_DIR$/assets/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/calendars/main.css" afterPath="$PROJECT_DIR$/assets/css/calendars/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/gits/main.css" afterPath="$PROJECT_DIR$/assets/css/gits/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/reports/main.css" afterPath="$PROJECT_DIR$/assets/css/reports/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/tasks/main.css" afterPath="$PROJECT_DIR$/assets/css/tasks/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/calendars/main.js" afterPath="$PROJECT_DIR$/assets/js/calendars/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/channels/main.js" afterPath="$PROJECT_DIR$/assets/js/channels/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/reports/main.js" afterPath="$PROJECT_DIR$/assets/js/reports/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/wiki/main.js" afterPath="$PROJECT_DIR$/assets/js/wiki/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/main_section.html" afterPath="$PROJECT_DIR$/templates/wiki/main_section.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/chat/messager.html" afterPath="$PROJECT_DIR$/templates/chat/messager.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/chat/messages.html" afterPath="$PROJECT_DIR$/templates/chat/messages.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admins/models.py" afterPath="$PROJECT_DIR$/admins/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/announcements/models.py" afterPath="$PROJECT_DIR$/announcements/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calendars/models.py" afterPath="$PROJECT_DIR$/calendars/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat/models.py" afterPath="$PROJECT_DIR$/chat/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_channels/models.py" afterPath="$PROJECT_DIR$/cms_channels/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_location/models.py" afterPath="$PROJECT_DIR$/cms_location/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_notifications/models.py" afterPath="$PROJECT_DIR$/cms_notifications/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_reports/models.py" afterPath="$PROJECT_DIR$/cms_reports/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_search_log/models.py" afterPath="$PROJECT_DIR$/cms_search_log/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/contacts/models.py" afterPath="$PROJECT_DIR$/contacts/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_manager/models.py" afterPath="$PROJECT_DIR$/db_manager/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_recover/models.py" afterPath="$PROJECT_DIR$/db_recover/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files_manager/models.py" afterPath="$PROJECT_DIR$/files_manager/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gdrive/models.py" afterPath="$PROJECT_DIR$/gdrive/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gits/models.py" afterPath="$PROJECT_DIR$/gits/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groups/models.py" afterPath="$PROJECT_DIR$/groups/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/listings/models.py" afterPath="$PROJECT_DIR$/listings/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/location/models.py" afterPath="$PROJECT_DIR$/location/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manual_override/models.py" afterPath="$PROJECT_DIR$/manual_override/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notification/models.py" afterPath="$PROJECT_DIR$/notification/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/models.py" afterPath="$PROJECT_DIR$/report/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search/models.py" afterPath="$PROJECT_DIR$/search/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spams/models.py" afterPath="$PROJECT_DIR$/spams/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/models.py" afterPath="$PROJECT_DIR$/stats/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/models.py" afterPath="$PROJECT_DIR$/stream/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tasks/models.py" afterPath="$PROJECT_DIR$/tasks/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/models.py" afterPath="$PROJECT_DIR$/users/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wiki/models.py" afterPath="$PROJECT_DIR$/wiki/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yap/models.py" afterPath="$PROJECT_DIR$/yap/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/more_stats.html" afterPath="$PROJECT_DIR$/templates/stats/more_stats.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/db_manager/multiple_graphs.html" afterPath="$PROJECT_DIR$/templates/db_manager/multiple_graphs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/new_article.html" afterPath="$PROJECT_DIR$/templates/wiki/new_article.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/channels/new_channel.html" afterPath="$PROJECT_DIR$/templates/channels/new_channel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/tasks/new_note.html" afterPath="$PROJECT_DIR$/templates/tasks/new_note.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/preview_article.html" afterPath="$PROJECT_DIR$/templates/wiki/preview_article.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/profile.css" afterPath="$PROJECT_DIR$/assets/css/profile.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admins/profile.html" afterPath="$PROJECT_DIR$/templates/admins/profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/admins/profile.js" afterPath="$PROJECT_DIR$/assets/js/admins/profile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_search_log/queries.py" afterPath="$PROJECT_DIR$/cms_search_log/queries.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/db_manager/rds_details.html" afterPath="$PROJECT_DIR$/templates/db_manager/rds_details.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/db_manager/rds_details.js" afterPath="$PROJECT_DIR$/assets/js/db_manager/rds_details.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/db_manager/rds_home.html" afterPath="$PROJECT_DIR$/templates/db_manager/rds_home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/listings/report.css" afterPath="$PROJECT_DIR$/assets/css/listings/report.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/report.html" afterPath="$PROJECT_DIR$/templates/listings/report.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/reports/report.html" afterPath="$PROJECT_DIR$/templates/reports/report.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/listings/report.js" afterPath="$PROJECT_DIR$/assets/js/listings/report.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/reports.html" afterPath="$PROJECT_DIR$/templates/listings/reports.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/reports/reports.html" afterPath="$PROJECT_DIR$/templates/reports/reports.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/wiki/results.css" afterPath="$PROJECT_DIR$/assets/css/wiki/results.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/results.html" afterPath="$PROJECT_DIR$/templates/wiki/results.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/reyaps.html" afterPath="$PROJECT_DIR$/templates/listings/reyaps.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yap/router.py" afterPath="$PROJECT_DIR$/yap/router.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admins/scripts.py" afterPath="$PROJECT_DIR$/admins/scripts.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_reports/scripts.py" afterPath="$PROJECT_DIR$/cms_reports/scripts.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gdrive/scripts.py" afterPath="$PROJECT_DIR$/gdrive/scripts.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/search_bar.html" afterPath="$PROJECT_DIR$/templates/wiki/search_bar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/sub_templates/search_stats_div.html" afterPath="$PROJECT_DIR$/templates/stats/sub_templates/search_stats_div.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/section.html" afterPath="$PROJECT_DIR$/templates/wiki/section.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/location/serializers.py" afterPath="$PROJECT_DIR$/location/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notification/serializers.py" afterPath="$PROJECT_DIR$/notification/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/serializers.py" afterPath="$PROJECT_DIR$/report/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search/serializers.py" afterPath="$PROJECT_DIR$/search/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/serializers.py" afterPath="$PROJECT_DIR$/stream/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/serializers.py" afterPath="$PROJECT_DIR$/users/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yap/serializers.py" afterPath="$PROJECT_DIR$/yap/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMSYapster/settings.py" afterPath="$PROJECT_DIR$/CMSYapster/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admins/signals.py" afterPath="$PROJECT_DIR$/admins/signals.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat/signals.py" afterPath="$PROJECT_DIR$/chat/signals.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/specific_search.html" afterPath="$PROJECT_DIR$/templates/stats/specific_search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/state_option.html" afterPath="$PROJECT_DIR$/templates/stats/state_option.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_location/state_table.csv" afterPath="$PROJECT_DIR$/cms_location/state_table.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/statistics.html" afterPath="$PROJECT_DIR$/templates/stats/statistics.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/stats.css" afterPath="$PROJECT_DIR$/assets/css/stats.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/stats/stats.js" afterPath="$PROJECT_DIR$/assets/js/stats/stats.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/wiki/table_of_content.html" afterPath="$PROJECT_DIR$/templates/wiki/table_of_content.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/sub_templates/table_stats_div.html" afterPath="$PROJECT_DIR$/templates/stats/sub_templates/table_stats_div.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/tasks/task.html" afterPath="$PROJECT_DIR$/templates/tasks/task.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/tasks/tasks_main.js" afterPath="$PROJECT_DIR$/assets/js/tasks/tasks_main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/test.html" afterPath="$PROJECT_DIR$/templates/test.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/test.js" afterPath="$PROJECT_DIR$/assets/js/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/stats/test" afterPath="$PROJECT_DIR$/templates/stats/test" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admins/tests.py" afterPath="$PROJECT_DIR$/admins/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/announcements/tests.py" afterPath="$PROJECT_DIR$/announcements/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calendars/tests.py" afterPath="$PROJECT_DIR$/calendars/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat/tests.py" afterPath="$PROJECT_DIR$/chat/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_channels/tests.py" afterPath="$PROJECT_DIR$/cms_channels/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_location/tests.py" afterPath="$PROJECT_DIR$/cms_location/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_notifications/tests.py" afterPath="$PROJECT_DIR$/cms_notifications/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_reports/tests.py" afterPath="$PROJECT_DIR$/cms_reports/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_search_log/tests.py" afterPath="$PROJECT_DIR$/cms_search_log/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/contacts/tests.py" afterPath="$PROJECT_DIR$/contacts/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_manager/tests.py" afterPath="$PROJECT_DIR$/db_manager/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_recover/tests.py" afterPath="$PROJECT_DIR$/db_recover/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files_manager/tests.py" afterPath="$PROJECT_DIR$/files_manager/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gdrive/tests.py" afterPath="$PROJECT_DIR$/gdrive/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gits/tests.py" afterPath="$PROJECT_DIR$/gits/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groups/tests.py" afterPath="$PROJECT_DIR$/groups/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/listings/tests.py" afterPath="$PROJECT_DIR$/listings/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/location/tests.py" afterPath="$PROJECT_DIR$/location/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manual_override/tests.py" afterPath="$PROJECT_DIR$/manual_override/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notification/tests.py" afterPath="$PROJECT_DIR$/notification/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/tests.py" afterPath="$PROJECT_DIR$/report/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search/tests.py" afterPath="$PROJECT_DIR$/search/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spams/tests.py" afterPath="$PROJECT_DIR$/spams/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/tests.py" afterPath="$PROJECT_DIR$/stats/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/tests.py" afterPath="$PROJECT_DIR$/stream/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tasks/tests.py" afterPath="$PROJECT_DIR$/tasks/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/tests.py" afterPath="$PROJECT_DIR$/users/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wiki/tests.py" afterPath="$PROJECT_DIR$/wiki/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yap/tests.py" afterPath="$PROJECT_DIR$/yap/tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_search_log/tools.py" afterPath="$PROJECT_DIR$/cms_search_log/tools.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMSYapster/urls.py" afterPath="$PROJECT_DIR$/CMSYapster/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calendars/urls.py" afterPath="$PROJECT_DIR$/calendars/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_channels/urls.py" afterPath="$PROJECT_DIR$/cms_channels/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_reports/urls.py" afterPath="$PROJECT_DIR$/cms_reports/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gits/urls.py" afterPath="$PROJECT_DIR$/gits/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/listings/urls.py" afterPath="$PROJECT_DIR$/listings/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tasks/urls.py" afterPath="$PROJECT_DIR$/tasks/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wiki/urls.py" afterPath="$PROJECT_DIR$/wiki/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/user.html" afterPath="$PROJECT_DIR$/templates/listings/user.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/user_details.html" afterPath="$PROJECT_DIR$/templates/listings/user_details.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/users.html" afterPath="$PROJECT_DIR$/templates/listings/users.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/users_manage.css" afterPath="$PROJECT_DIR$/assets/css/users_manage.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admins/users_manage.html" afterPath="$PROJECT_DIR$/templates/admins/users_manage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/admins/views.py" afterPath="$PROJECT_DIR$/admins/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/announcements/views.py" afterPath="$PROJECT_DIR$/announcements/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calendars/views.py" afterPath="$PROJECT_DIR$/calendars/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chat/views.py" afterPath="$PROJECT_DIR$/chat/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_channels/views.py" afterPath="$PROJECT_DIR$/cms_channels/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_location/views.py" afterPath="$PROJECT_DIR$/cms_location/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_notifications/views.py" afterPath="$PROJECT_DIR$/cms_notifications/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_reports/views.py" afterPath="$PROJECT_DIR$/cms_reports/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_search_log/views.py" afterPath="$PROJECT_DIR$/cms_search_log/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/contacts/views.py" afterPath="$PROJECT_DIR$/contacts/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_manager/views.py" afterPath="$PROJECT_DIR$/db_manager/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_recover/views.py" afterPath="$PROJECT_DIR$/db_recover/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/files_manager/views.py" afterPath="$PROJECT_DIR$/files_manager/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gdrive/views.py" afterPath="$PROJECT_DIR$/gdrive/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gits/views.py" afterPath="$PROJECT_DIR$/gits/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groups/views.py" afterPath="$PROJECT_DIR$/groups/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/listings/views.py" afterPath="$PROJECT_DIR$/listings/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/location/views.py" afterPath="$PROJECT_DIR$/location/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manual_override/views.py" afterPath="$PROJECT_DIR$/manual_override/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notification/views.py" afterPath="$PROJECT_DIR$/notification/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/report/views.py" afterPath="$PROJECT_DIR$/report/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/search/views.py" afterPath="$PROJECT_DIR$/search/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spams/views.py" afterPath="$PROJECT_DIR$/spams/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats/views.py" afterPath="$PROJECT_DIR$/stats/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stream/views.py" afterPath="$PROJECT_DIR$/stream/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tasks/views.py" afterPath="$PROJECT_DIR$/tasks/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/views.py" afterPath="$PROJECT_DIR$/users/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wiki/views.py" afterPath="$PROJECT_DIR$/wiki/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yap/views.py" afterPath="$PROJECT_DIR$/yap/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CMSYapster/wsgi.py" afterPath="$PROJECT_DIR$/CMSYapster/wsgi.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/listings/yaps.html" afterPath="$PROJECT_DIR$/templates/listings/yaps.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms_location/zip_code_database.csv" afterPath="$PROJECT_DIR$/cms_location/zip_code_database.csv" />
+    </list>
     <ignored path="CMSYapster.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,20 +371,21 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="group_details.html" pinned="false" current="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/templates/admins/group_details.html">
+            <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/stats/models.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state line="34" column="45" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="1088">
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/assets/js/reports/main.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state line="10" column="39" selection-start="188" selection-end="188" vertical-scroll-proportion="0.17598344" vertical-offset="0" max-vertical-offset="966">
-                    <folding />
+                  <state vertical-scroll-proportion="0.59906393" vertical-offset="0" max-vertical-offset="641">
+                    <caret line="259" column="50" selection-start-line="259" selection-start-column="50" selection-end-line="259" selection-end-column="50" />
+                    <folding>
+                      <element signature="e#0#24#0" expanded="true" />
+                      <element signature="e#168#1793#0" expanded="false" />
+                      <element signature="e#1838#2805#0" expanded="false" />
+                      <element signature="e#2850#3376#0" expanded="false" />
+                      <element signature="e#3420#7018#0" expanded="false" />
+                      <element signature="e#7059#9101#0" expanded="false" />
+                      <element signature="e#9143#9514#0" expanded="false" />
+                      <element signature="e#9557#9930#0" expanded="false" />
+                    </folding>
                   </state>
                 </provider>
               </entry>
@@ -60,78 +400,21 @@
     <favorites_list name="CMSYapster" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms_reports/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="89" selection-start="1361" selection-end="1361" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1156">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="csrf.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Python27/Lib/site-packages/django/views/decorators/csrf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="0" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1088">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reports.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/reports/reports.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="40" selection-start="3423" selection-end="3423" vertical-scroll-proportion="0.0" vertical-offset="857" max-vertical-offset="1513">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="report.html" pinned="false" current="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/reports/report.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="63" selection-start="3394" selection-end="3394" vertical-scroll-proportion="0.70962733" vertical-offset="750" max-vertical-offset="1479">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scripts.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms_reports/scripts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="26" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms_reports/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/cms_reports/urls.py" />
-        <option value="$PROJECT_DIR$/assets/js/listings/report.js" />
-        <option value="$PROJECT_DIR$/yap/router.py" />
-        <option value="$PROJECT_DIR$/templates/reports/reports.html" />
         <option value="$PROJECT_DIR$/assets/css/reports/main.css" />
         <option value="$PROJECT_DIR$/assets/css/listings/channel.css" />
-        <option value="$PROJECT_DIR$/CMSYapster/settings.py" />
         <option value="$PROJECT_DIR$/CMSYapster/urls.py" />
         <option value="$PROJECT_DIR$/templates/wiki/preview_article.html" />
         <option value="$PROJECT_DIR$/templates/wiki/results.html" />
@@ -144,7 +427,6 @@
         <option value="$PROJECT_DIR$/templates/wiki/home.html" />
         <option value="$PROJECT_DIR$/templates/wiki/article.html" />
         <option value="$PROJECT_DIR$/templates/wiki/edit_main_section.html" />
-        <option value="$PROJECT_DIR$/db_recover/models.py" />
         <option value="$PROJECT_DIR$/templates/wiki/main_section.html" />
         <option value="$PROJECT_DIR$/wiki/urls.py" />
         <option value="$PROJECT_DIR$/templates/wiki/favorites.html" />
@@ -153,11 +435,9 @@
         <option value="$PROJECT_DIR$/assets/css/wiki/home.css" />
         <option value="$PROJECT_DIR$/templates/wiki/edit_article.html" />
         <option value="$PROJECT_DIR$/assets/js/wiki/main.js" />
-        <option value="$PROJECT_DIR$/yap/models.py" />
         <option value="$PROJECT_DIR$/admins/scripts.py" />
         <option value="$PROJECT_DIR$/templates/admins/login.html" />
         <option value="$PROJECT_DIR$/assets/css/login.css" />
-        <option value="$PROJECT_DIR$/admins/models.py" />
         <option value="$PROJECT_DIR$/admins/views.py" />
         <option value="$PROJECT_DIR$/templates/admins/users_manage.html" />
         <option value="$PROJECT_DIR$/templates/admins/group_manage.html" />
@@ -176,6 +456,14 @@
         <option value="$PROJECT_DIR$/cms_reports/views.py" />
         <option value="$PROJECT_DIR$/assets/js/reports/main.js" />
         <option value="$PROJECT_DIR$/templates/reports/report.html" />
+        <option value="$PROJECT_DIR$/db_recover/models.py" />
+        <option value="$PROJECT_DIR$/calendars/models.py" />
+        <option value="$PROJECT_DIR$/admins/models.py" />
+        <option value="$PROJECT_DIR$/CMSYapster/settings.py" />
+        <option value="$PROJECT_DIR$/stats/models.py" />
+        <option value="$PROJECT_DIR$/yap/models.py" />
+        <option value="$PROJECT_DIR$/yap/views.py" />
+        <option value="$PROJECT_DIR$/stats/views.py" />
       </list>
     </option>
   </component>
@@ -185,9 +473,10 @@
     </ignored-facets>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="74" />
-    <option name="width" value="1243" />
-    <option name="height" value="1080" />
+    <option name="x" value="65" />
+    <option name="y" value="-4" />
+    <option name="width" value="1301" />
+    <option name="height" value="772" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -208,7 +497,7 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -222,7 +511,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -234,7 +523,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -242,15 +530,13 @@
               <option name="myItemId" value="CMSYapster" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="CMSYapster" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="CMSYapster" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemId" value="&lt; Python 2.7.6 (/usr/bin/python2.7) &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -262,8 +548,18 @@
               <option name="myItemId" value="CMSYapster" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cms_reports" />
+              <option name="myItemId" value="CMSYapster" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CMSYapster" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yap" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -277,7 +573,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cms_channels" />
+              <option name="myItemId" value="stats" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -297,6 +593,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,12 +602,28 @@
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="SearchEverywhereHistory" value="&#10;/&#10;D&#10;5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../yapster_app/yapsterapp_ios/yap/models.py" />
+    <property name="last_opened_file_path" value="$USER_HOME$/yapster_app/yapsterapp_ios/yap/models.py" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.lastSelected" value="terminal" />
+    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="72" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="91" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="97" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="952" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="72" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="91" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="97" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="952" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -414,7 +727,7 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
@@ -510,7 +823,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="CMSYapster.settings" />
       </envs>
-      <option name="SDK_HOME" value="C:/Python27/python.exe" />
+      <option name="SDK_HOME" value="/usr/bin/python2.7" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -536,22 +849,8 @@
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  <component name="SvnConfiguration" myUseAcceleration="nothing">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -582,20 +881,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="74" y="0" width="1243" height="1080" extended-state="0" />
-    <editor active="true" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32608697" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32561728" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.67932487" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2607595" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20421942" sideWeight="0.49923664" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2552521" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1410" y="26" width="1132" height="836" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3876092" sideWeight="0.49923664" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2351145" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1410" y="26" width="1132" height="836" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14599156" sideWeight="0.50076336" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30882353" sideWeight="0.50042194" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36896196" sideWeight="0.49957806" order="2" side_tool="false" content_ui="tabs" x="1380" y="5" width="1082" height="1010" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36882716" sideWeight="0.5003984" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3792" sideWeight="0.49880478" order="2" side_tool="false" content_ui="tabs" x="1380" y="5" width="1082" height="1010" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5105042" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -608,25 +907,28 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32608697" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5121951" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32561728" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.68016875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21743697" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1410" y="26" width="1132" height="836" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5168067" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5105042" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.67932487" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2351145" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1410" y="26" width="1132" height="836" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14599156" sideWeight="0.50076336" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36882716" sideWeight="0.5003984" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874617" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2607595" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30970463" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3881579" sideWeight="0.49923664" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3130252" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1380" y="5" width="1082" height="1010" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3792" sideWeight="0.49880478" order="2" side_tool="false" content_ui="tabs" x="1380" y="5" width="1082" height="1010" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
       <collection />
     </option>
   </component>
@@ -687,300 +989,423 @@
           <option name="timeStamp" value="306" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="307" />
+      <option name="time" value="308" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/wiki/favorites.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="31" selection-start="1689" selection-end="1689" vertical-scroll-proportion="0.6204147" vertical-offset="189" max-vertical-offset="867" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wiki/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="190" column="0" selection-start="7114" selection-end="7114" vertical-scroll-proportion="4.6596384" vertical-offset="0" max-vertical-offset="4080">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wiki/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="327" selection-end="327" vertical-scroll-proportion="0.17921686" vertical-offset="0" max-vertical-offset="664" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/wiki/edit_article.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="31" selection-start="449" selection-end="449" vertical-scroll-proportion="0.3264" vertical-offset="0" max-vertical-offset="901" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/wiki/edit_section.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="3" selection-start="334" selection-end="1152" vertical-scroll-proportion="0.1904" vertical-offset="0" max-vertical-offset="625" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/admin/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="760" selection-end="786" vertical-scroll-proportion="0.3323124" vertical-offset="38" max-vertical-offset="7327" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="32" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.6891892" vertical-offset="0" max-vertical-offset="3757" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../yapster_app/yapsterapp_ios/yap/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="2195" selection-end="2195" vertical-scroll-proportion="0.25199363" vertical-offset="522" max-vertical-offset="14365" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yap/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="53" selection-start="4028" selection-end="4028" vertical-scroll-proportion="0.6707504" vertical-offset="973" max-vertical-offset="4947" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admins/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="40" selection-start="1043" selection-end="1043" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/wiki/home.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="469" column="22" selection-start="6693" selection-end="6693" vertical-scroll-proportion="0.0" vertical-offset="7364" max-vertical-offset="8330" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wiki/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="7" selection-start="2012" selection-end="2012" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admins/scripts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="966" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="12" selection-start="277" selection-end="277" vertical-scroll-proportion="0.16393442" vertical-offset="162" max-vertical-offset="833" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admins/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="68" selection-start="206" selection-end="206" vertical-scroll-proportion="0.13178295" vertical-offset="0" max-vertical-offset="799" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/core/handlers/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="31" selection-start="6133" selection-end="6133" vertical-scroll-proportion="3.219697" vertical-offset="0" max-vertical-offset="4743" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_recover/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="275" column="43" selection-start="13246" selection-end="13246" vertical-scroll-proportion="0.0" vertical-offset="3400" max-vertical-offset="5780" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admins/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="24" selection-start="1524" selection-end="1524" vertical-scroll-proportion="0.0" vertical-offset="516" max-vertical-offset="1190">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admins/group_manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="55" selection-start="3188" selection-end="3192" vertical-scroll-proportion="-5.8653846" vertical-offset="851" max-vertical-offset="1989" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/groups/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="6" selection-start="73" selection-end="73" vertical-scroll-proportion="0.07566766" vertical-offset="0" max-vertical-offset="674" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/auth/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="46" selection-start="2867" selection-end="2867" vertical-scroll-proportion="-20.076923" vertical-offset="447" max-vertical-offset="8721" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/groups/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="70" selection-start="1196" selection-end="1196" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="969">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/contrib/auth/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="874" selection-end="874" vertical-scroll-proportion="0.33333334" vertical-offset="13" max-vertical-offset="1207" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/core/files/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/core/files/uploadedfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1107" selection-end="1107" vertical-scroll-proportion="0.3429878" vertical-offset="285" max-vertical-offset="2125" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/admins/edit_profile_pic.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="308" selection-end="308" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="15" selection-start="410" selection-end="412" vertical-scroll-proportion="0.33333334" vertical-offset="130" max-vertical-offset="2975" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/edit_photos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="34" selection-start="275" selection-end="275" vertical-scroll-proportion="0.20731707" vertical-offset="0" max-vertical-offset="656" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/wiki/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="34" selection-start="1304" selection-end="1304" vertical-scroll-proportion="0.81904763" vertical-offset="198" max-vertical-offset="1547" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files_manager/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="0" selection-start="2485" selection-end="2485" vertical-scroll-proportion="0.0" vertical-offset="921" max-vertical-offset="1870" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/calendars/event.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="14" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1054" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/calendars/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="36" selection-start="634" selection-end="634" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3604">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3604">
+          <caret line="20" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#54#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/calendars/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="6" selection-start="1685" selection-end="1685" vertical-scroll-proportion="0.45909092" vertical-offset="632" max-vertical-offset="1292" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/calendars/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="274" column="15" selection-start="3584" selection-end="3584" vertical-scroll-proportion="0.8443465" vertical-offset="4083" max-vertical-offset="4777" />
+        <state vertical-scroll-proportion="0.8443465" vertical-offset="4083" max-vertical-offset="4777">
+          <caret line="274" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/calendars/calendar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="76" selection-start="240" selection-end="240" vertical-scroll-proportion="0.105919" vertical-offset="0" max-vertical-offset="1207" />
+        <state vertical-scroll-proportion="0.105919" vertical-offset="0" max-vertical-offset="1207">
+          <caret line="4" column="76" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admins/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="0" selection-start="8812" selection-end="8812" vertical-scroll-proportion="0.5419162" vertical-offset="3021" max-vertical-offset="3689">
-          <folding />
+        <state vertical-scroll-proportion="0.5419162" vertical-offset="3021" max-vertical-offset="3689">
+          <caret line="211" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="312" column="14" selection-start="4680" selection-end="4693" vertical-scroll-proportion="0.34508076" vertical-offset="5069" max-vertical-offset="11866">
-          <folding />
+        <state vertical-scroll-proportion="0.34508076" vertical-offset="5069" max-vertical-offset="11866">
+          <caret line="312" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="0" selection-start="3816" selection-end="4030" vertical-scroll-proportion="0.28549618" vertical-offset="1105" max-vertical-offset="1887">
-          <folding />
+        <state vertical-scroll-proportion="0.28549618" vertical-offset="1105" max-vertical-offset="1887">
+          <caret line="76" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admins/users_manage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="229" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2584" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2584">
+          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cms_channels/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/report/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cms_reports/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="682">
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/reports/in_charge.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="29" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="656" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="656">
+          <caret line="0" column="29" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/calendars/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="41" selection-start="3793" selection-end="3793" vertical-scroll-proportion="0.5600414" vertical-offset="2077" max-vertical-offset="3043" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admins/group_details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="45" selection-start="1560" selection-end="1560" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="1088">
-          <folding />
+        <state vertical-scroll-proportion="0.5600414" vertical-offset="2077" max-vertical-offset="3043">
+          <caret line="154" column="41" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/reports/reports.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="40" selection-start="3423" selection-end="3423" vertical-scroll-proportion="0.0" vertical-offset="857" max-vertical-offset="1513">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cms_reports/scripts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="26" selection-start="161" selection-end="161" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/views/decorators/csrf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="0" selection-start="2045" selection-end="2045" vertical-scroll-proportion="0.0" vertical-offset="405" max-vertical-offset="1088">
-          <folding />
+        <state vertical-scroll-proportion="0.5431472" vertical-offset="1011" max-vertical-offset="1602">
+          <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cms_reports/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="89" selection-start="1361" selection-end="1361" vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1156">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/reports/report.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="63" selection-start="3394" selection-end="3394" vertical-scroll-proportion="0.70962733" vertical-offset="750" max-vertical-offset="1479">
+        <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="1332">
+          <caret line="33" column="89" selection-start-line="33" selection-start-column="89" selection-end-line="33" selection-end-column="89" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/js/reports/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="39" selection-start="188" selection-end="188" vertical-scroll-proportion="0.17598344" vertical-offset="0" max-vertical-offset="966">
+        <state vertical-scroll-proportion="0.3962264" vertical-offset="180" max-vertical-offset="918">
+          <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admins/group_details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.093959734" vertical-offset="556" max-vertical-offset="1152">
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/reports/report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3254973" vertical-offset="0" max-vertical-offset="1566">
+          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms_reports/scripts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23300971" vertical-offset="0" max-vertical-offset="618">
+          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms_reports/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="682">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMSYapster/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admins/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47572815" vertical-offset="732" max-vertical-offset="1350">
+          <caret line="57" column="43" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#35#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calendars/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26213592" vertical-offset="0" max-vertical-offset="1440">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db_recover/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3272727" vertical-offset="0" max-vertical-offset="6354">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/stats/more_stats.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7785467" vertical-offset="0" max-vertical-offset="3960">
+          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
+          <caret line="1" column="40" selection-start-line="1" selection-start-column="40" selection-end-line="1" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/stats/statistics.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="528">
+          <caret line="8" column="72" selection-start-line="8" selection-start-column="72" selection-end-line="8" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/db/models/manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1663" max-vertical-offset="4528">
+          <caret line="122" column="27" selection-start-line="122" selection-start-column="27" selection-end-line="122" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-1247972723/operator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8784">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/gis/geos/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="416">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/gis/forms/fields.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2192">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/gis/forms/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="176">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/gis/db/models/fields.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4976">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/gis/db/models/query.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12640">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/gis/db/models/manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1744">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/gis/db/models/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="320">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/location/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1504">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/admin/options.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30633804" vertical-offset="921" max-vertical-offset="27472">
+          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/admin/sites.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30633804" vertical-offset="1129" max-vertical-offset="7088">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/auth/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56902355" vertical-offset="2471" max-vertical-offset="2768">
+          <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/announcements/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.053872053" vertical-offset="0" max-vertical-offset="416">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/ctypes/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5652174" vertical-offset="5732" max-vertical-offset="8976">
+          <caret line="368" column="23" selection-start-line="368" selection-start-column="23" selection-end-line="368" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/utils/importlib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5362319" vertical-offset="444" max-vertical-offset="720">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/db/models/loading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33079848" vertical-offset="1961" max-vertical-offset="5168">
+          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/admin/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30633804" vertical-offset="153" max-vertical-offset="6896">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/gis/geos/libgeos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65816325" vertical-offset="670" max-vertical-offset="2464">
+          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMSYapster/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83617747" vertical-offset="2006" max-vertical-offset="2592">
+          <caret line="156" column="47" selection-start-line="156" selection-start-column="47" selection-end-line="156" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yap/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15629984" vertical-offset="0" max-vertical-offset="2030">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59906393" vertical-offset="0" max-vertical-offset="641">
+          <caret line="259" column="50" selection-start-line="259" selection-start-column="50" selection-end-line="259" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#168#1793#0" expanded="false" />
+            <element signature="e#1838#2805#0" expanded="false" />
+            <element signature="e#2850#3376#0" expanded="false" />
+            <element signature="e#3420#7018#0" expanded="false" />
+            <element signature="e#7059#9101#0" expanded="false" />
+            <element signature="e#9143#9514#0" expanded="false" />
+            <element signature="e#9557#9930#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33652312" vertical-offset="365" max-vertical-offset="992">
+          <caret line="83" column="12" selection-start-line="83" selection-start-column="12" selection-end-line="83" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+            <element signature="e#651#1194#0" expanded="false" />
+            <element signature="e#1280#1888#0" expanded="false" />
+            <element signature="e#1969#2573#0" expanded="false" />
+            <element signature="e#2625#3282#0" expanded="false" />
+            <element signature="e#3330#4043#0" expanded="false" />
+            <element signature="e#4109#4909#0" expanded="false" />
+            <element signature="e#5162#5865#0" expanded="false" />
+            <element signature="e#5914#8208#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sub_templates/home_stats.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23920266" vertical-offset="0" max-vertical-offset="602">
+          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yap/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4752">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

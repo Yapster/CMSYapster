@@ -5,6 +5,7 @@ from location.models import *
 from django.dispatch import receiver
 from operator import attrgetter
 from django.contrib.gis.db import models
+from stats.models import HashtagManager, YapManager, ReyapManager, LikeManager, ListenManager
 import re
 
 class Hashtag(models.Model):
@@ -14,6 +15,8 @@ class Hashtag(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     is_blocked = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    stats = HashtagManager()
+
     def __unicode__(self):
         return self.hashtag_name
 
@@ -101,6 +104,7 @@ class Yap(models.Model):
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
     objects = models.GeoManager()
+    stats = YapManager()
 
     class Meta:
         ordering = ['-date_created']
@@ -146,6 +150,7 @@ class Reyap(models.Model):
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
     objects = models.GeoManager()
+    stats = ReyapManager()
 
     class Meta:
         ordering = ['-date_created']
@@ -174,6 +179,7 @@ class Like(models.Model):
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
     objects = models.GeoManager()
+    stats = LikeManager()
 
     class Meta:
         ordering = ['-date_created']

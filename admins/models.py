@@ -1,7 +1,7 @@
 from collections import defaultdict
 from django.db import models
 from django.contrib.auth.models import User, Group
-from calendars.models import MyCalendar
+#from calendars.models import MyCalendar
 
 import logging
 
@@ -47,7 +47,7 @@ class CmsUser (models.Model):
         if group:
             user.groups.add(group)
         cal_name = first_name + " " + last_name
-        MyCalendar.objects.create_calendar(user=user, name=cal_name)
+        #MyCalendar.objects.create_calendar(user=user, name=cal_name)
         return user
 
     def update(self, *args, **kwargs):

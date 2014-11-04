@@ -7,7 +7,7 @@ from contacts.models import Contact, List
 from yap.models import Channel
 from tasks.models import *
 from cms_search_log.models import *
-from calendars.models import *
+#from calendars.models import *
 from wiki.models import *
 from datetime import datetime
 from django.contrib.auth.models import User, Permission, Group

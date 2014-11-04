@@ -9,6 +9,7 @@ from location.models import *
 from chat.signals import *
 from yap.views import HomePageStatistics
 from cms_location.models import *
+from yap.models import *
 
 import logging
 
@@ -31,7 +32,6 @@ def homepage(request):
                                                "conversations": conversations,
                                                "user": request.user,
                                                "chaters": users})
-
 
 
 @login_required(login_url='/login/')
@@ -123,6 +123,8 @@ def search(request):
 
 def home_stats(request):
     stats = HomePageStatistics.get_teasing_stats(request).data.items()
+    Yap.stats.yap_count()
+
 
     return render(request, 'sub_templates/home_stats.html', {"stats": stats})
 

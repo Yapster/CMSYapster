@@ -56,14 +56,12 @@ INSTALLED_APPS = (
     'south',
     'boto',
     'rest_framework',
-    'schedule',
-    'github',
-    'apiclient',
     'oauth2client',
+
 
     'admins',
     'announcements',
-    'calendars',
+    #'calendars',
     'chat',
     'cms_channels',
     'cms_search_log',
@@ -155,4 +153,5 @@ TEMPLATE_DIRS = (
 
 DATABASE_ROUTERS = ['yap.router.APIRouter']
 
-GEOS_LIBRARY_PATH = 'C:/OSGeo4W/bin/geos_c.dll'
+GEOS_LIBRARY_PATH = '/usr/local/lib/libgeos_c.so'
+GDAL_LIBRARY_PATH = '/usr/local/lib/libgdal.so'
