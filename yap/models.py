@@ -5,7 +5,7 @@ from location.models import *
 from django.dispatch import receiver
 from operator import attrgetter
 from django.contrib.gis.db import models
-from stats.models import HashtagManager, YapManager, ReyapManager, LikeManager, ListenManager
+from stats.models import HashtagManager, YapManager, ReyapManager, LikeManager, ListenManager, CountryManager
 import re
 
 class Hashtag(models.Model):
@@ -207,6 +207,7 @@ class Listen(models.Model):
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
     objects = models.GeoManager()
+    stats = ListenManager()
 
     class Meta:
         ordering = ['-date_created']

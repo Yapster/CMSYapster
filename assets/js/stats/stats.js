@@ -113,17 +113,21 @@ function display_yaps(key, title)
     });
 }
 
+
 // Display one column of stats
 function load_col_stats(time, type_time)
 {
     $('#' + type_time).html("Loading");
+    var time_end, time_start = null;
     $.ajax({
         data : {
             time: time,
             type_stats: $("#type_stats").val(),
-            type_time: type_time
+            type_time: type_time,
+            time_end: time_end,
+            time_start: time_start
         },
-        url : "/statistics/usership/more_data/",
+        url : "/statistics/more_data/",
         type : "POST",
         success: function(newData){
             if (newData) {
@@ -133,6 +137,27 @@ function load_col_stats(time, type_time)
     });
 }
 
+
+// Ajax Query for one stat
+function spec_stats(time_start, time_end, type_search, name_method, type_stats)
+{
+    $.ajax({
+        data : {
+            time_start: time_start,
+            time_end: time_end,
+            type_search: type_search,
+            name_method: name_method,
+            type_stats: type_stats
+        },
+        url : "/statistics/spec_stats/",
+        type : "POST",
+        success: function(newData){
+            if (newData) {
+
+            }
+        }
+    });
+}
 
 $(document).ready(function() {
     // Preload 4 columns of stats
@@ -196,7 +221,7 @@ $(document).ready(function() {
         $(".table_stats").append("<div class='col_stats' id='month_col'><div class='tab_icone' id='month_tab'>Month</div><div class='stats_container' id='month'></div></div>");
         $(".table_stats").append("<div class='col_stats' id='year_col'><div class='tab_icone' id='year_tab'>Year</div><div class='stats_container' id='year'></div></div>");
         load_col_stats('10080', 'week');
-        load_col_stats('43829.0639', 'month');
+        load_col_stats('43829', 'month');
         load_col_stats('525949', 'year');
     });
 });

@@ -2,24 +2,56 @@ from yap.models import *
 from django.contrib.gis.db import models
 from django.db.models import Sum, Count, Avg
 import operator
+import datetime
+
+
+
+"""
+
+
+Time_start == Datetime.datetime
+Time_end == Datetime.datetime
+
+No datetime.timedelta
+
+"""
 
 
 class UserManager(models.Manager):
+
     """
     UserManager for stats
     """
     def users_count(self,
                     type_search="now",
                     time_start=None,
-                    time_end=None):
+                    time_end=None,
+                    accuracy=10):
         """
         Count users
         :param type_search: If Now or on an interval
         :param time_start: Date begin if interval
         :param time_end: Date end if interval
-        :return: Int = Count users
+        :return: Int = Count users or Dictionary with count depending on start and end time
         """
-        return self.using('ye_1_db_1').count()
+
+        users = self.using('ye_1_db_1')
+
+        if type_search == "graph":
+            data = []
+            delta = datetime.timedelta(minutes=time_start)/accuracy
+            # Not time_end => From Start date to now
+            if not time_end:
+                now = datetime.datetime.now()
+            else:
+                now = time_end
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = now - delta * i
+                data.append(users.filter(date_joined_lte=time).count())
+            return data
+        return users.count()
 
     def active_users_count(self,
                            type_search="now",
@@ -34,25 +66,49 @@ class UserManager(models.Manager):
         """
         return self.using('ye_1_db_1').filter(is_active=True).count()
 
-    def birthday_today_users(self,
-                             users=User.objects.using('ye_1_db_1').all()):
-        return users.filter(profile__date_of_birth__month=datetime.date.today().month)
+    def birthday_month_users(self,
+                             type_search="now",
+                             time_start=None,
+                             time_end=None):
+        if type_search == "graph":
+            return
+        users = User.objects.using('ye_1_db_1').all()
+        return users.filter(profile__date_of_birth=datetime.date.today()).count()
 
     def new_users_count(self,
                         type_search="now",
                         time_start=None,
                         time_end=None):
         """
-        Count New users
+        Count New users from time_start to time_end.
         :param type_search: If Now or on an interval
-        :param time_start: Date begin if interval
-        :param time_end: Date end if interval
+        :param time_start: Date begin interval.
+        :param time_end: Date end if interval. if time_end == empty: time_end = Now
         :return: Int = Count New users
         """
 
-        time = time_end - time_start
-        return self.using('ye_1_db_1').filter(date_joined__gte=time)
+        #time = time_end - time_start
+        users = User.objects.using('ye_1_db_1').all()
+        return users.filter(date_joined__gte=time_start).count()
 
+    def to_push_notify(self,
+                       type_search="now",
+                       time_start=None,
+                       time_end=None):
+        """
+        Get users that accept Push Notifications
+        :param type_search:
+        :param time_start:
+        :param time_end:
+        :return: list of users push notify
+        """
+        data = []
+        for u in self.all():
+            last = u.sessions.order_by('date_created').last()
+            if last and (last.session_device_token == "<>" or not last.session_device_token or not last.is_active):
+                continue
+            data.append(u)
+        return data
 
 class CountryManager(models.Manager):
     def top_countries(self,
@@ -84,7 +140,7 @@ class HashtagManager(models.Manager):
                      type_search="now",
                      time_start=None,
                      time_end=None,
-                     hashtags=Hashtag.objects.all(),
+                     hashtags=None,
                      amount=5):
         """
         Get list of top hashtags
@@ -95,6 +151,7 @@ class HashtagManager(models.Manager):
         :param amount: Amount of hashtags needed
         :return:
         """
+        hashtags = self.all()
         return sorted(set(hashtags),key=attrgetter('hashtag_name'))[:amount]
 
 
@@ -127,7 +184,7 @@ class ListenManager(models.Manager):
                               type_search="now",
                               time_start=None,
                               time_end=None):
-        return self.aggregate(Avg('time_listened'))
+        return round(self.aggregate(Avg('time_listened'))['time_listened__avg'], 3)
 
     def average_active_time_listened(self,
                                      type_search="now",
@@ -139,8 +196,8 @@ class ListenManager(models.Manager):
                                  type_search="now",
                                  time_start=None,
                                  time_end=None,
-                                 listens=Listen.objects.all(),
-                                 users=User.using('ye_1_db_1').objects.all().count()):
+                                 listens=None,
+                                 users=None):
         """
         :param type_search:
         :param time_start:
@@ -149,21 +206,26 @@ class ListenManager(models.Manager):
         :param users: Number of users
         :return: Return average listens per user
         """
+        listens = self.all()
+        users= User.using('ye_1_db_1').objects.all().count()
         return round(listens / users, 3)
 
     def average_active_listened_per_user(self,
                                          type_search="now",
                                          time_start=None,
                                          time_end=None,
-                                         listens=Listen.objects.filter(is_active=True),
-                                         users=User.using('ye_1_db_1').objects.all().count()):
+                                         listens=None,
+                                         users=None):
+        listens = self.all()
+        users= User.using('ye_1_db_1').objects.all().count()
         return round(listens/users, 3)
 
     def average_time_listened_per_user(self,
                                        type_search="now",
                                        time_start=None,
                                        time_end=None,
-                                       users=User.using('ye_1_db_1').objects.all().count()):
+                                       users=None):
+        users = User.using('ye_1_db_1').objects.all().count()
         return round(self.average_time_listened(type_search=type_search,
                                                 time_start=time_start,
                                                 time_end=time_end)/users, 3)
@@ -172,7 +234,8 @@ class ListenManager(models.Manager):
                                                      type_search="now",
                                                      time_start=None,
                                                      time_end=None,
-                                                     users=User.using('ye_1_db_1').objects.filter(is_active=True).count()):
+                                                     users=None):
+        users = User.using('ye_1_db_1').objects.all().count()
         return round(self.average_time_listened(type_search=type_search,
                                                 time_start=time_start,
                                                 time_end=time_end)/users, 3)
@@ -183,6 +246,10 @@ class YapManager(models.Manager):
                   type_search="now",
                   time_start=None,
                   time_end=None):
+
+        if type_search == "full":
+            data ={}
+            return
         return self.count()
 
     def active_yap_count(self,
@@ -195,41 +262,46 @@ class YapManager(models.Manager):
                           type_search="now",
                           time_start=None,
                           time_end=None,
-                          yaps=Yap.objects.all(),
+                          yaps=None,
                           ):
-        return yaps.aggregate(Sum('length'))
+        yaps = self.all()
+        return yaps.aggregate(Sum('length'))['length__sum']
 
     def total_active_time_yapped(self,
                                  type_search="now",
                                  time_start=None,
                                  time_end=None,
-                                 yaps=Yap.objects.filter(is_active=True)):
-        return yaps.aggregate(Sum('length'))
+                                 yaps=None):
+        yaps = self.all()
+        return yaps.aggregate(Sum('length'))['length__sum']
 
     def average_time_yapped(self,
                             type_search="now",
                             time_start=None,
                             time_end=None,
-                            yaps=Yap.objects.all()):
-        return yaps.aggregate(Sum('length'))
+                            yaps=None):
+        yaps = self.all()
+
+        return yaps.aggregate(Sum('length'))['length__sum']
 
     def average_active_time_yapped(self,
                                    type_search="now",
                                    time_start=None,
                                    time_end=None,
-                                   yaps=Yap.objects.filter(is_active=True)):
-        return yaps.aggregate(Sum('length'))
+                                   yaps=None):
+        yaps = self.filter(is_active=True)
+        return yaps.aggregate(Sum('length'))['length__sum']
 
     def average_yap_per_user(self,
                              type_search="now",
                              time_start=None,
                              time_end=None,
-                             yaps=Yap.objects.all(),
-                             users=User.using('ye_1_db_1').objects.all().count()):
-
+                             yaps=None,
+                             users=None):
+        count_users = User.objects.using('ye_1_db_1').count()
         return round(self.yap_count(type_search=type_search,
                                     time_start=time_start,
-                                    time_end=time_end) / users)
+                                    time_end=time_end) / count_users)
 
 
 class LikeManager(models.Manager):
@@ -248,13 +320,13 @@ class LikeManager(models.Manager):
 
 class ReyapManager(models.Manager):
     def reyap_count(self,
-                   type_search="now",
-                   time_start=None,
-                   time_end=None):
+                    type_search="now",
+                    time_start=None,
+                    time_end=None):
         return self.count()
 
     def active_reyap_count(self,
-                          type_search="now",
-                          time_start=None,
-                          time_end=None):
+                           type_search="now",
+                           time_start=None,
+                           time_end=None):
         return self.filter(is_active=True).count()

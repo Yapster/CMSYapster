@@ -1,42 +1,41 @@
 {% load dictionary_extras %}
-{% for  key, value in specific_datas %}
+{% for stat in specific_data %}
     <div class="cell">
-        {% if key == 'Hashtags' %}
-            {% if value %}
-                {% for hashtag in value %}
-                    <input type="hidden" name="hashtags" class="hashtag_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ hashtag }}"/>
-                {% endfor %}
-                <a class="hashtag_link" href="javascript:display_hashtags('hashtag_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>
-            {% endif %}
-        {% elif key == 'yaps'%}
-            {% if value %}
-                {% for yap in value %}
-                    <input type="hidden" name="yaps" class="yap_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ yap }}"/>
-                {% endfor %}
-                <a class="yaps_link" href="javascript:display_yaps('yap_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>
-            {% endif %}
-        {% elif key == 'Top Countries Users' %}
-            {% if value %}
-                {% for c in value %}
-                    <input type="hidden" name="countries" class="country_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ c }}"/>
-                {% endfor %}
-                <a class="country_link" href="javascript:display_countries('country_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>
-            {% endif %}
-        {% elif value|get_type_list == 'User'%}
-            <div>
-                {% if value %}
-                    {% for u in value %}
-                        <input type="hidden" name="users" class="user_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ u }}"/>
-                    {% endfor %}
-                    <a class="user_link" href="javascript:display_users('user_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>
-                {% else %}
-
-                {% endif %}
-            </div>
-        {% else %}
-            {% if value %}
-                <div class="results_table">{{ value }}</div>
-            {% endif %}
-        {% endif %}
+        <div class="results_table">{{ stat|get_value }}</div>
+        {#        {% if stat|get_key == 'Hashtags' %}#}
+        {#            {% if value %}#}
+        {#                {% for hashtag in stat|get_value %}#}
+        {#                    <input type="hidden" name="hashtags" class="hashtag_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ hashtag }}"/>#}
+        {#                {% endfor %}#}
+        {#                <a class="hashtag_link" href="javascript:display_hashtags('hashtag_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>#}
+        {#            {% endif %}#}
+        {#        {% elif stat|get_key == 'yaps'%}#}
+        {#            {% if stat|get_value %}#}
+        {#                {% for yap in stat|get_value %}#}
+        {#                    <input type="hidden" name="yaps" class="yap_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ yap }}"/>#}
+        {#                {% endfor %}#}
+        {#                <a class="yaps_link" href="javascript:display_yaps('yap_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>#}
+        {#            {% endif %}#}
+        {#        {% elif stat|get_key == 'Top Countries Users' %}#}
+        {#            {% if stat|get_value %}#}
+        {#                {% for c in stat|get_value %}#}
+        {#                    <input type="hidden" name="countries" class="country_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ c }}"/>#}
+        {#                {% endfor %}#}
+        {#                <a class="country_link" href="javascript:display_countries('country_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ value|length }}</a>#}
+        {#            {% endif %}#}
+        {#        {% elif stat|get_type_list_from_dic == 'User'%}#}
+        {#            <div>#}
+        {#                {% if stat|get_value %}#}
+        {#                    {% for u in stat|get_value %}#}
+        {#                        <input type="hidden" name="users" class="user_{{ type_time }}_{{ forloop.parentloop.counter }}" value="{{ u }}"/>#}
+        {#                    {% endfor %}#}
+        {#                    <a class="user_link" href="javascript:display_users('user_{{ type_time }}_{{ forloop.counter }}', '{{ key }}')">{{ stat|length }}</a>#}
+        {#                {% else %}#}
+        {##}
+        {#                {% endif %}#}
+        {#            </div>#}
+        {#        {% else %}#}
+        {##}
+        {#        {% endif %}#}
     </div>
 {% endfor %}

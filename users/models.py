@@ -1,5 +1,6 @@
 from django.db import models
 from location.models import *
+from stats.models import UserManager
 from yap.models import *
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -135,6 +136,7 @@ class UserInfo(models.Model):
     is_user_deleted = models.BooleanField(default=False)
     user_deleted_date = models.DateField(blank=True,null=True)
     objects = models.GeoManager()
+    stats = UserManager()
 
 
 class Settings(models.Model):

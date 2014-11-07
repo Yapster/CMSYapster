@@ -172,3 +172,8 @@ table tr td {
 
 .stats_container {
 }
+
+.tab_headbar{
+    color: white;
+    margin-left: 40px;
+}

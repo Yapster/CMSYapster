@@ -1,12 +1,13 @@
-{% for key, value in stats %}
+{% load dictionary_extras %}
+{% for couple in data %}
     <div class="mainstat">
-        <div class="label">{{ key }}: </div>
-        {% if key == "Hashtags" %}
-            {% for hashtag in value %}
+        <div class="label">{{ couple|get_key }}: </div>
+        {% if couple|get_key == "Trending Hashtags" %}
+            {% for hashtag in couple|get_value %}
                 <span><a class="hashtag" href="/hashtag/{{ hashtag.hashtag_name }}">#{{ hashtag.hashtag_name }}</a></span>
             {% endfor %}
         {% else %}
-            <div class="number">{{ value }}</div>
+            <div class="number">{{ couple|get_value }}</div>
         {% endif %}
     </div>
 {% endfor %}

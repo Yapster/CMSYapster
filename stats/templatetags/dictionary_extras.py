@@ -9,6 +9,22 @@ import boto
 
 register = template.Library()
 
+@register.filter(name='get_key')
+def get_key(d):
+    try:
+        for key in d.keys():
+            return key
+    except KeyError:
+        return ''
+
+@register.filter(name='get_value')
+def get_value(d):
+    try:
+        for val in d.values():
+            return val
+    except KeyError:
+        return ''
+
 @register.filter(name='access')
 def access(value, arg):
     try:
@@ -21,6 +37,13 @@ def get_type_list(list):
     if list:
         return list[0].__class__.__name__
     return ""
+
+
+@register.filter(name='get_type_list_from_dic')
+def get_type_list_from_dic(dic):
+    if dic:
+        return dic[1][0].__class__.__name__
+    return
 
 @register.filter(name='get_profile_pic')
 def get_profile_pic(userId):

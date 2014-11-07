@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from github import Github
+#from github import Github
 from django.conf import settings
 
 def git_repos(request):

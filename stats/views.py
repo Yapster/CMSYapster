@@ -1,3 +1,5 @@
+from collections import OrderedDict
+from datetime import datetime
 from django.shortcuts import render_to_response, render
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
@@ -10,6 +12,7 @@ from chat.signals import *
 from yap.views import HomePageStatistics
 from cms_location.models import *
 from yap.models import *
+from yap.sub_views import get_home_data, get_users_data, get_yaps_data, get_country_data, get_hashtags_data, get_listens_data
 
 import logging
 
@@ -32,6 +35,7 @@ def homepage(request):
                                                "conversations": conversations,
                                                "user": request.user,
                                                "chaters": users})
+
 
 
 @login_required(login_url='/login/')
@@ -65,20 +69,44 @@ def stats_yaps(request):
                                                      "countries": countries,
                                                      "type": "yaps"})
 
+
 @csrf_exempt
-def more_data_usership(request):
+def home_stats(request):
+    """
+    Display stats for
+    """
+    #stats = HomePageStatistics.get_teasing_stats(request).data.items()
+    data = get_home_data()
+    print data
+    return render(request, 'sub_templates/home_stats.html', {"data": data})
+
+
+@csrf_exempt
+def more_data(request):
+    """
+    Called by Javascript load_col_stats()
+    Display one column of Data, depending one _time
+    if time_end == null => Now
+    :param request:
+    :return:
+    """
+
     specific_data = None
+    time_start = datetime.datetime.now() - datetime.timedelta(minutes=int(request.POST['time']))
+    # TODO: Get time_end and convert to date time
+    #if request.POST['time_end']:
+
+    kwargs = {"time_start": time_start}
     time = float(request.POST['time'])
     if request.POST['type_stats'] == 'usership':
-        specific_data = HomePageStatistics.get_users_stats(request, _time=time).data.items()
+        #specific_data = HomePageStatistics.get_users_stats(request, _time=time).data.items()
+        specific_data = get_users_data(**kwargs)
     elif request.POST['type_stats'] == 'yaps':
-        specific_data = HomePageStatistics.get_yaps_stats(request, _time=time).data.items()
-        if request.POST['type_time'] == 'min':
-            for key, value in specific_data:
-                print key
+        #specific_data = HomePageStatistics.get_yaps_stats(request, _time=time).data.items()
+        specific_data = get_yaps_data(**kwargs)
     return render(request,
                   'stats/sub_templates/col_stats_div.html',
-                  {"specific_datas": specific_data,
+                  {"specific_data": specific_data,
                    "type_time": request.POST['type_time']})
 
 @csrf_exempt
@@ -121,12 +149,43 @@ def search(request):
                                                 "conversations": conversations})
 
 
-def home_stats(request):
-    stats = HomePageStatistics.get_teasing_stats(request).data.items()
-    Yap.stats.yap_count()
 
 
-    return render(request, 'sub_templates/home_stats.html', {"stats": stats})
+
+@csrf_exempt
+def spec_stats(request):
+    """
+    get stats for a specific stat en return the graph
+    @:param start_time, end_time = for Graph if not, all time
+    @:param type_stats = User, Hashtag, Yap, Reyap...
+    @:return Html for one stat
+    """
+    global stat_method
+    data = []
+    if request.POST:
+        # Set parameters for method
+        kwargs = {'time_start': request.POST['time_start'],
+                  'time_end': request.POST['time_end'],
+                  'type_search': request.POST['type_search']}
+        name_method = request.POST['name_method']
+
+        if request.POST['type_stats'] == "User":
+            stat_method = getattr(UserManager, name_method)
+        elif request.POST['type_stats'] == "Country":
+            stat_method = getattr(CountryManager, name_method)
+        elif request.POST['type_stats'] == "Hashtag":
+            stat_method = getattr(HashtagManager, name_method)
+        elif request.POST['type_stats'] == "Listen":
+            stat_method = getattr(ListenManager, name_method)
+        elif request.POST['type_stats'] == "Yap":
+            stat_method = getattr(YapManager, name_method)
+        elif request.POST['type_stats'] == "Like":
+            stat_method = getattr(LikeManager, name_method)
+        elif request.POST['type_stats'] == "Reyap":
+            stat_method = getattr(ReyapManager, name_method)
+        data = stat_method(**kwargs)
+    return render(request, "stats/sub_templates/spec_stats.html", {"data": data})
+
 
 @csrf_exempt
 def location_option(request):

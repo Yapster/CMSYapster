@@ -7,6 +7,7 @@ import listings.urls
 import cms_channels.urls
 import cms_reports.urls
 import wiki.urls
+import stats.urls
 
 admin.autodiscover()
 
@@ -23,12 +24,9 @@ urlpatterns = patterns('',
                        url(r'^channels/', include(cms_channels.urls)),
                        url(r'^reports/', include(cms_reports.urls)),
                        url(r'^wiki/', include(wiki.urls)),
+                       url(r'^statistics/', include(stats.urls)),
                        url(r'^login/', 'admins.views.login_user'),
                        url(r'^home/', 'stats.views.homepage'),
-                       url(r'^statistics/usership/$', 'stats.views.stats_usership'),
-                       url(r'^statistics/usership/more_data/$', 'stats.views.more_data_usership'),
-                       url(r'^statistics/yaps/$', 'stats.views.stats_yaps'),
-                       url(r'^statistics/yaps/more_data/$', 'stats.views.more_data_yaps'),
                        url(r'^get/home_stats/$', 'stats.views.home_stats'),
                        url(r'^get/location_option/$', 'stats.views.location_option'),
                        url(r'^post/specific_search/$', 'stats.views.specific_search'),
