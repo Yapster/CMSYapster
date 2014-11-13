@@ -12,7 +12,7 @@ from chat.signals import *
 from yap.views import HomePageStatistics
 from cms_location.models import *
 from yap.models import *
-from yap.sub_views import get_home_data, get_users_data, get_yaps_data, get_country_data, get_hashtags_data, get_listens_data
+from yap.sub_views import get_home_data, get_users_data, get_yaps_data, get_country_data, get_hashtags_data, get_listens_data, get_reyaps_data
 
 import logging
 
@@ -70,6 +70,37 @@ def stats_yaps(request):
                                                      "type": "yaps"})
 
 
+@login_required(login_url='/login')
+@csrf_exempt
+def stats_reyaps(request):
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
+    announcements = Announcement.objects.all()
+
+    # Statistiques handling
+    countries = CmsCountry.objects.all()
+
+    return render(request, 'stats/statistics.html', {"announcements": announcements,
+                                                     "user": request.user,
+                                                     "conversations": conversations,
+                                                     "countries": countries,
+                                                     "type": "reyaps"})
+
+
+@login_required(login_url='/login')
+@csrf_exempt
+def stats_listens(request):
+    conversations = Conversation.objects.filter(users=request.user).order_by('-date_last_message')
+    announcements = Announcement.objects.all()
+
+    # Statistiques handling
+    countries = CmsCountry.objects.all()
+
+    return render(request, 'stats/statistics.html', {"announcements": announcements,
+                                                     "user": request.user,
+                                                     "conversations": conversations,
+                                                     "countries": countries,
+                                                     "type": "listens"})
+
 @csrf_exempt
 def home_stats(request):
     """
@@ -98,12 +129,21 @@ def more_data(request):
 
     kwargs = {"time_start": time_start}
     time = float(request.POST['time'])
-    if request.POST['type_stats'] == 'usership':
+    type_stats = request.POST['type_stats']
+    if type_stats == 'usership':
         #specific_data = HomePageStatistics.get_users_stats(request, _time=time).data.items()
         specific_data = get_users_data(**kwargs)
-    elif request.POST['type_stats'] == 'yaps':
+    elif type_stats == 'yaps':
         #specific_data = HomePageStatistics.get_yaps_stats(request, _time=time).data.items()
         specific_data = get_yaps_data(**kwargs)
+    elif type_stats  == 'reyaps':
+        specific_data = get_reyaps_data(**kwargs)
+    elif type_stats == 'listens':
+        specific_data = get_listens_data(**kwargs)
+    elif type_stats == 'countries':
+        specific_data = get_country_data(**kwargs)
+    elif type_stats == 'hashtags':
+        specific_data = get_hashtags_data(**kwargs)
     return render(request,
                   'stats/sub_templates/col_stats_div.html',
                   {"specific_data": specific_data,
@@ -123,7 +163,6 @@ def more_data_yaps(request):
                                                      "datas_year": datas_year,
                                                      "datas_month": datas_month,
                                                      "datas_week": datas_week})
-
 
 
 @login_required(login_url='/login/')
@@ -147,9 +186,6 @@ def search(request):
     return render(request, 'search/index.html',{"announcements": announcements,
                                                 "user": request.user,
                                                 "conversations": conversations})
-
-
-
 
 
 @csrf_exempt

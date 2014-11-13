@@ -161,7 +161,7 @@ function spec_stats(time_start, time_end, type_search, name_method, type_stats)
 
 $(document).ready(function() {
     // Preload 4 columns of stats
-    load_col_stats('1000000', 'total');
+    load_col_stats('0', 'total');
     load_col_stats('1', 'min');
     load_col_stats('60', 'hour');
     load_col_stats('1440', 'day');

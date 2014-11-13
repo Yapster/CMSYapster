@@ -34,8 +34,8 @@ class UserManager(models.Manager):
         :param time_end: Date end if interval
         :return: Int = Count users or Dictionary with count depending on start and end time
         """
-
-        users = self.using('ye_1_db_1')
+        print time_start
+        users = User.objects.using('ye_1_db_1').all()
 
         if type_search == "graph":
             data = []
@@ -51,7 +51,7 @@ class UserManager(models.Manager):
                 time = now - delta * i
                 data.append(users.filter(date_joined_lte=time).count())
             return data
-        return users.count()
+        return users.filter(date_joined__lte=time_start).count()
 
     def active_users_count(self,
                            type_search="now",
@@ -64,7 +64,7 @@ class UserManager(models.Manager):
         :param time_end: Date end if interval
         :return: Int = Count Active users
         """
-        return self.using('ye_1_db_1').filter(is_active=True).count()
+        return User.objects.using('ye_1_db_1').filter(is_active=True, date_joined__lte=time_start).count()
 
     def birthday_month_users(self,
                              type_search="now",
@@ -109,6 +109,7 @@ class UserManager(models.Manager):
                 continue
             data.append(u)
         return data
+
 
 class CountryManager(models.Manager):
     def top_countries(self,
@@ -160,37 +161,49 @@ class ListenManager(models.Manager):
                      type_search="now",
                      time_start=None,
                      time_end=None):
+        if time_start:
+            return self.filter(date_created__lte=time_start).count()
         return self.count()
 
     def active_listen_count(self,
                             type_search="now",
                             time_start=None,
                             time_end=None):
+        if time_start:
+            return self.filter(date_created__lte=time_start, is_active=True).count()
         return self.filter(is_active=True).count()
 
     def total_time_listened(self,
                             type_search="now",
                             time_start=None,
                             time_end=None):
-        return self.aggregate(Sum('time_listened'))
+        if time_start:
+            return round(self.filter(date_created__lte=time_start).aggregate(Sum('time_listened'))['time_listened__sum'], 3)
+        return round(self.aggregate(Sum('time_listened'))['time_listened__sum'], 3)
 
     def total_active_time_listened(self,
                                    type_search="now",
                                    time_start=None,
                                    time_end=None):
-        return self.filter(is_active=True).aggregate(Sum('time_listened'))
+        if time_start:
+            return round(self.filter(is_active=True, date_created__lte=time_start).aggregate(Sum('time_listened'))['time_listened__sum'], 3)
+        return round(self.filter(is_active=True).aggregate(Sum('time_listened'))['time_listened__sum'], 3)
 
     def average_time_listened(self,
                               type_search="now",
                               time_start=None,
                               time_end=None):
+        if time_start:
+            return round(self.filter(date_created__lte=time_start).aggregate(Avg('time_listened'))['time_listened__avg'], 3)
         return round(self.aggregate(Avg('time_listened'))['time_listened__avg'], 3)
 
     def average_active_time_listened(self,
                                      type_search="now",
                                      time_start=None,
                                      time_end=None):
-        return self.filter(is_active=True).aggregate(Avg('time_listened'))
+        if time_start:
+            return round(self.filter(is_active=True, date_created__lte=time_start).aggregate(Avg('time_listened'))['time_listened__avg'], 3)
+        return round(self.filter(is_active=True).aggregate(Avg('time_listened'))['time_listened__avg'], 3)
 
     def average_listens_per_user(self,
                                  type_search="now",
@@ -206,8 +219,12 @@ class ListenManager(models.Manager):
         :param users: Number of users
         :return: Return average listens per user
         """
-        listens = self.all()
-        users= User.using('ye_1_db_1').objects.all().count()
+        if time_start:
+            listens = self.filter(date_created__lte=time_start)
+            users = User.objects.using('ye_1_db_1').filter(date_joined_lte=time_start).count()
+        else:
+            listens = self.all()
+            users = User.objects.using('ye_1_db_1').all().count()
         return round(listens / users, 3)
 
     def average_active_listened_per_user(self,
@@ -217,7 +234,7 @@ class ListenManager(models.Manager):
                                          listens=None,
                                          users=None):
         listens = self.all()
-        users= User.using('ye_1_db_1').objects.all().count()
+        users= User.objects.using('ye_1_db_1').all().count()
         return round(listens/users, 3)
 
     def average_time_listened_per_user(self,
@@ -225,7 +242,7 @@ class ListenManager(models.Manager):
                                        time_start=None,
                                        time_end=None,
                                        users=None):
-        users = User.using('ye_1_db_1').objects.all().count()
+        users = User.objects.using('ye_1_db_1').all().count()
         return round(self.average_time_listened(type_search=type_search,
                                                 time_start=time_start,
                                                 time_end=time_end)/users, 3)
@@ -235,7 +252,7 @@ class ListenManager(models.Manager):
                                                      time_start=None,
                                                      time_end=None,
                                                      users=None):
-        users = User.using('ye_1_db_1').objects.all().count()
+        users = User.objects.using('ye_1_db_1').all().count()
         return round(self.average_time_listened(type_search=type_search,
                                                 time_start=time_start,
                                                 time_end=time_end)/users, 3)
@@ -250,13 +267,13 @@ class YapManager(models.Manager):
         if type_search == "full":
             data ={}
             return
-        return self.count()
+        return self.filter(date_created__lte=time_start).count()
 
     def active_yap_count(self,
                          type_search="now",
                          time_start=None,
                          time_end=None):
-        return self.filter(is_active=True).count()
+        return self.filter(is_active=True, date_created__lte=time_start).count()
 
     def total_time_yapped(self,
                           type_search="now",
@@ -264,33 +281,40 @@ class YapManager(models.Manager):
                           time_end=None,
                           yaps=None,
                           ):
-        yaps = self.all()
-        return yaps.aggregate(Sum('length'))['length__sum']
+        yaps = self.filter(date_created__lte=time_start)
+        if yaps:
+            return yaps.aggregate(Sum('length'))['length__sum']
+        return 0
 
     def total_active_time_yapped(self,
                                  type_search="now",
                                  time_start=None,
                                  time_end=None,
                                  yaps=None):
-        yaps = self.all()
-        return yaps.aggregate(Sum('length'))['length__sum']
+        yaps = self.filter(date_created__lte=time_start, is_active=True)
+        if yaps:
+            return yaps.aggregate(Sum('length'))['length__sum']
+        return 0
 
     def average_time_yapped(self,
                             type_search="now",
                             time_start=None,
                             time_end=None,
                             yaps=None):
-        yaps = self.all()
-
-        return yaps.aggregate(Sum('length'))['length__sum']
+        yaps = self.filter(date_created__lte=time_start)
+        if yaps:
+            return yaps.aggregate(Sum('length'))['length__sum']
+        return 0
 
     def average_active_time_yapped(self,
                                    type_search="now",
                                    time_start=None,
                                    time_end=None,
                                    yaps=None):
-        yaps = self.filter(is_active=True)
-        return yaps.aggregate(Sum('length'))['length__sum']
+        yaps = self.filter(date_created__lte=time_start, is_active=True)
+        if yaps:
+            return yaps.aggregate(Sum('length'))['length__sum']
+        return 0
 
     def average_yap_per_user(self,
                              type_search="now",
@@ -298,10 +322,12 @@ class YapManager(models.Manager):
                              time_end=None,
                              yaps=None,
                              users=None):
-        count_users = User.objects.using('ye_1_db_1').count()
-        return round(self.yap_count(type_search=type_search,
-                                    time_start=time_start,
-                                    time_end=time_end) / count_users)
+        count_users = User.objects.using('ye_1_db_1').filter(date_joined__lte=time_start).count()
+        if count_users:
+            return round(self.yap_count(type_search=type_search,
+                                        time_start=time_start,
+                                        time_end=time_end) / count_users)
+        return 0
 
 
 class LikeManager(models.Manager):
@@ -323,10 +349,22 @@ class ReyapManager(models.Manager):
                     type_search="now",
                     time_start=None,
                     time_end=None):
+        if time_start:
+            return self.filter(date_created__lte=time_start).count()
         return self.count()
 
     def active_reyap_count(self,
                            type_search="now",
                            time_start=None,
                            time_end=None):
+        if time_start:
+            return self.filter(is_active=True, date_created__lte=time_start).count()
         return self.filter(is_active=True).count()
+
+    def new_reyap_count(self,
+                        type_search="now",
+                        time_start=None,
+                        time_end=None):
+        if time_start:
+            return self.filter(date_created__gte=time_start).count()
+        return self.count()

@@ -8,7 +8,7 @@
                 <div class="cell">Total Number of Users</div>
                 <div class="cell">Total Number of Active Users</div>
                 <div class="cell">Total New Users</div>
-            {% else %}
+            {% elif type == "yaps" %}
                 <div class="cell">Total Number of Yaps</div>
                 <div class="cell">Total Number of Active Yaps</div>
                 <div class="cell">Total Time Yapped</div>
@@ -16,31 +16,51 @@
                 <div class="cell">Average Time Yapped</div>
                 <div class="cell">Average Active Time Yapped</div>
                 <div class="cell">Average Time Yapped per User</div>
-{##}
-{##}
-{#                <div class="cell">Hashtags</div>#}
-{#                <div class="cell">Total Number of Listens</div>#}
-{#                <div class="cell">Total Number of Active Listens</div>#}
-{##}
-{#                <div class="cell">Average Time Listened</div>#}
-{#                <div class="cell">Average Active Time Listened</div>#}
-{#                <div class="cell">Average Number of Listens per User</div>#}
-{#                <div class="cell">Average Number of Active Listens per User</div>#}
-{##}
-{#                <div class="cell">Total Number of Time Yapped</div>#}
-{#                <div class="cell">Total Number of Active Time Yapped</div>#}
-{#                <div class="cell">Average Number of Yaps per Users</div>#}
-{#                <div class="cell">Average Number of Active Yaps per Active Users</div>#}
-{#                <div class="cell">Average Number of Time Yapped per Users</div>#}
-{#                <div class="cell">Average Number of Active Time Yapped per Users</div>#}
-{#                <div class="cell">Total Number of Likes</div>#}
-{#                <div class="cell">Total Number of Active Likes</div>#}
-{#                <div class="cell">Average Number of Likes per User</div>#}
-{#                <div class="cell">Average Number of Active Likes per Active User</div>#}
-{#                <div class="cell">Total Number of Reyaps</div>#}
-{#                <div class="cell">Total Number of Active Reyaps</div>#}
-{#                <div class="cell">Average Number of Reyaps per User</div>#}
-{#                <div class="cell">Average Number of active Reyaps per active User</div>#}
+            {% elif type == "reyaps" %}
+                <div class="cell">Total Number of Reyaps</div>
+                <div class="cell">Total Number of active Reyaps</div>
+                <div class="cell">New Reyaps</div>
+            {% elif type == "listens" %}
+                <div class="cell">Total Number of Listens</div>
+                <div class="cell">Total Number of Active Listens</div>
+                <div class="cell">Total Listened Time</div>
+                <div class="cell">Total Active Time Listened</div>
+                <div class="cell">Average Time Listened</div>
+                <div class="cell">Average Active Time Listened</div>
+                <div class="cell">Average Time Listened Per User</div>
+            {% elif type == "countries" %}
+                <div class="cell">Total Number of Reyaps</div>
+                <div class="cell">Total Number of active Reyaps</div>
+                <div class="cell">New Reyaps</div>
+            {% elif type == "hashtags" %}
+                <div class="cell">Total Number of Reyaps</div>
+                <div class="cell">Total Number of active Reyaps</div>
+                <div class="cell">New Reyaps</div>
+                {##}
+                {##}
+                {#                <div class="cell">Hashtags</div>#}
+                {#                <div class="cell">Total Number of Listens</div>#}
+                {#                <div class="cell">Total Number of Active Listens</div>#}
+                {##}
+                {#                <div class="cell">Average Time Listened</div>#}
+                {#                <div class="cell">Average Active Time Listened</div>#}
+                {#                <div class="cell">Average Number of Listens per User</div>#}
+                {#                <div class="cell">Average Number of Active Listens per User</div>#}
+                {##}
+                {#                <div class="cell">Total Number of Time Yapped</div>#}
+                {#                <div class="cell">Total Number of Active Time Yapped</div>#}
+                {#                <div class="cell">Average Number of Yaps per Users</div>#}
+                {#                <div class="cell">Average Number of Active Yaps per Active Users</div>#}
+                {#                <div class="cell">Average Number of Time Yapped per Users</div>#}
+                {#                <div class="cell">Average Number of Active Time Yapped per Users</div>#}
+                {#                <div class="cell">Total Number of Likes</div>#}
+                {#                <div class="cell">Total Number of Active Likes</div>#}
+                {#                <div class="cell">Average Number of Likes per User</div>#}
+                {#                <div class="cell">Average Number of Active Likes per Active User</div>#}
+                {#                <div class="cell">Total Number of Reyaps</div>#}
+                {#                <div class="cell">Total Number of Active Reyaps</div>#}
+                {#                <div class="cell">Average Number of Reyaps per User</div>#}
+                {#                <div class="cell">Average Number of active Reyaps per active User</div>#}
             {% endif %}
         </div>
     </div>
