@@ -30,19 +30,17 @@ class CmsUser (models.Model):
         email = kwargs["email"]
         first_name = kwargs["first_name"]
         last_name = kwargs["last_name"]
-        try:
-            user = User.objects.create_user(username=username, email=email,
+
+        user = User.objects.create_user(username=username, email=email,
                                             password=password, first_name=first_name,
                                             last_name=last_name)
-        except:
-            return False
         kwargs["user"] = user
         group = None
-        try:
-            group = kwargs.pop('group')
-        except KeyError:
-            user.delete()
-            pass
+        # try:
+        #     group = kwargs.pop('group')
+        # except KeyError:
+        #     user.delete()
+        #     pass
         cmsuser = CmsUser.objects.create(**kwargs)
         if group:
             user.groups.add(group)

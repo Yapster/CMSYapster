@@ -107,7 +107,8 @@ def home_stats(request):
     Display stats for
     """
     #stats = HomePageStatistics.get_teasing_stats(request).data.items()
-    data = get_home_data()
+    kwargs = {"time_start": datetime.datetime.now()}
+    data = get_home_data(**kwargs)
     print data
     return render(request, 'sub_templates/home_stats.html', {"data": data})
 

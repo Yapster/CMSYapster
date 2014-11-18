@@ -115,6 +115,12 @@ function save_members(idMembersDiv, taskId)
         });
 }
 
+function toggle_div(divId)
+{
+    $("#" + divId).slideToggle("slow");
+}
+
+
 $(document).ready(function() {
     init();
     $( ".details_task_pop" ).dialog({ autoOpen: false });

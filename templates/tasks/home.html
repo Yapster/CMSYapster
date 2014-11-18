@@ -3,6 +3,7 @@
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static "css/tasks/main.css" %}" />
     <script type="text/javascript" src="{% static "js/tasks/tasks_main.js" %} "></script>
+    <script type="text/javascript" src="{% static "js/lib/jscolor.js" %}"></script>
 {% endblock %}
 {% block headbar %}
     <div id="headbar_empty">
@@ -11,6 +12,74 @@
 {% endblock %}
 {% block content %}
     <div id="content">
+        <div id="button_tasks">
+            <div id="create_task" class="button_form" onclick="toggle_div('new_task')">Create Task</div>
+            <div id="create_category" class="button_form" onclick="toggle_div('new_category')">Create Category</div>
+        </div>
+        <div id="new_task" style="display: none">
+            <div id="new_task_form">
+                <form method="post" action="/tasks/">
+                    <div class="line_form_task">
+                        <label for="name">New Task Name</label>
+                        <input id="name" name="name" class="input_task">
+                    </div>
+                    <div class="line_form_task">
+                        <label for="category">Type of Search</label>
+                        <select id="category" class="input_task" name="category">
+                            {% for c in categories %}
+                                <option value="{{ c.category_id }}">{{ c.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="line_form_task">
+                        <span>Users</span>
+                        {% for u in users %}
+                            <div class="input_task" id="checkbox_user_container">
+                                <input  name="workers[]" type="checkbox" value="{{ u.id }}">
+                                <label for="workers[]">{{ u }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="line_form_task">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" class="input_task"></textarea>
+                    </div>
+                    <div class="line_form_task">
+                        <label for="is_public">Is Public</label>
+                        <input type="checkbox" id="is_public" name="is_public" class="input_task">
+                    </div>
+                    <div class="line_form_task">
+                        <button type="submit" id="create_task_button" class="button_form">Create Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div id="new_category" style="display: none">
+            <div id="new_category_form">
+                <form method="post" action="/tasks/">
+                    <div class="line_form_category">
+                        <label for="name">New Category Name</label>
+                        <input id="name" name="name" class="input_category">
+                    </div>
+                    <div class="line_form_category">
+                        <label for="color">Color</label>
+                        <input class="color input_category" id="color" name="color" value="66ff00">
+                    </div>
+                    <div class="line_form_category">
+                        <label for="is_public">Is Public</label>
+                        <input type="checkbox" id="is_public" name="is_public" class="input_category">
+                    </div>
+                    <div class="line_form_category">
+                        <button type="submit" id="create_category_button" class="button_form">Create Category</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
         <div id="categories_manager">
             <div id="categories_toggle">
                 {% for c in categories %}
@@ -40,9 +109,9 @@
                     <span class="title_header">todo</span>
                 </div>
                 <div id="container_todo" class="container_tasks">
-                {% for task in todo_tasks %}
-                  {% include "tasks/task.html" %}
-                {% endfor %}
+                    {% for task in todo_tasks %}
+                        {% include "tasks/task.html" %}
+                    {% endfor %}
                 </div>
             </div>
             <div id="inprogress" class="main_col droppable">
@@ -50,22 +119,21 @@
                     <span class="title_header">in progress</span>
                 </div>
                 <div id="container_inprogress" class="container_tasks">
-                {% for task in inprogress_tasks %}
-                  {% include "tasks/task.html" %}
-                {% endfor %}
-            </div>
+                    {% for task in inprogress_tasks %}
+                        {% include "tasks/task.html" %}
+                    {% endfor %}
+                </div>
             </div>
             <div id="done" class="main_col droppable">
                 <div id="header_done" class="header_tasks">
                     <span class="title_header">done</span>
                 </div>
                 <div id="container_done" class="container_tasks">
-                {% for task in done_tasks %}
-                  {% include "tasks/task.html" %}
-                {% endfor %}
+                    {% for task in done_tasks %}
+                        {% include "tasks/task.html" %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
-
     </div>
 {% endblock %}

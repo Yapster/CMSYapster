@@ -7,11 +7,28 @@ from django.db.models import Q
 @active_and_login_required
 @csrf_exempt
 def tasks(request):
-    todo_tasks = Task.objects.filter(Q(is_public=True)|Q(workers=request.user), status='TO')
-    inprogress_tasks = Task.objects.filter(Q(is_public=True)|Q(workers=request.user), status='IP')
-    done_tasks = Task.objects.filter(Q(is_public=True)|Q(workers=request.user), status='DO')
+    if request.POST:
+        is_public = False
+        if 'is_public' in request.POST:
+            is_public = True
+
+        if 'color' in request.POST:
+            Category.objects.create(name=request.POST['name'],
+                                    color=request.POST['color'],
+                                    is_public=is_public,
+                                    owner_category=request.user)
+        else:
+            Task.objects.new_task(name=request.POST['name'],
+                                  workers=request.POST.getlist('workers[]'),
+                                  category=Category.objects.get(pk=int(request.POST['category'])),
+                                  description=request.POST['description'],
+                                  is_public=is_public)
+
+    todo_tasks = Task.objects.filter(Q(is_public=True) | Q(workers=request.user), status='TO')
+    inprogress_tasks = Task.objects.filter(Q(is_public=True) | Q(workers=request.user), status='IP')
+    done_tasks = Task.objects.filter(Q(is_public=True) | Q(workers=request.user), status='DO')
     users = User.objects.all()
-    categories = Category.objects.all()
+    categories = Category.objects.filter(Q(is_public=True) | Q(owner_category=request.user))
 
     return render(request,
                   "tasks/home.html",
@@ -50,7 +67,7 @@ def new_note(request):
         note = TaskNote.objects.create(**kwargs)
     return render(request,
                   "tasks/new_note.html",
-                  {"note":note,
+                  {"note": note,
                    "user": request.user})
 
 @csrf_exempt

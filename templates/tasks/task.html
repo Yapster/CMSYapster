@@ -1,4 +1,4 @@
-<div class="task draggable category_{{ task.category.category_id }} {% if task.is_public %}public{% endif %}" id="{{ task.task_id }}" style="color: #{{ task.category.color }}">
+<div class="task draggable category_{{ task.category.category_id }} {% if task.is_public %}public{% endif %}" id="{{ task.task_id }}" style="background-color: #{{ task.category.color }}">
     <div class="header_task">
         <span class="priority_task">{{ task.priority }}</span>
         <span class="title_task">{{ task.name }}</span>

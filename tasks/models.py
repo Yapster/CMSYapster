@@ -7,10 +7,19 @@ class Category(models.Model):
     category_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=24)
     color = models.CharField(max_length=6)
+    owner_category = models.ForeignKey(to=User, related_name='tasks_categories')
+    is_public = models.BooleanField(default=False)
+
 
 
 class TaskManager(models.Manager):
-    def new_task(self, workers=[], **kwargs):
+    def new_task(self, **kwargs):
+        workers = []
+        try:
+            for w in kwargs.pop('workers'):
+                workers.append(User.objects.get(pk=int(w)))
+        except:
+            pass
         new = self.create(**kwargs)
         for worker in workers:
             new.workers.add(worker)

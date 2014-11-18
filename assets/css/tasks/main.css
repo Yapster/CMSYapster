@@ -1,11 +1,17 @@
 /*main css*/
 
+body {
+    height: initial;
+}
+
 #content {
     margin-top: 38px;
     height: 100%;
 }
 #cols {
     height: 100%;
+    float: left;
+    width: 100%;
 }
 
 .main_col {
@@ -13,7 +19,7 @@
     float: left;
     text-align: center;
     height: 100%;
-
+    padding-bottom: 100px;
 }
 
 #todo {
@@ -76,6 +82,7 @@
 
 .title_task {
     text-align: center;
+    line-height: 25px;
 }
 
 .label_detail_task {
@@ -95,9 +102,9 @@
 }
 
 .details_task_icone {
-    background-position: 44% 30%;
-    width: 20px;
-    height: 20px;
+    background-position: 56.6% 56.2%;
+    width: 25px;
+    height: 25px;
     float: right;
 }
 
@@ -115,7 +122,7 @@
 }
 
 .category {
-    margin-bottom: 1px;
+    margin-bottom: 2px;
 }
 
 .category:hover, .option_task:hover{
@@ -169,4 +176,66 @@
     height: 20px;
     float: left;
     margin-right: 8px;
+}
+
+#new_task {
+    float: left;
+    margin-bottom: 10px;
+}
+
+#button_tasks {
+    float: left;
+    width: 100%;
+}
+
+#create_task {
+    line-height: 25px;
+    padding: 4px;
+    text-align: center;
+    width: 120px;
+    float: left;
+}
+
+#create_category {
+    line-height: 25px;
+    padding: 4px;
+    text-align: center;
+    width: 120px;
+    float: left;
+}
+
+#new_task_form, #new_category_form {
+    padding: 10px;
+    width: 300px;
+    border: 1px black solid;
+    float: left;
+}
+
+#create_task_button {
+    width: 100px;
+}
+
+.line_form_task, .line_form_category {
+    width: 300px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: 11px;
+    float: left;
+}
+
+.input_task, .input_category {
+    float: right;
+}
+
+#checkbox_user_container {
+    width: 174px;
+}
+
+#description {
+    width: 170px;
+    height: 80px;
+}
+
+#create_category_button {
+    width: 120px;
 }

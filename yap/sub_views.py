@@ -3,13 +3,13 @@ from yap.models import Yap, Listen, Hashtag, Reyap, Like
 from users.models import UserInfo
 user_manager = UserManager()
 
-def get_home_data():
+def get_home_data(**kwargs):
     data = []
-    data.append({"Yap Count": Yap.stats.yap_count()})
-    data.append({"Total Number of Active Users": UserInfo.stats.active_users_count()})
-    data.append({"Total Number of Listens": Listen.stats.listen_count()})
-    data.append({"Average Time Listened": Listen.stats.average_time_listened()})
-    data.append({"Trending Hashtags": Hashtag.stats.top_hashtags(amount=5)})
+    data.append({"Yap Count": Yap.stats.yap_count(**kwargs)})
+    data.append({"Total Number of Active Users": UserInfo.stats.active_users_count(**kwargs)})
+    data.append({"Total Number of Listens": Listen.stats.listen_count(**kwargs)})
+    data.append({"Average Time Listened": Listen.stats.average_time_listened(**kwargs)})
+    data.append({"Trending Hashtags": Hashtag.stats.top_hashtags(amount=5, **kwargs)})
 
     return data
 

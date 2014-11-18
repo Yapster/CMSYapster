@@ -7,7 +7,7 @@ from contacts.models import Contact, List
 from yap.models import Channel
 from tasks.models import *
 from cms_search_log.models import *
-#from calendars.models import *
+from calendars.models import *
 from wiki.models import *
 from datetime import datetime
 from django.contrib.auth.models import User, Permission, Group
@@ -168,10 +168,10 @@ class Recover(models.Model):
 
         c2.lists.add(l2)
 
-        c1 = Category.objects.create(name="Bug")
-        c2 = Category.objects.create(name="Feature")
-        c3 = Category.objects.create(name="Design")
-        c4 = Category.objects.create(name="Brainstorming")
+        c1 = Category.objects.create(name="Bug", color="0000FF", owner_category=user, is_public=True)
+        c2 = Category.objects.create(name="Feature", color="00FF00", owner_category=user, is_public=True)
+        c3 = Category.objects.create(name="Design", color="FF0000", owner_category=user, is_public=True)
+        c4 = Category.objects.create(name="Brainstorming", color="FFFF00", owner_category=user, is_public=True)
 
         t1 = Task.objects.new_task(name="Bug IOS", description="Lorem ipsum dolor sit amet", category=c1, deadline=datetime(2014, 9, 3), priority=1, status='TO')
         t2 = Task.objects.new_task(name="New Tab Bar", description="Lorem ipsum dolor sit amet, ", category=c2, deadline=datetime(2014, 9, 2), priority=2, status='IP')
