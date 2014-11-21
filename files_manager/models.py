@@ -5,6 +5,7 @@ from django import forms
 from django.conf import settings
 from admins.models import CmsUser
 from chat.models import Conversation
+from tools.tools import *
 import logging
 
 logger = logging.getLogger(__name__)
@@ -54,8 +55,7 @@ class FileManager(models.Model):
         """
         Store the file into S3. Return Something if success/ False if not
         """
-        c = boto.connect_s3()
-        b = c.get_bucket(bucket)
+        b = boto_init_s3(bucket)
         if b:
             k = b.get_key(path_bucket)
             if not k:
@@ -79,8 +79,7 @@ class FileManager(models.Model):
         """
         Get a file from S3
         """
-        c = boto.connect_s3()
-        b = c.get_bucket('yapstercms')
+        b = boto_init_s3(settings.BUCKET_NAME)
         if b:
             try:
                 p = ProfilePicture.objects.get(is_current=True, user_id=user)
@@ -96,8 +95,8 @@ class FileManager(models.Model):
         """
         Get all profile pictures from a user
         """
-        c = boto.connect_s3()
-        b = c.get_bucket(settings.BUCKET_NAME)
+        b = boto_init_s3(settings.BUCKET_NAME)
+
         if b:
             urls = {}
             for picture in pictures:

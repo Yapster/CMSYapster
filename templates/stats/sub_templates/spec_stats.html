@@ -1,3 +1,27 @@
-<div class="one_stat" id="">
+{% load dictionary_extras %}
+<script>
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['x', 'y'],
+            {% for cuple in data %}
+                ['{{ cuple|get_first }}', {{ cuple|get_second }}],
+            {% endfor %}
+        ]);
 
-</div>
+        var options = {
+            title: '{{ title }}: {{ time_start }} to {{ time_end }}'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('graph'));
+        $('#method_name').val('{{ title }}');
+        $('#type_stats').val('{{ type_stats }}');
+
+        chart.draw(data, options);
+    }
+    drawChart();
+    $(document).ready(function () {
+        $(window).resize(function(){
+            drawChart();
+        });
+    });
+</script>

@@ -11,8 +11,8 @@ from location.models import *
 from chat.signals import *
 from yap.views import HomePageStatistics
 from cms_location.models import *
-from yap.models import *
 from yap.sub_views import get_home_data, get_users_data, get_yaps_data, get_country_data, get_hashtags_data, get_listens_data, get_reyaps_data
+from stats.tools import *
 
 import logging
 
@@ -35,7 +35,6 @@ def homepage(request):
                                                "conversations": conversations,
                                                "user": request.user,
                                                "chaters": users})
-
 
 
 @login_required(login_url='/login/')
@@ -148,7 +147,10 @@ def more_data(request):
     return render(request,
                   'stats/sub_templates/col_stats_div.html',
                   {"specific_data": specific_data,
-                   "type_time": request.POST['type_time']})
+                   "type_time": request.POST['type_time'],
+                   "interval": request.POST['time'],
+                   "type_stats": request.POST['type_stats']})
+
 
 @csrf_exempt
 def more_data_yaps(request):
@@ -201,27 +203,46 @@ def spec_stats(request):
     data = []
     if request.POST:
         # Set parameters for method
-        kwargs = {'time_start': request.POST['time_start'],
-                  'time_end': request.POST['time_end'],
-                  'type_search': request.POST['type_search']}
-        name_method = request.POST['name_method']
 
-        if request.POST['type_stats'] == "User":
-            stat_method = getattr(UserManager, name_method)
-        elif request.POST['type_stats'] == "Country":
-            stat_method = getattr(CountryManager, name_method)
-        elif request.POST['type_stats'] == "Hashtag":
-            stat_method = getattr(HashtagManager, name_method)
-        elif request.POST['type_stats'] == "Listen":
-            stat_method = getattr(ListenManager, name_method)
-        elif request.POST['type_stats'] == "Yap":
-            stat_method = getattr(YapManager, name_method)
-        elif request.POST['type_stats'] == "Like":
-            stat_method = getattr(LikeManager, name_method)
-        elif request.POST['type_stats'] == "Reyap":
-            stat_method = getattr(ReyapManager, name_method)
+        now = datetime.datetime.now()
+        time_start = now - datetime.timedelta(minutes=int(request.POST['time_start']))
+        if 'time_end' not in request.POST:
+            time_end = now
+        else:
+            time_end = now - datetime.timedelta(minutes=int(request.POST['time_end']))
+        kwargs = {'time_start': time_start,
+                  'time_end': time_end,
+                  'type_search': request.POST['type_search']}
+
+        stat_method = get_stat_method(request.POST['name_method'], request.POST['type_stats'])
         data = stat_method(**kwargs)
-    return render(request, "stats/sub_templates/spec_stats.html", {"data": data})
+    return render(request, "stats/sub_templates/spec_stats.html", {"data": data,
+                                                                   "title": request.POST['name_method'],
+                                                                   "time_start": time_start,
+                                                                   "time_end": time_end,
+                                                                   "type_stats": request.POST['type_stats']})
+
+
+@csrf_exempt
+def custom_graph(request):
+    """
+    Return graph with specific start and end datetime, accuracy
+    """
+    global stat_method
+    stat_method = get_stat_method(request.POST['name_method'], request.POST['type_stats'])
+    time_start = get_time(request.POST['date_start'], request.POST['time_start'])
+    time_end = get_time(request.POST['date_end'], request.POST['time_end'])
+    kwargs = {
+        'time_start': time_start,
+        'time_end': time_end,
+        'type_search': request.POST['type_search'],
+        'accuracy': int(request.POST['accuracy'])}
+
+    data = stat_method(**kwargs)
+    return render(request, "stats/sub_templates/spec_stats.html", {"data": data,
+                                                                   "title": request.POST['name_method'],
+                                                                   "time_start": time_start,
+                                                                   "time_end": time_end})
 
 
 @csrf_exempt
@@ -241,6 +262,7 @@ def location_option(request):
             return False
         return render(request, 'stats/location_option.html', {"cities": cities})
     return
+
 
 @csrf_exempt
 def specific_search(request):
@@ -272,6 +294,30 @@ def specific_search(request):
                                                           min_age=request.POST['from_age'],
                                                           max_age=request.POST['to_age'])
     return render(request, 'stats/specific_search.html', {"new_data": new_data})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     # @login_required(login_url='/login/')
     # def hashtag(request, tag):

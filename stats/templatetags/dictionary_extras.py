@@ -5,9 +5,23 @@ from django.shortcuts import render, render_to_response
 from django.template.response import SimpleTemplateResponse
 from files_manager.models import FileManager
 from django.template.loader import render_to_string
-import boto
+from tools.tools import *
 
 register = template.Library()
+
+@register.filter(name='get_first')
+def get_first(c):
+    try:
+        return c[0]
+    except KeyError:
+        return ''
+
+@register.filter(name='get_second')
+def get_second(c):
+    try:
+        return c[1]
+    except KeyError:
+        return ''
 
 @register.filter(name='get_key')
 def get_key(d):
@@ -54,8 +68,7 @@ def get_profile_pic(userId):
 @register.filter(name='get_url_yapsterapp_s3')
 def get_url_yapsterapp_s3(path):
     if path:
-        c = boto.connect_s3()
-        b = c.get_bucket('yapsterapp')
+        b = boto_init_s3('yapsterapp')
         if b:
             try:
                 return b.get_key(path).generate_url(expires_in=600)

@@ -12,4 +12,5 @@ urlpatterns = patterns(
     # url(r'^databases/$', 'stats.views.stats_databases'),
     url(r'^yaps/more_data/$', 'stats.views.more_data_yaps'),
     url(r'spec_stats/', 'stats.views.spec_stats'),
+    url(r'custom_graph/', 'stats.views.custom_graph'),
     )

@@ -7,11 +7,13 @@ import boto.ec2.cloudwatch
 import datetime
 from django.views.decorators.csrf import csrf_exempt
 import collections
+from tools.tools import *
+
 
 @login_required(login_url='/login/')
 def home_database(request):
-    conn = boto.rds.connect_to_region("us-east-1")
-    cw = boto.ec2.cloudwatch.connect_to_region("us-east-1")
+    conn = boto_init_rds()
+    cw = boto_init_ec2()
     instances = conn.get_all_dbinstances()
     rds_hosts = {}
     rds_ports = {}
@@ -33,9 +35,9 @@ def home_database(request):
 
 @login_required(login_url='/login/')
 def home_server(request):
-    conn2 = boto.ec2.connect_to_region("us-east-1")
+    conn2 = boto_init_ec2()
     ec2reservations = conn2.get_all_instances()
-    cw = boto.ec2.cloudwatch.connect_to_region("us-east-1")
+    cw = boto_init_rds()
     ec2instances = []
     list_metrics = None
     for reservation in ec2reservations:
@@ -52,7 +54,7 @@ def home_server(request):
 
 @login_required(login_url='/login/')
 def rds_details(request, instance):
-    cw = boto.ec2.cloudwatch.connect_to_region("us-east-1")
+    cw = boto_init_ec2()
     list_metrics = cw.list_metrics(dimensions={'DBInstanceIdentifier':[instance]},namespace="AWS/RDS")
     list_metrics.sort(key=lambda r:r.name)
     return render(request,
@@ -62,7 +64,7 @@ def rds_details(request, instance):
 
 
 def ec2_details(request, instance):
-    cw = boto.ec2.cloudwatch.connect_to_region("us-east-1")
+    cw = boto_init_ec2()
     list_metrics = cw.list_metrics(dimensions={'InstanceId':[instance]},namespace="AWS/EC2")
     list_metrics.sort(key=lambda r:r.name)
     return render(request,
@@ -76,7 +78,7 @@ def ec2_details(request, instance):
 def graphs_rds(request):
     if 'instances[]' in request.POST:
         l_instances = request.POST.getlist('instances[]')
-        cw = boto.ec2.cloudwatch.connect_to_region("us-east-1")
+        cw = boto_init_ec2()
         dic = collections.OrderedDict()
         first = True
         unit = "Unknown"
@@ -114,7 +116,7 @@ def graphs_rds(request):
 def display_one_graph_rds(request):
     if 'time_graph' in request.POST:
         # Get Metric from AWS
-        cw = boto.ec2.cloudwatch.connect_to_region("us-east-1")
+        cw = boto_init_ec2()
         metric = cw.list_metrics(metric_name=request.POST['type_search'], dimensions={'DBInstanceIdentifier':[request.POST['instance']]},namespace="AWS/RDS")[0]
         data = metric.query(datetime.datetime.utcnow() - datetime.timedelta(minutes=int(request.POST['type_time'])),
                             datetime.datetime.utcnow(),

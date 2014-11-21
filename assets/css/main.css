@@ -548,12 +548,9 @@ table tr td:last-child,table tr th:last-child{
 /* Users listing*/
 
 .users_listing {
+    float:left;
 }
 
-#left_side_users_listing {
-    width: 45%;
-    float: left;
-}
 
 #header_users_listing, .header_user_details {
     margin-top: 20px;
@@ -586,7 +583,7 @@ table tr td:last-child,table tr th:last-child{
 }
 
 .upper_user {
-    width: 400px;
+    width: 390px;
 }
 
 .picture_profile_container{
@@ -634,7 +631,6 @@ table tr td:last-child,table tr th:last-child{
 .details_button {
     margin-top: 5px;
     float:right;
-    margin-left: 33px;
 }
 
 .text_stats {

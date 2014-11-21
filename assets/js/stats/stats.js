@@ -114,6 +114,7 @@ function display_yaps(key, title)
 }
 
 
+
 // Display one column of stats
 function load_col_stats(time, type_time)
 {
@@ -131,6 +132,7 @@ function load_col_stats(time, type_time)
         type : "POST",
         success: function(newData){
             if (newData) {
+
                 $('#' + type_time).html(newData).show("slow");
             }
         }
@@ -138,13 +140,15 @@ function load_col_stats(time, type_time)
 }
 
 
+
+
 // Ajax Query for one stat
 function spec_stats(time_start, time_end, type_search, name_method, type_stats)
 {
+    $('#graph').html("LOADING");
     $.ajax({
         data : {
             time_start: time_start,
-            time_end: time_end,
             type_search: type_search,
             name_method: name_method,
             type_stats: type_stats
@@ -153,11 +157,38 @@ function spec_stats(time_start, time_end, type_search, name_method, type_stats)
         type : "POST",
         success: function(newData){
             if (newData) {
-
+                $("#graph").html(newData);
+                $("#graph_stats").show()
             }
         }
     });
 }
+
+function custom_graph(type_search, type_stats)
+{
+    $('#graph').html("LOADING");
+    $.ajax({
+        data : {
+            time_start: $('#time_start').val(),
+            time_end: $('#time_end').val(),
+            date_start: $('#date_start').val(),
+            date_end: $('#date_end').val(),
+            type_search: type_search,
+            name_method: $('#method_name').val(),
+            type_stats: $('#type_stats').val(),
+            accuracy: $('#accuracy').val()
+        },
+        url : "/statistics/custom_graph/",
+        type : "POST",
+        success: function(newData){
+            if (newData) {
+                $("#graph").html(newData);
+                $("#graph_stats").show()
+            }
+        }
+    });
+}
+
 
 $(document).ready(function() {
     // Preload 4 columns of stats
@@ -213,7 +244,6 @@ $(document).ready(function() {
         });
         return false;
     });
-
     // More stats to display
     $("#more_tab").click(function(e) {
         $("#more_col").remove();

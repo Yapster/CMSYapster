@@ -1,6 +1,8 @@
 #stats_headbar {
     height: 38px;
     background-color: #000000;
+    line-height: 38px;
+    font-size: 13px;
 }
 
 #content {
@@ -50,6 +52,14 @@
 }
 
 #stats{
+}
+
+#graph_stats {
+    float: left;
+    width: 100%;
+}
+
+#graph {
 }
 
 #all_stats {
@@ -165,6 +175,11 @@ table tr td {
     white-space: nowrap;
 }
 
+.cell:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .tab_icone {
     margin-bottom: 10px;
     cursor: pointer;
@@ -176,4 +191,8 @@ table tr td {
 .tab_headbar{
     color: white;
     margin-left: 40px;
+}
+
+#go_graph {
+
 }

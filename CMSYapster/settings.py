@@ -63,6 +63,7 @@ INSTALLED_APPS = (
     'oauth2client',
     'schedule',
 
+    'tools',
 
     'admins',
     'announcements',

@@ -1,7 +1,7 @@
 {% load dictionary_extras %}
 {% for stat in specific_data %}
     <div class="cell">
-        <div class="results_table">{{ stat|get_value }}</div>
+        <div class="results_table" onclick="spec_stats({{ interval }}, 0, 'graph', '{{ stat|get_key }}', '{{ type_stats }}')">{{ stat|get_value }}</div>
         {#        {% if stat|get_key == 'Hashtags' %}#}
         {#            {% if value %}#}
         {#                {% for hashtag in stat|get_value %}#}

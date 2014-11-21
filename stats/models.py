@@ -1,8 +1,11 @@
-from yap.models import *
+from yap.models import Yap, Country, Like, Listen, Reyap
 from django.contrib.gis.db import models
 from django.db.models import Sum, Count, Avg
+from django.contrib.auth.models import User
+from operator import attrgetter
 import operator
 import datetime
+
 
 
 
@@ -22,8 +25,8 @@ class UserManager(models.Manager):
     """
     UserManager for stats
     """
-    def users_count(self,
-                    type_search="now",
+    @staticmethod
+    def users_count(type_search="now",
                     time_start=None,
                     time_end=None,
                     accuracy=10):
@@ -32,31 +35,31 @@ class UserManager(models.Manager):
         :param type_search: If Now or on an interval
         :param time_start: Date begin if interval
         :param time_end: Date end if interval
-        :return: Int = Count users or Dictionary with count depending on start and end time
+        :return: Normal = Count users or Dictionary with count depending on start and end time
+                 Graph Case = List of couple (date, data). Example: data = [(datetime.now, '12'), (datetime.now - 2, '14')
         """
-        print time_start
         users = User.objects.using('ye_1_db_1').all()
 
         if type_search == "graph":
             data = []
-            delta = datetime.timedelta(minutes=time_start)/accuracy
             # Not time_end => From Start date to now
             if not time_end:
-                now = datetime.datetime.now()
-            else:
-                now = time_end
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
             i = 0
             while i < accuracy:
                 i += 1
-                time = now - delta * i
-                data.append(users.filter(date_joined_lte=time).count())
+                time = time_start - delta * i
+                data.append((time, users.filter(date_joined__lte=time).count()))
             return data
         return users.filter(date_joined__lte=time_start).count()
 
-    def active_users_count(self,
-                           type_search="now",
+
+    @staticmethod
+    def active_users_count(type_search="now",
                            time_start=None,
-                           time_end=None):
+                           time_end=None,
+                           accuracy=10):
         """
         Count Active users
         :param type_search: If Now or on an interval
@@ -64,21 +67,28 @@ class UserManager(models.Manager):
         :param time_end: Date end if interval
         :return: Int = Count Active users
         """
-        return User.objects.using('ye_1_db_1').filter(is_active=True, date_joined__lte=time_start).count()
+        users = User.objects.using('ye_1_db_1').filter(is_active=True)
 
-    def birthday_month_users(self,
-                             type_search="now",
-                             time_start=None,
-                             time_end=None):
         if type_search == "graph":
-            return
-        users = User.objects.using('ye_1_db_1').all()
-        return users.filter(profile__date_of_birth=datetime.date.today()).count()
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                data.append((time, users.filter(date_joined__lte=time).count()))
+            return data
+        return users.filter(date_joined__lte=time_start).count()
 
-    def new_users_count(self,
-                        type_search="now",
+
+    @staticmethod
+    def new_users_count(type_search="now",
                         time_start=None,
-                        time_end=None):
+                        time_end=None,
+                        accuracy=10):
         """
         Count New users from time_start to time_end.
         :param type_search: If Now or on an interval
@@ -86,9 +96,20 @@ class UserManager(models.Manager):
         :param time_end: Date end if interval. if time_end == empty: time_end = Now
         :return: Int = Count New users
         """
-
-        #time = time_end - time_start
         users = User.objects.using('ye_1_db_1').all()
+
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                data.append((time, users.filter(date_joined__gte=time).count()))
+            return data
         return users.filter(date_joined__gte=time_start).count()
 
     def to_push_notify(self,
@@ -109,6 +130,16 @@ class UserManager(models.Manager):
                 continue
             data.append(u)
         return data
+
+    @staticmethod
+    def birthday_month_users(self,
+                             type_search="now",
+                             time_start=None,
+                             time_end=None):
+        if type_search == "graph":
+            return
+        users = User.objects.using('ye_1_db_1').all()
+        return users.filter(profile__date_of_birth=datetime.date.today()).count()
 
 
 class CountryManager(models.Manager):
@@ -259,83 +290,170 @@ class ListenManager(models.Manager):
 
 
 class YapManager(models.Manager):
-    def yap_count(self,
-                  type_search="now",
+
+    @staticmethod
+    def yap_count(type_search="now",
                   time_start=None,
-                  time_end=None):
+                  time_end=None,
+                  accuracy=10):
+        yaps = Yap.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                data.append((time, yaps.filter(date_created__lte=time).count()))
+            return data
+        return yaps.filter(date_created__lte=time_start).count()
 
-        if type_search == "full":
-            data ={}
-            return
-        return self.filter(date_created__lte=time_start).count()
-
-    def active_yap_count(self,
-                         type_search="now",
+    @staticmethod
+    def active_yap_count(type_search="now",
                          time_start=None,
-                         time_end=None):
-        return self.filter(is_active=True, date_created__lte=time_start).count()
+                         time_end=None,
+                         accuracy=10):
+        yaps = Yap.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                data.append((time, yaps.filter(is_active=True, date_created__lte=time).count()))
+            return data
+        return yaps.filter(is_active=True, date_created__lte=time_start).count()
 
-    def total_time_yapped(self,
-                          type_search="now",
+    @staticmethod
+    def total_time_yapped(type_search="now",
                           time_start=None,
                           time_end=None,
-                          yaps=None,
-                          ):
-        yaps = self.filter(date_created__lte=time_start)
+                          accuracy=10):
+        yaps = Yap.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                y = yaps.filter(date_created__lte=time)
+                if y:
+                    data.append((time, y.aggregate(Sum('length'))['length__sum']))
+                else:
+                    data.append((time, 0))
+            return data
         if yaps:
-            return yaps.aggregate(Sum('length'))['length__sum']
+            return yaps.filter(date_created__lte=time_start).aggregate(Sum('length'))['length__sum']
         return 0
 
-    def total_active_time_yapped(self,
-                                 type_search="now",
+    @staticmethod
+    def total_active_time_yapped(type_search="now",
                                  time_start=None,
                                  time_end=None,
-                                 yaps=None):
-        yaps = self.filter(date_created__lte=time_start, is_active=True)
-        if yaps:
-            return yaps.aggregate(Sum('length'))['length__sum']
+                                 accuracy=10):
+        yaps = Yap.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                y = yaps.filter(is_active=True, date_created__lte=time)
+                if y:
+                    data.append((time, y.aggregate(Sum('length'))['length__sum']))
+                else:
+                    data.append((time, 0))
+            return data
+        if yaps.filter(date_created__lte=time_start, is_active=True):
+            return yaps.filter(date_created__lte=time_start, is_active=True).aggregate(Sum('length'))['length__sum']
         return 0
 
-    def average_time_yapped(self,
-                            type_search="now",
+    @staticmethod
+    def average_time_yapped(type_search="now",
                             time_start=None,
                             time_end=None,
-                            yaps=None):
-        yaps = self.filter(date_created__lte=time_start)
-        if yaps:
-            return yaps.aggregate(Sum('length'))['length__sum']
+                            accuracy=10):
+        yaps = Yap.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                y = yaps.filter(date_created__lte=time)
+                if y:
+                    data.append((time, round(y.aggregate(Avg('length'))['length__avg']), 3))
+                else:
+                    data.append((time, 0))
+            return data
+        if yaps.filter(date_created__lte=time_start):
+            return round(yaps.filter(date_created__lte=time_start).aggregate(Avg('length'))['length__avg'], 3)
         return 0
 
-    def average_active_time_yapped(self,
-                                   type_search="now",
+    @staticmethod
+    def average_active_time_yapped(type_search="now",
                                    time_start=None,
                                    time_end=None,
-                                   yaps=None):
-        yaps = self.filter(date_created__lte=time_start, is_active=True)
-        if yaps:
-            return yaps.aggregate(Sum('length'))['length__sum']
+                                   accuracy=10):
+        yaps = Yap.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                y = yaps.filter(date_created__lte=time, is_active=True)
+                if y:
+                    data.append((time, round(y.aggregate(Avg('length'))['length__avg'], 3)))
+                else:
+                    data.append((time, 0))
+            return data
+        if yaps.filter(date_created__lte=time_start, is_active=True):
+            return round(yaps.aggregate(Avg('length'))['length__avg'], 3)
         return 0
 
-    def average_yap_per_user(self,
-                             type_search="now",
+    @staticmethod
+    def average_yap_per_user(type_search="now",
                              time_start=None,
                              time_end=None,
-                             yaps=None,
-                             users=None):
+                             accuracy=10):
         count_users = User.objects.using('ye_1_db_1').filter(date_joined__lte=time_start).count()
         if count_users:
-            return round(self.yap_count(type_search=type_search,
-                                        time_start=time_start,
-                                        time_end=time_end) / count_users)
+            return round(YapManager.yap_count(type_search=type_search,
+                                              time_start=time_start,
+                                              time_end=time_end) / count_users, 3)
         return 0
 
 
 class LikeManager(models.Manager):
-    def like_count(self,
-                   type_search="now",
+    def like_count(type_search="now",
                    time_start=None,
-                   time_end=None):
-        return self.count()
+                   time_end=None,
+                   accuracy=10):
+        return Like.objects.count()
 
     def active_like_count(self,
                           type_search="now",
@@ -351,20 +469,20 @@ class ReyapManager(models.Manager):
                     time_end=None):
         if time_start:
             return self.filter(date_created__lte=time_start).count()
-        return self.count()
+        return Like.objects.count()
 
     def active_reyap_count(self,
                            type_search="now",
                            time_start=None,
                            time_end=None):
         if time_start:
-            return self.filter(is_active=True, date_created__lte=time_start).count()
-        return self.filter(is_active=True).count()
+            return Like.objects.filter(is_active=True, date_created__lte=time_start).count()
+        return Like.objects.filter(is_active=True).count()
 
     def new_reyap_count(self,
                         type_search="now",
                         time_start=None,
                         time_end=None):
         if time_start:
-            return self.filter(date_created__gte=time_start).count()
-        return self.count()
+            return Like.objects.filter(date_created__gte=time_start).count()
+        return Like.objects.count()

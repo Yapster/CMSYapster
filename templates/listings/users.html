@@ -1,15 +1,11 @@
 {% load dictionary_extras %}
 <div class="users_listing">
-    <div id="left_side_users_listing">
-        <div id="header_users_listing">
-            <span>{{ title }}: {{ users|length }}</span>
-        </div>
-        <div id="list_users_container">
-            {% for u in users %}
-                {% include "listings/user.html" %}
-            {% endfor %}
-        </div>
+    <div id="header_users_listing">
+        <span>{{ title }}: {{ users|length }}</span>
     </div>
-    <div id="right_side_users_listing" style="display: none">
+    <div id="list_users_container">
+        {% for u in users %}
+            {% include "listings/user.html" %}
+        {% endfor %}
     </div>
 </div>
