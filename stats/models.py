@@ -1,4 +1,4 @@
-from yap.models import Yap, Country, Like, Listen, Reyap
+from yap.models import Yap, Country, Like, Listen, Reyap, Hashtag
 from django.contrib.gis.db import models
 from django.db.models import Sum, Count, Avg
 from django.contrib.auth.models import User
@@ -168,8 +168,9 @@ class CountryManager(models.Manager):
 
 
 class HashtagManager(models.Manager):
-    def top_hashtags(self,
-                     type_search="now",
+
+    @staticmethod
+    def top_hashtags(type_search="now",
                      time_start=None,
                      time_end=None,
                      hashtags=None,
@@ -183,65 +184,170 @@ class HashtagManager(models.Manager):
         :param amount: Amount of hashtags needed
         :return:
         """
-        hashtags = self.all()
-        return sorted(set(hashtags),key=attrgetter('hashtag_name'))[:amount]
+        hashtags = Hashtag.objects.all()
+        return sorted(set(hashtags), key=attrgetter('hashtag_name'))[:amount]
 
 
 class ListenManager(models.Manager):
-    def listen_count(self,
-                     type_search="now",
+
+    @staticmethod
+    def listen_count(type_search="now",
                      time_start=None,
-                     time_end=None):
-        if time_start:
-            return self.filter(date_created__lte=time_start).count()
-        return self.count()
+                     time_end=None,
+                     accuracy=10):
+        listens = Listen.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                data.append((time, listens.filter(date_created__lte=time).count()))
+            return data
+        return listens.filter(date_created__lte=time_start).count()
 
-    def active_listen_count(self,
-                            type_search="now",
+    @staticmethod
+    def active_listen_count(type_search="now",
                             time_start=None,
-                            time_end=None):
-        if time_start:
-            return self.filter(date_created__lte=time_start, is_active=True).count()
-        return self.filter(is_active=True).count()
+                            time_end=None,
+                            accuracy=10):
+        listens = Listen.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                data.append((time, listens.filter(date_created__lte=time, is_active=True).count()))
+            return data
+        return Listen.objects.filter(date_created__lte=time_start, is_active=True).count()
 
-    def total_time_listened(self,
-                            type_search="now",
+
+    @staticmethod
+    def total_time_listened(type_search="now",
                             time_start=None,
-                            time_end=None):
-        if time_start:
-            return round(self.filter(date_created__lte=time_start).aggregate(Sum('time_listened'))['time_listened__sum'], 3)
-        return round(self.aggregate(Sum('time_listened'))['time_listened__sum'], 3)
+                            time_end=None,
+                            accuracy=10):
+        listens = Listen.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                l = listens.filter(date_created__lte=time)
+                if l:
+                    data.append((time, l.aggregate(Sum('time_listened'))['time_listened__sum']))
+                else:
+                    data.append((time, 0))
+            return data
+        listens = listens.filter(date_created__lte=time_start)
+        if listens:
+            return round(listens.aggregate(Sum('time_listened'))['time_listened__sum'], 3)
+        return 0
 
-    def total_active_time_listened(self,
-                                   type_search="now",
+
+    @staticmethod
+    def total_active_time_listened(type_search="now",
                                    time_start=None,
-                                   time_end=None):
-        if time_start:
-            return round(self.filter(is_active=True, date_created__lte=time_start).aggregate(Sum('time_listened'))['time_listened__sum'], 3)
-        return round(self.filter(is_active=True).aggregate(Sum('time_listened'))['time_listened__sum'], 3)
+                                   time_end=None,
+                                   accuracy=10):
+        listens = Listen.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                l = listens.filter(date_created__lte=time)
+                if l:
+                    data.append((time, l.aggregate(Sum('time_listened'))['time_listened__sum']))
+                else:
+                    data.append((time, 0))
+            return data
+        listens = listens.filter(is_active=True, date_created__lte=time_start)
+        if listens:
+            return round(listens.aggregate(Sum('time_listened'))['time_listened__sum'], 3)
+        return 0
 
-    def average_time_listened(self,
-                              type_search="now",
+
+    @staticmethod
+    def average_time_listened(type_search="now",
                               time_start=None,
-                              time_end=None):
-        if time_start:
-            return round(self.filter(date_created__lte=time_start).aggregate(Avg('time_listened'))['time_listened__avg'], 3)
-        return round(self.aggregate(Avg('time_listened'))['time_listened__avg'], 3)
+                              time_end=None,
+                              accuracy=10):
+        listens = Listen.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                l = listens.filter(date_created__lte=time)
+                if l:
+                    data.append((time, l.aggregate(Avg('time_listened'))['time_listened__avg']))
+                else:
+                    data.append((time, 0))
+            return data
+        listens = listens.filter(date_created__lte=time_start)
+        if listens:
+            return round(listens.aggregate(Avg('time_listened'))['time_listened__avg'], 3)
+        return 0
 
-    def average_active_time_listened(self,
-                                     type_search="now",
+    @staticmethod
+    def average_active_time_listened(type_search="now",
                                      time_start=None,
-                                     time_end=None):
-        if time_start:
-            return round(self.filter(is_active=True, date_created__lte=time_start).aggregate(Avg('time_listened'))['time_listened__avg'], 3)
-        return round(self.filter(is_active=True).aggregate(Avg('time_listened'))['time_listened__avg'], 3)
+                                     time_end=None,
+                                     accuracy=10):
+        listens = Listen.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                l = listens.filter(is_active=True, date_created__lte=time)
+                if l:
+                    data.append((time, l.aggregate(Avg('time_listened'))['time_listened__avg']))
+                else:
+                    data.append((time, 0))
+            return data
+        listens = listens.filter(is_active=True, date_created__lte=time_start)
+        if listens:
+            return round(listens.aggregate(Avg('time_listened'))['time_listened__avg'], 3)
+        return 0
 
-    def average_listens_per_user(self,
-                                 type_search="now",
+    @staticmethod
+    def average_listens_per_user(type_search="now",
                                  time_start=None,
                                  time_end=None,
                                  listens=None,
-                                 users=None):
+                                 users=None,
+                                 accuracy=10):
         """
         :param type_search:
         :param time_start:
@@ -250,43 +356,84 @@ class ListenManager(models.Manager):
         :param users: Number of users
         :return: Return average listens per user
         """
-        if time_start:
-            listens = self.filter(date_created__lte=time_start)
-            users = User.objects.using('ye_1_db_1').filter(date_joined_lte=time_start).count()
-        else:
-            listens = self.all()
-            users = User.objects.using('ye_1_db_1').all().count()
-        return round(listens / users, 3)
+        listens = Listen.objects.all()
+        users = User.objects.using('ye_1_db_1').all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                l = listens.filter(date_created__lte=time)
+                u = users.filter(date_joined__lte=time)
+                if l and u:
+                    data.append((time, l.aggregate(Avg('time_listened'))['time_listened__avg']))
+                else:
+                    data.append((time, 0))
+            return data
+        listens = listens.filter(date_created__lte=time_start)
+        users = User.objects.using('ye_1_db_1').filter(date_joined_lte=time_start).count()
+        if listens and users:
+            return round(listens / users, 3)
+        return 0
 
-    def average_active_listened_per_user(self,
-                                         type_search="now",
+
+    @staticmethod
+    def average_active_listened_per_user(type_search="now",
                                          time_start=None,
                                          time_end=None,
                                          listens=None,
-                                         users=None):
-        listens = self.all()
-        users= User.objects.using('ye_1_db_1').all().count()
-        return round(listens/users, 3)
+                                         users=None,
+                                         accuracy=10):
+        listens = Listen.objects.all()
+        if type_search == "graph":
+            data = []
+            # Not time_end => From Start date to now
+            if not time_end:
+                time_end = datetime.datetime.now()
+            delta = (time_start - time_end)/accuracy
+            i = 0
+            while i < accuracy:
+                i += 1
+                time = time_start - delta * i
+                l = listens.filter(is_active=True, date_created__lte=time)
+                if l:
+                    data.append((time, l.aggregate(Avg('time_listened'))['time_listened__avg']))
+                else:
+                    data.append((time, 0))
+            return data
+        listens = listens.filter(is_active=True, date_created__lte=time_start)
+        users = User.objects.using('ye_1_db_1').filter(date_joined_lte=time_start).count()
+        if listens and users:
+            return round(listens / users, 3)
 
-    def average_time_listened_per_user(self,
-                                       type_search="now",
+
+    @staticmethod
+    def average_time_listened_per_user(type_search="now",
                                        time_start=None,
                                        time_end=None,
-                                       users=None):
+                                       users=None,
+                                       accuracy=10):
         users = User.objects.using('ye_1_db_1').all().count()
-        return round(self.average_time_listened(type_search=type_search,
-                                                time_start=time_start,
-                                                time_end=time_end)/users, 3)
+        return round(ListenManager.average_time_listened(type_search=type_search,
+                                                          time_start=time_start,
+                                                          time_end=time_end)/users, 3)
 
-    def average_active_time_listened_per_active_user(self,
-                                                     type_search="now",
+
+    @staticmethod
+    def average_active_time_listened_per_active_user(type_search="now",
                                                      time_start=None,
                                                      time_end=None,
-                                                     users=None):
+                                                     users=None,
+                                                     accuracy=10):
         users = User.objects.using('ye_1_db_1').all().count()
-        return round(self.average_time_listened(type_search=type_search,
-                                                time_start=time_start,
-                                                time_end=time_end)/users, 3)
+        return round(ListenManager.average_active_time_listened(type_search=type_search,
+                                                          time_start=time_start,
+                                                          time_end=time_end)/users, 3)
 
 
 class YapManager(models.Manager):

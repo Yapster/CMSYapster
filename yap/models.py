@@ -15,6 +15,7 @@ class Hashtag(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     is_blocked = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    objects = models.Manager()
     #stats = HashtagManager()
 
     def __unicode__(self):
@@ -39,6 +40,8 @@ class Channel(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_deactivated = models.DateTimeField(null=True,blank=True)
     is_active = models.BooleanField(default=True)
+    objects = models.Manager()
+
 
     def __unicode__(self):
         return self.channel_name
@@ -52,6 +55,8 @@ class WebsiteLink(models.Model):
     website_link = models.URLField(max_length=255)
     date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+    objects = models.Manager()
+
 
     def __unicode__(self):
         return self.website_link
@@ -103,7 +108,8 @@ class Yap(models.Model):
     is_private = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
-    objects = models.GeoManager()
+    geo = models.GeoManager()
+    objects = models.Manager()
 #    stats = YapManager()
 
     class Meta:
@@ -149,7 +155,8 @@ class Reyap(models.Model):
     deleted_point = models.PointField(srid=4326,null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
-    objects = models.GeoManager()
+    geo = models.GeoManager()
+    objects = models.Manager()
  #   stats = ReyapManager()
 
     class Meta:
@@ -178,8 +185,10 @@ class Like(models.Model):
     unliked_point = models.PointField(srid=4326,null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
-    objects = models.GeoManager()
+    geo = models.GeoManager()
+    objects = models.Manager()
   #  stats = LikeManager()
+
 
     class Meta:
         ordering = ['-date_created']
@@ -206,8 +215,9 @@ class Listen(models.Model):
     point = models.PointField(srid=4326,null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
-    objects = models.GeoManager()
-   # stats = ListenManager()
+    geo = models.GeoManager()
+    objects = models.Manager()
+
 
     class Meta:
         ordering = ['-date_created']
@@ -244,7 +254,9 @@ class ListenClick(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
-    objects = models.GeoManager()
+    geo = models.GeoManager()
+    objects = models.Manager()
+
 
     class Meta:
         ordering = ['-date_created']
@@ -283,7 +295,9 @@ class FollowerRequest(models.Model):
     date_unfollowed = models.DateTimeField(null=True,blank=True)
     is_active = models.BooleanField(default=True)
     is_user_deleted = models.BooleanField(default=False)
-    objects = models.GeoManager()
+    geo = models.GeoManager()
+    objects = models.Manager()
+
 
     class Meta:
         ordering = ['-date_created']

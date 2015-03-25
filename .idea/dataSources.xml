@@ -23,18 +23,13 @@
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://54.211.32.63:5432/yte_1_db</jdbc-url>
-      <user-name>yapster</user-name>
-      <user-password>dff3dfcbdfdadfd9dfdedfcfdfd8df9bdf9adf9adf9adf9adf9adf9adf9adf9adf9a</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Django yte_1_db" uuid="99f84fce-14f6-4012-9ff4-2ee09169a62b">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://yte-1-db1.cagmlb1zwzjw.us-east-1.rds.amazonaws.com:5432/yte_1_db1</jdbc-url>
-      <user-name>yapster</user-name>
-      <user-password>dff3dfcbdfdadfd9dfdedfcfdfd8df9bdf9adf9adf9adf9adf9adf9adf9adf9adf9a</user-password>
       <libraries />
     </data-source>
   </component>
 </project>
-

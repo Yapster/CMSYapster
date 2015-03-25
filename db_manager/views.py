@@ -37,7 +37,7 @@ def home_database(request):
 def home_server(request):
     conn2 = boto_init_ec2()
     ec2reservations = conn2.get_all_instances()
-    cw = boto_init_rds()
+    cw = boto_init_cw()
     ec2instances = []
     list_metrics = None
     for reservation in ec2reservations:
@@ -64,7 +64,7 @@ def rds_details(request, instance):
 
 
 def ec2_details(request, instance):
-    cw = boto_init_ec2()
+    cw = boto_init_cw()
     list_metrics = cw.list_metrics(dimensions={'InstanceId':[instance]},namespace="AWS/EC2")
     list_metrics.sort(key=lambda r:r.name)
     return render(request,
@@ -143,7 +143,7 @@ def display_one_graph_rds(request):
 def graph_ec2(request):
     if 'time_graph' in request.POST:
         # Get Metric from AWS
-        cw = boto.ec2.cloudwatch.connect_to_region("us-east-1")
+        cw = boto_init_cw()
         metric = cw.list_metrics(metric_name=request.POST['type_search'], dimensions={'InstanceId':[request.POST['instance']]},namespace="AWS/EC2")[0]
         data = metric.query(datetime.datetime.utcnow() - datetime.timedelta(minutes=int(request.POST['type_time'])),
                             datetime.datetime.utcnow(),

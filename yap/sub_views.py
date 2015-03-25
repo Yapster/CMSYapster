@@ -46,13 +46,13 @@ def get_reyaps_data(**kwargs):
 
 def get_listens_data(**kwargs):
     data = []
-    data.append({"listen_count": Listen.stats.listen_count(**kwargs)})
-    data.append({"active_listen_count": Listen.stats.active_listen_count(**kwargs)})
-    data.append({"total_time_listened": Listen.stats.total_time_listened(**kwargs)})
-    data.append({"total_active_time_listened": Listen.stats.total_active_time_listened(**kwargs)})
-    data.append({"average_time_listened": Listen.stats.average_time_listened(**kwargs)})
-    data.append({"average_active_time_listened": Listen.stats.average_active_time_listened(**kwargs)})
-    data.append({"average_time_listened_per_user": Listen.stats.average_time_listened_per_user(**kwargs)})
+    data.append({"listen_count": ListenManager.listen_count(**kwargs)})
+    data.append({"active_listen_count": ListenManager.active_listen_count(**kwargs)})
+    data.append({"total_time_listened": ListenManager.total_time_listened(**kwargs)})
+    data.append({"total_active_time_listened": ListenManager.total_active_time_listened(**kwargs)})
+    data.append({"average_time_listened": ListenManager.average_time_listened(**kwargs)})
+    data.append({"average_active_time_listened": ListenManager.average_active_time_listened(**kwargs)})
+    data.append({"average_time_listened_per_user": ListenManager.average_time_listened_per_user(**kwargs)})
     # data.append({"": })
     # data.append({"": })
     # data.append({"": })

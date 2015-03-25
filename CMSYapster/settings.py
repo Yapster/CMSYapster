@@ -121,14 +121,14 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
         },
-    'ye_1_db_1': {
-        'NAME': 'ye_1_db_1',
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'USER': 'yapster',
-        'PASSWORD': 'Yapster1000000000',
-        'HOST': 'ye-1-db-1.cagmlb1zwzjw.us-east-1.rds.amazonaws.com',
-        'PORT': '5432',
-        }
+    # 'ye_1_db_1': {
+    #     'NAME': 'ye_1_db_1',
+    #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
+    #     'USER': 'yapster',
+    #     'PASSWORD': 'Yapster1000000000',
+    #     'HOST': 'ye-1-db-1.cagmlb1zwzjw.us-east-1.rds.amazonaws.com',
+    #     'PORT': '5432',
+    #     }
 }
 
 # Internationalization
