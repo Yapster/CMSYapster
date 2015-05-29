@@ -7,9 +7,9 @@ def get_home_data(**kwargs):
     data = []
     data.append({"Yap Count": YapManager.yap_count(**kwargs)})
     data.append({"Total Number of Active Users": UserManager.active_users_count(**kwargs)})
-    data.append({"Total Number of Listens": ListenManager.listen_count(**kwargs)})
-    data.append({"Average Time Listened": ListenManager.average_time_listened(**kwargs)})
-    data.append({"Trending Hashtags": HashtagManager.top_hashtags(amount=5, **kwargs)})
+    # data.append({"Total Number of Listens": ListenManager.listen_count(**kwargs)})
+    # data.append({"Average Time Listened": ListenManager.average_time_listened(**kwargs)})
+    # data.append({"Trending Hashtags": HashtagManager.top_hashtags(amount=5, **kwargs)})
 
     return data
 

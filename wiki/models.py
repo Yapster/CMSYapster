@@ -36,7 +36,7 @@ class WikiPage(models.Model):
     categories = models.ManyToManyField(WikiCategory, related_name='pages')
     is_current = models.BooleanField(default=True)
     father = models.ForeignKey(to='WikiPage',null=True, blank=True, related_name='sons')
-    children = models.ManyToManyField(to='WikiPage', null=True, blank=True, related_name='+')
+    children = models.ManyToManyField(to='WikiPage', blank=True, related_name='+')
     favorites_users = models.ManyToManyField(User, related_name='favorites')
     date_created = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)

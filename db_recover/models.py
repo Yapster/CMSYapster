@@ -7,12 +7,12 @@ from contacts.models import Contact, List
 from yap.models import Channel
 from tasks.models import *
 from cms_search_log.models import *
-from calendars.models import *
+# from calendars.models import *
 from wiki.models import *
 from datetime import datetime
 from django.contrib.auth.models import User, Permission, Group
 from django.contrib.contenttypes.models import ContentType
-
+import django
 
 class Recover(models.Model):
     """
@@ -79,13 +79,14 @@ class Recover(models.Model):
         """
         Run all scripts
         """
+        django.setup()
 
-        # group = GroupPermission.objects.create(group_name="No Group")
-        # group1 = GroupPermission.objects.create(group_name="Admin")
-        # group2 = GroupPermission.objects.create(group_name="Design/UI")
-        # group3 = GroupPermission.objects.create(group_name="Backend")
-        # group4 = GroupPermission.objects.create(group_name="Frontend")
-        # group5 = GroupPermission.objects.create(group_name="Mobile")
+        group = GroupPermission.objects.create(group_name="No Group")
+        group1 = GroupPermission.objects.create(group_name="Admin")
+        group2 = GroupPermission.objects.create(group_name="Design/UI")
+        group3 = GroupPermission.objects.create(group_name="Backend")
+        group4 = GroupPermission.objects.create(group_name="Frontend")
+        group5 = GroupPermission.objects.create(group_name="Mobile")
 
         user = CmsUser.new_user(username="Chris", first_name="Chris", last_name="Lerus",
                                 email="chris@yapsterapp.com", password="fefe")
@@ -97,6 +98,7 @@ class Recover(models.Model):
                                  email="lilianz@yapsterapp.com", password="fefe")
         user4 = CmsUser.new_user(username="Tommy", first_name="Tommy", last_name="Sondgroth",
                                  email="tommy@yapsterapp.com", password="fefe")
+
 
         cmsuser = CmsUser.objects.get(username=user.username)
         cmsuser1 = CmsUser.objects.get(username=user1.username)
@@ -124,33 +126,33 @@ class Recover(models.Model):
                                  created_by=user)
 
 
-        # p = Page.objects.create(name="groups permissions", url="/permissionsgroups/",
-        #                     description="Manage permissions for groups")
-        # p2 = Page.objects.create(name="CmsUsers", url="/cmsusers/",
-        #                     description="Manage Cms users")
-        # p3 = Page.objects.create(name="Announcements", url="/announcements/",
-        #                      description="Manage Announcements")
-        # p4 = Page.objects.create(name="business_contacts_list", url="/contacts/lists/Business Contacts/",
-        #                          description="")
-        # p5 = Page.objects.create(name="fun_contacts_list", url="Fun Contacts",
-        #                          description="")
-        # p6 = Page.objects.create(name="admin_contacts_list", url="Admin Contacts",
-        #                          description="")
-        #
-        # p.perms.add(group1)
-        #
-        # p2.perms.add(group1)
-        #
-        # p3.perms.add(group1)
-        #
-        # p4.perms.add(group1)
-        # p4.perms.add(group2)
-        # p4.perms.add(group3)
-        #
-        # p5.perms.add(group1)
-        # p5.perms.add(group2)
-        #
-        # p6.perms.add(group1)
+        p = Page.objects.create(name="groups permissions", url="/permissionsgroups/",
+                            description="Manage permissions for groups")
+        p2 = Page.objects.create(name="CmsUsers", url="/cmsusers/",
+                            description="Manage Cms users")
+        p3 = Page.objects.create(name="Announcements", url="/announcements/",
+                             description="Manage Announcements")
+        p4 = Page.objects.create(name="business_contacts_list", url="/contacts/lists/Business Contacts/",
+                                 description="")
+        p5 = Page.objects.create(name="fun_contacts_list", url="Fun Contacts",
+                                 description="")
+        p6 = Page.objects.create(name="admin_contacts_list", url="Admin Contacts",
+                                 description="")
+
+        p.perms.add(group1)
+
+        p2.perms.add(group1)
+
+        p3.perms.add(group1)
+
+        p4.perms.add(group1)
+        p4.perms.add(group2)
+        p4.perms.add(group3)
+
+        p5.perms.add(group1)
+        p5.perms.add(group2)
+
+        p6.perms.add(group1)
 
         c = Contact.objects.create(firstname="Bill",
                                    lastname="Gates",
@@ -179,6 +181,8 @@ class Recover(models.Model):
         t4 = Task.objects.new_task(name="Think about Website", description="Lorem ipsum dolor sit amet, ", category=c4, deadline=datetime(2014, 8, 20), priority=4, status='TO')
         t5 = Task.objects.new_task(name="Bug CMS", description="Lorem ipsum dolor sit amet, ", category=c1, deadline=datetime(2014, 8, 22), priority=5, status='IP')
         t6 = Task.objects.new_task(name="Google Drive in CMS", description="Lorem ipsum dolor sit amet, ", category=c2, deadline=datetime(2014, 8, 24), priority=6, status='DO')
+
+
 
         t1.workers.add(user)
         t2.workers.add(user1)
@@ -223,10 +227,10 @@ class Recover(models.Model):
         permission3 = Permission.objects.create(codename='search_management',
                                                 name='Do Search',
                                                 content_type=content_type)
-        content_type = ContentType.objects.get_for_model(MyCalendar)
-        permission4 = Permission.objects.create(codename='calendar_management',
-                                                name='Has a calendar',
-                                                content_type=content_type)
+        # content_type = ContentType.objects.get_for_model(MyCalendar)
+        # permission4 = Permission.objects.create(codename='calendar_management',
+        #                                         name='Has a calendar',
+        #                                         content_type=content_type)
         content_type = ContentType.objects.get_for_model(User)
         permission5 = Permission.objects.create(codename='gits_management',
                                                 name='Manage Gits',
@@ -270,7 +274,7 @@ class Recover(models.Model):
         group1.permissions.add(permission1)
         group1.permissions.add(permission2)
         group1.permissions.add(permission3)
-        group1.permissions.add(permission4)
+        # group1.permissions.add(permission4)
         group1.permissions.add(permission5)
         group1.permissions.add(permission6)
         group1.permissions.add(permission7)
@@ -281,7 +285,7 @@ class Recover(models.Model):
         group1.permissions.add(permission12)
 
         group2.permissions.add(permission3)
-        group2.permissions.add(permission4)
+        # group2.permissions.add(permission4)
         group2.permissions.add(permission5)
         group2.permissions.add(permission6)
         group2.permissions.add(permission7)
@@ -291,7 +295,7 @@ class Recover(models.Model):
         group2.permissions.add(permission11)
         group2.permissions.add(permission12)
 
-        group3.permissions.add(permission4)
+        # group3.permissions.add(permission4)
         group3.permissions.add(permission6)
         group3.permissions.add(permission8)
 
@@ -332,12 +336,12 @@ class Recover(models.Model):
         s5 = WikiSection.objects.create(order=2, title="Design Dev", page=p2, writer=user2, content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
         s6 = WikiSection.objects.create(order=1, title="Server Intro", page=p3, writer=user3, content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
         #
-        # p1.sections.add(s1)
-        # p1.sections.add(s2)
-        # p1.sections.add(s3)
-        # p2.sections.add(s4)
-        # p2.sections.add(s5)
-        # p3.sections.add(s6)
+        p1.sections.add(s1)
+        p1.sections.add(s2)
+        p1.sections.add(s3)
+        p2.sections.add(s4)
+        p2.sections.add(s5)
+        p3.sections.add(s6)
 
         WikiFolder.objects.create(name="No Folder", user=user)
         WikiFolder.objects.create(name="No Folder", user=user1)

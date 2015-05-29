@@ -13,11 +13,13 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'v6k@u6in+)f$6tqe+8b!xta@_u7ra^g%@ua+!ete+2m7rrk-y%'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -30,9 +32,9 @@ BUCKET_NAME = 'yapstercms'
 
 DB_YAPSTER = 'ye_1_db_1'
 
-AWS_ACCESS_KEY_ID = 'AKIAJ2WIFTVZMGME4V4A'
+AWS_ACCESS_KEY_ID = 'AKIAILXQXCTY4QGZSFGA'
 
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_SECRET_ACCESS_KEY = 'DVfklCjWB27AtUj3SzP5BQGywF/MhUsoN18GDQX7'
 
 # USER_GITHUB = 'chrislerus'
 #
@@ -47,7 +49,6 @@ AWS_SECRET_ACCESS_KEY = 'H2ShKiHLw0ZDgWUIDVAP16MnfT4lgdfERSs09t3Q'
 # REDIRECT_URI = 'urn:ietf:wg:oauth:2.0:oob'
 
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,9 +56,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
     'django.contrib.gis',
-    'south',
+    'psycopg2',
     'boto',
     'rest_framework',
     'oauth2client',
@@ -84,7 +84,7 @@ INSTALLED_APPS = (
     'stats',
     'tasks',
     'wiki',
-
+    #
     'location',
     'manual_override',
     'notification',
@@ -121,14 +121,14 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
         },
-    # 'ye_1_db_1': {
-    #     'NAME': 'ye_1_db_1',
-    #     'ENGINE': 'django.contrib.gis.db.backends.postgis',
-    #     'USER': 'yapster',
-    #     'PASSWORD': 'Yapster1000000000',
-    #     'HOST': 'ye-1-db-1.cagmlb1zwzjw.us-east-1.rds.amazonaws.com',
-    #     'PORT': '5432',
-    #     }
+     'ye_1_db_1': {
+        "ENGINE": 'django.contrib.gis.db.backends.postgis',
+        "HOST": "yte-1-db-1.cagmlb1zwzjw.us-east-1.rds.amazonaws.com",
+        "PORT": "5432",
+        "NAME": "yte_1_db_1",
+        "USER": "yapster",
+        "PASSWORD": "ABCD1234",
+    }
 }
 
 # Internationalization
@@ -160,3 +160,4 @@ TEMPLATE_DIRS = (
 DATABASE_ROUTERS = ['yap.router.APIRouter']
 
 GEOS_LIBRARY_PATH = 'C:/OSGeo4W/bin/geos_c.dll'
+

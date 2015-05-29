@@ -16,7 +16,6 @@ urlpatterns = patterns('',
                        # url(r'^$', 'CMSYapster.views.home', name='home'),
                        # url(r'^blog/', include('blog.urls')),
 
-                       url(r'^admin/', include(admin.site.urls)),
                        url(r'^calendar/', include(calendars.urls)),
                        url(r'^tasks/', include(tasks.urls)),
                        url(r'^gits/', include(gits.urls)),

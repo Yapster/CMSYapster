@@ -67,13 +67,13 @@ class CmsCity(models.Model):
 class CmsGeographicTarget(models.Model):
     geographic_target_id = models.AutoField(primary_key=True)
     geographic_countries_flag = models.BooleanField(default=False)
-    geographic_countries = 	models.ManyToManyField(CmsCountry, related_name="geographic_countries",blank=True,null=True) #foreign key to Countries
+    geographic_countries = 	models.ManyToManyField(CmsCountry, related_name="geographic_countries",blank=True) #foreign key to Countries
     geographic_states_flag = models.BooleanField(default=False)
-    geographic_states = models.ManyToManyField(CmsUSState,related_name="geographic_states",blank=True,null=True)
+    geographic_states = models.ManyToManyField(CmsUSState,related_name="geographic_states",blank=True)
     geographic_zip_codes_flag = models.BooleanField(default=False)
-    geographic_zip_codes = models.ManyToManyField(CmsUSZIPCode, related_name="geographic_zip_codes",blank=True,null=True)
+    geographic_zip_codes = models.ManyToManyField(CmsUSZIPCode, related_name="geographic_zip_codes",blank=True)
     geographic_cities_flag = models.BooleanField(default=False)
-    geographic_cities = models.ManyToManyField(CmsCity, related_name="geographic_cities",blank=True,null=True)
+    geographic_cities = models.ManyToManyField(CmsCity, related_name="geographic_cities",blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_deactivated = models.DateTimeField(blank=True,null=True)
     is_active = models.BooleanField(default=True)

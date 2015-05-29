@@ -1,11 +1,9 @@
-from collections import OrderedDict
-from datetime import datetime
+from boto.connection import HTTPResponse
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
 from django.shortcuts import render_to_response, render
 from django.contrib.auth.decorators import login_required
-from django.db.models import Count
-from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
-from django.views.decorators.http import require_POST
 from announcements.models import Announcement
 from location.models import *
 from chat.signals import *
@@ -229,20 +227,30 @@ def custom_graph(request):
     Return graph with specific start and end datetime, accuracy
     """
     global stat_method
+    errors = []
+    data = None
+
     stat_method = get_stat_method(request.POST['name_method'], request.POST['type_stats'])
     time_start = get_time(request.POST['date_start'], request.POST['time_start'])
     time_end = get_time(request.POST['date_end'], request.POST['time_end'])
+    if not time_start:
+        errors.append("Start time error: the start time is not valid")
+    if not time_end:
+        errors.append("End time error: the end time is not valid")
     kwargs = {
         'time_start': time_start,
         'time_end': time_end,
         'type_search': request.POST['type_search'],
-        'accuracy': int(request.POST['accuracy'])}
+        'accuracy': int(request.POST['accuracy'])
+    }
+    if time_end and time_start:
+        data = stat_method(**kwargs)
 
-    data = stat_method(**kwargs)
     return render(request, "stats/sub_templates/spec_stats.html", {"data": data,
                                                                    "title": request.POST['name_method'],
                                                                    "time_start": time_start,
-                                                                   "time_end": time_end})
+                                                                   "time_end": time_end,
+                                                                   "errors": errors})
 
 
 @csrf_exempt
@@ -263,6 +271,12 @@ def location_option(request):
         return render(request, 'stats/location_option.html', {"cities": cities})
     return
 
+# @csrf_exempt
+# def export_pdf(request):
+#     return render_to_pdf("stats/export_pdf.html",
+#         {
+#             'pagesize': 'A4',
+#         })
 
 @csrf_exempt
 def specific_search(request):
@@ -297,28 +311,6 @@ def specific_search(request):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     # @login_required(login_url='/login/')
     # def hashtag(request, tag):
     #     """
@@ -336,3 +328,4 @@ def specific_search(request):
     #     """
     #     current_group = Group.objects.get(pk=group)
     #     return render(request, 'stats/group.html', {'group': current_group})
+

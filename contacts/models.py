@@ -1,4 +1,3 @@
-from django.contrib.admindocs.views import model_detail
 from django.contrib.auth.admin import User
 from django.db import models
 from groups.models import GroupPermission, Page
@@ -50,7 +49,7 @@ class Contact(models.Model):
     state = models.ForeignKey(CmsUSState, blank=True, null=True)
     zipcode = models.ForeignKey(CmsUSZIPCode, blank=True, null=True)
     country = models.ForeignKey(CmsCountry, blank=True, null=True)
-    lists = models.ManyToManyField(to=List, related_name='contacts')
+    lists = models.ManyToManyField(to="List", related_name='contacts')
     is_active = models.BooleanField(default=True)
 
     @staticmethod
@@ -88,7 +87,7 @@ class Website(models.Model):
     website_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=64)
     url = models.URLField(max_length=128)
-    contact = models.ForeignKey(to=Contact, related_name='websites')
+    contact = models.ForeignKey(to="Contact", related_name='websites')
     is_active = models.BooleanField(default=True)
 
 
@@ -101,7 +100,7 @@ class Note(models.Model):
     description = models.CharField(max_length=255)
     date_last = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(to=User, related_name='created_notes')
-    contact = models.ForeignKey(to=Contact, related_name='notes')
+    contact = models.ForeignKey(to="Contact", related_name='notes')
     is_active = models.BooleanField(default=True)
 
     def delete(self, using=None):

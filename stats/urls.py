@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns(
     '',
+    url(r'^export_pdf/$', 'stats.views.export_pdf'),
     url(r'^more_data/$', 'stats.views.more_data'),
     url(r'^usership/$', 'stats.views.stats_usership'),
     url(r'^yaps/$', 'stats.views.stats_yaps'),

@@ -74,7 +74,7 @@ class Yap(models.Model):
     description = models.CharField(max_length=255,blank=True,null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     hashtags_flag = models.BooleanField(default=False)
-    hashtags = models.ManyToManyField(Hashtag, related_name="yaps",blank=True,null=True) #foreign key to tags
+    hashtags = models.ManyToManyField(Hashtag, related_name="yaps",blank=True) #foreign key to tags
     channel_flag = models.BooleanField(default=False)
     channel = models.ForeignKey(Channel, blank=True, null=True,related_name="yaps") #foreign key to Channel
     user_tags_flag = models.BooleanField(default=False)
@@ -84,7 +84,7 @@ class Yap(models.Model):
     reyap_count = models.BigIntegerField(default=0)
     like_count = models.BigIntegerField(default=0)
     website_links_flag = models.BooleanField(default=False)
-    website_links = models.ManyToManyField(WebsiteLink, related_name="yaps",blank=True,null=True)
+    website_links = models.ManyToManyField(WebsiteLink, related_name="yaps",blank=True)
     latitude = models.FloatField(null=True,blank=True)
     longitude = models.FloatField(null=True,blank=True)
     point = models.PointField(srid=4326,null=True,blank=True)

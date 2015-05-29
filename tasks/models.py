@@ -41,7 +41,7 @@ class Task(models.Model):
     workers = models.ManyToManyField(to=User, related_name='workers')
     category = models.ForeignKey(to=Category, related_name='category')
     deadline = models.DateTimeField(auto_now=True)
-    priority = models.IntegerField(max_length=1, default=0)
+    priority = models.IntegerField(default=0)
     status = models.CharField(max_length=2, choices=STATUS_CHOICES, default=TODO)
     is_public = models.BooleanField(default=False)
     objects = TaskManager()
